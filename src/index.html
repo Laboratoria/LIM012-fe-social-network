@@ -1,12 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>BUNKER</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+  <section id="login-view">
+    <div id="cover-container">
+      <img src="images/cover.png" alt="cover" class="cover">
+    </div>
+    <div id="login-container" class="modals flex-columns">
+      <header>
+        <img src="images/logo.png" alt="logo" class="logo">
+        <h1 class="title">BUNKER</h1>
+        <h2 class="slogan">Share your knowledgement!</h2>
+      </header>
+      <main>
+        <p class="welcome">WELCOME !</p>
+        <form action="" class="login">
+          <input type="email" class="field" id="login-email">
+          <input type="password" class="field" id="login-password">
+          <p id="change-password">Forgot Password?</p>
+          <button id="btn-login" class="button-access">LOG IN</button>
+        </form>
+        <p>or login with</p>
+        <div>
+          <button id="google"><i class="fab fa-google"></i></button>
+          <button id="facebook"><i class="fab fa-facebook-f"></i></button>
+        </div>
+        <div>
+          <p>Don't have an account?</p>
+          <a href="#">SIGN UP HERE</a>
+        </div>
+      </main>
+    </div>
+  </section>
+
   <script type="module" src="index.js"></script>
+  <script src="https://kit.fontawesome.com/0325233556.js" crossorigin="anonymous"></script>
+
 </body>
+
 </html>

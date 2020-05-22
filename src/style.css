@@ -1,4 +1,99 @@
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
+    border: rgb(48, 46, 46) 1px solid;
+}
+
+body {
+    --color-1: linear-gradient(180deg, #040240 0%, #2D2981 100%);
+    --color-2: #B3C0E0;
+    --color-3: lemonchiffon;
+    --color-4: white;
+
+}
+
+#login-view {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+}
+
+#cover-container {
+    width: 100%;
+    height: 20%;
+    align-self: flex-start;
+    
+}
+
+.cover {
+    width: 100%;
+    height: 100%;
+}
+
+.flex-columns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.modals {
+    width: 80%;
+    height: 60%;
+    background: var(--color-1);
+}
+
+header {
+    width: 100%;
+    height: 20%;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 70% 30%;
+}
+
+.logo {
+    width: 100%;
+}
+
+.slogan {
+    font-size: 12px;
+    grid-column: 1/3;
+}
+
+main {
+    width: 100%;
+    height: 80%;
+    text-align: center;
+}
+
+.field {
+    background-color: white;
+    border-radius: 10px;
+    border: solid white 1px;
+    height: 35px;
+    width: 80%;
+}
+
+.field:focus{
+    outline: none;
+}
+
+
+#login-email {
+    border-radius: 10px 10px 0 0;
+}
+
+#login-password {
+    border-radius: 0 0 10px 10px;
+}
+
+.button-access {
+    height: 39px;
+    width: 70%;
+    background: rgba(246, 229, 229, 0.19);
+    border-radius: 10px;
 }
