@@ -17,7 +17,7 @@ body {
     --color-4: rgba(246, 229, 229, 0.19);
     --color-5: rgba(20, 137, 203, 0.5);
     --color-6: #0F0C48;
-    --color-7:#A4BEFF
+    --color-7: #A4BEFF;
 }
 
 /*--------------main-view---------------*/
@@ -594,11 +594,11 @@ body {
 .dark-mode{
     background-color: rgb(61, 61, 61);
     color: white;
-=======
+}
 /*-----------desktop----------*/
 @media (min-width: 480px) {
     /* For desktop,moviles landscape,tablets: */
-.fa-bars{
+.fa-bars {
     display: none;
     font-size: 0;
 }
