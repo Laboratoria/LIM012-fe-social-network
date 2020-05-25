@@ -201,7 +201,7 @@ body {
     cursor: pointer;
 }
 
-.fab:hover {
+.fab:hover,.icon:hover {
     text-shadow:
 		0 0 5px rgba(0,178,255,1),
 		0 0 10px rgba(0,178,255,1),
@@ -279,20 +279,9 @@ body {
     font-size: 25px;
     padding-top: 2px;
     cursor: pointer;
+    width: auto;
 }
 
-.icon:hover{
-    text-shadow:
-		0 0 5px rgba(0,178,255,1),
-		0 0 10px rgba(0,178,255,1),
-		0 0 20px rgba(0,178,255,1),
-		0 0 40px rgba(38,104,127,1),
-		0 0 80px rgba(38,104,127,1),
-		0 0 90px rgba(38,104,127,1),
-		0 0 100px rgba(38,104,127,1),
-		0 0 140px rgba(38,104,127,1),
-		0 0 180px rgba(38,104,127,1);
-}
 .circle{
     text-align: center;
     border-radius: 50%;
@@ -320,10 +309,27 @@ body {
         display: grid;
         grid-template-columns: 30% 70%;
     }
-.home{
+   
+   .icon-up ,.fa-cog, .user-icon{
+        display: none;
+        font-size: 0;
+    }
+    
+.main-home,.main-profile{
     width: 100%;
     height: 85%;
 }
+    .lateral-rigth{
+        display: none;
+        background-color: var(--color-2);
+        height: 92.5vh;
+    }
+    .lateral{
+        width: 100%;
+    }
+    .social{
+        width: 100%;
+    }
     .share-section{
         display: flex;
         justify-content: space-between;
@@ -335,7 +341,7 @@ body {
             height: 50px;
             background-color: var(--color-6);
         }
-        #share{
+    .share{
             border-radius: 20px 20px 20px 0;
             background-color: var(--color-2);
             margin: 5px;
@@ -399,6 +405,7 @@ body {
                 justify-content: flex-start;
                 border-radius: 0 0 0 15px;
                 align-self: flex-end;
+
             }
             .comments> i{
                 color: black;
@@ -406,31 +413,33 @@ body {
                 margin-right: 15px;
             }
 /*profile section*/
-.profile-section {
+.profile-photos {
     display: flex;
     justify-content: center;
 }
     .cover-profile {
         width: 94%;
-        height: 125px;
+        height: 150px;
         margin: 3% 3% 0;
         border-radius: 15px 15px 0 0;
         border: 2px solid var(--color-3);
         background-color: black;
         box-sizing: border-box;
         position: absolute;
-        z-index: -1;
+        z-index: 0;
     }
     .profile-main{
         width: 100px;
         height: 100px;
-        margin-top: 70px;
+        margin-top: 100px;
         border: 5px solid white;
+        z-index: 1;
     }
 .profile-information{
     text-align: center;
     font-style: normal;
 }
+
 /*menu*/
 .menu-container{
     position: relative;
@@ -585,4 +594,63 @@ body {
 .dark-mode{
     background-color: rgb(61, 61, 61);
     color: white;
+=======
+/*-----------desktop----------*/
+@media (min-width: 480px) {
+    /* For desktop,moviles landscape,tablets: */
+.fa-bars{
+    display: none;
+    font-size: 0;
+}
+.bar{
+    height: 9%;
+}
+.fa-cog, .fa-home{
+    display: block;
+    font-size: 25px;
+    margin-right: 25px;
+}
+.user-icon{
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+.icons{
+    display: flex;
+}
+.bar-down{
+    display: none;
+}
+.main-home{
+    width: 80vw;
+    display: flex;
+    border: 2px solid var(--color-2);
+    box-sizing: border-box;
+}
+.main-profile {
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--color-2);
+    box-sizing: border-box;
+}
+
+    .lateral{
+        display: block;
+        width: 50%;
+        height: 100%;
+    }
+    .cover-profile {
+        width: 38%;
+    }
+    .no-lateral{
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .cover-desktop{
+        width: 55vw;
+    }
+    .share{
+        width: 75%;
+    }
 }
