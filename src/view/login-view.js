@@ -15,11 +15,11 @@ export default () => {
         </header>
         <main class="access-container">
           <p class="welcome">WELCOME !</p>
-          <form action="" class="login">
-            <input type="email" class="field" id="login-email" placeholder="Email">
-            <input type="password" class="field" id="login-password" placeholder="Password">
+          <form class="login">
+            <input type="email" class="field" id="login-email" placeholder="Email" required>
+            <input type="password" class="field" id="login-password" placeholder="Password" required>
             <p class="change-password">Forgot Password?</p>
-            <button class="button-access" id="btn-login"><a href="#/home" class="access-ref">LOG IN</a>  
+            <button class="button-access" id="btn-login">LOG IN</button>  
           </form>
           <p class="options-login">or login with</p>
           <div class="rrss">
@@ -34,5 +34,26 @@ export default () => {
       </div>
     </div>`;
   div.innerHTML = loginView;
+  // GOOGLE LOG IN
+  const signinGoogle = div.querySelector('#google');
+  signinGoogle.addEventListener('click', () => {
+    firebase.auth().signInWithPopup(provider).then((result) => {
+      console.log(result.user);
+    }).catch((error) => {
+      console.log(error.message);
+    });
+  });
+
+  // LOG IN
+  const formlogin = div.querySelector('.login');
+  formlogin.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = formlogin['login-email'].value;
+    const password = formlogin['login-password'].value;
+    auth.signInWithEmailAndPassword(email, password).then((cred) => {
+      console.log(cred.user);
+      formlogin.reset();
+    }).catch((err) => console.log(err));
+  });
   return div;
 };

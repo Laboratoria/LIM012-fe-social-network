@@ -15,9 +15,9 @@ export default () => {
         </header>
         <main class="access-container">
           <form action="" class="signUp">
-            <input type="name" class="field" id="signUp-name" placeholder="Name">
-            <input type="email" class="field" id="signUp-email" placeholder="Email">
-            <input type="password" class="field" id="signUp-password" placeholder="Contraseña">
+            <input type="name" class="field" id="signUp-name" placeholder="Name" required>
+            <input type="email" class="field" id="signUp-email" placeholder="Email" required>
+            <input type="password" class="field" id="signUp-password" placeholder="Contraseña" required>
             <div class="terms">
               <input type="checkbox" class="checkbox">
               <p class="confirm-terms box-confirm">I agree to the Terms of Service and Privacy Statement</p>
@@ -32,5 +32,16 @@ export default () => {
       </div>
     </div>`;
   div.innerHTML = signupView;
+  // CREATE USER
+  const formSignup = div.querySelector('.signUp');
+  formSignup.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = formSignup['signUp-email'].value;
+    const password = formSignup['signUp-password'].value;
+    auth.createUserWithEmailAndPassword(email, password).then((cred) => {
+      console.log(cred.user);
+      formSignup.reset();
+  }).catch((err) => console.log(err));
+  });
   return div;
 };
