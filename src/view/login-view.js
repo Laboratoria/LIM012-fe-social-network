@@ -1,10 +1,10 @@
 export default () => {
-    const div = document.createElement('div');
-    div.id = 'login';
-    div.className = 'view';
-    const loginView = `
+  const div = document.createElement('div');
+  div.id = 'login';
+  div.className = 'view';
+  const loginView = `
     <div class="cover-container">
-      <img src="images/cover.png" alt="cover" class="cover">
+      <div class="image"></div>
     </div>
     <div id="login-container">
       <div class="modals">
@@ -17,9 +17,9 @@ export default () => {
           <p class="welcome">WELCOME !</p>
           <form action="" class="login">
             <input type="email" class="field" id="login-email" placeholder="Email">
-            <input type="password" class="field" id="login-password" placeholder="Contraseña">
+            <input type="password" class="field" id="login-password" placeholder="Password">
             <p class="change-password">Forgot Password?</p>
-            <button class="button-access" id="btn-login"><a href="#/home">LOG IN</a></button>   
+            <button class="button-access" id="btn-login"><a href="#/home" class="access-ref">LOG IN</a>  
           </form>
           <p class="options-login">or login with</p>
           <div class="rrss">
@@ -32,7 +32,7 @@ export default () => {
           </div>
         </main>
       </div>
-    </div>`
-    div.innerHTML = loginView;
-    return div;
-}
+    </div>`;
+  div.innerHTML = loginView;
+  return div;
+};

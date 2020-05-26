@@ -1,10 +1,10 @@
 export default () => {
-    const div = document.createElement('div');
-    div.id = 'signUp';
-    div.className = 'view';
-    const signupView = `
+  const div = document.createElement('div');
+  div.id = 'signUp';
+  div.className = 'view';
+  const signupView = `
     <div class="cover-container">
-      <img src="images/cover.png" alt="cover" class="cover">
+    <div class="image"></div>
     </div>
     <div id="signUp-container">
       <div class="modals">
@@ -20,7 +20,7 @@ export default () => {
             <input type="password" class="field" id="signUp-password" placeholder="Contraseña">
             <div class="terms">
               <input type="checkbox" class="checkbox">
-              <p class="confirm-terms">I agree to the Terms of Service and Privacy Statement</p>
+              <p class="confirm-terms box-confirm">I agree to the Terms of Service and Privacy Statement</p>
             </div>
             <button class="button-access" id="btn-signUp">SIGN UP</button>   
           </form>
@@ -30,7 +30,7 @@ export default () => {
           </div>
         </main>
       </div>
-    </div>`
-    div.innerHTML = signupView;
-    return div;
+    </div>`;
+  div.innerHTML = signupView;
+  return div;
 };

@@ -1,12 +1,12 @@
 export default () => {
-    const div = document.createElement('div');
-    div.id = 'home';
-    div.className = 'view';
-    const homeView = `
+  const div = document.createElement('div');
+  div.id = 'home';
+  div.className = 'view-home';
+  const homeView = `
     <header class="bar">
       <div class="logo-bunker">
-        <img src="images/logo.png" alt="logo" class="logo">
-        <h1 class="title">BUNKER</h1>
+        <img src="images/logo.png" alt="logo" class="logo-static">
+        <h1 class="title-static">BUNKER</h1>
       </div>
       <div class="icons">
         <i class="fas fa-home icon icon-up"></i>
@@ -28,14 +28,14 @@ export default () => {
       </div>
       <div class="social lateral">
         <div class="share-section container">
-          <img class="profile circle" src="./images/profile-img-woman.png">
+          <img class="profile circle circle-comment" src="./images/profile-img-woman.png">
           <button class="share">What's on your mind?</button>
         </div>
         <div class="core-rail container">
           <!---publication--->
           <div class="publication">
             <div class="pub">
-              <img class="profile circle" src="./images/profile-img-woman.png">
+              <img class="profile circle circle-comment" src="./images/profile-img-woman.png">
               <div class="date">
                 Name<br>date at time <i class="fas fa-globe-americas privacity"></i>
               </div>
@@ -66,14 +66,14 @@ export default () => {
     <footer class="bar bar-down space-around ">
       <a href="#/home"><i class="fas fa-home icon"></i></a>
       <a href="#/profile"><i class="fas fa-user icon"></i></a>
-    </footer>`
-    div.innerHTML = homeView;
-    const menuBtn = div.querySelector('.fa-bars');
-    const menu = div.querySelector('.menu-container');
-    menuBtn.addEventListener('click', () => {
-      menu.classList.toggle('appear');
-    });
-    const postForm = ` <form id="post-form">
+    </footer>`;
+  div.innerHTML = homeView;
+  const menuBtn = div.querySelector('.fa-bars');
+  const menu = div.querySelector('.menu-container');
+  menuBtn.addEventListener('click', () => {
+    menu.classList.toggle('appear');
+  });
+  const postForm = ` <form id="post-form">
     <div>
       <img class="profile circle margin-photo" src="./images/profile-img-woman.png">
       <textarea id="post-content" placeholder="What's on your mind?" required></textarea>
@@ -95,30 +95,30 @@ export default () => {
     <button class="btn-submit">SAVE</button>
   </div>
 </form>`;
-const themes = `<div class="themes-options">
+  const themes = `<div class="themes-options">
 <button class="light-mode">LIGHT MODE <i class="far fa-sun"></i></button>
 <button class="dark-mode">DARK MODE <i class="far fa-moon"></i></button>
 </div>`;
-    const postContainer = div.querySelector('.post-container');
-    const settingsSection = div.querySelector('.settings-section');
-    const shareBtn = div.querySelector('.share');
-    shareBtn.addEventListener('click', () => {
-      postContainer.classList.add('show-element');
-      settingsSection.innerHTML = postForm;
-    });
-    const goBack = div.querySelector('.fa-arrow-left');
-    goBack.addEventListener('click', () => {
-      postContainer.classList.remove('show-element');
-    });
-    const editProfileBtn = div.querySelector('.edit-profile');
-    editProfileBtn.addEventListener('click', () => {
-      postContainer.classList.add('show-element');
-      settingsSection.innerHTML = editProfile;
-    });
-    const themeBtn = div.querySelector('.theme-options');
-    themeBtn.addEventListener('click', () => {
-      postContainer.classList.add('show-element');
-      settingsSection.innerHTML = themes;
-    });
-    return div;
-}
+  const postContainer = div.querySelector('.post-container');
+  const settingsSection = div.querySelector('.settings-section');
+  const shareBtn = div.querySelector('.share');
+  shareBtn.addEventListener('click', () => {
+    postContainer.classList.add('show-element');
+    settingsSection.innerHTML = postForm;
+  });
+  const goBack = div.querySelector('.fa-arrow-left');
+  goBack.addEventListener('click', () => {
+    postContainer.classList.remove('show-element');
+  });
+  const editProfileBtn = div.querySelector('.edit-profile');
+  editProfileBtn.addEventListener('click', () => {
+    postContainer.classList.add('show-element');
+    settingsSection.innerHTML = editProfile;
+  });
+  const themeBtn = div.querySelector('.theme-options');
+  themeBtn.addEventListener('click', () => {
+    postContainer.classList.add('show-element');
+    settingsSection.innerHTML = themes;
+  });
+  return div;
+};

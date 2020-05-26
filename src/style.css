@@ -22,7 +22,7 @@ body {
 
 /*--------------main-view---------------*/
 
-.view {
+.view, .view-home {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,14 +34,12 @@ body {
 .cover-container {
     width: 100%;
     height: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-.cover {
-    width: 100%;
+.image {
+    background: url(./images/cover.png);
     height: 100%;
+    width: 100%;
 }
 
 #login-container, #signUp-container {
@@ -65,7 +63,7 @@ body {
 .logo-container {
     width: 60%;
     height: 18%;
-    margin-top: 15px;
+    margin-top: 8%;
     display: grid;
     grid-template-columns: 30% 70%;
     grid-template-rows: 65% 35%;
@@ -78,7 +76,14 @@ body {
     -ms-transition: all 0.5s ease;
 }
 
-.logo:hover {
+.logo-static {
+    width: 70%;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+}
+
+.logo:hover, .logo-static:hover {
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
@@ -100,9 +105,18 @@ body {
 
 .title {
     position: relative;
-    top: 8px;
+    top: 5%;
     font-family: "Sifonn", sans-serif;
     font-size: 26px;
+    font-weight: lighter;
+    color: var(--color-3);
+}
+
+.title-static {
+    position: relative;
+    top: 5%;
+    font-family: "Sifonn", sans-serif;
+    font-size: 20px;
     font-weight: lighter;
     color: var(--color-3);
 }
@@ -154,20 +168,27 @@ body {
 
 }
 
+.box-confirm {
+    width: 100%;
+}
+
 .button-access {
     height: 39px;
     width: 65%;
     background: var(--color-4);
     border-radius: 10px;
-    margin-bottom: 12px;
     margin-top: 15px;
     color: var(--color-3);
     cursor: pointer;
-    outline-style: none;
-    font-family: "Sifonn";
-    font-weight: normal;
     border: none;
-    cursor: pointer;
+}
+
+.access-ref {
+    text-decoration: none;
+    font-family: "Sifonn";
+    color: var(--color-3);
+    position: relative;
+    top: 12px;
 }
 
 .button-access:hover {
@@ -181,17 +202,17 @@ body {
     font-size: 13px;
     font-weight: lighter;
     position: relative;
-    top: 10px;
+    top: 40px;
 }
 
 .rrss {
-    height: 50px;
-    width: 35%;
+    height: 40px;
+    width: 40%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     position: relative;
-    left: 32%;
-    top: 10px;
+    left: 30%;
+    top: 40px;
 }
 
 .fab {
@@ -215,15 +236,15 @@ body {
 }
 
 .question-account {
-    width: 80%;
-    margin-top: 10px;
+    width: 69%;
     align-items: center;
     display: grid;
     grid-template-columns: 60% 40%;
     font-family: 'Nanum Gothic', sans-serif;
     font-size: 12px;
-    position: relative;
-    left: 10%;
+    position: absolute;
+    top: 89%;
+    right: 16%;
 }
 
 .question {
@@ -245,7 +266,6 @@ body {
 }
 
 .terms {
-    /* background: yellowgreen; */
     width: 77%;
     margin-top: 4%;
     text-align: left;
@@ -332,7 +352,7 @@ body {
     }
     .share-section{
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
         width: 100%;
         height: 80px;
     }
@@ -345,7 +365,7 @@ body {
             border-radius: 20px 20px 20px 0;
             background-color: var(--color-2);
             margin: 5px;
-            padding: 10px;
+            padding: 10px 50px 10px 50px;
             box-sizing: border-box;
             border: 0;
         }
@@ -416,11 +436,13 @@ body {
 .profile-photos {
     display: flex;
     justify-content: center;
+    /* background-image: linear-gradient(0deg,rgba(255,255,255) 60%,rgb(179, 192, 224) 30%,rgb(164, 190, 255) 90%); */
+
 }
     .cover-profile {
         width: 94%;
         height: 150px;
-        margin: 3% 3% 0;
+        margin: 3% 3% 0 0;
         border-radius: 15px 15px 0 0;
         border: 2px solid var(--color-3);
         background-color: black;
@@ -428,6 +450,7 @@ body {
         position: absolute;
         z-index: 0;
     }
+
     .profile-main{
         width: 100px;
         height: 100px;
@@ -540,7 +563,9 @@ body {
 }
 .photo-icon{
     /* border: solid red; */
-    padding: 2%;
+    position: absolute;
+    top: 75%;
+    padding: 1%;
 }
 .fa-photo-video{
     font-size: 26px;
@@ -551,7 +576,7 @@ body {
     border-radius: 5vh;
     padding: 4%;
     color: white;
-    background-color: #1C0253;
+    background: rgb(50, 90, 160);
 }
 /* edit profile form */
 #profile-form{
@@ -590,7 +615,9 @@ body {
     margin-top: 90%;
 }
 .themes-options{
+    height: 80%;
     display: flex;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
 }
@@ -607,38 +634,317 @@ body {
     background-color: rgb(61, 61, 61);
     color: white;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*-----------desktop----------*/
 @media (min-width: 480px) {
     /* For desktop,moviles landscape,tablets: */
+
+/* diana */
+
+.view{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+}
+
+.view-home {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+}
+.cover-container {
+    width: 50%;
+    height: 100%;
+}
+
+.image {
+    background: url(./images/coverDesktop.png);
+    background-size: 100% 100%;
+}
+
+#login-container, #signUp-container {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.modals {
+    background: var(--color-1);
+    width: 60%;
+    height: 85%;
+    flex-direction: column;
+    border-radius: 20px;
+    margin: auto;
+}
+
+.logo-container {
+    width: 50%;
+    height: 18%;
+    margin-top: 6%;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 65% 35%;
+}
+
+.logo {
+    width: 80%;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+}
+
+.slogan {
+    font-size: 8px;
+    grid-column: 1/3;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+    color: var(--color-3);
+}
+
+.title {
+    position: relative;
+    top: auto;
+    right: 8%;
+    font-family: "Sifonn", sans-serif;
+    font-size: 20px;
+    font-weight: lighter;
+    color: var(--color-3);
+}
+
+.access-container {
+    width: 100%;
+    height: 82%;
+}
+
+.welcome {
+    font-family: "Sifonn", sans-serif;
+    font-weight: normal;
+    font-size: 10px;
+    color: var(--color-2);
+    margin:  6%;
+}
+
+.field {
+    background-color: white;
+    border-radius: 10px;
+    border: solid white 2px;
+    height: 25px;
+    width: 75%;
+    text-indent: 10px;
+    font-size: 8px;
+    font-family: 'Nanum Gothic', sans-serif;
+    cursor: pointer;
+}
+
+.change-password, .confirm-terms {
+    font-size: 8px;
+    font-family: 'Nanum Gothic', sans-serif;
+    color: var(--color-3);
+    letter-spacing: 1px;
+    cursor: pointer;
+
+}
+
+.button-access {
+    height: 25px;
+    width: 65%;
+    background: var(--color-4);
+    border-radius: 10px;
+    color: var(--color-3);
+    cursor: pointer;
+    outline-style: none;
+    font-family: "Sifonn";
+    font-weight: normal;
+    font-size: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 3%;
+}
+
+.access-ref {
+    text-decoration: none;
+    font-family: "Sifonn";
+    color: var(--color-3);
+    position: relative;
+    top: 7px;
+}
+
+.options-login {
+    font-family: "NanumGothic", sans-serif;
+    color: var(--color-3);
+    font-size: 8px;
+    font-weight: lighter;
+    margin-top: -8%;
+    position: relative;
+    right: auto;
+
+}
+
+.rrss {
+    height: 35px;
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    left: 30%;
+    top: 35px;
+}
+
+.fab {
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.question-account {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 8px;
+    position: relative;
+    top: 42px;
+    left: auto;
+    right: auto;
+}
+
+.signUp {
+    position: relative;
+    top: 25px;
+}
+
+.terms {
+    width: 77%;
+    margin-top: 4%;
+    text-align: left;
+    display: grid;
+    grid-template-columns: 5% 95%;
+    position: relative;
+    left: 12%;
+}
+
+.checkbox {
+    position: relative;
+    top: 25%
+}
+
+.question-accountSignUp {
+    width: 66%;
+    margin-top: 10px;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 8px;
+    position: relative;
+    left: 20%;
+    top: 17%;
+}
+
+/* 
+fin */
 .fa-bars {
     display: none;
     font-size: 0;
 }
 .bar{
-    height: 9%;
+    height: 7%;
+    align-items: center;
 }
+
+.logo-bunker{
+    width: 100px;
+    height: 20px;
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+.logo-static {
+    width: 80%;
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+}
+.title-static {
+    position: relative;
+    top: 1%;
+    font-family: "Sifonn", sans-serif;
+    font-size: 15px;
+    font-weight: lighter;
+    color: var(--color-3);
+}
+
 .fa-cog, .fa-home{
     display: block;
-    font-size: 25px;
+    font-size: 15px;
     margin-right: 25px;
 }
 .user-icon{
     display: block;
-    width: 30px;
-    height: 30px;
+    width: 22px;
+    height: 22px;
 }
 .icons{
     display: flex;
+    width: 150px;
+    justify-content: space-evenly;
+    align-items: center;
 }
 .bar-down{
     display: none;
 }
 .main-home{
-    width: 80vw;
+    width: 70vw;
+    height: 93%;
     display: flex;
     border: 2px solid var(--color-2);
     box-sizing: border-box;
 }
+
+.profile-photos {
+    display: flex;
+    justify-content: center;
+}
+
 .main-profile {
     width: 60vw;
     display: flex;
@@ -653,7 +959,8 @@ body {
         height: 100%;
     }
     .cover-profile {
-        width: 38%;
+        width: 32%;
+        height: 30%;
     }
     .no-lateral{
         width: 100%;
@@ -663,6 +970,106 @@ body {
         width: 55vw;
     }
     .share{
-        width: 75%;
+        border-radius: 10px 10px 10px 0;
+        background-color: var(--color-2);
+        border: 0;
+        width: 80%;
+        height: 40%;
+        font-size: 8px;
+    }
+
+    .profile-main{
+        width: 80px;
+        height: 80px;
+        margin-top: 100px;
+        border: 2px solid white;
+        z-index: 1;
+    }
+
+    .main-home{
+        width: 70%;
+        height: 93%;
+    }
+
+    .main-profile{
+        width: 100%;
+        height: 93%;
+        border: none;
+    }
+    .circle-comment {
+        width: 40px;
+        height: 40px;
+    }
+
+    .post-container{
+        top: 7%;
+        transition: 1s;
+        overflow: hidden;
+        width: 69.5%;
+    }
+
+    .show-element{
+        height: 93%;
+    }
+
+    .go-back{
+        box-sizing: border-box;
+        border-bottom: solid 2px rgb(129, 127, 127);
+        height: 6%;
+    }
+    .fa-arrow-left{
+        
+        font-size: 12px;
+        color: rgb(110, 109, 109);
+    }
+
+    #post-form{
+        background-color: #fff;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #post-form div{
+        height:100%;
+        width: 100%;
+        display: flex;
+    }
+
+    .photo-icon{
+        position: absolute;
+        top: 72%;
+    }
+    .fa-photo-video{
+        font-size: 14px;
+        color: rgb(68, 68, 68);
+    }
+    .btn-submit{
+        width: 20%;
+        height: 5%;
+        border-radius: 5vh;
+        color: white;
+        font-size: 10px;
+        background: rgb(50, 90, 160);
+        position: absolute;
+        top: 270px;
+    }
+
+    #post-content{
+        font-size: 10px;
+        background-color: #fff;
+        padding: 3%;
+        padding-top: 20px;
+        border: none;
+        height: 70%;
+        width: 90%;
+        resize: none;
+    }
+
+    .margin-photo{
+        margin-left: 6px;
+        width: 40px;
+        height: 40px;
     }
 }
