@@ -1,9 +1,31 @@
+const renderPost = (docs) => {
+  const posts = docs.map((doc) => {
+    const post = doc.data();
+    const li = document.createElement('li');
+    li.innerHTML = `<div class="publication">
+<div class="pub">
+  <img class="profile circle circle-comment" src="./images/profile-img-woman.png">
+  <div class="date">
+    Name<br>date at time <i class="fas fa-globe-americas privacity"></i>
+  </div>
+  <i class="fas fa-ellipsis-h"></i>
+</div>
+<div class="publi container">${post.content}</div>
+<div class="pub comments">
+  <i class="far fa-heart"></i>
+  <i class="far fa-comments"></i>
+</div>
+</div>`;
+    return li;
+  });
+  return posts;
+};
 export default () => {
   const div = document.createElement('div');
   div.id = 'home';
   div.className = 'view-home';
   const homeView = `
-    <header class="bar">
+    <header class="bar bar-up">
       <div class="logo-bunker">
         <img src="images/logo.png" alt="logo" class="logo-static">
         <h1 class="title-static">BUNKER</h1>
@@ -31,24 +53,9 @@ export default () => {
           <img class="profile circle circle-comment" src="./images/profile-img-woman.png">
           <button class="share">What's on your mind?</button>
         </div>
-        <div class="core-rail container">
+        <ul class="core-rail container">
           <!---publication--->
-          <div class="publication">
-            <div class="pub">
-              <img class="profile circle circle-comment" src="./images/profile-img-woman.png">
-              <div class="date">
-                Name<br>date at time <i class="fas fa-globe-americas privacity"></i>
-              </div>
-              <i class="fas fa-ellipsis-h"></i>
-            </div>
-            <div class="publi container">
-            </div>
-            <div class="pub comments">
-              <i class="far fa-heart"></i>
-              <i class="far fa-comments"></i>
-            </div>
-          </div>
-        </div>
+        </ul>
       </div>
       <div class="post-container">
           <div class="go-back"><i class="fas fa-arrow-left"></i></div>
@@ -59,7 +66,7 @@ export default () => {
           <ul class="menu-options">
             <li class="edit-profile">Edit Profile</li>
             <li class="theme-options">Themes</li>
-            <li>Log out</li>
+            <li class="logout">Log out</li>
           </ul>
         </div>
     </main>
@@ -73,15 +80,17 @@ export default () => {
   menuBtn.addEventListener('click', () => {
     menu.classList.toggle('appear');
   });
-  const postForm = ` <form id="post-form">
+  const postForm = document.createElement('form');
+  postForm.id = 'post-form';
+  const postFormCotent = `
     <div>
       <img class="profile circle margin-photo" src="./images/profile-img-woman.png">
       <textarea id="post-content" placeholder="What's on your mind?" required></textarea>
     </div>
     <input id="upload-photo" type="file">
     <label class="photo-icon" for="upload-photo"><i class="fas fa-photo-video"></i></label>
-    <button class="btn-submit">POST</button>
-  </form>`;
+    <button class="btn-submit post">POST</button>`;
+  postForm.innerHTML = postFormCotent;
   const editProfile = `<form id="profile-form">
   <img class="profile circle margin-photo" src="./images/profile-img-woman.png">
   <div>
@@ -101,24 +110,63 @@ export default () => {
 </div>`;
   const postContainer = div.querySelector('.post-container');
   const settingsSection = div.querySelector('.settings-section');
+  const coreRail = div.querySelector('.core-rail');
   const shareBtn = div.querySelector('.share');
   shareBtn.addEventListener('click', () => {
+    coreRail.classList.add('hide-overflow');
     postContainer.classList.add('show-element');
-    settingsSection.innerHTML = postForm;
+    settingsSection.innerHTML = '';
+    settingsSection.appendChild(postForm);
   });
   const goBack = div.querySelector('.fa-arrow-left');
   goBack.addEventListener('click', () => {
+    coreRail.classList.remove('hide-overflow');
     postContainer.classList.remove('show-element');
   });
   const editProfileBtn = div.querySelector('.edit-profile');
   editProfileBtn.addEventListener('click', () => {
+    coreRail.classList.add('hide-overflow');
     postContainer.classList.add('show-element');
     settingsSection.innerHTML = editProfile;
   });
   const themeBtn = div.querySelector('.theme-options');
   themeBtn.addEventListener('click', () => {
+    coreRail.classList.add('hide-overflow');
     postContainer.classList.add('show-element');
     settingsSection.innerHTML = themes;
+  });
+  // LOG OUT
+  const logoutBtn = div.querySelector('.logout');
+  logoutBtn.addEventListener('click', () => {
+    auth.signOut().then(() => {
+      console.log('user signed out');
+    });
+  });
+  // SHARE
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      postForm.addEventListener('submit', (e) => {
+        coreRail.classList.remove('hide-overflow');
+        e.preventDefault();
+        db.collection(user.uid).add({
+          content: postForm['post-content'].value,
+        }).then(() => {
+          postForm.reset();
+          postContainer.classList.remove('show-element');
+        }).catch((err) => {
+          console.log(err.message);
+        });
+      });
+      // FIRESTORE GET DATA
+      const container = div.querySelector('.core-rail');
+      db.collection(user.uid).onSnapshot((collection) => {
+        container.innerHTML = '';
+        // passing an array of documents
+        renderPost(collection.docs).forEach((li) => {
+          container.appendChild(li);
+        });
+      });
+    }
   });
   return div;
 };
