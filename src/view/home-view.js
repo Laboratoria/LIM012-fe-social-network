@@ -49,11 +49,11 @@ export default () => {
         </div>
       </div>
       <div class="social lateral">
-        <div class="share-section container">
+        <div class="share-section container lateral-share">
           <img class="profile circle circle-comment" src="./images/profile-img-woman.png">
           <button class="share">What's on your mind?</button>
         </div>
-        <ul class="core-rail container">
+        <ul class="core-rail container lateral-container">
           <!---publication--->
         </ul>
       </div>

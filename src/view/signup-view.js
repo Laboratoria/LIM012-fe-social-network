@@ -17,7 +17,7 @@ export default () => {
           <form action="" class="signUp">
             <input type="name" class="field" id="signUp-name" placeholder="Name" required>
             <input type="email" class="field" id="signUp-email" placeholder="Email" required>
-            <input type="password" class="field" id="signUp-password" placeholder="Contraseña" required>
+            <input type="password" class="field" id="signUp-password" placeholder="Password" required>
             <div class="terms">
               <input type="checkbox" class="checkbox">
               <p class="confirm-terms box-confirm">I agree to the Terms of Service and Privacy Statement</p>
@@ -26,7 +26,7 @@ export default () => {
           </form>
           <div class="question-accountSignUp">
             <p class="question">Already have an account?</p>
-            <a href="#/login" class="click-login">LOG IN</a>
+            <a href="#/login" class="click-login">LOG IN HERE</a>
           </div>
         </main>
       </div>
