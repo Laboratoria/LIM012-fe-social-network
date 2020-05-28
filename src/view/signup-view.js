@@ -1,3 +1,7 @@
+import {
+  createUserEmailAndPassword,
+} from '../auth.js';
+
 export default () => {
   const div = document.createElement('div');
   div.id = 'signUp';
@@ -38,10 +42,8 @@ export default () => {
     e.preventDefault();
     const email = formSignup['signUp-email'].value;
     const password = formSignup['signUp-password'].value;
-    auth.createUserWithEmailAndPassword(email, password).then((cred) => {
-      console.log(cred.user);
-      formSignup.reset();
-    }).catch(err => console.log(err));
+    createUserEmailAndPassword(email, password);
+    formSignup.reset();
   });
   return div;
 };
