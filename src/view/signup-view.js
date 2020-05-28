@@ -41,7 +41,7 @@ export default () => {
     auth.createUserWithEmailAndPassword(email, password).then((cred) => {
       console.log(cred.user);
       formSignup.reset();
-  }).catch((err) => console.log(err));
+    }).catch(err => console.log(err));
   });
   return div;
 };
