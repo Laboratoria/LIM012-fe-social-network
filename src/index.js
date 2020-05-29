@@ -12,10 +12,14 @@ auth.onAuthStateChanged((user) => {
   if (user) {
     console.log(user);
     window.location.hash = '#/home';
-    changeView(window.location.hash);
     if (user.metadata.creationTime === user.metadata.lastSignInTime) {
-      return db.collection('users').doc(user.uid).set({
-        bio: ''
+      db.collection('users').doc(user.uid).get().then((doc) => {
+        if (!doc.exists) {
+          return db.collection('users').doc(user.uid).set({
+            bio: '',
+            posts: {}
+          });
+        }
       });
     }
   } else {

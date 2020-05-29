@@ -20,31 +20,23 @@ export default () => {
           <button class="share">What's on your mind?</button>
         </div>
         <div class="core-rail container" id="my-posts">
-          <div class="publication">
-            <div class="pub">
-              <img class="profile circle" src="./images/profile-img-woman.png">
-              <div class="date">
-                Name<br>date at time <i class="fas fa-globe-americas privacity"></i>
-              </div>
-              <i class="fas fa-ellipsis-h"></i>
-            </div>
-            <div class="publi container">
-            </div>
-            <div class="pub comments">
-              <i class="far fa-heart"></i>
-              <i class="far fa-comments"></i>
-            </div>
           </div>`;
   profileContainer.innerHTML = profileView;
   const myPosts = profileContainer.querySelector('#my-posts');
   // FIRESTORE GET DATA, SHOW JUST USER POSTS IN PROFILE
   auth.onAuthStateChanged((user) => {
     if (user) {
-      db.collection('users').doc(user.uid).collection('posts').onSnapshot((postsCollection) => {
+      db.collection('users').doc(user.uid).onSnapshot((doc) => {
         myPosts.innerHTML = '';
-        // passing an array of documents
-        renderPost(postsCollection.docs).forEach((li) => {
-          myPosts.appendChild(li);
+        const postsIds = doc.data().posts;
+        const postsIdsKeys = Object.keys(postsIds);
+        const ids = postsIdsKeys.map(currentId => postsIds[currentId]);
+        db.collection('posts').get().then((userPosts) => {
+          const docs = userPosts.docs.filter(postDoc => (ids.some(userPostId => postDoc.id === userPostId)));
+          // passing an array of documents
+          renderPost(docs).forEach((li) => {
+            myPosts.appendChild(li);
+          });
         });
       });
     }

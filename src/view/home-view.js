@@ -1,12 +1,16 @@
 const renderPost = (docs) => {
   const posts = docs.map((doc) => {
     const post = doc.data();
-    let li = document.createElement('li');
-    li.innerHTML = `<div class="publication">
-<div class="pub">
+    const time = post.date;
+    const getdate = time.toDate();
+    const shortDate = getdate.toDateString();
+    const shortTime = getdate.toLocaleTimeString();
+    const li = document.createElement('li');
+    li.innerHTML = `
+<div class="pub post-details">
   <img class="profile circle circle-comment" src="./images/profile-img-woman.png">
   <div class="date">
-    Name<br>date at time <i class="fas fa-globe-americas privacity"></i>
+    Name<br>${shortTime} ${shortDate}<i class="fas fa-globe-americas privacity"></i>
   </div>
   <i class="fas fa-ellipsis-h"></i>
 </div>
@@ -16,7 +20,6 @@ const renderPost = (docs) => {
 <div class="pub comments">
   <i class="far fa-heart"></i>
   <i class="far fa-comments"></i>
-</div>
 </div>`;
     const userPostContent = li.querySelector('#user-post-content');
     if (post.photo !== '') {
@@ -52,6 +55,7 @@ export default () => {
       </div>
     </header >
     <main class="main-home">
+    <div class="app-content">
       <div class="profile-section lateral lateral-rigth">
         <div class="profile-photos">
           <img class="cover-profile">
@@ -75,6 +79,7 @@ export default () => {
           <div class="go-back"><i class="fas fa-arrow-left"></i></div>
           <section class="settings-section">
           </section>
+        </div>
         </div>
        <div class="menu-container">
           <ul class="menu-options">
@@ -101,7 +106,15 @@ export default () => {
   const postFormCotent = `
     <div>
       <img class="profile circle margin-photo" src="./images/profile-img-woman.png">
+      <div id="option-public">
+      <p>user</p>
+      <select id="visibility-select">
+        <option selected disabled>visibility</option>
+        <option>Pubic</option>
+        <option>Private</option>
+    </select>
       <textarea id="post-content" placeholder="What's on your mind?" required></textarea>
+      </div>
     </div>
     <div id="preview"></div>
     <input id="upload-photo" type="file">
@@ -182,13 +195,23 @@ export default () => {
       // FORM POST FUNCTION
       postForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        db.collection('users').doc(user.uid).collection('posts').add({
+        db.collection('posts').add({
           content: postForm['post-content'].value,
           likes: 0,
           visibility: 'public',
           date: firebase.firestore.FieldValue.serverTimestamp(),
           photo: postForm['upload-photo'].name
         })
+          .then((docRef) => {
+            db.collection('users').doc(user.uid).get().then((doc) => {
+              const postsIds = doc.data().posts;
+              const newindex = Object.keys(postsIds).length + 1;
+              postsIds[newindex] = docRef.id;
+              db.collection('users').doc(user.uid).set({
+                posts: postsIds
+              });
+            });
+          })
           .then(() => {
             postForm.reset();
             preview.innerHTML = '';
@@ -199,39 +222,17 @@ export default () => {
             console.log(err.message);
           });
       });
+
       // FIRESTORE GET DATA TO SHOW IN HOME VIEW
       const publicPosts = div.querySelector('#public-posts');
-      // db.collection('users').onSnapshot((userDocs) => {
-      //   publicPosts.innerHTML = '';
-      //   console.log(userDocs.docs.length)
-      //   userDocs.docs.forEach((userDoc) => {
-      //     db.collection('users').doc(userDoc.id).collection('posts')
-      //       .get().then((postsCollection) => {
-      //         // publicPosts.innerHTML = '';
-      //         // passing an array of documents
-      //         postsCollection.docs.forEach((doc) => {
-      //           console.log(doc.data().content);
-      //         });
-      //         // return renderPost(postsCollection.docs).forEach((li) => {
-      //         //   console.log(li);
-      //         // });
-      //       });
-      //   });
-      // });
-      db.collection('users').onSnapshot((userDocs) => {
-        publicPosts.innerHTML = '';
-        userDocs.docs.forEach((userDoc) => {
-          db.collection('users').doc(userDoc.id).collection('posts')
-            .where('visibility', '==', 'public')
-            .orderBy('date', 'desc')
-            .onSnapshot((postsCollection) => {
-              // publicPosts.innerHTML = '';
-              // passing an array of documents
-              renderPost(postsCollection.docs).forEach((li) => {
-                publicPosts.appendChild(li);
-              });
-            });
-        });
+      db.collection('posts').where('visibility', '==', 'public').onSnapshot((postsDocuments) => {
+        if (publicPosts !== null) {
+          publicPosts.innerHTML = '';
+          // passing an array of documents
+          renderPost(postsDocuments.docs).forEach((li) => {
+            publicPosts.appendChild(li);
+          });
+        }
       });
     }
   });
