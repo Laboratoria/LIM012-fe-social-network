@@ -14,8 +14,8 @@ auth.onAuthStateChanged((user) => {
     window.location.hash = '#/home';
     changeView(window.location.hash);
     if (user.metadata.creationTime === user.metadata.lastSignInTime) {
-      return db.collection(user.uid).doc('1st post').set({
-        content: 'Bienvenido a Bunker, empieza a crear tu primera post!',
+      return db.collection('users').doc(user.uid).set({
+        bio: ''
       });
     }
   } else {

@@ -1,3 +1,5 @@
+import { renderPost } from './home-view.js';
+
 export default () => {
   const profileContainer = document.createElement('div');
   profileContainer.className = 'main-profile';
@@ -15,9 +17,9 @@ export default () => {
       <div class="social no-lateral">
         <div class="share-section container">
           <img class="profile circle" src="./images/profile-img-woman.png">
-          <input class="share" placeholder="What's on your mind?">
+          <button class="share">What's on your mind?</button>
         </div>
-        <div class="core-rail container">
+        <div class="core-rail container" id="my-posts">
           <div class="publication">
             <div class="pub">
               <img class="profile circle" src="./images/profile-img-woman.png">
@@ -34,5 +36,18 @@ export default () => {
             </div>
           </div>`;
   profileContainer.innerHTML = profileView;
+  const myPosts = profileContainer.querySelector('#my-posts');
+  // FIRESTORE GET DATA, SHOW JUST USER POSTS IN PROFILE
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      db.collection('users').doc(user.uid).collection('posts').onSnapshot((postsCollection) => {
+        myPosts.innerHTML = '';
+        // passing an array of documents
+        renderPost(postsCollection.docs).forEach((li) => {
+          myPosts.appendChild(li);
+        });
+      });
+    }
+  });
   return profileContainer;
 };
