@@ -4,14 +4,8 @@ import {
 
 export default () => {
   const div = document.createElement('div');
-  div.id = 'signUp';
-  div.className = 'view';
+  div.className = 'modals';
   const signupView = `
-    <div class="cover-container">
-    <div class="image"></div>
-    </div>
-    <div id="signUp-container">
-      <div class="modals">
         <header class="logo-container">
           <img src="images/logo.png" alt="logo" class="logo">
           <h1 class="title">BUNKER</h1>
@@ -32,9 +26,7 @@ export default () => {
             <p class="question">Already have an account?</p>
             <a href="#/login" class="click-login">LOG IN HERE</a>
           </div>
-        </main>
-      </div>
-    </div>`;
+        </main>`;
   div.innerHTML = signupView;
   // CREATE USER
   const formSignup = div.querySelector('.signUp');

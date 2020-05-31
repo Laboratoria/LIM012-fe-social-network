@@ -1,0 +1,15 @@
+@import "global.scss", "views/_loginView.scss", "views/_singupView.scss";
+
+//***********
+ body, #actual-view, .view  {
+    @include view;
+    @include box-without-border;
+    @include font-NahumGothic(13px);
+    @include desktop-screen(){
+       @include flex-row-center(row);
+    }
+ }
+
+i {
+   @include icon-white;
+}

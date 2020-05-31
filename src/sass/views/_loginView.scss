@@ -1,0 +1,90 @@
+@import "../global.scss";
+
+//===cover-container===
+.cover-container {
+    @include size(100vw, 20vh);
+    div {
+        @include add-image(url(../images/cover.png));
+        @include size(100%,100%);
+        @include desktop-screen(){
+            @include add-image(url(../images/coverDesktop.png));
+        }
+    }
+    @include desktop-screen(){
+        @include size(60vw, 100vh);
+    }
+}
+//===login-container===
+.form-container{ //cambié el id por clase
+    @include size(100vw, 80vh);
+    @include flex-row-center(row);
+    align-items: center;
+    @include desktop-screen(){
+        @include size(40vw, 100vh);
+    }
+}
+
+.modals {
+    @include flex-row-center(column);
+    @include size(80%, 90%);
+    @include font-siffon(16px);
+    justify-content: space-around;
+    background: $color-gradient;
+    border-radius: 20px;
+    header {
+        @include logo-with-slogan;
+        margin-top: 2%;
+    }
+    main{
+        @include flex-row-center(column);
+        @include size(100%, 80%);
+        justify-content: space-around;
+        form{
+            @include flex-row-center(column);
+            @include size(100%, auto);
+            input{
+                @include input;
+                &:hover{
+                    @include blue-animation;
+                }
+            }
+        }
+    }
+    @include desktop-screen(){
+        @include size(65%, 90%);
+    }
+}
+//===main===
+#login-email, #signUp-name {
+    @include border-radius(up, 10px);
+    border-bottom: 1px solid $color-4;
+}
+#signUp-email {
+    border-radius: 0;
+    border-bottom: 1px solid $color-4;
+}
+#login-password, #signUp-password {
+    @include border-radius(down, 10px)
+}
+
+.text-13{
+    @include font-siffon(13px);
+}
+.button-access{
+    @include button(65% ,40px , 10px, 16px);
+    margin-top: 2%;
+    &:hover{
+        @include box-animation;
+    }
+}
+.rrss {
+    @include size(40%, 8vh );
+    display: flex;
+    justify-content: space-around;
+    top: 20px;
+}
+.click-signUp, .click-login {
+    @include font-NahumGothic(16px);
+    text-decoration: none;
+    cursor: pointer;
+}

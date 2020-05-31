@@ -1,0 +1,25 @@
+@import "../global.scss";
+.logo-static{
+    @include size(70% ,0 );
+    @include static-animation;
+}
+.logo:hover, .logo-static:hover {
+    @include rorate-animation;
+}
+
+.title-static {
+    @include font("Sifonn", sans-serif , 20px, lighter);
+}
+.terms {
+    @include size(80%,auto);
+    @include grid-2x1(auto,auto);
+    text-align: left;
+    p{
+        @include size(95%,auto);
+        @include font-siffon(10px);
+        margin-left: 3%;
+    }
+}
+.checkbox{
+    width: 95%;
+}
