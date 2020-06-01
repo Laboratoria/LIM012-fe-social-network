@@ -1,0 +1,96 @@
+@import "../global.scss";
+//===bar===
+#home{
+    display: flex;
+    flex-direction: column;
+    header{
+        @include bar;
+        justify-content: space-between;
+    }
+    main {
+        @include size(100vw, 84vh);
+        @include flex-row-center(column);
+        @include desktop-screen(){
+            @include size(100vw, 92vh);
+            @include flex-row-center(row);
+        }
+    }
+    footer{
+        @include bar;
+        justify-content: space-around;
+        @include desktop-screen(){
+            display: none;
+        }
+    }
+}
+.logo-bunker{
+    @include logo-without-slogan;
+}
+.icons{
+    @include padding(1vh, 0, 2vh, 0);
+    display: flex;
+    justify-content: space-between;
+    .icon-up ,.fa-cog, .user-icon{
+        display: none;
+    }
+    @include desktop-screen{
+        @include size(200px,auto);
+        .icon-up ,.fa-cog, .user-icon{
+            @include size(25px,25px);
+            display: block;
+        }
+        .fa-bars{
+            display: none;
+        }
+    }
+}
+//===profile section===
+.lateral-left{
+    display: none;
+    background-color: $color-2;
+    div{
+        @include cover;
+    }
+    @include desktop-screen(){
+        @include lateral;
+        @include flex-row-center(column);
+        background-color: $color-3;
+    }
+}
+.cover-profile{
+    @include size(85%,150px);
+    @include border-radius(up,10px);
+    margin-top: 10px;
+    background-color: black;
+}
+//====share section===
+.lateral-rigth{
+    @include size(100vw,100%);
+    @include border(2px,$color-4);
+    display: flex;
+    flex-direction: column;
+    @include desktop-screen(){
+        @include lateral;
+    }
+
+}
+
+.share-section{
+    @include size(100%,70px);
+    @include padding(10px,10px,10px,10px);
+    @include grid-2x1(20%,80%);
+    justify-content:center;
+}
+.profile{
+    @include size(50px,50px);
+    @include circle;
+    background-color: $color-2;
+}
+.share{
+    @include button-input-share;
+    @include size(auto,30px);
+}
+//===core-rail===
+.core-rail{
+    @include flex-row-center(column);
+}

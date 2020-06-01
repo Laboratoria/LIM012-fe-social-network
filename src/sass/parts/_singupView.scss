@@ -1,0 +1,14 @@
+@import "../global.scss";
+.terms {
+    @include size(80%,auto);
+    @include grid-2x1(auto,auto);
+    text-align: left;
+    p{
+        @include size(95%,auto);
+        @include font-siffon(10px);
+        margin-left: 3%;
+    }
+}
+.checkbox{
+    width: 95%;
+}

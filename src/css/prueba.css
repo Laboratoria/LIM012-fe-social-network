@@ -1,8 +1,4 @@
-* {
-    padding: 0;
-    margin: 0;
-    outline: none;
-}
+
 
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 @font-face {
@@ -216,7 +212,6 @@ body {
 
 .button-access:hover {
     box-shadow: 0px 0px 3px 3px #0ff;
-
 }
 
 .options-login {
@@ -391,7 +386,7 @@ body {
         .profile{
             width: 50px;
             height: 50px;
-            background-color: var(--color-6);
+            box-shadow: 0px 0px 31px -15px rgba(41,40,41,1);
         }
     .share{
             border-radius: 20px 20px 20px 0;
@@ -416,36 +411,42 @@ body {
         height: 80vh;
     }
     /*---publication---*/
-    .publication{
-        margin: 5% 0;
-        width: 100%;
-        display: grid;
-        grid-template-columns: 100%;
-        grid-template-rows: 30px auto 50px;
-        border: 1.5px solid var(--color-5);
-        box-sizing: border-box;
-        border-radius: 0 15px 0 15px;
-        
-    }
-    li{
-        width: 100%;
+    #public-posts li{
+        padding: 2vh;
+        background-color: #fff;
+        box-shadow: 0px 0px 25px -11px rgba(41,40,41,1);
+        border-radius: 1vh;
+        width: 94%;
         height: auto;
+        margin: 3vh 0;
     }
         .pub{
             display: flex;
-            background-color: var(--color-7);
             width: 100%;
             font-size: 10px;
             justify-content: space-between;
             padding: 3px 8px 8px 5px;
             box-sizing: border-box;
-            border-radius: 0 15px 0 0;
         }
             .fa-ellipsis-h{
                 margin-top: 3px;
+                position: relative;
+            }
+            /* clase añadida !!! */
+            .post-details{
+                height: 8vh;
+            }
+            #user-post-content{
+                text-align: center;
+                height: auto;
+                margin: 0;
+                width: 100%;
             }
             .date{
+                font-weight: bold;
+                font-size: 2vh;
                 width: 70%;
+                height: 5vh;
             }
             .privacity{
                 color: var(--color-6);
@@ -458,24 +459,27 @@ body {
         .publi  
         {
             display: flex;
-            width: 90%;
-            margin-left: 12%;
+            width: 85%;
+            margin-left: 15%;
             overflow-x: hidden;
             height: auto;
+            padding: 1vh;
+        }
+        .photo-post{
+            max-height: 50vh;
+            max-width: 100%;
         }
             .pub{
                 display: flex;
             }
             .comments{
-                height: 25px;
+                height: 4vh;
                 justify-content: flex-start;
-                border-radius: 0 0 0 15px;
-                align-self: flex-end;
-
+                align-items: center;
             }
             .comments> i{
                 color: black;
-                font-size: 15px;
+                font-size: 3vh;
                 margin-right: 15px;
             }
 /*profile section*/
@@ -578,14 +582,21 @@ body {
     background-color: #fff;
     height: 100%;
     width: 100%;
-    /* border: solid red; */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-#post-form div{
-    /* border: solid blue; */
-    height:85%;
+#option-public{
+    max-height: 100%;
+    width: 100%;
+}
+#visibility-select{
+    width: 20vh;
+    padding: 1vh;
+    font-size: 2.5vh;
+}
+#post-form > div{
+    height:40%;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -599,7 +610,7 @@ body {
     padding: 3%;
     padding-top: 20px;
     border: none;
-    height: 96%;
+    height: 60%;
     width: 90%;
     resize: none;
     /* border: solid red; */
@@ -610,7 +621,7 @@ body {
 .photo-icon{
     /* border: solid red; */
     position: absolute;
-    top: 75%;
+    top: 82%;
     padding: 1%;
 }
 .fa-photo-video{
@@ -618,6 +629,8 @@ body {
     color: rgb(68, 68, 68);
 }
 .btn-submit{
+    position: absolute;
+    top: 88%;
     width: 50%;
     border-radius: 5vh;
     padding: 4%;
@@ -832,19 +845,7 @@ body {
 }
 
 .button-access {
-    height: 40px;
-    width: 65%;
-    background: var(--color-4);
-    border-radius: 10px;
-    color: var(--color-3);
-    cursor: pointer;
-    outline-style: none;
-    font-family: "Sifonn";
-    font-weight: normal;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    margin-top: 4vh;
+    
 }
 
 .options-login {
@@ -854,7 +855,6 @@ body {
     margin-top: 3vh;
     position: relative;
     right: auto;
-
 }
 
 .rrss {

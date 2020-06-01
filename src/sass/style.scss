@@ -1,0 +1,15 @@
+@import "global.scss", "parts/_loginView.scss", "parts/_singupView.scss", "parts/_homeView.scss", "parts/_singupView.scss", "parts/_publication.scss", "parts/_settings.scss","parts/_toShare.scss", "parts/_profile.scss" ;
+
+ body, #actual-view, .view  {
+    @include view;
+    @include box-without-border;
+    @include font-NahumGothic(13px);
+    list-style: none;
+    @include desktop-screen(){
+       @include flex-row-center(row);
+    }
+ }
+
+i {
+   @include icon-white;
+}

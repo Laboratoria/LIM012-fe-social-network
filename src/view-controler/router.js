@@ -11,14 +11,17 @@ const changeView = (route) => {
       return actualView.appendChild(components.login());
     }
     case '#/signup': {
-      return actualView.appendChild(components.signup());
+      actualView.appendChild(components.login());
+      const mainForm = actualView.querySelector('.form-container');
+      mainForm.innerHTML = '';
+      return mainForm.appendChild(components.signup());
     }
     case '#/home': {
       return actualView.appendChild(components.home());
     }
     case '#/profile': {
       actualView.appendChild(components.home());
-      const mainHome = actualView.querySelector('.main-home');
+      const mainHome = actualView.querySelector('.app-content');
       mainHome.innerHTML = '';
       return mainHome.appendChild(components.profile());
     }
