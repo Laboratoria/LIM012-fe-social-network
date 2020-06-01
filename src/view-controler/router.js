@@ -21,7 +21,7 @@ const changeView = (route) => {
     }
     case '#/profile': {
       actualView.appendChild(components.home());
-      const mainHome = actualView.querySelector('.app-content');
+      const mainHome = actualView.querySelector('.main-home');
       mainHome.innerHTML = '';
       return mainHome.appendChild(components.profile());
     }

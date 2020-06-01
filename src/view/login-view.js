@@ -1,6 +1,6 @@
 import {
-  loginEmailAndPassword, loginFacebook, loginGoogle,
-} from '../auth.js';
+  signInUserEmail, loginFacebook, loginGoogle,
+} from '../firebase/auth.js';
 
 export default () => {
   const div = document.createElement('div');
@@ -52,7 +52,7 @@ export default () => {
     e.preventDefault();
     const email = formlogin['login-email'].value;
     const password = formlogin['login-password'].value;
-    loginEmailAndPassword(email, password);
+    signInUserEmail(email, password);
     formlogin.reset();
   });
   return div;

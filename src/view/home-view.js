@@ -28,9 +28,10 @@ const renderPost = (docs) => {
       img.alt = 'photo';
       storage.ref().child(post.photo).getDownloadURL().then((url) => {
         img.src = url;
-      }).catch((err) => {
-        console.log(err.message);
-      });
+      })
+        .catch((err) => {
+          console.log(err.message);
+        });
       userPostContent.appendChild(img);
     }
     return li;
@@ -42,7 +43,7 @@ export default () => {
   div.id = 'home';
   div.className = 'view';
   const homeView = `
-    <header class=>
+    <header>
       <div class="logo-bunker">
         <img src="images/logo.png" alt="logo" class="logo">
         <h1 class="title">BUNKER</h1>
@@ -54,7 +55,7 @@ export default () => {
         <i class="fas fa-bars icon"></i>
       </div>
     </header >
-    <main >
+    <main class="main-home">
       <div id="profile-section" class="lateral-left">
         <div>
           <img class="cover-profile">
@@ -198,7 +199,7 @@ export default () => {
           likes: 0,
           visibility: postForm['visibility-select'].value,
           date: firebase.firestore.FieldValue.serverTimestamp(),
-          photo: postForm['upload-photo'].name
+          photo: postForm['upload-photo'].name,
         })
           .then((docRef) => {
             db.collection('users').doc(user.uid).get().then((doc) => {
@@ -206,7 +207,7 @@ export default () => {
               const newindex = Object.keys(postsIds).length + 1;
               postsIds[newindex] = docRef.id;
               db.collection('users').doc(user.uid).set({
-                posts: postsIds
+                posts: postsIds,
               });
             });
           })
