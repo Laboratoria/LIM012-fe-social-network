@@ -3,15 +3,17 @@ const renderPost = (docs) => {
     const post = doc.data();
     const li = document.createElement('li');
     li.innerHTML = `<div class="publication">
-<div class="pub">
-  <img class="profile circle circle-comment" src="./images/profile-img-woman.png">
+<div class="header">
+  <img class="profile" src="./images/profile-img-woman.png">
   <div class="date">
     Name<br>date at time <i class="fas fa-globe-americas privacity"></i>
   </div>
   <i class="fas fa-ellipsis-h"></i>
 </div>
-<div class="publi container">${post.content}</div>
-<div class="pub comments">
+<div class="main">
+  ${post.content}
+</div>
+<div class="footer">
   <i class="far fa-heart"></i>
   <i class="far fa-comments"></i>
 </div>
@@ -25,7 +27,7 @@ export default () => {
   div.id = 'home';
   div.className = 'view';
   const homeView = `
-    <header class="bar bar-up">
+    <header class=>
       <div class="logo-bunker">
         <img src="images/logo.png" alt="logo" class="logo">
         <h1 class="title">BUNKER</h1>
@@ -53,7 +55,7 @@ export default () => {
           <img class="profile circle circle-comment" src="./images/profile-img-woman.png">
           <button class="share">What's on your mind?</button>
         </div>
-        <ul class="core-rail container lateral-container">
+        <ul class="core-rail">
           <!---publication--->
         </ul>
       </div>

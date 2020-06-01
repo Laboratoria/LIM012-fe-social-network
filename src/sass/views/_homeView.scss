@@ -90,4 +90,8 @@
     @include button-input-share;
     @include size(auto,30px);
 }
-//===bar down===
+//===core-rail===
+.core-rail{
+    @include flex-row-center(column);
+    list-style: none;
+}

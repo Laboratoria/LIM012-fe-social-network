@@ -69,6 +69,10 @@ $color-5: #F1F1F1;
     @include shadow-animation;
    }
 }
+@mixin icon-black {
+    color: $color-1;
+    font-size:15px;
+}
 //===geometric forms===
 @mixin circle {
     text-align: center;
@@ -253,3 +257,4 @@ $color-5: #F1F1F1;
        @content;
     }
 }
+//===elements===

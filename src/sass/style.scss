@@ -1,10 +1,11 @@
-@import "global.scss", "views/_loginView.scss", "views/_singupView.scss", "views/_homeView.scss";
+@import "global.scss", "views/_loginView.scss", "views/_singupView.scss", "views/_homeView.scss", "views/_singupView.scss", "views/_publication.scss";
 
 //***********
  body, #actual-view, .view  {
     @include view;
     @include box-without-border;
     @include font-NahumGothic(13px);
+    list-style: none;
     @include desktop-screen(){
        @include flex-row-center(row);
     }
