@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
 @font-face {
   font-family: "Sifonn";
   src: url(./font/SIFONN_PRO.otf);
@@ -73,22 +74,22 @@
   margin-top: 2%;
 }
 .modals header .logo {
-  width: 48px;
-  height: auto;
   -webkit-transition: all 0.5s ease-out;
   -moz-transition: all 0.5s ease;
   -ms-transition: all 0.5s ease;
+  width: 48px;
+  height: auto;
 }
 .modals header .title {
-  color: #F1F1F1;
-  font-family: "Sifonn" sans-serif;
-  font-size: 26px;
-  font-weigth: lighter;
   width: 100%;
   height: 100%;
   position: relative;
   top: 0.5vh;
   margin: 0;
+  color: #F1F1F1;
+  font-family: "Sifonn" sans-serif;
+  font-size: 26px;
+  font-weigth: lighter;
 }
 @media (min-width: 800px) {
   .modals header .title {
@@ -184,7 +185,7 @@
   font-size: 16px;
   font-weigth: lighter;
   border-radius: 10px;
-  background: rgba(246, 229, 229, 0.19);
+  background: grey;
   color: #F1F1F1;
   border: none;
   cursor: pointer;
@@ -259,6 +260,195 @@
 
 .checkbox {
   width: 95%;
+}
+
+@font-face {
+  font-family: "Sifonn";
+  src: url(./font/SIFONN_PRO.otf);
+}
+#home {
+  display: flex;
+  flex-direction: column;
+}
+#home header {
+  width: 100%;
+  height: 8vh;
+  padding: 1vh 3vw 1vh 3vw;
+  box-sizing: border-box;
+  display: flex;
+  background: #0F0C48;
+  justify-content: space-between;
+}
+#home main {
+  width: 100vw;
+  height: 84vh;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+}
+@media (min-width: 800px) {
+  #home main {
+    width: 100vw;
+    height: 92vh;
+    display: flex;
+    text-align: center;
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+#home footer {
+  width: 100%;
+  height: 8vh;
+  padding: 1vh 3vw 1vh 3vw;
+  box-sizing: border-box;
+  display: flex;
+  background: #0F0C48;
+  justify-content: space-around;
+}
+@media (min-width: 800px) {
+  #home footer {
+    display: none;
+  }
+}
+
+.logo-bunker {
+  align-items: center;
+  display: grid;
+  grid-template-columns: auto auto;
+  text-align: center;
+}
+.logo-bunker .logo {
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  width: 48px;
+  height: auto;
+}
+.logo-bunker .title {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: 0.5vh;
+  margin: 0;
+  color: #F1F1F1;
+  font-family: "Sifonn" sans-serif;
+  font-size: 26px;
+  font-weigth: lighter;
+}
+@media (min-width: 800px) {
+  .logo-bunker .title {
+    color: #F1F1F1;
+    font-family: "Sifonn" sans-serif;
+    font-size: 28px;
+    font-weigth: lighter;
+  }
+}
+
+.icons {
+  padding: 1vh 0 2vh 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+.icons .icon-up, .icons .fa-cog, .icons .user-icon {
+  display: none;
+}
+@media (min-width: 800px) {
+  .icons {
+    width: 200px;
+    height: auto;
+  }
+  .icons .icon-up, .icons .fa-cog, .icons .user-icon {
+    width: 25px;
+    height: 25px;
+    display: block;
+  }
+  .icons .fa-bars {
+    display: none;
+  }
+}
+
+.lateral-left {
+  display: none;
+  background-color: rgba(20, 137, 203, 0.5);
+}
+.lateral-left div {
+  width: 100%;
+  height: auto;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+}
+.lateral-left div .profile {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  z-index: 1;
+  top: -50px;
+}
+@media (min-width: 800px) {
+  .lateral-left {
+    width: 35vw;
+    height: 100%;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: grey;
+  }
+}
+
+.cover-profile {
+  width: 85%;
+  height: 150px;
+  border-radius: 10px 10px 0 0;
+  margin-top: 10px;
+  background-color: black;
+}
+
+.lateral-rigth {
+  width: 100vw;
+  height: 100%;
+  border: 2px solid #A4BEFF;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 800px) {
+  .lateral-rigth {
+    width: 35vw;
+    height: 100%;
+  }
+}
+
+.share-section {
+  width: 100%;
+  height: 70px;
+  padding: 10px 10px 10px 10px;
+  box-sizing: border-box;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  text-align: center;
+  justify-content: center;
+}
+
+.profile {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: rgba(20, 137, 203, 0.5);
+}
+
+.share {
+  border-radius: 20px 20px 20px 0;
+  background-color: #A4BEFF;
+  border: 0;
+  width: auto;
+  height: 30px;
 }
 
 body, #actual-view, .view {

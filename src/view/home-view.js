@@ -23,12 +23,12 @@ const renderPost = (docs) => {
 export default () => {
   const div = document.createElement('div');
   div.id = 'home';
-  div.className = 'view-home';
+  div.className = 'view';
   const homeView = `
     <header class="bar bar-up">
       <div class="logo-bunker">
-        <img src="images/logo.png" alt="logo" class="logo-static">
-        <h1 class="title-static">BUNKER</h1>
+        <img src="images/logo.png" alt="logo" class="logo">
+        <h1 class="title">BUNKER</h1>
       </div>
       <div class="icons">
         <i class="fas fa-home icon icon-up"></i>
@@ -37,18 +37,18 @@ export default () => {
         <i class="fas fa-bars icon"></i>
       </div>
     </header >
-    <main class="main-home">
-      <div class="profile-section lateral lateral-rigth">
-        <div class="profile-photos">
+    <main >
+      <div id="profile-section" class="lateral-left">
+        <div>
           <img class="cover-profile">
-          <img class="profile profile-main circle" src="./images/profile-img-woman.png">
+          <img class="profile" src="./images/profile-img-woman.png">
         </div>
           <div class="profile-information">
           <h3>Usuario de BUNKER</h3>
           <h5>Description</h5>
         </div>
       </div>
-      <div class="social lateral">
+      <div id="profile-section" class="lateral-rigth">
         <div class="share-section container lateral-share">
           <img class="profile circle circle-comment" src="./images/profile-img-woman.png">
           <button class="share">What's on your mind?</button>
@@ -70,7 +70,7 @@ export default () => {
           </ul>
         </div>
     </main>
-    <footer class="bar bar-down space-around ">
+    <footer class="bar-down">
       <a href="#/home"><i class="fas fa-home icon"></i></a>
       <a href="#/profile"><i class="fas fa-user icon"></i></a>
     </footer>`;

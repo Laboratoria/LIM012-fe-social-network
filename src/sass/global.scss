@@ -8,7 +8,7 @@
 $color-gradient : linear-gradient(180deg, #040240 0%, #2D2981 100%);
 $color-1: #0F0C48;
 $color-2: rgba(20, 137, 203, 0.5);
-$color-3: rgba(246, 229, 229, 0.19);
+$color-3: grey;
 $color-4: #A4BEFF;
 $color-5: #F1F1F1;
 
@@ -53,7 +53,11 @@ $color-5: #F1F1F1;
 
     } @else if $position==mix{
         border-radius: $size-border 0 $size-border 0;
-    }
+    } 
+}
+@mixin border($size,$color){
+    border: $size solid $color;
+    box-sizing: border-box;
 }
 //===icons===
 @mixin icon-white {
@@ -72,11 +76,10 @@ $color-5: #F1F1F1;
 }
 //===bars===
 @mixin bar {
-    @include size(100%);
-    @include padding(10 ,15 ,10 ,15 );
-    @include  flex-space-between;
+    @include size(100%,8vh);
+    @include padding(1vh,3vw ,1vh ,3vw);
+    display: flex;
     background: $color-1;
-    position: fixed;
 }
 //===containers===
 @mixin box-without-border {
@@ -90,6 +93,9 @@ $color-5: #F1F1F1;
     align-content: center;
 }
 
+@mixin lateral {
+    @include size(35vw,100%);
+}
 @mixin flex-row-center($direction) {
     display: flex;
     text-align: center;
@@ -119,7 +125,16 @@ $color-5: #F1F1F1;
     grid-template-columns: $column1 $column2;
     text-align: center;
 }
-
+@mixin cover{
+    @include size(100%,auto);
+        @include flex-row-center(column);
+        .profile{
+            @include size(100px,100px);
+            position: relative;
+            z-index: 1;
+            top: -50px;
+        }
+}
 //===buttons===
 @mixin button($width, $height, $border-radius, $fontsize) {
     @include size($width, $height);
@@ -131,6 +146,11 @@ $color-5: #F1F1F1;
     cursor: pointer;
     outline-style: none;
 }
+@mixin button-input-share{
+    border-radius: 20px 20px 20px 0;
+    background-color: $color-4;
+    border: 0;
+}
 //===inputs===
 @mixin input {
     @include size(75%, 10%);
@@ -140,18 +160,29 @@ $color-5: #F1F1F1;
     border: 0;
 }
 //===logos===
-@mixin logo {
-    @include size(48px ,auto );
+@mixin logo($size) {
     @include static-animation;
+    @if $size==big{
+        @include size(48px ,auto );
+    } @else if $size==small{
+        @include size(24px ,auto );
+    }
 }
-@mixin title {
-    @include font("Sifonn", sans-serif , 26px, lighter);
+@mixin title($size) {
     @include size-complete;
     position: relative;
     top: 0.5vh;
     margin: 0;
-    @include desktop-screen(){
-        @include font("Sifonn", sans-serif , 28px, lighter);
+    @if $size==big{
+        @include font("Sifonn", sans-serif , 26px, lighter);
+        @include desktop-screen(){
+            @include font("Sifonn", sans-serif , 28px, lighter);
+        }
+    } @else if $size==small{
+        @include font("Sifonn", sans-serif , 13px, lighter);
+        @include desktop-screen(){
+            @include font("Sifonn", sans-serif , 14px, lighter);
+        }
     }
 }
 @mixin slogan {
@@ -162,13 +193,22 @@ $color-5: #F1F1F1;
         @include font('Nanum Gothic', sans-serif , 13px, lighter);
     }
 }
+@mixin logo-without-slogan {
+    @include grid-2x1(auto,auto);
+    .logo {
+        @include logo(big);
+    }
+    .title {
+        @include title(big);
+    }
+}
 @mixin logo-with-slogan {
         @include grid-2x2(auto,auto ,auto ,auto );
         .logo {
-            @include logo;
+            @include logo(big);
         }
         .title {
-            @include title;
+            @include title(big);
         }
         .slogan {
             @include slogan;
