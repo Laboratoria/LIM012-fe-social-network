@@ -1,6 +1,6 @@
 import {
-  createUserEmailAndPassword,
-} from '../auth.js';
+  registerUserEmail,
+} from '../firebase/auth.js';
 
 export default () => {
   const div = document.createElement('div');
@@ -34,7 +34,7 @@ export default () => {
     e.preventDefault();
     const email = formSignup['signUp-email'].value;
     const password = formSignup['signUp-password'].value;
-    createUserEmailAndPassword(email, password);
+    registerUserEmail(email, password);
     formSignup.reset();
   });
   return div;

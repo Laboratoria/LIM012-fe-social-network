@@ -11,10 +11,14 @@ window.addEventListener('load', init);
 auth.onAuthStateChanged((user) => {
   if (user) {
     window.location.hash = '#/home';
-    changeView(window.location.hash);
     if (user.metadata.creationTime === user.metadata.lastSignInTime) {
-      return db.collection(user.uid).doc('1st post').set({
-        content: 'Bienvenido a Bunker, empieza a crear tu primera post!',
+      db.collection('users').doc(user.uid).get().then((doc) => {
+        if (!doc.exists) {
+          return db.collection('users').doc(user.uid).set({
+            bio: '',
+            posts: {}
+          });
+        }
       });
     }
   } else {
