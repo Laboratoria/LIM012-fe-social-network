@@ -6,18 +6,18 @@ const renderPost = (docs) => {
     const shortDate = getdate.toDateString();
     const shortTime = getdate.toLocaleTimeString();
     const li = document.createElement('li');
-    li.innerHTML = `
-<div class="pub post-details">
-  <img class="profile circle circle-comment" src="./images/profile-img-woman.png">
+    li.innerHTML = `<div class="publication">
+<div class="header">
+  <img class="profile" src="./images/profile-img-woman.png">
   <div class="date">
     Name<br>${shortTime} ${shortDate}<i class="fas fa-globe-americas privacity"></i>
   </div>
   <i class="fas fa-ellipsis-h"></i>
 </div>
-<div id="user-post-content">
-<div class="publi container">${post.content}</div>
+<div class="main">
+  ${post.content}
 </div>
-<div class="pub comments">
+<div class="footer">
   <i class="far fa-heart"></i>
   <i class="far fa-comments"></i>
 </div>`;
@@ -40,12 +40,12 @@ const renderPost = (docs) => {
 export default () => {
   const div = document.createElement('div');
   div.id = 'home';
-  div.className = 'view-home';
+  div.className = 'view';
   const homeView = `
-    <header class="bar bar-up">
+    <header class=>
       <div class="logo-bunker">
-        <img src="images/logo.png" alt="logo" class="logo-static">
-        <h1 class="title-static">BUNKER</h1>
+        <img src="images/logo.png" alt="logo" class="logo">
+        <h1 class="title">BUNKER</h1>
       </div>
       <div class="icons">
         <i class="fas fa-home icon icon-up"></i>
@@ -54,24 +54,23 @@ export default () => {
         <i class="fas fa-bars icon"></i>
       </div>
     </header >
-    <main class="main-home">
-    <div class="app-content">
-      <div class="profile-section lateral lateral-rigth">
-        <div class="profile-photos">
+    <main >
+      <div id="profile-section" class="lateral-left">
+        <div>
           <img class="cover-profile">
-          <img class="profile profile-main circle" src="./images/profile-img-woman.png">
+          <img class="profile" src="./images/profile-img-woman.png">
         </div>
           <div class="profile-information">
           <h3>Usuario de BUNKER</h3>
           <h5>Description</h5>
         </div>
       </div>
-      <div class="social lateral">
+      <div id="profile-section" class="lateral-rigth">
         <div class="share-section container lateral-share">
           <img class="profile circle circle-comment" src="./images/profile-img-woman.png">
           <button class="share">What's on your mind?</button>
         </div>
-        <ul class="core-rail container lateral-container" id="public-posts">
+        <ul class="core-rail" id="public-posts">
           <!---publication--->
         </ul>
       </div>
@@ -89,7 +88,7 @@ export default () => {
           </ul>
         </div>
     </main>
-    <footer class="bar bar-down space-around ">
+    <footer class="bar-down">
       <a href="#/home"><i class="fas fa-home icon"></i></a>
       <a href="#/profile"><i class="fas fa-user icon"></i></a>
     </footer>`;

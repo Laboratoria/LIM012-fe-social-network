@@ -4,7 +4,7 @@ export default () => {
   const profileContainer = document.createElement('div');
   profileContainer.className = 'main-profile';
   const profileView = `
-      <div class="profile-section no-lateral">
+      <div class="profile-section">
         <div class="profile-photos">
           <img class="cover-profile cover-desktop">
           <img class="profile profile-main circle" src="./images/profile-img-woman.png">
