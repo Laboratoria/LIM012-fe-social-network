@@ -1,3 +1,7 @@
+import {
+  loginEmailAndPassword, loginFacebook, loginGoogle,
+} from '../auth.js';
+
 export default () => {
   const div = document.createElement('div');
   div.id = 'login';
@@ -35,25 +39,22 @@ export default () => {
     </div>`;
   div.innerHTML = loginView;
   // GOOGLE LOG IN
-  const signinGoogle = div.querySelector('#google');
-  signinGoogle.addEventListener('click', () => {
-    firebase.auth().signInWithPopup(provider).then((result) => {
-      console.log(result.user);
-    }).catch((error) => {
-      console.log(error.message);
-    });
-  });
 
+  const signinGoogle = div.querySelector('#google');
+  signinGoogle.addEventListener('click', loginGoogle);
+
+  // FACEBOOK LOG IN
+  const signinFacebook = div.querySelector('#facebook');
+  signinFacebook.addEventListener('click', loginFacebook);
   // LOG IN
   const formlogin = div.querySelector('.login');
   formlogin.addEventListener('submit', (e) => {
     e.preventDefault();
     const email = formlogin['login-email'].value;
     const password = formlogin['login-password'].value;
-    auth.signInWithEmailAndPassword(email, password).then((cred) => {
-      console.log(cred.user);
-      formlogin.reset();
-    }).catch((err) => console.log(err));
+    loginEmailAndPassword(email, password);
+    formlogin.reset();
   });
+
   return div;
 };

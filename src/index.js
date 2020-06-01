@@ -10,7 +10,6 @@ const init = () => {
 window.addEventListener('load', init);
 auth.onAuthStateChanged((user) => {
   if (user) {
-    console.log(user);
     window.location.hash = '#/home';
     if (user.metadata.creationTime === user.metadata.lastSignInTime) {
       db.collection('users').doc(user.uid).get().then((doc) => {
