@@ -109,7 +109,6 @@ export default () => {
       <div id="option-public">
       <p>user</p>
       <select id="visibility-select">
-        <option selected disabled>visibility</option>
         <option>Pubic</option>
         <option>Private</option>
     </select>
@@ -198,7 +197,7 @@ export default () => {
         db.collection('posts').add({
           content: postForm['post-content'].value,
           likes: 0,
-          visibility: 'public',
+          visibility: postForm['visibility-select'].value,
           date: firebase.firestore.FieldValue.serverTimestamp(),
           photo: postForm['upload-photo'].name
         })
@@ -225,7 +224,7 @@ export default () => {
 
       // FIRESTORE GET DATA TO SHOW IN HOME VIEW
       const publicPosts = div.querySelector('#public-posts');
-      db.collection('posts').where('visibility', '==', 'public').onSnapshot((postsDocuments) => {
+      db.collection('posts').where('visibility', '==', 'public').orderBy('date', 'desc').onSnapshot((postsDocuments) => {
         if (publicPosts !== null) {
           publicPosts.innerHTML = '';
           // passing an array of documents

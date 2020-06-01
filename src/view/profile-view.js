@@ -31,7 +31,7 @@ export default () => {
         const postsIds = doc.data().posts;
         const postsIdsKeys = Object.keys(postsIds);
         const ids = postsIdsKeys.map(currentId => postsIds[currentId]);
-        db.collection('posts').get().then((userPosts) => {
+        db.collection('posts').orderBy('date', 'desc').get().then((userPosts) => {
           const docs = userPosts.docs.filter(postDoc => (ids.some(userPostId => postDoc.id === userPostId)));
           // passing an array of documents
           renderPost(docs).forEach((li) => {
