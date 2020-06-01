@@ -1,6 +1,5 @@
-@import "global.scss", "views/_loginView.scss", "views/_singupView.scss", "views/_homeView.scss", "views/_singupView.scss", "views/_publication.scss";
+@import "global.scss", "parts/_loginView.scss", "parts/_singupView.scss", "parts/_homeView.scss", "parts/_singupView.scss", "parts/_publication.scss", "parts/_settings.scss","parts/_toShare.scss", "parts/_profile.scss" ;
 
-//***********
  body, #actual-view, .view  {
     @include view;
     @include box-without-border;

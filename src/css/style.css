@@ -218,28 +218,6 @@
   font-family: "Sifonn";
   src: url(./font/SIFONN_PRO.otf);
 }
-.logo-static {
-  width: 70%;
-  height: 0;
-  -webkit-transition: all 0.5s ease-out;
-  -moz-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-}
-
-.logo:hover, .logo-static:hover {
-  -webkit-transform: rotate(-90deg);
-  -moz-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
-  transform: rotate(-90deg);
-}
-
-.title-static {
-  color: #F1F1F1;
-  font-family: "Sifonn" sans-serif;
-  font-size: 20px;
-  font-weigth: lighter;
-}
-
 .terms {
   width: 80%;
   height: auto;
@@ -457,35 +435,12 @@
   text-align: center;
   flex-direction: column;
   align-items: center;
-  list-style: none;
 }
 
 @font-face {
   font-family: "Sifonn";
   src: url(./font/SIFONN_PRO.otf);
 }
-.logo-static {
-  width: 70%;
-  height: 0;
-  -webkit-transition: all 0.5s ease-out;
-  -moz-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-}
-
-.logo:hover, .logo-static:hover {
-  -webkit-transform: rotate(-90deg);
-  -moz-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
-  transform: rotate(-90deg);
-}
-
-.title-static {
-  color: #F1F1F1;
-  font-family: "Sifonn" sans-serif;
-  font-size: 20px;
-  font-weigth: lighter;
-}
-
 .terms {
   width: 80%;
   height: auto;
@@ -517,7 +472,6 @@
   flex-direction: column;
   align-items: flex-end;
   background-color: grey;
-  list-style: none;
 }
 .publication .header {
   width: 100%;
