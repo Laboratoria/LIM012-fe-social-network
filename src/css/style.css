@@ -375,7 +375,7 @@
 }
 .lateral-left div {
   width: 100%;
-  height: auto;
+  height: 210px;
   display: flex;
   text-align: center;
   flex-direction: column;
