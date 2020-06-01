@@ -27,7 +27,7 @@ export default () => {
   div.id = 'home';
   div.className = 'view';
   const homeView = `
-    <header class=>
+    <header>
       <div class="logo-bunker">
         <img src="images/logo.png" alt="logo" class="logo">
         <h1 class="title">BUNKER</h1>
