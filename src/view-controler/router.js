@@ -1,5 +1,6 @@
 import { components } from '../view/index.js';
 
+// eslint-disable-next-line consistent-return
 const changeView = (route) => {
   const actualView = document.getElementById('actual-view');
   actualView.innerHTML = '';
@@ -21,7 +22,7 @@ const changeView = (route) => {
     }
     case '#/profile': {
       actualView.appendChild(components.home());
-      const mainHome = actualView.querySelector('.main-home');
+      const mainHome = actualView.querySelector('.app-content');
       mainHome.innerHTML = '';
       return mainHome.appendChild(components.profile());
     }
