@@ -1,6 +1,6 @@
-import {
-  signInUserEmail, loginFacebook, loginGoogle,
-} from '../firebase/auth.js';
+// eslint-disable-next-line import/no-cycle
+import { ingresandoConEmail, passwordShow, recoverPassword } from '../firebase-controller/login-controller.js';
+import { loginFacebook, loginGoogle } from '../firebase/auth.js';
 
 export default () => {
   const div = document.createElement('div');
@@ -22,8 +22,12 @@ export default () => {
           <form class="login">
             <input type="email"  id="login-email" placeholder="Email" required>
             <input type="password" id="login-password" placeholder="Password" required>
-            <p class="text-13">Forgot Password?</p>
+            <i class="fas fa-eye" id='showContraseña'></i>
+            <p class="text-13 change-password">Forgot Password?</p>
             <button class="button-access" id="btn-login">LOG IN</button>  
+            <div class="container-errors">
+                <span class="errors" id="error-terms"></span>
+            </div> 
           </form>
           <p class="text-13">or login with</p>
           <div class="rrss">
@@ -47,13 +51,67 @@ export default () => {
   const signinFacebook = div.querySelector('#facebook');
   signinFacebook.addEventListener('click', loginFacebook);
   // LOG IN
-  const formlogin = div.querySelector('.login');
-  formlogin.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = formlogin['login-email'].value;
-    const password = formlogin['login-password'].value;
-    signInUserEmail(email, password);
-    formlogin.reset();
-  });
+
+  const formLogin = div.querySelector('.login');
+  formLogin.addEventListener('submit', ingresandoConEmail);
+
+  const showContraseña = div.querySelector('#showContraseña');
+  showContraseña.addEventListener('click', passwordShow);
+
+  const changePassword = div.querySelector('.change-password');
+  changePassword.addEventListener('click', recoverPassword);
+
   return div;
+};
+
+export const modalForVerifiedEmail = () => {
+  const pantalla = () => {
+    const mensaje = document.createElement('div');
+    mensaje.setAttribute('class', 'contenidoModal');
+    const info = `
+        <section class="fondo fondo-close">
+          <div class="franja">
+            <i class="fas fa-times" id="exit"></i>
+          </div>
+          <img src="../src/images/pleaseConfirm.png" alt="pleaseConfirm" class="imageModal">
+          <div class="descripcion">
+              <p class="negrita">Oh no! You have not yet accepted the link to verify your email address.</br><b>Check your email inbox</b></p>
+          </div>
+        </section>
+        `;
+    mensaje.innerHTML = info;
+    return mensaje;
+  };
+
+  const pantallaModal = document.getElementById('pantallaModal');
+  pantallaModal.appendChild(pantalla());
+  pantallaModal.querySelector('#exit').addEventListener('click', () => {
+    pantallaModal.innerHTML = '';
+  });
+};
+
+export const modalForRecoverPassword = () => {
+  const pantalla2 = () => {
+    const mensaje = document.createElement('div');
+    mensaje.setAttribute('class', 'contenidoModal');
+    const info = `
+        <section class="fondo fondo-close">
+          <div class="franja">
+            <i class="fas fa-times" id="exit"></i>
+          </div>
+          <img src="../src/images/forgotPassword.png" alt="forgotPassword" class="imageModal">
+          <div class="descripcion">
+              <p class="negrita">A link was sent to your email to reset your password</br><b>Check your email inbox</b></p>
+          </div>
+        </section>
+        `;
+    mensaje.innerHTML = info;
+    return mensaje;
+  };
+
+  const pantallaModal = document.getElementById('pantallaModal');
+  pantallaModal.appendChild(pantalla2());
+  pantallaModal.querySelector('#exit').addEventListener('click', () => {
+    pantallaModal.innerHTML = '';
+  });
 };
