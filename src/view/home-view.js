@@ -57,6 +57,18 @@ export default () => {
       </div>
     </header >
     <main class="main-home">
+    
+<div id="profile-section" class="lateral-left">
+<div>
+  <img class="cover-profile">
+  <img class="profile" src="./images/profile-img-woman.png">
+</div>
+  <div class="profile-information">
+  <h3>Usuario de BUNKER</h3>
+  <h5>Description</h5>
+</div>
+</div>
+
       <div id="profile-section" class="lateral-rigth">
         <div class="share-section container lateral-share">
           <img class="profile circle circle-comment" src="./images/profile-img-woman.png">
