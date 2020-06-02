@@ -10,18 +10,10 @@ export const forgotPassword = email => auth.sendPasswordResetEmail(email);
 
 export const loginFacebook = () => {
   const provider = new firebase.auth.FacebookAuthProvider();
-  auth.signInWithPopup(provider).then((result) => {
-    console.log(result.user);
-  }).catch((error) => {
-    console.log(error.message);
-  });
+  return auth.signInWithPopup(provider);
 };
 
 export const loginGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
-  auth.signInWithPopup(provider).then((result) => {
-    console.log(result.user);
-  }).catch((error) => {
-    console.log(error.message);
-  });
+  return auth.signInWithPopup(provider);
 };

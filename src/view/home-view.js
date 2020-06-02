@@ -29,10 +29,7 @@ const renderPost = (docs) => {
       img.alt = 'photo';
       storage.ref().child(post.photo).getDownloadURL().then((url) => {
         img.src = url;
-      })
-        .catch((err) => {
-          console.log(err.message);
-        });
+      });
       userPostContent.appendChild(img);
     }
     return li;
@@ -177,6 +174,7 @@ export default () => {
   const logoutBtn = div.querySelector('.logout');
   logoutBtn.addEventListener('click', () => {
     auth.signOut().then(() => {
+      // eslint-disable-next-line no-console
       console.log('user signed out');
     });
   });
@@ -221,6 +219,7 @@ export default () => {
             postContainer.classList.remove('show-element');
           })
           .catch((err) => {
+            // eslint-disable-next-line no-console
             console.log(err.message);
           });
       });
