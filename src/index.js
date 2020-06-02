@@ -10,7 +10,7 @@ const init = () => {
 window.addEventListener('load', init);
 auth.onAuthStateChanged((user) => {
   if (user) {
-    window.location.hash = '#/';
+    window.location.hash = '#/home';
     if (user.metadata.creationTime === user.metadata.lastSignInTime) {
       // eslint-disable-next-line consistent-return
       db.collection('users').doc(user.uid).get().then((doc) => {
