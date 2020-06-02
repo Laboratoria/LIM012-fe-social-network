@@ -9,7 +9,7 @@ export default () => {
           <img class="cover-profile cover-desktop">
           <img class="profile profile-main circle" src="./images/profile-img-woman.png">
         </div>
-          <div class="profile-information">
+        <div class="profile-information">
           <h3>Usuario de BUNKER</h3>
           <h5>Description</h5>
         </div>
@@ -19,8 +19,8 @@ export default () => {
           <img class="profile circle" src="./images/profile-img-woman.png">
           <button class="share">What's on your mind?</button>
         </div>
-        <div class="core-rail container" id="my-posts">
-          </div>`;
+        <ul class="core-rail" id="my-posts"></ul>
+      </div>`;
   profileContainer.innerHTML = profileView;
   const myPosts = profileContainer.querySelector('#my-posts');
   // FIRESTORE GET DATA, SHOW JUST USER POSTS IN PROFILE
@@ -32,10 +32,7 @@ export default () => {
         const postsIdsKeys = Object.keys(postsIds);
         const ids = postsIdsKeys.map(currentId => postsIds[currentId]);
         db.collection('posts').orderBy('date', 'desc').get().then((userPosts) => {
-          // eslint-disable-next-line array-callback-return
-          const docs = userPosts.docs.filter((postDoc) => {
-            ids.some(userPostId => postDoc.id === userPostId);
-          });
+          const docs = userPosts.docs.filter(postDoc => ids.some(userPostId => postDoc.id === userPostId));
           // passing an array of documents
           renderPost(docs).forEach((li) => {
             myPosts.appendChild(li);
