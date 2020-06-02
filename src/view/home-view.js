@@ -6,16 +6,17 @@ const renderPost = (docs) => {
     const shortDate = getdate.toDateString();
     const shortTime = getdate.toLocaleTimeString();
     const li = document.createElement('li');
-    li.innerHTML = `<div class="publication">
+    li.className = 'publication';
+    li.innerHTML = `
 <div class="header">
   <img class="profile" src="./images/profile-img-woman.png">
   <div class="date">
-    Name<br>${shortTime} ${shortDate}<i class="fas fa-globe-americas privacity"></i>
+    Name<br>${shortTime} ${shortDate} <i class="fas fa-globe-americas privacity"></i>
   </div>
   <i class="fas fa-ellipsis-h"></i>
 </div>
-<div class="main">
-  ${post.content}
+<div id="user-post-content">
+  <div class="main">${post.content}</div>
 </div>
 <div class="footer">
   <i class="far fa-heart"></i>
@@ -56,16 +57,6 @@ export default () => {
       </div>
     </header >
     <main class="main-home">
-      <div id="profile-section" class="lateral-left">
-        <div>
-          <img class="cover-profile">
-          <img class="profile" src="./images/profile-img-woman.png">
-        </div>
-          <div class="profile-information">
-          <h3>Usuario de BUNKER</h3>
-          <h5>Description</h5>
-        </div>
-      </div>
       <div id="profile-section" class="lateral-rigth">
         <div class="share-section container lateral-share">
           <img class="profile circle circle-comment" src="./images/profile-img-woman.png">
@@ -75,20 +66,20 @@ export default () => {
           <!---publication--->
         </ul>
       </div>
-      <div class="post-container">
-          <div class="go-back"><i class="fas fa-arrow-left"></i></div>
-          <section class="settings-section">
-          </section>
-        </div>
-        </div>
-       <div class="menu-container">
-          <ul class="menu-options">
-            <li class="edit-profile">Edit Profile</li>
-            <li class="theme-options">Themes</li>
-            <li class="logout">Log out</li>
-          </ul>
-        </div>
     </main>
+    <div class="post-container">
+        <div class="go-back"><i class="fas fa-arrow-left"></i></div>
+        <section class="settings-section">
+        </section>
+      </div>
+      </div>
+     <div class="menu-container">
+        <ul class="menu-options">
+          <li class="edit-profile">Edit Profile</li>
+          <li class="theme-options">Themes</li>
+          <li class="logout">Log out</li>
+        </ul>
+      </div>
     <footer class="bar-down">
       <a href="#/home"><i class="fas fa-home icon"></i></a>
       <a href="#/profile"><i class="fas fa-user icon"></i></a>

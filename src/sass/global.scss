@@ -11,9 +11,10 @@ $color-2: rgba(20, 137, 203, 0.5);
 $color-3: grey;
 $color-4: #A4BEFF;
 $color-5: #F1F1F1;
+$color-6: #ffff;
 
 //===size===
-@mixin size($width ,$height) {
+@mixin size($width, $height) {
     width: $width;
     height: $height;
 }
@@ -71,7 +72,7 @@ $color-5: #F1F1F1;
 }
 @mixin icon-black {
     color: $color-1;
-    font-size:15px;
+    font-size: 17px;
 }
 //===geometric forms===
 @mixin circle {
@@ -152,7 +153,7 @@ $color-5: #F1F1F1;
 }
 @mixin button-input-share{
     border-radius: 20px 20px 20px 0;
-    background-color: $color-4;
+    background-color: $color-6;
     border: 0;
 }
 //===inputs===
@@ -258,3 +259,8 @@ $color-5: #F1F1F1;
     }
 }
 //===elements===
+@mixin post-text {
+    font-size:  3vh;
+    color: $color-1;
+    font-weight: "Sifonn", sans-serif;
+}
