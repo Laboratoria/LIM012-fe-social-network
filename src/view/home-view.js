@@ -53,7 +53,7 @@ export default () => {
         <i class="fas fa-bars icon"></i>
       </div>
     </header >
-    <main class="main-home">
+    <main class="main-home app-content">
     
 <div id="profile-section" class="lateral-left">
 <div>
@@ -66,7 +66,7 @@ export default () => {
 </div>
 </div>
 
-      <div id="profile-section" class="lateral-rigth">
+      <div class="lateral-rigth">
         <div class="share-section container lateral-share">
           <img class="profile circle circle-comment" src="./images/profile-img-woman.png">
           <button class="share">What's on your mind?</button>
@@ -105,8 +105,8 @@ export default () => {
   postForm.id = 'post-form';
   const postFormCotent = `
     <div>
-      <img class="profile circle margin-photo" src="./images/profile-img-woman.png">
       <div id="option-public">
+      <img class="profile circle margin-photo" src="./images/profile-img-woman.png">
       <p>user</p>
       <select id="visibility-select">
         <option>public</option>

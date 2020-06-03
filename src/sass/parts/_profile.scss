@@ -1,3 +1,46 @@
-// .main-profile{
-//     @include size(100vh, 84%)
-// }
+.profile-section{
+    @include size(100%, 35vh);
+    // border: solid 3px red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @include desktop-screen(){
+        @include size(35vw, 100vh);
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        border: solid green;
+    }
+    .profile-photos{
+        // border: solid 3px black;
+        @include size(96%, 25vh);
+        .cover-profile{
+            @include size(100%, 20vh)
+        }
+        .profile-main{
+            @include size(60px, 60px);
+            position: relative;
+            bottom: 6vh;
+        }
+        @include desktop-screen(){
+                    @include size(35vw, 30vh);
+                    padding: 0;
+                    border: solid rgb(0, 255, 55);
+                }
+    }
+    .profile-information{
+        @include size(96%, 10vh);
+        padding-top: 1vh;
+        // border: solid 3px green;
+        color: black;
+        h3{
+            @include post-text;
+            margin: 0;
+        }
+        h5{
+            @include post-text;
+            margin: 0;
+        }
+    }
+}

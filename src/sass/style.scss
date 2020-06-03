@@ -3,13 +3,19 @@
  body, #actual-view, .view  {
     @include view;
     @include box-without-border;
-    @include font-NahumGothic(13px);
-    list-style: none;
+    font-family: 'Nanum Gothic', sans-serif;
     @include desktop-screen(){
        @include flex-row-center(row);
     }
  }
+ ul{
+    list-style: none;
+ }
 
 i {
    @include icon-white;
+}
+.hide-overflow{
+    overflow: hidden;
+    height: 80vh;
 }

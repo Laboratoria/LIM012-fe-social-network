@@ -1,5 +1,9 @@
 @import "../global.scss";
 //===bar===
+.app-content{
+    @include size(100vw, 84vh);
+    margin-top: 8vh;
+}
 #home{
     display: flex;
     flex-direction: column;
@@ -12,11 +16,12 @@
         justify-content: space-between;
     }
     main {
-        @include size(100vw, 84vh);
-        margin-top: 8vh;
         @include desktop-screen(){
-            @include size(100vw, 92vh);
-            @include flex-row-center(row);
+            min-height: 100vh;
+            @include size(100vw, auto);
+            display: flex;
+            flex-direction: row;
+            margin-top: 16vh;
         }
     }
     footer{
@@ -54,31 +59,50 @@
 //===profile section===
 .lateral-left{
     display: none;
-    background-color: $color-2;
-    div{
+    div:first-child{
         @include cover;
+        @include desktop-screen(){
+            @include size(35vw, 38vh);
+            padding: 0;
+        }
+        .cover-profile{
+            @include desktop-screen(){
+                @include size(35vw, 28vh);
+            }
+        }
+        .profile{
+            position: absolute;
+            top: 22vh;
+        }
+    }
+    div:last-child{
+            h3, h5{
+                color: rgb(26, 25, 25);
+            }
+            @include desktop-screen(){
+            }
     }
     @include desktop-screen(){
-        @include lateral;
-        @include flex-row-center(column);
-        background-color: $color-3;
+        margin-left: 2vh;
+        // border: solid red;
+        @include size(35vw, 100vh);
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 .cover-profile{
-    @include size(85%,150px);
     @include border-radius(up,10px);
     margin-top: 10px;
     background-color: black;
 }
 //====share section===
 .lateral-rigth{
-    @include size(100vw, 100%);
-    @include border(2px,$color-4);
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
+    @include size(100vw, auto);
     @include desktop-screen(){
-        @include lateral;
+        @include size(35vw, auto);
+        margin-left: 38vw;
     }
 
 }
@@ -130,4 +154,97 @@
 .photo-post{
     max-height: 50vh;
     max-width: 100%;
+}
+////////////////////////////////////////////
+/*comment-view*/
+.post-container{
+    bottom: 7.5%;
+    transition: 1s;
+    overflow: hidden;
+    position: absolute;
+    background-color: #fff;
+    @include size(100%, 0%);
+}
+.show-element{
+    height: 85%;
+}
+.go-back{
+    box-sizing: border-box;
+    border-bottom: solid 2px rgb(129, 127, 127);
+    @include size(100%, 6%);
+    text-align: left;
+    .fa-arrow-left{
+        margin:1%;
+        font-size: 22px;
+        color: rgb(110, 109, 109);
+    }
+}
+.settings-section{
+    /* border: solid red; */
+    position: relative;
+    width: 100%;
+    height: 94%;
+}
+#post-form{
+    background-color: #fff;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#option-public{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    // border: solid red;
+    max-height: 100%;
+    width: 100%;
+    #visibility-select{
+    width: 20vh;
+    font-size: 2.5vh;
+    padding: 0.8vh;
+}
+}
+#post-form > div{
+    @include size(100%, 40%);
+    display: flex;
+    flex-direction: row;
+}
+.margin-photo{
+    margin-top: 6px;
+}
+#post-content{
+    font-size: 15px;
+    background-color: #fff;
+    padding: 3%;
+    padding-top: 20px;
+    border: none;
+    height: 60%;
+    width: 90%;
+    resize: none;
+    /* border: solid red; */
+}
+#upload-photo, #change-photo{
+    display: none;
+}
+.photo-icon{
+    /* border: solid red; */
+    position: absolute;
+    top: 82%;
+    padding: 1%;
+}
+.fa-photo-video{
+    font-size: 26px;
+    color: rgb(68, 68, 68);
+}
+.btn-submit{
+    position: absolute;
+    top: 88%;
+    width: 50%;
+    border-radius: 5vh;
+    padding: 4%;
+    color: white;
+    background: rgb(50, 90, 160);
 }

@@ -131,7 +131,7 @@ $color-6: #ffff;
     text-align: center;
 }
 @mixin cover{
-    @include size(100%,210px);
+    @include size(100%,300px);
         @include flex-row-center(column);
         .profile{
             @include size(100px,100px);
