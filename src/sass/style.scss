@@ -1,4 +1,4 @@
-@import "global.scss", "parts/_loginView.scss", "parts/_singupView.scss", "parts/_homeView.scss", "parts/_singupView.scss", "parts/_publication.scss", "parts/_settings.scss","parts/_toShare.scss", "parts/_profile.scss" ;
+@import "global.scss", "parts/_loginView.scss", "parts/_singupView.scss", "parts/_homeView.scss", "parts/_singupView.scss", "parts/_publication.scss", "parts/_settings.scss","parts/_toShare.scss", "parts/_profile.scss", "parts/_modal.scss";
 
  body, #actual-view, .view  {
     @include view;
