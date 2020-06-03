@@ -1,48 +1,54 @@
 .publication{
-    // border: solid red;
-    @include size(100%, auto);
+    @include size(95%,auto);
     @include border-radius(mix,10px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     background-color: $color-3;
-    background-color: #fff;
-    box-shadow: 0px 0px 25px -11px rgba(41,40,41,1);
-    border-radius: 1vh;
-    margin: 3vh 0;
-    padding: 0;
     .header{
-        // border: solid red;
         @include size(100%,30%);
         display: flex;
         justify-content: space-around;
-        padding-top: 1vh;
         img {
-            @include size(36px, 36px);
-            margin-top:3px;
+            @include size(30px,30px);
+            margin:2px 2px;
         }
-    }
-    i{
-        @include icon-black;
     }
     .main{
-        // border: solid red;
-        padding: 2vh;
-        @include size(100%, auto);
-        @include post-text;
-        text-align: left;
+        @include size(75%,auto);
+        margin: 5% 5%;
     }
-    
     .footer{
-        @include size(100%,30%);
+        @include size(93%,30%);
         display: flex;
-        justify-content: flex-start;
-        i{
-            padding: 0 1vh 1vh;
-        }
+        justify-content: start;
+        margin-left: 7%;
     }
 }
 .date{
-    // border: solid red;
-    @include size(70%,100%);
+    @include size(50%,70%);
     text-align: left;
     color: $color-1;
-    font-size: 2.5vh;
+    font-size: 10px;
+}
+
+li{
+    width: 100%;
+    height: auto;
+    i{
+        @include icon-black;
+        margin: 2% 5px 2% 0;
+    }
+ }
+ .modal-options{
+    @include size(0,50px);;
+    color: $color-5;
+    position: relative;
+    top: 5px;
+    background-color: #373839;
+    overflow: hidden;
+    transition: 0.25s;
+ }
+ .options-appear{
+    width: 100px;
 }

@@ -67,7 +67,7 @@ body {
     grid-template-rows: 65% 35%;
 }
 
-.logo {
+/* .logo {
     width: 48px;
     -webkit-transition: all 0.5s ease-out;
     -moz-transition: all 0.5s ease;
@@ -79,7 +79,7 @@ body {
     -webkit-transition: all 0.5s ease-out;
     -moz-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
-}
+} */
 
 .logo:hover, .logo-static:hover {
     -webkit-transform: rotate(-90deg);
@@ -843,11 +843,6 @@ body {
     cursor: pointer;
 
 }
-
-.button-access {
-    
-}
-
 .options-login {
     font-family: "NanumGothic", sans-serif;
     color: var(--color-3);
@@ -934,12 +929,12 @@ fin */
     grid-template-columns: 30% 70%;
 }
 
-.logo-static {
+/* .logo-static {
     width: 90%;
     -webkit-transition: all 0.5s ease-out;
     -moz-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
-}
+} */
 .title-static {
     position: relative;
     top: 1%;
