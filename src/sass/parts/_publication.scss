@@ -19,6 +19,9 @@
             margin-top:3px;
         }
     }
+    i{
+        @include icon-black;
+    }
     .main{
         // border: solid red;
         padding: 2vh;
@@ -26,6 +29,7 @@
         @include post-text;
         text-align: left;
     }
+    
     .footer{
         @include size(100%,30%);
         display: flex;
@@ -33,9 +37,6 @@
         i{
             padding: 0 1vh 1vh;
         }
-    }
-    i{
-        @include icon-black;
     }
 }
 .date{
