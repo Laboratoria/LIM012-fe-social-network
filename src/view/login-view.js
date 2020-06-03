@@ -18,23 +18,24 @@ export default () => {
           <h2 class="slogan">Share your knowledgement!</h2>
         </header>
         <main class="access-container">
-          <p>WELCOME !</p>
+          <p class="welcome">WELCOME !</p>
           <form class="login">
             <input type="email"  id="login-email" placeholder="Email" required>
             <input type="password" id="login-password" placeholder="Password" required>
             <i class="fas fa-eye" id='showContraseña'></i>
-            <p class="text-13 change-password">Forgot Password?</p>
-            <button class="button-access" id="btn-login">LOG IN</button>  
             <div class="container-errors">
                 <span class="errors" id="error-terms"></span>
             </div> 
+            <p class="text-12 change-password">Forgot Password?</p>
+            <button class="button-access" id="btn-login">LOG IN</button>  
+            
           </form>
           <p class="text-13">or login with</p>
           <div class="rrss">
             <p id="google"><i class="fab fa-google"></i></p>
             <p id="facebook"><i class="fab fa-facebook-f"></i></p>
           </div>
-          <div>
+          <div class="question-container">
             <p class="question">Don't have an account?</p>
             <a href="#/signup" class="click-signUp">SIGN UP HERE</a>
           </div>

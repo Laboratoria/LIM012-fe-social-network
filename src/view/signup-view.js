@@ -20,12 +20,13 @@ export default () => {
               <input type="checkbox" class="checkbox">
               <p class="confirm-terms box-confirm">I agree to the Terms of Service and Privacy Statement</p>
             </div>
+            <div class="container-errors">
+              <span class="errors" id="error-terms"></span>
+            </div> 
             <button class="button-access" id="btn-signUp">SIGN UP</button>
-          <div class="container-errors">
-            <span class="errors" id="error-terms"></span>
-          </div>   
+            
           </form>
-          <div class="question-accountSignUp">
+          <div class="question-containerSingUp">
             <p class="question">Already have an account?</p>
             <a href="#/login" class="click-login">LOG IN HERE</a>
           </div>

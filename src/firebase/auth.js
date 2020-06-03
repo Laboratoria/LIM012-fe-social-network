@@ -1,5 +1,5 @@
 export const registerUserEmail = (email, password) => (
-  auth.createUserWithEmailAndPassword(email, password));
+  firebase.auth().createUserWithEmailAndPassword(email, password));
 
 export const verificationEmail = () => (auth.currentUser.sendEmailVerification());
 
