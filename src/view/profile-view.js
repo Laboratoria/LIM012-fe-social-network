@@ -32,6 +32,7 @@ export default () => {
         const postsIdsKeys = Object.keys(postsIds);
         const ids = postsIdsKeys.map(currentId => postsIds[currentId]);
         db.collection('posts').orderBy('date', 'desc').get().then((userPosts) => {
+          // eslint-disable-next-line max-len
           const docs = userPosts.docs.filter(postDoc => ids.some(userPostId => postDoc.id === userPostId));
           // passing an array of documents
           renderPost(docs).forEach((li) => {
