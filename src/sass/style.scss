@@ -8,9 +8,6 @@
        @include flex-row-center(row);
     }
  }
- ul{
-    list-style: none;
- }
 
 i {
    @include icon-white;

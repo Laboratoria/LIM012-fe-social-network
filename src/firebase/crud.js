@@ -7,3 +7,7 @@ export const deletePost = (id, userId) => {
       console.error('Error removing document: ', error);
     });
 };
+
+export const editPost = () => {
+  console.log('edit');
+};
