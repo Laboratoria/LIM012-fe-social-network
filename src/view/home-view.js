@@ -1,3 +1,7 @@
+import { logout } from '../firebase/auth.js';
+import { deletePost } from '../firebase/crud.js';
+import { formPost, collectionUser } from '../firebase/database.js';
+// ========= POSTS =========
 const renderPost = (docs) => {
   const posts = docs.map((doc) => {
     const post = doc.data();
@@ -13,6 +17,12 @@ const renderPost = (docs) => {
   <div class="date">
     Name<br>${shortTime} ${shortDate} <i class="fas fa-globe-americas privacity"></i>
   </div>
+  <div class="modal-options">
+    <ul>
+      <li><a class="edit" >Edit post</a></li>
+      <li><a class="delete" >Delete post</a></li>
+    </ul>
+  </div>
   <i class="fas fa-ellipsis-h"></i>
 </div>
 <div id="user-post-content">
@@ -23,6 +33,11 @@ const renderPost = (docs) => {
   <i class="far fa-comments"></i>
 </div>`;
     const userPostContent = li.querySelector('#user-post-content');
+    const options = li.querySelector('.fa-ellipsis-h');
+    const modalOptions = li.querySelector('.modal-options');
+    options.addEventListener('click', () => {
+      modalOptions.classList.toggle('options-appear');
+    });
     if (post.photo !== '') {
       const img = document.createElement('img');
       img.className = 'photo-post';
@@ -32,10 +47,13 @@ const renderPost = (docs) => {
       });
       userPostContent.appendChild(img);
     }
+    const btnDelete = li.querySelector('.delete');
+    btnDelete.addEventListener('click', () => deletePost(doc.id));
     return li;
   });
   return posts;
 };
+// ===========
 export default () => {
   const div = document.createElement('div');
   div.id = 'home';
@@ -172,12 +190,7 @@ export default () => {
   });
   // LOG OUT
   const logoutBtn = div.querySelector('.logout');
-  logoutBtn.addEventListener('click', () => {
-    auth.signOut().then(() => {
-      // eslint-disable-next-line no-console
-      console.log('user signed out');
-    });
-  });
+  logoutBtn.addEventListener('click', logout);
   // SHOW PREVIEW OF SELECTED IMG
   const preview = postForm.querySelector('#preview');
   const uploadPhoto = postForm.querySelector('#upload-photo');
@@ -195,35 +208,20 @@ export default () => {
       // FORM POST FUNCTION
       postForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        db.collection('posts').add({
-          content: postForm['post-content'].value,
-          likes: 0,
-          visibility: postForm['visibility-select'].value,
-          date: firebase.firestore.FieldValue.serverTimestamp(),
-          photo: postForm['upload-photo'].name,
-        })
-          .then((docRef) => {
-            db.collection('users').doc(user.uid).get().then((doc) => {
-              const postsIds = doc.data().posts;
-              const newindex = Object.keys(postsIds).length + 1;
-              postsIds[newindex] = docRef.id;
-              db.collection('users').doc(user.uid).set({
-                posts: postsIds,
-              });
-            });
-          })
+        const content = postForm['post-content'].value;
+        const likes = 0;
+        const visibility = postForm['visibility-select'].value;
+        const date = firebase.firestore.FieldValue.serverTimestamp();
+        const photo = postForm['upload-photo'].name;
+        formPost(content, likes, visibility, date, photo)
+          .then(docRef => collectionUser(user.uid, docRef.id))
           .then(() => {
             postForm.reset();
             preview.innerHTML = '';
             coreRail.classList.remove('hide-overflow');
             postContainer.classList.remove('show-element');
-          })
-          .catch((err) => {
-            // eslint-disable-next-line no-console
-            console.log(err.message);
           });
       });
-
       // FIRESTORE GET DATA TO SHOW IN HOME VIEW
       const publicPosts = div.querySelector('#public-posts');
       db.collection('posts').where('visibility', '==', 'public').orderBy('date', 'desc').onSnapshot((postsDocuments) => {
