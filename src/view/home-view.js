@@ -1,3 +1,30 @@
+// ===create===
+const createPostHTML = (time, date, content) => {
+  const li = document.createElement('li');
+  li.className = 'publication';
+  li.innerHTML = `
+<div class="header">
+<img class="profile" src="./images/profile-img-woman.png">
+<div class="date">
+  Name<br>${time} ${date} <i class="fas fa-globe-americas privacity"></i>
+</div>
+<div class="modal-options">
+  <ul>
+    <li><a class="edit" >Edit post</a></li>
+    <li><a class="delete" >Delete post</a></li>
+  </ul>
+</div>
+<i class="fas fa-ellipsis-h"></i>
+</div>
+<div id="user-post-content">
+<div class="main">${content}</div>
+</div>
+<div class="footer">
+<i class="far fa-heart"></i>
+<i class="far fa-comments"></i>
+</div>`;
+};
+// ====
 const renderPost = (docs) => {
   const posts = docs.map((doc) => {
     const post = doc.data();
@@ -5,24 +32,13 @@ const renderPost = (docs) => {
     const getdate = time.toDate();
     const shortDate = getdate.toDateString();
     const shortTime = getdate.toLocaleTimeString();
-    const li = document.createElement('li');
-    li.className = 'publication';
-    li.innerHTML = `
-<div class="header">
-  <img class="profile" src="./images/profile-img-woman.png">
-  <div class="date">
-    Name<br>${shortTime} ${shortDate} <i class="fas fa-globe-americas privacity"></i>
-  </div>
-  <i class="fas fa-ellipsis-h"></i>
-</div>
-<div id="user-post-content">
-  <div class="main">${post.content}</div>
-</div>
-<div class="footer">
-  <i class="far fa-heart"></i>
-  <i class="far fa-comments"></i>
-</div>`;
+    createPostHTML(shortTime, shortDate, post.content);
     const userPostContent = li.querySelector('#user-post-content');
+    const options = li.querySelector('.fa-ellipsis-h');
+    const modalOptions = li.querySelector('.modal-options');
+    options.addEventListener('click', () => {
+      modalOptions.classList.toggle('options-appear');
+    });
     if (post.photo !== '') {
       const img = document.createElement('img');
       img.className = 'photo-post';
@@ -32,10 +48,73 @@ const renderPost = (docs) => {
       });
       userPostContent.appendChild(img);
     }
+    //=====================
+    const btnDelete = li.querySelector('.delete');
+    btnDelete.addEventListener('click', () => {
+      console.log('click');
+      db.collection('posts').doc(doc.id).delete().then(() => {
+        console.log('Document successfully deleted!');
+      })
+        .catch((error) => {
+          console.error('Error removing document: ', error);
+        });
+    });
+    //====================================================
+    const postContainer = document.querySelector('.post-container');
+  const settingsSection = document.querySelector('.settings-section');
+  const coreRail = document.querySelector('.core-rail');
+  const btnEdit = li.querySelector('.edit');
+  btnEdit.addEventListener('click', () => {
+    coreRail.classList.add('hide-overflow');
+    postContainer.classList.add('show-element');
+    settingsSection.innerHTML = '';
+    createPostForm();
+    settingsSection.appendChild(postForm);
+  });
+    
+
+      /*let washingtonRef = db.collection("cities").doc("DC");
+
+      // Set the "capital" field of the city 'DC'
+      return washingtonRef.update({
+          capital: true
+      })
+      .then(function() {
+          console.log("Document successfully updated!");
+      })
+      .catch(function(error) {
+          // The document probably doesn't exist.
+          console.error("Error updating document: ", error);
+      });*/
+
     return li;
   });
   return posts;
 };
+//============
+const createPostForm = () => {
+  const postForm = document.createElement('form');
+  postForm.id = 'post-form';
+  const postFormCotent = `
+    <div>
+      <img class="profile circle margin-photo" src="./images/profile-img-woman.png">
+      <div id="option-public">
+      <p>user</p>
+      <select id="visibility-select">
+        <option>public</option>
+        <option>private</option>
+    </select>
+      <textarea id="post-content" placeholder="What's on your mind?" required></textarea>
+      </div>
+    </div>
+    <div id="preview"></div>
+    <input id="upload-photo" type="file">
+    <label class="photo-icon" for="upload-photo"><i class="fas fa-photo-video"></i></label>
+    <button class="btn-submit post">POST</button>`;
+  postForm.innerHTML = postFormCotent;
+};
+
+//================
 export default () => {
   const div = document.createElement('div');
   div.id = 'home';
@@ -101,25 +180,7 @@ export default () => {
     menu.classList.toggle('appear');
   });
   // CREATING THE POST FORM HTML
-  const postForm = document.createElement('form');
-  postForm.id = 'post-form';
-  const postFormCotent = `
-    <div>
-      <img class="profile circle margin-photo" src="./images/profile-img-woman.png">
-      <div id="option-public">
-      <p>user</p>
-      <select id="visibility-select">
-        <option>public</option>
-        <option>private</option>
-    </select>
-      <textarea id="post-content" placeholder="What's on your mind?" required></textarea>
-      </div>
-    </div>
-    <div id="preview"></div>
-    <input id="upload-photo" type="file">
-    <label class="photo-icon" for="upload-photo"><i class="fas fa-photo-video"></i></label>
-    <button class="btn-submit post">POST</button>`;
-  postForm.innerHTML = postFormCotent;
+  createPostForm();
   // CREATING PROFILE SECTION HTML
   const editProfile = `<form id="profile-form">
   <img class="profile circle margin-photo" src="./images/profile-img-woman.png">
@@ -223,7 +284,6 @@ export default () => {
             console.log(err.message);
           });
       });
-
       // FIRESTORE GET DATA TO SHOW IN HOME VIEW
       const publicPosts = div.querySelector('#public-posts');
       db.collection('posts').where('visibility', '==', 'public').orderBy('date', 'desc').onSnapshot((postsDocuments) => {
