@@ -9,7 +9,7 @@ const init = () => {
 
 window.addEventListener('load', init);
 auth.onAuthStateChanged((user) => {
-  if (user) {
+  if (user && user.emailVerified) {
     window.location.hash = '#/home';
     if (user.metadata.creationTime === user.metadata.lastSignInTime) {
       // eslint-disable-next-line consistent-return
