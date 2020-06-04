@@ -10,7 +10,6 @@ export const deletePost = (id, userId) => {
     posts: firebase.firestore.FieldValue.delete(),
   });
 };
-
 export const editPost = () => {
   console.log('edit');
 };

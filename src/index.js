@@ -10,11 +10,11 @@ const init = () => {
 window.addEventListener('load', init);
 auth.onAuthStateChanged((user) => {
   if (user) {
-    if (user.emailVerified) {
-      window.location.hash = '#/home';
-    } else {
-      window.location.hash = '#/login';
-    }
+    // if (user.emailVerified) {
+    //   window.location.hash = '#/home';
+    // } else {
+    //   window.location.hash = '#/login';
+    // }
     if (user.metadata.creationTime === user.metadata.lastSignInTime) {
       // eslint-disable-next-line consistent-return
       db.collection('users').doc(user.uid).get().then((doc) => {
