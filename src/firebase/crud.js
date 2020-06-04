@@ -1,11 +1,16 @@
+/* eslint-disable no-console */
 export const deletePost = (id, userId) => {
   db.collection('posts').doc(id).delete().then(() => {
-    // llamar a colecion de usuarios
-    // eslint-disable-next-line no-console
     console.log(userId);
   })
     .catch((error) => {
-      // eslint-disable-next-line no-console
       console.error('Error removing document: ', error);
     });
+  db.collection('cities').doc(userId).update({
+    doc: firebase.firestore.FieldValue.delete(),
+  });
+};
+
+export const editPost = () => {
+  console.log('edit');
 };
