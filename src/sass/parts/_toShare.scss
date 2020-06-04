@@ -1,0 +1,166 @@
+// POST FORM
+.post-container{
+    // border: solid red;
+    margin: 0;
+    @include size(100vw, 85%);
+    .go-back{
+        text-align: left;
+        border-bottom: solid 2px rgb(195, 193, 193);
+        @include size(100vw, 7%);
+        i{
+            margin: 1% 2%;
+            color: rgb(128, 128, 168);
+        }
+    }
+    section {
+        // border: solid rgb(58, 45, 246);
+        @include size(100vw, 93%);
+        form{
+            @include size(100%, 75vh);
+            // border: solid rgb(246, 169, 45);
+            #option-public{
+            // border: solid rgb(246, 169, 45);
+            height: 10vh;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 0 1vh;
+                p{
+                font-size: 3vh;
+                margin: 0 2vh;
+                color: rgb(59, 59, 59);
+                }
+                select{
+                padding: 1vh;
+                font-size: 3vh;
+                }
+            }
+            textarea{
+                font-size: 3vh;
+                border: none;
+                // border: solid red;
+                resize: none;
+                padding: 1vh 3vh;
+                @include size(100vw, 30vh);
+            }
+            #preview{
+                margin-bottom: 2vh;
+                // border: solid red;
+                @include size(100vw, 22vh);
+                img{
+                    @include size(auto, 22vh);
+                }
+            }
+            label{
+                margin: 0 2vh;
+                i{
+                    color: $color-1;
+                }
+            }
+            button{
+                padding: 2vh;
+                width: 15vh;
+                border-radius: 1vh;
+                border: none;
+                color: cornsilk;
+                background-color: #0f0c48;
+            }
+        }
+        }
+}
+#upload-photo, #change-photo{
+    display: none;
+}
+textarea:focus{
+    outline: none;
+}
+// MENU
+.menu-container{
+    @include size(0, 86%);
+    transition: 0.8s;
+    overflow: hidden;
+    position: fixed;
+    right: 0;
+    top: 7.5vh;
+    background-color: rgba(5, 32, 56, 0.931);
+    ul{
+        list-style: none;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        li{
+            transition: 2s;
+            text-align: center;
+            margin: 0;
+            // border: solid red;
+            padding: 2vh 0;
+            a{
+                text-decoration: none;
+                color: cornsilk;
+            }
+            color: cornsilk;
+        }
+        li:hover{
+            background-color: rgba(253, 255, 255, 0.212);
+        }
+    }
+}
+.appear{
+    width: 40vw;
+}
+//MENU EDIT PROFILE
+#profile-form{
+    // border: solid #3a2df6;
+    @include size(100vw, 75vh);
+    @include flex-row-center(column);
+    label{
+        margin: 2vh 0;
+        font-size: 3vh;
+    }
+    .photo-label{
+        color: rgb(19, 142, 243);
+    }
+    input{
+        padding: 1vh;
+        font-size: 3vh;
+    }
+    button{
+        margin: 5vh 0;
+    }
+    div{
+        // border: solid rgb(58, 45, 246);
+        width: 100vw;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        img{
+            margin: 2vh 3vh;
+        }
+        p{
+            font-size: 3vh;
+        }
+    }
+}
+// MENU THEMES OPTIONS
+.themes-options{
+    @include flexModal(column);
+    @include size(100vw, 75vh);
+    button{
+        font-size: 3vh;
+        padding: 3vh;
+        border: none;
+        border-radius: 2vh;
+        text-align: center;
+        margin: 2vh;
+    }
+    .light-mode{
+        background-color: rgb(255, 245, 107);
+    }
+    .dark-mode{
+        background-color: rgb(107, 171, 255);
+    }
+    i{
+        margin:  0 1vh;
+        color: $color-1;
+    }
+}

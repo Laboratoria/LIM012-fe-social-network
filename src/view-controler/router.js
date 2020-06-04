@@ -22,9 +22,35 @@ const changeView = (route) => {
     }
     case '#/profile': {
       actualView.appendChild(components.home());
-      const mainHome = actualView.querySelector('.app-content');
-      mainHome.innerHTML = '';
-      return mainHome.appendChild(components.profile());
+      const coreRail = actualView.querySelector('.core-rail');
+      const profileSection = actualView.querySelector('#profile-section');
+      profileSection.style.display = 'flex';
+      coreRail.innerHTML = '';
+      return coreRail.appendChild(components.profile());
+    }
+    case '#/post-content': {
+      actualView.appendChild(components.home());
+      const appContent = actualView.querySelector('#route-change-content');
+      appContent.innerHTML = '';
+      return appContent.appendChild(components.postform());
+    }
+    case '#/edit-profile': {
+      actualView.appendChild(components.home());
+      const appContent = actualView.querySelector('#route-change-content');
+      appContent.innerHTML = '';
+      appContent.appendChild(components.postform());
+      const settingsSection = actualView.querySelector('.settings-section');
+      settingsSection.innerHTML = '';
+      return settingsSection.appendChild(components.editProfile());
+    }
+    case '#/theme-options': {
+      actualView.appendChild(components.home());
+      const appContent = actualView.querySelector('#route-change-content');
+      appContent.innerHTML = '';
+      appContent.appendChild(components.postform());
+      const settingsSection = actualView.querySelector('.settings-section');
+      settingsSection.innerHTML = '';
+      return settingsSection.appendChild(components.themes());
     }
     default: {
       actualView.innerHTML = '';
