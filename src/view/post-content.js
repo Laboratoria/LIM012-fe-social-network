@@ -22,41 +22,41 @@ export default () => {
             <button class="btn-submit post">POST</button>
         <form>
     </section>`;
-    div.innerHTML = divcontent;
-    // GO BACK ARROW FUNCTION
-    const goBack = div.querySelector('.fa-arrow-left');
-    goBack.addEventListener('click', () => {
-        window.history.back();
+  div.innerHTML = divcontent;
+  // GO BACK ARROW FUNCTION
+  const goBack = div.querySelector('.fa-arrow-left');
+  goBack.addEventListener('click', () => {
+    window.history.back();
+  });
+  const postForm = div.querySelector('#post-form');
+  // SHOW PREVIEW OF SELECTED IMG
+  const preview = postForm.querySelector('#preview');
+  const uploadPhoto = postForm.querySelector('#upload-photo');
+  // SHARE A POST
+  // UPLOAD FILES
+  auth.onAuthStateChanged((user) => {
+    uploadPhoto.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      const refPath = `${user.uid}/${file.name}`;
+      uploadPhoto.name = refPath;
+      storage.ref(refPath).put(file);
+      preview.innerHTML = `<img src=${URL.createObjectURL(file)} id="preview-img" alt="preview">`;
     });
-    const postForm = div.querySelector('#post-form');
-    // SHOW PREVIEW OF SELECTED IMG
-    const preview = postForm.querySelector('#preview');
-    const uploadPhoto = postForm.querySelector('#upload-photo');
-    // SHARE A POST
-    // UPLOAD FILES
-    auth.onAuthStateChanged((user) => {
-        uploadPhoto.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            const refPath = `${user.uid}/${file.name}`;
-            uploadPhoto.name = refPath;
-            storage.ref(refPath).put(file);
-            preview.innerHTML = `<img src=${URL.createObjectURL(file)} id="preview-img" alt="preview">`;
-        });
-        // FORM POST FUNCTION
-        postForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const content = postForm['post-content'].value;
-            const likes = 0;
-            const visibility = postForm['visibility-select'].value;
-            const date = firebase.firestore.FieldValue.serverTimestamp();
-            const photo = postForm['upload-photo'].name;
-            formPost(content, likes, visibility, date, photo)
-                .then(docRef => collectionUser(user.uid, docRef.id))
-                .then(() => {
-                    postForm.reset();
-                    window.history.back();
-                });
+    // FORM POST FUNCTION
+    postForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const content = postForm['post-content'].value;
+      const likes = 0;
+      const visibility = postForm['visibility-select'].value;
+      const date = firebase.firestore.FieldValue.serverTimestamp();
+      const photo = postForm['upload-photo'].name;
+      formPost(content, likes, visibility, date, photo)
+        .then(docRef => collectionUser(user.uid, docRef.id))
+        .then(() => {
+          postForm.reset();
+          window.history.back();
         });
     });
-    return div;
+  });
+  return div;
 };

@@ -9,12 +9,10 @@ export const collectionUser = (userId, docId) => {
   });
 };
 
-export const formPost = (content, likes, visibility, date, photo) => {
-  return db.collection('posts').add({
-    content,
-    likes,
-    visibility,
-    date,
-    photo,
-  });
-};
+export const formPost = (content, likes, visibility, date, photo) => db.collection('posts').add({
+  content,
+  likes,
+  visibility,
+  date,
+  photo,
+});
