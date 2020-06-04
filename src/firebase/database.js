@@ -1,10 +1,12 @@
 export const collectionUser = (userId, docId) => {
-  db.collection('users').doc(userId).get().then((doc) => {
-    const postsIds = doc.data().posts;
-    const newindex = Object.keys(postsIds).length + 1;
-    postsIds[newindex] = docId;
-    db.collection('users').doc(userId).set({
-      posts: postsIds,
+  db.collection('users').doc(userId).get().then((docUser) => {
+    const postsInformation = docUser.data().posts;
+    console.log(postsInformation);
+    db.collection('posts').doc(docId).get().then((docPost) => {
+      postsInformation[docId] = docPost.data();
+      db.collection('users').doc(userId).update({
+        posts: postsInformation,
+      });
     });
   });
 };
