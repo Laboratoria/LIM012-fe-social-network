@@ -47,7 +47,7 @@ export const renderPost = (docs, userId) => {
     }
     const btnDelete = li.querySelector('.delete');
     btnDelete.addEventListener('click', () => deletePost(doc.id, userId));
-    const btnEdit = li.querySelector('.delete');
+    const btnEdit = li.querySelector('.edit');
     btnEdit.addEventListener('click', () => editPost(doc.id, userId));
     return li;
   });
