@@ -4,7 +4,7 @@ export const registerUserEmail = (email, password) => (
 export const verificationEmail = () => (auth.currentUser.sendEmailVerification());
 
 export const signInUserEmail = (email, password) => (
-  auth.signInWithEmailAndPassword(email, password));
+  firebase.auth().signInWithEmailAndPassword(email, password));
 
 export const forgotPassword = email => auth.sendPasswordResetEmail(email);
 
