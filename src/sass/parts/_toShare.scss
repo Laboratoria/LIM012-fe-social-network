@@ -1,12 +1,20 @@
 // POST FORM
 .post-container{
-    // border: solid red;
+        @include desktop-screen(){
+            @include flexModal(column);
+            @include size(100vw, 82vh);
+            margin-top: 16vh;
+            background-color: rgba(0, 0, 0, 0.644);
+        }
     margin: 0;
     @include size(100vw, 85%);
     .go-back{
         text-align: left;
         border-bottom: solid 2px rgb(195, 193, 193);
         @include size(100vw, 7%);
+        @include desktop-screen(){
+            display: none;
+        }
         i{
             margin: 1% 2%;
             color: rgb(128, 128, 168);
@@ -14,10 +22,18 @@
     }
     section {
         // border: solid rgb(58, 45, 246);
+        @include desktop-screen(){
+            @include size(50vw, 75vh);
+        }
         @include size(100vw, 93%);
         form{
             @include size(100%, 75vh);
-            // border: solid rgb(246, 169, 45);
+            @include desktop-screen(){
+                background-color: #ffffff;
+                padding: 2vh;
+                @include size(50vw, 70vh);
+                box-shadow: 0px 0px 15px -7px rgba(0,0,0,0.75);
+            }
             #option-public{
             // border: solid rgb(246, 169, 45);
             height: 10vh;
@@ -42,13 +58,20 @@
                 resize: none;
                 padding: 1vh 3vh;
                 @include size(100vw, 30vh);
+                @include desktop-screen(){
+                    @include size(47vw, 25vh);
+                }
             }
             #preview{
                 margin-bottom: 2vh;
                 // border: solid red;
                 @include size(100vw, 22vh);
+                @include desktop-screen(){
+                    @include size(50vw, 25vh);
+                    margin-bottom: 1vh;
+                }
                 img{
-                    @include size(auto, 22vh);
+                    @include size(auto, 25vh);
                 }
             }
             label{
@@ -110,8 +133,10 @@ textarea:focus{
 }
 //MENU EDIT PROFILE
 #profile-form{
+    @include desktop-screen(){
+        justify-content: center;
+    }
     // border: solid #3a2df6;
-    @include size(100vw, 75vh);
     @include flex-row-center(column);
     label{
         margin: 2vh 0;
@@ -128,11 +153,14 @@ textarea:focus{
         margin: 5vh 0;
     }
     div{
-        // border: solid rgb(58, 45, 246);
         width: 100vw;
         display: flex;
         flex-direction: row;
         align-items: center;
+        @include desktop-screen(){
+            @include size(50vw, 12vh);
+            justify-content: center;
+        }
         img{
             margin: 2vh 3vh;
         }
@@ -145,6 +173,11 @@ textarea:focus{
 .themes-options{
     @include flexModal(column);
     @include size(100vw, 75vh);
+    @include desktop-screen(){
+        box-shadow: 0px 0px 15px -7px rgba(0,0,0,0.75);
+        background-color: #ffffff;
+        @include size(50vw, 75vh);
+    }
     button{
         font-size: 3vh;
         padding: 3vh;
