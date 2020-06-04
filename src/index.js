@@ -10,6 +10,7 @@ const init = () => {
 window.addEventListener('load', init);
 auth.onAuthStateChanged((user) => {
   if (user) {
+    window.location.hash = '#/home';
     // if (user.emailVerified) {
     //   window.location.hash = '#/home';
     // } else {

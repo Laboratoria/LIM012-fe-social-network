@@ -2,9 +2,7 @@
 .post-container{
         @include desktop-screen(){
             @include flexModal(column);
-            @include size(100vw, 82vh);
-            margin-top: 16vh;
-            background-color: rgba(0, 0, 0, 0.644);
+            @include size(100%, 78vh);
         }
     margin: 0;
     @include size(100vw, 85%);
@@ -37,8 +35,9 @@
             @include desktop-screen(){
                 background-color: #ffffff;
                 padding: 2vh;
+                border-radius: 3vh;
                 @include size(50vw, 70vh);
-                box-shadow: 0px 0px 15px -7px rgba(0,0,0,0.75);
+                box-shadow: 0px 0px 300px -33px rgba(9,3,89,1);
             }
             #option-public{
             // border: solid rgb(246, 169, 45);
@@ -130,9 +129,15 @@
             background-color: rgba(253, 255, 255, 0.212);
         }
     }
+    @include desktop-screen(){
+        height: 93vh;
+    }
 }
 .appear{
     width: 40vw;
+    @include desktop-screen(){
+      width: 14vw;
+    }
 }
 //MENU EDIT PROFILE
 #profile-form{
@@ -177,7 +182,8 @@
     @include flexModal(column);
     @include size(100vw, 75vh);
     @include desktop-screen(){
-        box-shadow: 0px 0px 15px -7px rgba(0,0,0,0.75);
+      border-radius: 3vh;
+      box-shadow: 0px 0px 300px -33px rgba(9,3,89,1);
         background-color: #ffffff;
         @include size(50vw, 75vh);
     }

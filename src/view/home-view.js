@@ -13,7 +13,7 @@ export default () => {
     </div>
     <div class="icons">
         <a href="#/home" class="share"><i class="fas fa-home icon icon-up"></i></a>
-        <a href="#/profile" class="share"><img class="profile circle user-icon" src="./images/profile-img-woman.png"></i></a>
+        <a href="#/profile" class="profileBtn"><img class="profile circle user-icon" src="./images/profile-img-woman.png"></a>
         <button id="menuBtn">
           <i class="fas fa-cog icon"></i> 
           <i class="fas fa-bars icon"></i>

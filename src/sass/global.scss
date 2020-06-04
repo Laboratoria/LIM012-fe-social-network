@@ -84,8 +84,8 @@ $color-9: rgba(0, 0, 0, 0.8);
 //===bars===
 @mixin bar {
     @include size(100%,8vh);
-    @include padding(1vh,4vw ,1vh ,4vw);
     display: flex;
+    z-index: 1;
     background: $color-1;
 }
 //===containers===
@@ -157,16 +157,16 @@ $color-9: rgba(0, 0, 0, 0.8);
     grid-template-columns: $column1 $column2;
     text-align: center;
 }
-@mixin cover{
-    @include size(100%,300px);
-        @include flex-row-center(column);
-        .profile{
-            @include size(100px,100px);
-            position: relative;
-            z-index: 1;
-            top: -50px;
-        }
-}
+// @mixin cover{
+//     @include size(100%,300px);
+//         @include flex-row-center(column);
+//         .profile{
+//             @include size(100px,100px);
+//             position: relative;
+//             z-index: 1;
+//             top: -50px;
+//         }
+// }
 //===buttons===
 @mixin button($width, $height, $border-radius, $fontsize) {
     @include size($width, $height);
