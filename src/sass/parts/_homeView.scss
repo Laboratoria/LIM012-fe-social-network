@@ -57,6 +57,18 @@
     }
 }
 //===profile section===
+.cover-profile {
+    @include border-radius(up,10px);
+    margin-top: 10px;
+    background-color: black;
+}
+
+.profile{
+    @include size(50px,50px);
+    @include circle;
+    background-color: $color-2;
+}
+
 .lateral-left{
     display: none;
     div:first-child{
@@ -79,8 +91,6 @@
             h3, h5{
                 color: rgb(26, 25, 25);
             }
-            @include desktop-screen(){
-            }
     }
     @include desktop-screen(){
         margin-left: 2vh;
@@ -92,11 +102,7 @@
         align-items: center;
     }
 }
-.cover-profile{
-    @include border-radius(up,10px);
-    margin-top: 10px;
-    background-color: black;
-}
+
 //====share section===
 .lateral-rigth{
     @include size(100vw, auto);
@@ -113,11 +119,7 @@
     @include grid-2x1(20%,80%);
     justify-content:center;
 }
-.profile{
-    @include size(50px,50px);
-    @include circle;
-    background-color: $color-2;
-}
+
 .share{
     @include button-input-share;
     box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
