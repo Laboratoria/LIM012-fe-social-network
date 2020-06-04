@@ -1,26 +1,26 @@
 import { formPost, collectionUser } from '../firebase/database.js';
 
 export default () => {
-    const div = document.createElement('div');
-    div.className = 'post-container';
-    const divcontent = `<div class="go-back"><i class="fas fa-arrow-left"></i></div>
+  const div = document.createElement('div');
+  div.className = 'post-container';
+  const divcontent = `
+    <div class="go-back"><i class="fas fa-arrow-left"></i></div>
     <section class="settings-section">
-    <form id="post-form"><div>
-    <div id="option-public">
-    <img class="profile circle margin-photo" src="./images/profile-img-woman.png">
-    <p>user</p>
-    <select id="visibility-select">
-      <option>public</option>
-      <option>private</option>
-  </select>
-    <textarea id="post-content" placeholder="What's on your mind?" required></textarea>
-    </div>
-  </div>
-  <div id="preview"></div>
-  <input id="upload-photo" type="file">
-  <label class="photo-icon" for="upload-photo"><i class="fas fa-photo-video"></i></label>
-  <button class="btn-submit post">POST</button>
-    <form>
+        <form id="post-form">
+            <div id="option-public">
+                <img class="profile circle margin-photo" src="./images/profile-img-woman.png">
+                <p>user</p>
+                <select id="visibility-select">
+                    <option>public</option>
+                    <option>private</option>
+                </select>
+            </div>    
+            <textarea id="post-content" placeholder="What's on your mind?" required></textarea>
+            <div id="preview"></div>
+            <input id="upload-photo" type="file">
+            <label class="photo-icon" for="upload-photo"><i class="fas fa-photo-video"></i></label>
+            <button class="btn-submit post">POST</button>
+        <form>
     </section>`;
     div.innerHTML = divcontent;
     // GO BACK ARROW FUNCTION

@@ -1,124 +1,166 @@
+// POST FORM
 .post-container{
-    bottom: 7.5%;
-    transition: 1s;
-    overflow: hidden;
-    position: absolute;
-    background-color: #fff;
-    @include size(100%, 85%);
-    @include desktop-screen(){
-        @include size(50%, 0%);
-        border-radius: 3%;
-    }
-}
-}
-.go-back{
-    box-sizing: border-box;
-    border-bottom: solid 2px rgb(129, 127, 127);
-    @include size(100%, 6%);
-    text-align: left;
-    .fa-arrow-left{
-        margin:1%;
-        font-size: 22px;
-        color: rgb(110, 109, 109);
-    }
-}
-.settings-section{
-    // border: solid red; 
-    position: relative;
-    width: 100%;
-    height: 94%;
-}
-#post-form{
-    background-color: #fff;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-#option-public{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
     // border: solid red;
-    max-height: 100%;
-    width: 100%;
-    #visibility-select{
-    width: 20vh;
-    font-size: 2.5vh;
-    padding: 0.8vh;
-}
-}
-#post-form > div{
-    @include size(100%, 40%);
-    display: flex;
-    flex-direction: row;
-}
-.margin-photo{
-    margin-top: 6px;
-}
-#post-content{
-    font-size: 15px;
-    background-color: #fff;
-    padding: 3%;
-    padding-top: 20px;
-    border: none;
-    height: 60%;
-    width: 90%;
-    resize: none;
-    /* border: solid red; */
+    margin: 0;
+    @include size(100vw, 85%);
+    .go-back{
+        text-align: left;
+        border-bottom: solid 2px rgb(195, 193, 193);
+        @include size(100vw, 7%);
+        i{
+            margin: 1% 2%;
+            color: rgb(128, 128, 168);
+        }
+    }
+    section {
+        // border: solid rgb(58, 45, 246);
+        @include size(100vw, 93%);
+        form{
+            @include size(100%, 75vh);
+            // border: solid rgb(246, 169, 45);
+            #option-public{
+            // border: solid rgb(246, 169, 45);
+            height: 10vh;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 0 1vh;
+                p{
+                font-size: 3vh;
+                margin: 0 2vh;
+                color: rgb(59, 59, 59);
+                }
+                select{
+                padding: 1vh;
+                font-size: 3vh;
+                }
+            }
+            textarea{
+                font-size: 3vh;
+                border: none;
+                // border: solid red;
+                resize: none;
+                padding: 1vh 3vh;
+                @include size(100vw, 30vh);
+            }
+            #preview{
+                margin-bottom: 2vh;
+                // border: solid red;
+                @include size(100vw, 22vh);
+                img{
+                    @include size(auto, 22vh);
+                }
+            }
+            label{
+                margin: 0 2vh;
+                i{
+                    color: $color-1;
+                }
+            }
+            button{
+                padding: 2vh;
+                width: 15vh;
+                border-radius: 1vh;
+                border: none;
+                color: cornsilk;
+                background-color: #0f0c48;
+            }
+        }
+        }
 }
 #upload-photo, #change-photo{
     display: none;
 }
-.photo-icon{
-    position: absolute;
-    top: 82%;
-    padding: 1%;
-    @include desktop-screen(){
-        top: 78%;
-    }
+textarea:focus{
+    outline: none;
 }
-.fa-photo-video{
-    font-size: 26px;
-    color: rgb(68, 68, 68);
-}
-.btn-submit{
-    position: absolute;
-    top: 88%;
-    width: 50%;
-    border-radius: 5vh;
-    padding: 4%;
-    color: white;
-    background: rgb(50, 90, 160);
-    @include desktop-screen(){
-        width: 25%;
-        padding: 2%;
-    }
-}
-.photo-post{
-    max-height: 50vh;
-    max-width: 100%;
-}
-.preview{
-    border: solid red;
-
-}
-
+// MENU
 .menu-container{
-    top: 7.5%;
-    position: fixed;
-    right: 0%;
-    background-color: #373839;
-    @include size(0, 85%);
+    @include size(0, 86%);
+    transition: 0.8s;
     overflow: hidden;
-    transition: 0.7s;
+    position: fixed;
+    right: 0;
+    top: 7.5vh;
+    background-color: rgba(5, 32, 56, 0.931);
+    ul{
+        list-style: none;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        li{
+            transition: 2s;
+            text-align: center;
+            margin: 0;
+            // border: solid red;
+            padding: 2vh 0;
+            a{
+                text-decoration: none;
+                color: cornsilk;
+            }
+            color: cornsilk;
+        }
+        li:hover{
+            background-color: rgba(253, 255, 255, 0.212);
+        }
+    }
 }
 .appear{
-    width: 50%
-} 
-
-.show-element{
-    height: 85%;
+    width: 40vw;
+}
+//MENU EDIT PROFILE
+#profile-form{
+    // border: solid #3a2df6;
+    @include size(100vw, 75vh);
+    @include flex-row-center(column);
+    label{
+        margin: 2vh 0;
+        font-size: 3vh;
+    }
+    .photo-label{
+        color: rgb(19, 142, 243);
+    }
+    input{
+        padding: 1vh;
+        font-size: 3vh;
+    }
+    button{
+        margin: 5vh 0;
+    }
+    div{
+        // border: solid rgb(58, 45, 246);
+        width: 100vw;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        img{
+            margin: 2vh 3vh;
+        }
+        p{
+            font-size: 3vh;
+        }
+    }
+}
+// MENU THEMES OPTIONS
+.themes-options{
+    @include flexModal(column);
+    @include size(100vw, 75vh);
+    button{
+        font-size: 3vh;
+        padding: 3vh;
+        border: none;
+        border-radius: 2vh;
+        text-align: center;
+        margin: 2vh;
+    }
+    .light-mode{
+        background-color: rgb(255, 245, 107);
+    }
+    .dark-mode{
+        background-color: rgb(107, 171, 255);
+    }
+    i{
+        margin:  0 1vh;
+        color: $color-1;
+    }
 }

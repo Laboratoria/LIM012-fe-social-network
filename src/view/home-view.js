@@ -19,6 +19,7 @@ export default () => {
     </div>
   </header>
   <main class="main-home app-content">
+  <div id="route-change-content">
     <div id="profile-section" class="lateral-left">
       <div>
         <img class="cover-profile">
@@ -39,6 +40,7 @@ export default () => {
           <!---publication--->
         </ul>
       </div>
+    </div>
     </div>
     <div class="menu-container">
       <ul class="menu-options">

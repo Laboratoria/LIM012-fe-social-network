@@ -30,13 +30,13 @@ const changeView = (route) => {
     }
     case '#/post-content': {
       actualView.appendChild(components.home());
-      const appContent = actualView.querySelector('.main-home');
+      const appContent = actualView.querySelector('#route-change-content');
       appContent.innerHTML = '';
       return appContent.appendChild(components.postform());
     }
     case '#/edit-profile': {
       actualView.appendChild(components.home());
-      const appContent = actualView.querySelector('.main-home');
+      const appContent = actualView.querySelector('#route-change-content');
       appContent.innerHTML = '';
       appContent.appendChild(components.postform());
       const settingsSection = actualView.querySelector('.settings-section');
@@ -45,7 +45,7 @@ const changeView = (route) => {
     }
     case '#/theme-options': {
       actualView.appendChild(components.home());
-      const appContent = actualView.querySelector('.main-home');
+      const appContent = actualView.querySelector('#route-change-content');
       appContent.innerHTML = '';
       appContent.appendChild(components.postform());
       const settingsSection = actualView.querySelector('.settings-section');
