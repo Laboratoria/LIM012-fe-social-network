@@ -5,7 +5,7 @@ export const deletePost = (id, userId) => {
     .catch((error) => {
       console.error('Error removing document: ', error);
     });
-  db.collection('cities').doc(userId)({
+  db.collection('cities').doc(userId).update({
     doc: firebase.firestore.FieldValue.delete(),
   });
 };
