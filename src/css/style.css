@@ -294,6 +294,7 @@ input[type=checkbox] {
   width: 100vw;
   height: 100vh; }
   #home header {
+    font-family: 'Sifonn';
     width: 100%;
     height: 8vh;
     display: flex;
@@ -336,7 +337,8 @@ input[type=checkbox] {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  width: 24vh; }
+  padding: 0 2vh;
+  width: 28vh; }
   .logo-bunker img {
     width: 5vh;
     height: 5vh; }
