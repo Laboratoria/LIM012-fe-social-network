@@ -8,6 +8,12 @@
         }
     margin: 0;
     @include size(100vw, 85%);
+    label{
+        margin: 0 2vh;
+        i{
+            color: $color-1;
+        }
+    }
     .go-back{
         text-align: left;
         border-bottom: solid 2px rgb(195, 193, 193);
@@ -62,6 +68,11 @@
                     @include size(47vw, 25vh);
                 }
             }
+
+            textarea:focus{
+                outline: none;
+            }
+
             #preview{
                 margin-bottom: 2vh;
                 // border: solid red;
@@ -74,12 +85,7 @@
                     @include size(auto, 25vh);
                 }
             }
-            label{
-                margin: 0 2vh;
-                i{
-                    color: $color-1;
-                }
-            }
+
             button{
                 padding: 2vh;
                 width: 15vh;
@@ -93,9 +99,6 @@
 }
 #upload-photo, #change-photo{
     display: none;
-}
-textarea:focus{
-    outline: none;
 }
 // MENU
 .menu-container{

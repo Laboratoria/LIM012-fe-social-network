@@ -377,6 +377,18 @@ input[type=checkbox] {
       .icons .fa-bars {
         display: none; } }
 
+.cover-profile {
+  border-radius: 10px 10px 0 0;
+  margin-top: 10px;
+  background-color: black; }
+
+.profile {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: rgba(20, 137, 203, 0.5); }
+
 .lateral-left {
   display: none; }
   .lateral-left div:first-child {
@@ -416,11 +428,6 @@ input[type=checkbox] {
       flex-direction: column;
       align-items: center; } }
 
-.cover-profile {
-  border-radius: 10px 10px 0 0;
-  margin-top: 10px;
-  background-color: black; }
-
 .lateral-rigth {
   width: 100vw;
   height: auto; }
@@ -440,13 +447,6 @@ input[type=checkbox] {
   grid-template-columns: 20% 80%;
   text-align: center;
   justify-content: center; }
-
-.profile {
-  width: 50px;
-  height: 50px;
-  text-align: center;
-  border-radius: 50%;
-  background-color: rgba(20, 137, 203, 0.5); }
 
 .share {
   border-radius: 20px 20px 20px 0;
@@ -517,6 +517,15 @@ input[type=checkbox] {
       grid-template-columns: 60% 40%;
       text-align: center; } }
 
+li {
+  width: 100%;
+  height: auto;
+  text-align: left; }
+  li i {
+    color: #0F0C48;
+    font-size: 17px;
+    margin: 2% 5px 2% 0; }
+
 .publication {
   width: 100%;
   height: auto;
@@ -559,14 +568,12 @@ input[type=checkbox] {
     width: 100%;
     height: 30%;
     display: flex;
-    justify-content: start;
     margin-left: 7%;
     justify-content: flex-start; }
     .publication .footer i {
-      padding: 0 1vh 1vh; }
-  .publication i {
-    color: #0F0C48;
-    font-size: 17px; }
+      padding: 0 1vh 1vh;
+      color: #0F0C48;
+      font-size: 17px; }
 
 .date {
   width: 50%;
@@ -576,15 +583,6 @@ input[type=checkbox] {
   text-align: left;
   color: #0F0C48;
   font-size: 10px; }
-
-li {
-  width: 100%;
-  height: auto;
-  text-align: left; }
-  li i {
-    color: #0F0C48;
-    font-size: 17px;
-    margin: 2% 5px 2% 0; }
 
 .modal-options {
   width: 0;
