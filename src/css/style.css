@@ -289,13 +289,14 @@ input[type=checkbox] {
   src: url("../font/SIFONN_PRO.otf"); }
 
 #home {
+  margin: 0;
   display: flex;
   flex-direction: column;
   width: 100vw;
-  height: 100vh; }
+  height: auto; }
   #home header {
     font-family: 'Sifonn';
-    width: 100%;
+    width: 100vw;
     height: 8vh;
     display: flex;
     z-index: 1;
@@ -319,7 +320,7 @@ input[type=checkbox] {
         flex-direction: row;
         margin-top: 10vh; } }
   #home footer {
-    width: 100%;
+    width: 100vw;
     height: 8vh;
     display: flex;
     z-index: 1;
@@ -340,8 +341,16 @@ input[type=checkbox] {
   padding: 0 2vh;
   width: 28vh; }
   .logo-bunker img {
-    width: 5vh;
+    width: 6vh;
     height: 5vh; }
+  .logo-bunker img:hover {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease; }
   .logo-bunker h1 {
     font-size: 4vh;
     color: #fffef9; }
@@ -470,6 +479,16 @@ input[type=checkbox] {
       height: auto;
       margin-left: 38vw; } }
 
+#route-change-content {
+  width: 100vw;
+  min-height: 84vh; }
+  @media (min-width: 800px) {
+    #route-change-content {
+      min-height: 93vh; } }
+
+.show-element-flex {
+  display: flex; }
+
 .core-rail {
   width: 100%;
   height: 100%;
@@ -496,13 +515,6 @@ input[type=checkbox] {
   background-color: #fff;
   width: 100%;
   height: 0; }
-
-#route-change-content {
-  width: 100vw;
-  min-height: 84vh; }
-  @media (min-width: 800px) {
-    #route-change-content {
-      min-height: 93vh; } }
 
 @font-face {
   font-family: 'Sifonn';
@@ -721,7 +733,7 @@ li {
         color: cornsilk;
         background-color: #0f0c48; }
 
-#upload-photo, #change-photo {
+#upload-photo, #change-photo, #change-cover {
   display: none; }
 
 .menu-container {
@@ -739,14 +751,18 @@ li {
     padding: 0;
     margin: 0; }
     .menu-container ul li {
-      transition: 2s;
       text-align: center;
       margin: 0;
       padding: 2vh 0;
       color: cornsilk; }
       .menu-container ul li a {
+        padding: 2vh 5vh;
         text-decoration: none;
-        color: cornsilk; }
+        color: cornsilk;
+        width: 40vw; }
+        @media (min-width: 800px) {
+          .menu-container ul li a {
+            padding: 2vh 8vh; } }
     .menu-container ul li:hover {
       background-color: rgba(253, 255, 255, 0.212); }
   @media (min-width: 800px) {
@@ -930,6 +946,7 @@ li {
 
 body, #actual-view, .view {
   margin: 0;
+  overflow-x: hidden;
   padding: 0;
   width: 100%;
   height: 100%;

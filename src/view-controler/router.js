@@ -24,7 +24,7 @@ const changeView = (route) => {
       actualView.appendChild(components.home());
       const coreRail = actualView.querySelector('.core-rail');
       const profileSection = actualView.querySelector('#profile-section');
-      profileSection.style.display = 'flex';
+      profileSection.classList.add('show-element-flex');
       coreRail.innerHTML = '';
       return coreRail.appendChild(components.profile());
     }
