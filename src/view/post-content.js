@@ -28,6 +28,11 @@ export default () => {
   goBack.addEventListener('click', () => {
     window.history.back();
   });
+  window.onclick = (event) => {
+    if (event.target === div) {
+      window.history.back();
+    }
+  };
   const postForm = div.querySelector('#post-form');
   // SHOW PREVIEW OF SELECTED IMG
   const preview = postForm.querySelector('#preview');

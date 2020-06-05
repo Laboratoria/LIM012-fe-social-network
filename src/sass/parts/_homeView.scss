@@ -1,47 +1,71 @@
 @import "../global.scss";
 //===bar===
-.app-content{
-    @include size(100vw, 84vh);
-    margin-top: 8vh;
-}
 #home{
+    margin: 0;
     display: flex;
     flex-direction: column;
-    @include size(100vw, 100vh);
+    @include size(100vw, auto);
     header{
+       font-family: 'Sifonn';
         @include bar;
-        // @include fixed-side(top);
         position: fixed;
         top: 0;
         justify-content: space-between;
     }
-    main {
+    main{
+      @include size(100vw, auto);
+      margin: 8vh 0 0 0;
+      padding: 0;
         @include desktop-screen(){
-            min-height: 100vh;
-            @include size(100vw, auto);
-            display: flex;
-            flex-direction: row;
-            margin-top: 16vh;
+          min-height: 93vh;
         }
     }
     footer{
         @include bar;
         position: fixed;
         bottom: 0;
-        // @include fixed-side(top);
         justify-content: space-around;
+        align-items: center;
         @include desktop-screen(){
             display: none;
         }
     }
 }
 .logo-bunker{
-    @include logo-without-slogan;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 0 2vh;
+    width: 28vh;
+    img{
+      @include size(6vh, 5vh);
+    }
+    img:hover{
+      @include rorate-animation;
+      @include static-animation;
+    }
+    h1{
+      font-size: 4vh;
+      color: rgb(255, 254, 249);
+    }
 }
 .icons{
-    @include padding(1vh, 0, 2vh, 0);
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    align-items: center;
+    .profileBtn{
+      margin: 0;
+      padding: 0;
+      img{
+        border: solid 1.5px rgb(216, 216, 216);
+        @include size(5vh, 5vh);
+      }
+    }
+    button{
+      background: none;
+      border: none;
+    }
     .icon-up ,.fa-cog, .user-icon{
         display: none;
     }
@@ -49,7 +73,7 @@
         @include size(200px,auto);
         .icon-up ,.fa-cog, .user-icon{
             @include size(25px,25px);
-            display: block;
+            display: flex;
         }
         .fa-bars{
             display: none;
@@ -59,7 +83,7 @@
 //===profile section===
 .cover-profile {
     @include border-radius(up,10px);
-    margin-top: 10px;
+    margin-top: 1vh;
     background-color: black;
 }
 
@@ -70,65 +94,118 @@
 }
 
 .lateral-left{
-    display: none;
+  @include flexModal(column);
+  display: none;
+  @include desktop-screen(){
+      @include size(38vw, auto);
+      display: flex;
+  }
     div:first-child{
-        @include cover;
-        @include desktop-screen(){
-            @include size(35vw, 38vh);
-            padding: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      @include size(100vw, 26vh);
+      @include desktop-screen{
+          @include size(38vw, 43vh);
+      }
+      .cover-profile{
+        align-self: flex-start;
+        @include size(92vw, 20vh);
+        background-color: rgb(61, 60, 60);
+        @include desktop-screen{
+            @include size(36vw, 33vh);
         }
-        .cover-profile{
-            @include desktop-screen(){
-                @include size(35vw, 28vh);
-            }
+      }
+      .profile{
+        position: absolute;
+        align-self: flex-end;
+        @include size(23vw, 23vw);
+        @include desktop-screen{
+            @include size(10vw, 10vw);
         }
-        .profile{
-            position: absolute;
-            top: 22vh;
-        }
+      }
     }
     div:last-child{
+      @include desktop-screen{
+        width: 38vw;
+      }
             h3, h5{
+              margin: 1.5vh 0;
+              font-size: 3vh;
                 color: rgb(26, 25, 25);
+                @include desktop-screen{
+                   margin: 1vh 0;
+                }
             }
     }
-    @include desktop-screen(){
-        margin-left: 2vh;
-        // border: solid red;
-        @include size(35vw, 100vh);
-        position: fixed;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
 }
-
 //====share section===
 .lateral-rigth{
-    @include size(100vw, auto);
+  @include flexModal(column);
+  @include size(100vw, auto);
+  .share-section{
+    margin-top: 2vh;
+    padding: 1vh;
+    width: 83vw;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
     @include desktop-screen(){
-        @include size(35vw, auto);
-        margin-left: 38vw;
+      width: 27vw;
+    }
+    a{
+      text-decoration: none;
+      padding: 1.7vh 0;
+      width: 33vh;
+      margin:  0 2vh;
+      color: rgb(77, 77, 78);
+      border: solid 1px rgb(107, 103, 103);
+      border-radius: 3vh;
+      @include desktop-screen(){
+        width: 35vh;
+      }
+    }
+  }
+    @include desktop-screen(){
+        @include size(40vw, auto);
     }
 
 }
-
-.share-section{
-    @include size(100%,70px);
-    @include padding(10px,10px,10px,10px);
-    @include grid-2x1(20%,80%);
-    justify-content:center;
+@include desktop-screen(){
+  .fixed{
+    position: fixed;
+    top: 8vh;
+    left: 0;
+  }
+  .margin-left{
+    margin-left: 18vw;
+  }
 }
-
-.share{
-    @include button-input-share;
-    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
-    @include size(auto,30px);
-    font-size: 2.5vh;
+#route-change-content{
+  width: 100vw;
+  @include flexModal(column);
+}
+.show-element-flex{
+  display: flex;
 }
 .core-rail{
+    @include size(100%, 100%);
     margin: 0;
     padding: 0;
+    ul{
+        @include size(100%, 100%);
+        padding: 0;
+        li{
+            width: 100%;
+            height: auto;
+            text-align: left;
+            i{
+                @include icon-black;
+                margin: 2% 5px 2% 0;
+            }
+         } 
+    }
 }
 .post-container{
     bottom: 7.5%;
@@ -137,4 +214,11 @@
     position: absolute;
     background-color: #fff;
     @include size(100%, 0);
+}
+.hide-overflow{
+    overflow: hidden;
+    height: 86vh;
+    @include desktop-screen(){
+      height: 93vh;
+    }
 }

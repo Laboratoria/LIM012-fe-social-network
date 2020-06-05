@@ -12,10 +12,12 @@ export default () => {
       <h1 class="title">BUNKER</h1>
     </div>
     <div class="icons">
-      <i class="fas fa-home icon icon-up"></i>
-      <i class="fas fa-cog icon"></i>
-      <img class="profile circle user-icon" src="./images/profile-img-woman.png">
-      <i class="fas fa-bars icon"></i>
+        <a href="#/home" class="share"><i class="fas fa-home icon icon-up"></i></a>
+        <a href="#/profile" class="profileBtn"><img class="profile circle user-icon" src="./images/profile-img-woman.png"></a>
+        <button id="menuBtn">
+          <i class="fas fa-cog icon"></i> 
+          <i class="fas fa-bars icon"></i>
+        </button>
     </div>
   </header>
   <main class="main-home app-content">
@@ -56,7 +58,7 @@ export default () => {
   </footer>`;
   div.innerHTML = homeView;
   // DISPLAYING THE MENU
-  const menuBtn = div.querySelector('.fa-bars');
+  const menuBtn = div.querySelector('#menuBtn');
   const menu = div.querySelector('.menu-container');
   menuBtn.addEventListener('click', () => {
     menu.classList.toggle('appear');

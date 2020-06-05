@@ -3,7 +3,7 @@ export const collectionUser = (userId, docId) => {
     const postsIds = doc.data().posts;
     const newindex = Object.keys(postsIds).length + 1;
     postsIds[newindex] = docId;
-    db.collection('users').doc(userId).set({
+    db.collection('users').doc(userId).update({
       posts: postsIds,
     });
   });

@@ -1,4 +1,4 @@
-import { deletePost } from '../firebase/crud.js';
+import { deletePost, editPost } from '../firebase/crud.js';
 
 export const renderPost = (docs, userId) => {
   const posts = docs.map((doc) => {
@@ -17,7 +17,7 @@ export const renderPost = (docs, userId) => {
     </div>
     <div class="modal-options">
       <ul>
-        <li><a class="edit" >Edit post</a></li>
+        <li><a class="edit" href="#/post-content">Edit post</a></li>
         <li><a class="delete" >Delete post</a></li>
       </ul>
     </div>
@@ -47,6 +47,8 @@ export const renderPost = (docs, userId) => {
     }
     const btnDelete = li.querySelector('.delete');
     btnDelete.addEventListener('click', () => deletePost(doc.id, userId));
+    const btnEdit = li.querySelector('.delete');
+    btnEdit.addEventListener('click', () => editPost(doc.id, userId));
     return li;
   });
   return posts;

@@ -31,7 +31,6 @@ $color-9: rgba(0, 0, 0, 0.8);
 } 
 //===fonts===
 @mixin font($family, $style, $size, $weigth) {
-    // color: $color-5;
     font-family: $family, $style;
     font-size: $size;
     font-weight :$weigth
@@ -84,9 +83,9 @@ $color-9: rgba(0, 0, 0, 0.8);
 }
 //===bars===
 @mixin bar {
-    @include size(100%,8vh);
-    @include padding(1vh,3vw ,1vh ,3vw);
+    @include size(100vw,8vh);
     display: flex;
+    z-index: 1;
     background: $color-1;
 }
 //===containers===
@@ -143,7 +142,7 @@ $color-9: rgba(0, 0, 0, 0.8);
 
 @mixin view {
     @include size-complete;
-    @include flex-row-center(column);
+    @include flex-row-center(row);
 }
 
 @mixin grid-2x2($column1, $column2, $row1, $row2) {
@@ -158,16 +157,6 @@ $color-9: rgba(0, 0, 0, 0.8);
     grid-template-columns: $column1 $column2;
     text-align: center;
 }
-@mixin cover{
-    @include size(100%,300px);
-        @include flex-row-center(column);
-        .profile{
-            @include size(100px,100px);
-            position: relative;
-            z-index: 1;
-            top: -50px;
-        }
-}
 //===buttons===
 @mixin button($width, $height, $border-radius, $fontsize) {
     @include size($width, $height);
@@ -181,8 +170,11 @@ $color-9: rgba(0, 0, 0, 0.8);
 }
 @mixin button-input-share{
     border-radius: 20px 20px 20px 0;
-    background-color: $color-6;
+    background: $color-8;
     border: 0;
+    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+    font-size: 2.5vh;
+    font-style: none;
 }
 //===inputs===
 @mixin input {
@@ -207,6 +199,7 @@ $color-9: rgba(0, 0, 0, 0.8);
 @mixin title($size) {
     @include size-complete;
     position: relative;
+    color: $color-5;
     top: 0.2vh;
     margin: 0;
     @if $size==big{
@@ -215,7 +208,7 @@ $color-9: rgba(0, 0, 0, 0.8);
             @include font("Sifonn", sans-serif , 32px, lighter);
         }
     } @else if $size==small{
-        @include font("Sifonn", sans-serif , 13px, lighter);
+        @include font("Sifonn", sans-serif , 15px, lighter);
         @include desktop-screen(){
             @include font("Sifonn", sans-serif , 14px, lighter);
         }
@@ -230,12 +223,14 @@ $color-9: rgba(0, 0, 0, 0.8);
     }
 }
 @mixin logo-without-slogan {
+    padding: 1%;
     @include grid-2x1(auto,auto);
     .logo {
         @include logo(big);
     }
     .title {
         @include title(big);
+        padding: 12px 0 0 0;
     }
 }
 @mixin logo-with-slogan {
