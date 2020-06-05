@@ -18,15 +18,19 @@ const verificar = () => {
 export default (event) => {
   event.preventDefault();
   const formSignup = event.target;
+  const userName = formSignup['signUp-name'].value;
   const email = formSignup['signUp-email'].value;
   const password = formSignup['signUp-password'].value;
   const terms = formSignup.querySelector('.checkbox').checked;
   const errorTerms = formSignup.querySelector('#error-terms');
-
   if (terms === true) {
     registerUserEmail(email, password)
       .then(() => {
         verificar();
+        const user = auth.currentUser;
+        user.updateProfile({
+          displayName: userName,
+        });
       }).catch((error) => {
         const errorCode = error.code;
         if (errorCode === 'auth/weak-password') {

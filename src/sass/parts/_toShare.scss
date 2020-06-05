@@ -1,8 +1,14 @@
 // POST FORM
 .post-container{
+  width: 100vw;
+  position: absolute;
         @include desktop-screen(){
+          background-color: rgba(0, 0, 0, 0.603);
+          margin: 0;
+            top: 8vh;
+            left: 0;
             @include flexModal(column);
-            @include size(100%, 78vh);
+            @include size(100%, 92vh);
         }
     margin: 0;
     @include size(100vw, 85%);
@@ -13,19 +19,20 @@
         }
     }
     .go-back{
-        text-align: left;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
         border-bottom: solid 2px rgb(195, 193, 193);
         @include size(100vw, 7%);
         @include desktop-screen(){
             display: none;
         }
         i{
-            margin: 1% 2%;
+            margin: 0 2%;
             color: rgb(128, 128, 168);
         }
     }
     section {
-        // border: solid rgb(58, 45, 246);
         @include desktop-screen(){
             @include size(50vw, 75vh);
         }
@@ -37,10 +44,8 @@
                 padding: 2vh;
                 border-radius: 3vh;
                 @include size(50vw, 70vh);
-                box-shadow: 0px 0px 300px -33px rgba(9,3,89,1);
             }
             #option-public{
-            // border: solid rgb(246, 169, 45);
             height: 10vh;
             display: flex;
             flex-direction: row;
@@ -59,7 +64,6 @@
             textarea{
                 font-size: 3vh;
                 border: none;
-                // border: solid red;
                 resize: none;
                 padding: 1vh 3vh;
                 @include size(100vw, 30vh);
@@ -74,7 +78,6 @@
 
             #preview{
                 margin-bottom: 2vh;
-                // border: solid red;
                 @include size(100vw, 22vh);
                 @include desktop-screen(){
                     @include size(50vw, 25vh);
@@ -116,17 +119,17 @@
         li{
             text-align: center;
             margin: 0;
-            padding: 2vh 0;
             a{
-              padding: 2vh 5vh;
+              display: flex;
+              justify-content: center;
+              padding:  2vh 0;
               text-decoration: none;
-                color: cornsilk;
-                width: 40vw;
-                @include desktop-screen(){
-                  padding: 2vh 8vh;
-                }
+              color: cornsilk;
             }
             color: cornsilk;
+        }
+        li:last-child{
+          padding:  2vh 0;
         }
         li:hover{
             background-color: rgba(253, 255, 255, 0.212);
@@ -147,7 +150,6 @@
     @include desktop-screen(){
         justify-content: center;
     }
-    // border: solid #3a2df6;
     @include flex-row-center(column);
     label{
         margin: 2vh 0;
@@ -185,8 +187,7 @@
     @include flexModal(column);
     @include size(100vw, 75vh);
     @include desktop-screen(){
-      border-radius: 3vh;
-      box-shadow: 0px 0px 300px -33px rgba(9,3,89,1);
+        border-radius: 3vh;
         background-color: #ffffff;
         @include size(50vw, 75vh);
     }

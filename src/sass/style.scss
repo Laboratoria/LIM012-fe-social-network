@@ -7,15 +7,7 @@
     @include view;
     @include box-without-border;
     font-family: 'Nanum Gothic', sans-serif;
-    @include desktop-screen(){
-       @include flex-row-center(row);
-    }
  }
-
 i {
    @include icon-white;
-}
-.hide-overflow{
-    overflow: hidden;
-    height: 80vh;
 }
