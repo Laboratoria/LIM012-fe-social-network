@@ -1,8 +1,22 @@
+/* eslint-disable consistent-return */
+
 import { components } from '../view/index.js';
 
-// eslint-disable-next-line consistent-return
+const actualView = document.getElementById('actual-view');
+const homeView = () => {
+  actualView.appendChild(components.home());
+  const lateralLeft = actualView.querySelector('.lateral-left');
+  const lateralRigth = actualView.querySelector('.lateral-rigth');
+  lateralLeft.classList.add('fixed');
+  return lateralRigth.classList.add('margin-left');
+};
+const FormView = () => {
+  const appContent = actualView.querySelector('#route-change-content');
+  const lateralRigth = actualView.querySelector('.lateral-rigth');
+  lateralRigth.classList.add('hide-overflow');
+  return appContent.appendChild(components.postform());
+};
 const changeView = (route) => {
-  const actualView = document.getElementById('actual-view');
   actualView.innerHTML = '';
   switch (route) {
     case '':
@@ -18,7 +32,7 @@ const changeView = (route) => {
       return mainForm.appendChild(components.signup());
     }
     case '#/home': {
-      return actualView.appendChild(components.home());
+      return homeView();
     }
     case '#/profile': {
       actualView.appendChild(components.home());
@@ -29,25 +43,19 @@ const changeView = (route) => {
       return coreRail.appendChild(components.profile());
     }
     case '#/post-content': {
-      actualView.appendChild(components.home());
-      const appContent = actualView.querySelector('#route-change-content');
-      appContent.innerHTML = '';
-      return appContent.appendChild(components.postform());
+      homeView();
+      return FormView();
     }
     case '#/edit-profile': {
-      actualView.appendChild(components.home());
-      const appContent = actualView.querySelector('#route-change-content');
-      appContent.innerHTML = '';
-      appContent.appendChild(components.postform());
+      homeView();
+      FormView();
       const settingsSection = actualView.querySelector('.settings-section');
       settingsSection.innerHTML = '';
       return settingsSection.appendChild(components.editProfile());
     }
     case '#/theme-options': {
-      actualView.appendChild(components.home());
-      const appContent = actualView.querySelector('#route-change-content');
-      appContent.innerHTML = '';
-      appContent.appendChild(components.postform());
+      homeView();
+      FormView();
       const settingsSection = actualView.querySelector('.settings-section');
       settingsSection.innerHTML = '';
       return settingsSection.appendChild(components.themes());

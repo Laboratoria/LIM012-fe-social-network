@@ -142,7 +142,7 @@ $color-9: rgba(0, 0, 0, 0.8);
 
 @mixin view {
     @include size-complete;
-    @include flex-row-center(column);
+    @include flex-row-center(row);
 }
 
 @mixin grid-2x2($column1, $column2, $row1, $row2) {

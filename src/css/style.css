@@ -307,18 +307,11 @@ input[type=checkbox] {
   #home main {
     width: 100vw;
     height: auto;
-    margin: 8vh 0 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center; }
+    margin: 8vh 0 0 0;
+    padding: 0; }
     @media (min-width: 800px) {
       #home main {
-        align-items: unset;
-        min-height: 93vh;
-        flex-direction: row;
-        margin-top: 10vh; } }
+        min-height: 93vh; } }
   #home footer {
     width: 100vw;
     height: 8vh;
@@ -396,8 +389,15 @@ input[type=checkbox] {
 
 .lateral-left {
   display: flex;
+  align-items: center;
   flex-direction: column;
+  justify-content: center;
   display: none; }
+  @media (min-width: 800px) {
+    .lateral-left {
+      width: 38vw;
+      height: auto;
+      display: flex; } }
   .lateral-left div:first-child {
     display: flex;
     flex-direction: row;
@@ -408,7 +408,7 @@ input[type=checkbox] {
     @media (min-width: 800px) {
       .lateral-left div:first-child {
         width: 38vw;
-        height: 45vh; } }
+        height: 43vh; } }
     .lateral-left div:first-child .cover-profile {
       align-self: flex-start;
       width: 92vw;
@@ -416,8 +416,8 @@ input[type=checkbox] {
       background-color: #3d3c3c; }
       @media (min-width: 800px) {
         .lateral-left div:first-child .cover-profile {
-          width: 35vw;
-          height: 35vh; } }
+          width: 36vw;
+          height: 33vh; } }
     .lateral-left div:first-child .profile {
       position: absolute;
       align-self: flex-end;
@@ -437,13 +437,6 @@ input[type=checkbox] {
     @media (min-width: 800px) {
       .lateral-left div:last-child h3, .lateral-left div:last-child h5 {
         margin: 1vh 0; } }
-  @media (min-width: 800px) {
-    .lateral-left {
-      width: 35vw;
-      height: auto;
-      position: fixed;
-      display: flex;
-      flex-direction: column; } }
 
 .lateral-rigth {
   display: flex;
@@ -476,15 +469,22 @@ input[type=checkbox] {
   @media (min-width: 800px) {
     .lateral-rigth {
       width: 40vw;
-      height: auto;
-      margin-left: 38vw; } }
+      height: auto; } }
+
+@media (min-width: 800px) {
+  .fixed {
+    position: fixed;
+    top: 8vh;
+    left: 0; }
+  .margin-left {
+    margin-left: 18vw; } }
 
 #route-change-content {
   width: 100vw;
-  min-height: 84vh; }
-  @media (min-width: 800px) {
-    #route-change-content {
-      min-height: 93vh; } }
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center; }
 
 .show-element-flex {
   display: flex; }
@@ -515,6 +515,13 @@ input[type=checkbox] {
   background-color: #fff;
   width: 100%;
   height: 0; }
+
+.hide-overflow {
+  overflow: hidden;
+  height: 86vh; }
+  @media (min-width: 800px) {
+    .hide-overflow {
+      height: 93vh; } }
 
 @font-face {
   font-family: 'Sifonn';
@@ -643,23 +650,31 @@ li {
   width: 100px; }
 
 .post-container {
+  width: 100vw;
+  position: absolute;
   margin: 0;
   width: 100vw;
   height: 85%; }
   @media (min-width: 800px) {
     .post-container {
+      background-color: rgba(0, 0, 0, 0.603);
+      margin: 0;
+      top: 8vh;
+      left: 0;
       display: flex;
       align-items: center;
       flex-direction: column;
       justify-content: center;
       width: 100%;
-      height: 78vh; } }
+      height: 92vh; } }
   .post-container label {
     margin: 0 2vh; }
     .post-container label i {
       color: #0F0C48; }
   .post-container .go-back {
-    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     border-bottom: solid 2px #c3c1c1;
     width: 100vw;
     height: 7%; }
@@ -667,7 +682,7 @@ li {
       .post-container .go-back {
         display: none; } }
     .post-container .go-back i {
-      margin: 1% 2%;
+      margin: 0 2%;
       color: #8080a8; }
   .post-container section {
     width: 100vw;
@@ -685,8 +700,7 @@ li {
           padding: 2vh;
           border-radius: 3vh;
           width: 50vw;
-          height: 70vh;
-          box-shadow: 0px 0px 300px -33px #090359; } }
+          height: 70vh; } }
       .post-container section form #option-public {
         height: 10vh;
         display: flex;
@@ -753,16 +767,15 @@ li {
     .menu-container ul li {
       text-align: center;
       margin: 0;
-      padding: 2vh 0;
       color: cornsilk; }
       .menu-container ul li a {
-        padding: 2vh 5vh;
+        display: flex;
+        justify-content: center;
+        padding: 2vh 0;
         text-decoration: none;
-        color: cornsilk;
-        width: 40vw; }
-        @media (min-width: 800px) {
-          .menu-container ul li a {
-            padding: 2vh 8vh; } }
+        color: cornsilk; }
+    .menu-container ul li:last-child {
+      padding: 2vh 0; }
     .menu-container ul li:hover {
       background-color: rgba(253, 255, 255, 0.212); }
   @media (min-width: 800px) {
@@ -818,7 +831,6 @@ li {
   @media (min-width: 800px) {
     .themes-options {
       border-radius: 3vh;
-      box-shadow: 0px 0px 300px -33px #090359;
       background-color: #ffffff;
       width: 50vw;
       height: 75vh; } }
@@ -836,54 +848,6 @@ li {
   .themes-options i {
     margin: 0 1vh;
     color: #0F0C48; }
-
-.profile-section {
-  width: 100%;
-  height: 35vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; }
-  @media (min-width: 800px) {
-    .profile-section {
-      width: 35vw;
-      height: 100vh;
-      position: fixed;
-      display: flex;
-      flex-direction: column;
-      border: solid green; } }
-  .profile-section .profile-photos {
-    width: 96%;
-    height: 25vh; }
-    .profile-section .profile-photos .cover-profile {
-      width: 100%;
-      height: 20vh; }
-    .profile-section .profile-photos .profile-main {
-      width: 60px;
-      height: 60px;
-      position: relative;
-      bottom: 6vh; }
-    @media (min-width: 800px) {
-      .profile-section .profile-photos {
-        width: 35vw;
-        height: 30vh;
-        padding: 0;
-        border: solid #00ff37; } }
-  .profile-section .profile-information {
-    width: 96%;
-    height: 10vh;
-    padding-top: 1vh;
-    color: black; }
-    .profile-section .profile-information h3 {
-      font-size: 3vh;
-      color: #0F0C48;
-      font-weight: "Sifonn", sans-serif;
-      margin: 0; }
-    .profile-section .profile-information h5 {
-      font-size: 3vh;
-      color: #0F0C48;
-      font-weight: "Sifonn", sans-serif;
-      margin: 0; }
 
 @font-face {
   font-family: 'Sifonn';
@@ -952,18 +916,12 @@ body, #actual-view, .view {
   height: 100%;
   display: flex;
   text-align: center;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  justify-content: center;
   padding: 0;
   margin: 0;
   outline: none;
   font-family: 'Nanum Gothic', sans-serif; }
-  @media (min-width: 800px) {
-    body, #actual-view, .view {
-      display: flex;
-      text-align: center;
-      flex-direction: row;
-      justify-content: center; } }
 
 i {
   color: #F1F1F1;
@@ -972,7 +930,3 @@ i {
   cursor: pointer; }
   i:hover {
     text-shadow: 0 0 5px #00b2ff, 0 0 10px #00b2ff, 0 0 20px #00b2ff, 0 0 40px #26687f, 0 0 80px #26687f, 0 0 90px #26687f, 0 0 100px #26687f, 0 0 140px #26687f, 0 0 180px #26687f; }
-
-.hide-overflow {
-  overflow: hidden;
-  height: 80vh; }
