@@ -1,6 +1,9 @@
-@import "global.scss", "parts/_loginView.scss", "parts/_singupView.scss", "parts/_homeView.scss", "parts/_singupView.scss", "parts/_publication.scss", "parts/_settings.scss","parts/_toShare.scss", "parts/_profile.scss", "parts/_modal.scss";
+@import "global.scss", "parts/_loginView.scss", "parts/_singupView.scss", "parts/_homeView.scss", "parts/_singupView.scss", "parts/_publication.scss", "parts/_toShare.scss", "parts/_profile.scss", "parts/_modal.scss";
 
  body, #actual-view, .view  {
+   margin: 0;
+   overflow-x: hidden;
+   padding: 0;
     @include view;
     @include box-without-border;
     font-family: 'Nanum Gothic', sans-serif;
