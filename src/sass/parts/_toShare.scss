@@ -96,7 +96,7 @@
         }
         }
 }
-#upload-photo, #change-photo{
+#upload-photo, #change-photo, #change-cover{
     display: none;
 }
 // MENU
@@ -114,14 +114,17 @@
         padding: 0;
         margin: 0;
         li{
-            transition: 2s;
             text-align: center;
             margin: 0;
-            // border: solid red;
             padding: 2vh 0;
             a{
-                text-decoration: none;
+              padding: 2vh 5vh;
+              text-decoration: none;
                 color: cornsilk;
+                width: 40vw;
+                @include desktop-screen(){
+                  padding: 2vh 8vh;
+                }
             }
             color: cornsilk;
         }
