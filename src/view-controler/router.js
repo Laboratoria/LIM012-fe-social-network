@@ -1,7 +1,7 @@
 import { components } from '../view/index.js';
 
 // eslint-disable-next-line consistent-return
-const changeView = (route) => {
+export const changeView = (route, content, docId) => {
   const actualView = document.getElementById('actual-view');
   actualView.innerHTML = '';
   switch (route) {
@@ -32,7 +32,7 @@ const changeView = (route) => {
       actualView.appendChild(components.home());
       const appContent = actualView.querySelector('#route-change-content');
       appContent.innerHTML = '';
-      return appContent.appendChild(components.postform());
+      return appContent.appendChild(components.postform(content, docId));
     }
     case '#/edit-profile': {
       actualView.appendChild(components.home());
@@ -57,5 +57,3 @@ const changeView = (route) => {
     }
   }
 };
-
-export { changeView };

@@ -1,6 +1,7 @@
 import { formPost, collectionUser } from '../firebase/database.js';
+import { editPost } from '../firebase/crud.js';
 
-export default () => {
+export default (content, postId) => {
   const div = document.createElement('div');
   div.className = 'post-container';
   const divcontent = `
@@ -34,6 +35,11 @@ export default () => {
     }
   };
   const postForm = div.querySelector('#post-form');
+  postForm['post-content'].value = (typeof content === 'undefined') ? '' : content;
+
+  if (postForm['post-content'].value.length > 0) {
+    div.querySelector('.btn-submit').textContent = 'EDIT';
+  }
   // SHOW PREVIEW OF SELECTED IMG
   const preview = postForm.querySelector('#preview');
   const uploadPhoto = postForm.querySelector('#upload-photo');
@@ -47,20 +53,31 @@ export default () => {
       storage.ref(refPath).put(file);
       preview.innerHTML = `<img src=${URL.createObjectURL(file)} id="preview-img" alt="preview">`;
     });
+
     // FORM POST FUNCTION
     postForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const content = postForm['post-content'].value;
-      const likes = 0;
-      const visibility = postForm['visibility-select'].value;
-      const date = firebase.firestore.FieldValue.serverTimestamp();
-      const photo = postForm['upload-photo'].name;
-      formPost(content, likes, visibility, date, photo)
-        .then(docRef => collectionUser(user.uid, docRef.id))
-        .then(() => {
-          postForm.reset();
-          window.history.back();
-        });
+      const contentPost = postForm['post-content'].value;
+      if (div.querySelector('.btn-submit').textContent === 'POST') {
+        const likes = 0;
+        const visibility = postForm['visibility-select'].value;
+        const date = firebase.firestore.FieldValue.serverTimestamp();
+        const photo = postForm['upload-photo'].name;
+        console.log('only post');
+        formPost(contentPost, likes, visibility, date, photo)
+          .then((doc) => {
+            collectionUser(user.uid, doc.id);
+          })
+          .then(() => {
+            postForm.reset();
+            window.location.hash = '#/home';
+          });
+      } else if (div.querySelector('.btn-submit').textContent === 'EDIT') {
+        editPost(user.uid, postId, contentPost)
+          .then(() => {
+            postForm.reset();
+          });
+      }
     });
   });
   return div;
