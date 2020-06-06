@@ -8,6 +8,11 @@
     @include box-without-border;
     font-family: 'Nanum Gothic', sans-serif;
  }
+ .view{
+  @include desktop-screen(){
+    @include flexModal(row);
+}
+ }
 i {
    @include icon-white;
 }

@@ -38,6 +38,8 @@
         }
         @include size(100vw, 93%);
         form{
+            @include flexModal(column);
+            justify-content: space-evenly;
             @include size(100%, 75vh);
             @include desktop-screen(){
                 background-color: #ffffff;
@@ -46,11 +48,15 @@
                 @include size(50vw, 70vh);
             }
             #option-public{
-            height: 10vh;
+            @include size(94vw, 10vh);
             display: flex;
             flex-direction: row;
             align-items: center;
             padding: 0 1vh;
+            @include desktop-screen(){
+              @include size(50vw, 10vh);
+
+            }
                 p{
                 font-size: 3vh;
                 margin: 0 2vh;
@@ -66,7 +72,7 @@
                 border: none;
                 resize: none;
                 padding: 1vh 3vh;
-                @include size(100vw, 30vh);
+                @include size(85vw, 23vh);
                 @include desktop-screen(){
                     @include size(47vw, 25vh);
                 }
@@ -77,7 +83,7 @@
             }
 
             #preview{
-                margin-bottom: 2vh;
+                @include flexModal(column);
                 @include size(100vw, 22vh);
                 @include desktop-screen(){
                     @include size(50vw, 25vh);

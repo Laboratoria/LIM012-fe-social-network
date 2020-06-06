@@ -2,7 +2,6 @@
 
 //===cover-container===
 .cover-container {
-    
     @include size(100vw, 20vh);
     div {
         @include add-image(url(../images/cover.png));
