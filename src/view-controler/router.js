@@ -16,7 +16,7 @@ const FormView = () => {
   lateralRigth.classList.add('hide-overflow');
   return appContent.appendChild(components.postform());
 };
-const changeView = (route) => {
+export const changeView = (route, content, docId) => {
   actualView.innerHTML = '';
   switch (route) {
     case '':
@@ -44,7 +44,10 @@ const changeView = (route) => {
     }
     case '#/post-content': {
       homeView();
-      return FormView();
+      const appContent = actualView.querySelector('#route-change-content');
+      const lateralRigth = actualView.querySelector('.lateral-rigth');
+      lateralRigth.classList.add('hide-overflow');
+      return appContent.appendChild(components.postform(content, docId));
     }
     case '#/edit-profile': {
       homeView();
@@ -65,5 +68,3 @@ const changeView = (route) => {
     }
   }
 };
-
-export { changeView };
