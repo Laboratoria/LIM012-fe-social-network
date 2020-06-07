@@ -65,7 +65,7 @@ export default (content, postId) => {
         const photo = postForm['upload-photo'].name;
         const userPhoto = user.photoURL;
         const userName = user.displayName;
-        console.log('only post');
+        console.log(userPhoto);
         formPost(contentPost, likes, visibility, date, photo, userPhoto, userName)
           .then((doc) => {
             collectionUser(user.uid, doc.id);

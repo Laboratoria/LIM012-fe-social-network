@@ -43,7 +43,7 @@ export const renderPost = (docs, userId) => {
     });
 
     const profilePhoto = li.querySelector('.profile');
-    if (doc.userPhoto !== undefined) {
+    if (doc.userPhoto) {
       profilePhoto.src = doc.userPhoto;
     }
     const modalOptions = li.querySelector('.modal-options');

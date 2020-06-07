@@ -38,6 +38,30 @@ export default () => {
         if (inputUserName !== '') {
           user.updateProfile({
             displayName: inputUserName,
+          }).then(() => {
+            db.collection('users').doc(user.uid).get().then((docId) => {
+              const postIds = docId.data().posts;
+              const ids = Object.keys(postIds);
+              ids.forEach((element) => {
+                postIds[element].userName = inputUserName;
+              });
+              db.collection('users').doc(user.uid).update({
+                posts: postIds,
+              });
+              return ids;
+            }).then((ids) => {
+              console.log('hi')
+              db.collection('posts').get().then((doc) => {
+                console.log(doc);
+                doc.docs.forEach((post) => {
+                  if (ids.some(id => id === post.id)) {
+                    db.collection('posts').doc(post.id).update({
+                      userName: inputUserName,
+                    });
+                  }
+                });
+              });
+            });
           });
         }
         if (inputBio !== '') {
@@ -49,6 +73,29 @@ export default () => {
           storage.ref().child(changePhoto.name).getDownloadURL().then((url) => {
             user.updateProfile({
               photoURL: url,
+            }).then(() => {
+              db.collection('users').doc(user.uid).get().then((docId) => {
+                const postIds = docId.data().posts;
+                const ids = Object.keys(postIds);
+                ids.forEach((element) => {
+                  postIds[element].userPhoto = url;
+                });
+                db.collection('users').doc(user.uid).update({
+                  posts: postIds,
+                });
+                return ids;
+              }).then((ids) => {
+                db.collection('posts').get().then((doc) => {
+                  console.log(doc);
+                  doc.docs.forEach((post) => {
+                    if (ids.some(id => id === post.id)) {
+                      db.collection('posts').doc(post.id).update({
+                        userPhoto: url,
+                      });
+                    }
+                  });
+                });
+              });
             });
           });
         }
