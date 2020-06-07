@@ -599,6 +599,10 @@ input[type=checkbox] {
     font-size: 13px;
     color: #0F0C48;
     font-weight: "Sifonn", sans-serif; }
+    @media (min-width: 800px) {
+      .publication .main {
+        width: 38vw;
+        height: auto; } }
   .publication .footer {
     width: 93%;
     height: 30%;
@@ -622,6 +626,10 @@ input[type=checkbox] {
 .photo-post {
   width: 100vw;
   height: auto; }
+  @media (min-width: 800px) {
+    .photo-post {
+      width: 40vw;
+      height: auto; } }
 
 .modal-options {
   display: flex;

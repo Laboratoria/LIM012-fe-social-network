@@ -1,5 +1,4 @@
 .publication{
-    // border: solid red;
     @include size(100%, auto);
     @include border-radius(mix,10px);
     display: flex;
@@ -13,7 +12,6 @@
       @include icon-black;
           }
     .header{
-        // border: solid red;
         @include size(100%,30%);
         display: flex;
         justify-content: space-around;
@@ -28,9 +26,11 @@
         word-wrap: break-word;
         @include size(92vw, auto);
         margin: 0;
-        // border: solid rgb(0, 17, 255);
         padding: 2vh;
         @include post-text;
+        @include desktop-screen() {
+          @include size(38vw, auto);
+        }
     }
     .footer{
         @include size(93%,30%);
@@ -53,6 +53,9 @@
 }
 .photo-post{
   @include size(100vw, auto);
+  @include desktop-screen() {
+    @include size(40vw, auto);
+  }
 }
  .modal-options{
    @include flexModal(column);
