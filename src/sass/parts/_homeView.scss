@@ -16,9 +16,6 @@
       @include size(100vw, auto);
       margin: 8vh 0 0 0;
       padding: 0;
-        @include desktop-screen(){
-          min-height: 93vh;
-        }
     }
     footer{
         @include bar;
@@ -192,21 +189,16 @@
   display: flex;
 }
 .core-rail{
-    @include size(100%, 100%);
+    @include size(100%, auto);
     margin: 0;
     padding: 0;
+    padding-bottom: 8vh;
+    @include desktop-screen() {
+      padding: 0;
+    }
     ul{
-        @include size(100%, 100%);
+        @include size(100%, auto);
         padding: 0;
-        li{
-            width: 100%;
-            height: auto;
-            text-align: left;
-            i{
-                @include icon-black;
-                margin: 2% 5px 2% 0;
-            }
-         } 
     }
 }
 .post-container{
@@ -219,8 +211,8 @@
 }
 .hide-overflow{
     overflow: hidden;
-    height: 86vh;
+    height: 84vh; 
     @include desktop-screen(){
-      height: 93vh;
+      height: 92vh;
     }
 }

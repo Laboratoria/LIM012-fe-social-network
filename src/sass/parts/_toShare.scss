@@ -1,17 +1,14 @@
 // POST FORM
 .post-container{
-  width: 100vw;
+  @include size(100vw, 84.6vh);
+  margin: 0;
   position: absolute;
         @include desktop-screen(){
           background-color: rgba(0, 0, 0, 0.603);
-          margin: 0;
             top: 8vh;
-            left: 0;
             @include flexModal(column);
-            @include size(100%, 92vh);
+            @include size(100vw, 92vh);
         }
-    margin: 0;
-    @include size(100vw, 85%);
     label{
         margin: 0 2vh;
         i{
@@ -23,38 +20,38 @@
         align-items: center;
         justify-content: flex-start;
         border-bottom: solid 2px rgb(195, 193, 193);
-        @include size(100vw, 7%);
+        @include size(100vw, 6vh);
         @include desktop-screen(){
             display: none;
         }
         i{
-            margin: 0 2%;
+            margin-left: 1vh;
+            font-size: 3.4vh;
             color: rgb(128, 128, 168);
         }
     }
     section {
+      @include size(100vw, 78vh);
         @include desktop-screen(){
             @include size(50vw, 75vh);
         }
-        @include size(100vw, 93%);
         form{
+          @include size(100vw, 78vh);
             @include flexModal(column);
             justify-content: space-evenly;
-            @include size(100%, 75vh);
             @include desktop-screen(){
                 background-color: #ffffff;
                 padding: 2vh;
                 border-radius: 3vh;
-                @include size(50vw, 70vh);
+                @include size(50vw, 75vh);
             }
             #option-public{
-            @include size(94vw, 10vh);
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            padding: 0 1vh;
+             @include size(94vw, 10vh);
+             display: flex;
+             flex-direction: row;
+             align-items: center;
             @include desktop-screen(){
-              @include size(50vw, 10vh);
+              @include size(48vw, 10vh);
 
             }
                 p{
@@ -71,8 +68,7 @@
                 font-size: 3vh;
                 border: none;
                 resize: none;
-                padding: 1vh 3vh;
-                @include size(85vw, 23vh);
+                @include size(90vw, 23vh);
                 @include desktop-screen(){
                     @include size(47vw, 25vh);
                 }
@@ -93,7 +89,6 @@
                     @include size(auto, 25vh);
                 }
             }
-
             button{
                 padding: 2vh;
                 width: 15vh;
