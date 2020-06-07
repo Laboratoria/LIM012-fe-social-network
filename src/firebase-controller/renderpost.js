@@ -31,6 +31,7 @@ export const renderPost = (docs, userId) => {
     <i class="far fa-heart"></i>
     <i class="far fa-comments"></i>
   </div>`;
+
     const userPostContent = li.querySelector('#user-post-content');
     const options = li.querySelector('.fa-ellipsis-h');
     const modalOptions = li.querySelector('.modal-options');
@@ -48,11 +49,13 @@ export const renderPost = (docs, userId) => {
     }
     const btnDelete = li.querySelector('.delete');
     btnDelete.addEventListener('click', () => deletePost(doc.id, userId));
+
     const btnEdit = li.querySelector('.edit');
     btnEdit.addEventListener('click', () => {
       changeView('#/post-content', post.content, doc.id);
       console.log('ESTE ES EL ID '+ doc.id);
     });
+
     return li;
   });
   return posts;

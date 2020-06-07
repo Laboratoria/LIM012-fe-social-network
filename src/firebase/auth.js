@@ -21,3 +21,5 @@ export const loginGoogle = () => {
 export const logout = () => {
   auth.signOut().then();
 };
+
+export const currentUser = () => firebase.auth().currentUser;
