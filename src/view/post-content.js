@@ -63,14 +63,16 @@ export default (content, postId) => {
         const visibility = postForm['visibility-select'].value;
         const date = firebase.firestore.FieldValue.serverTimestamp();
         const photo = postForm['upload-photo'].name;
+        const userPhoto = user.photoURL;
+        const userName = user.displayName;
         console.log('only post');
-        formPost(contentPost, likes, visibility, date, photo)
+        formPost(contentPost, likes, visibility, date, photo, userPhoto, userName)
           .then((doc) => {
             collectionUser(user.uid, doc.id);
           })
           .then(() => {
             postForm.reset();
-            window.location.hash = '#/home';
+            window.history.back();
           });
       } else if (div.querySelector('.btn-submit').textContent === 'EDIT') {
         editPost(user.uid, postId, contentPost)

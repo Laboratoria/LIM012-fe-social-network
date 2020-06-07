@@ -74,7 +74,10 @@ export default () => {
         if (publicPosts !== null) {
           publicPosts.innerHTML = '';
           // passing an array of documents
-          renderPost(postsDocuments.docs, user.uid).forEach((li) => {
+          const documents = postsDocuments.docs.map((doc) => {
+            return { id: doc.id, ...doc.data() };
+          });
+          renderPost(documents, user.uid).forEach((li) => {
             publicPosts.appendChild(li);
           });
         }

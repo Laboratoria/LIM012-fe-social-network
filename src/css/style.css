@@ -565,26 +565,20 @@ input[type=checkbox] {
       grid-template-columns: 60% 40%;
       text-align: center; } }
 
-li {
-  width: 100%;
-  height: auto;
-  text-align: left; }
-  li i {
-    color: #0F0C48;
-    font-size: 17px;
-    margin: 2% 5px 2% 0; }
-
 .publication {
   width: 100%;
   height: auto;
   border-radius: 10px 0 10px 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   background-color: #fff;
   box-shadow: 0px 0px 25px -11px #292829;
   margin: 3vh 0;
   padding: 0; }
+  .publication i {
+    color: #0F0C48;
+    font-size: 17px; }
   .publication .header {
     width: 100%;
     height: 30%;
@@ -592,30 +586,24 @@ li {
     justify-content: space-around;
     padding-top: 1vh; }
     .publication .header img {
-      width: 30px;
-      height: 30px;
       margin: 2px 2px;
       width: 36px;
       height: 36px;
       margin-top: 3px; }
   .publication .main {
-    width: 75%;
+    word-wrap: break-word;
+    width: 92vw;
     height: auto;
-    margin: 5% 5%;
+    margin: 0;
     padding: 2vh;
-    width: 100%;
-    height: auto;
-    font-size: 3vh;
+    font-size: 13px;
     color: #0F0C48;
-    font-weight: "Sifonn", sans-serif;
-    text-align: left; }
+    font-weight: "Sifonn", sans-serif; }
   .publication .footer {
     width: 93%;
     height: 30%;
-    width: 100%;
-    height: 30%;
+    padding-left: 1vh;
     display: flex;
-    margin-left: 7%;
     justify-content: flex-start; }
     .publication .footer i {
       padding: 0 1vh 1vh;
@@ -629,20 +617,31 @@ li {
   height: 100%;
   text-align: left;
   color: #0F0C48;
-  font-size: 10px; }
+  font-size: 12px; }
+
+.photo-post {
+  width: 100vw;
+  height: auto; }
 
 .modal-options {
-  width: 0;
-  height: 50px;
-  color: #F1F1F1;
-  position: relative;
-  top: 5px;
-  background-color: #373839;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 0px;
+  height: 40px;
+  position: absolute;
+  right: 3vw;
+  margin-top: 4vh;
+  padding-left: 1vw;
+  font-size: 12px;
   overflow: hidden;
   transition: 0.25s; }
 
 .options-appear {
-  width: 100px; }
+  width: 80px;
+  box-shadow: 0px 0px 2px 0px #666366;
+  background-color: #fdfdfd; }
 
 .post-container {
   width: 100vw;
@@ -914,7 +913,6 @@ li {
 
 body, #actual-view, .view {
   margin: 0;
-  overflow-x: hidden;
   padding: 0;
   width: 100%;
   height: 100%;
