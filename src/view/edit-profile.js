@@ -1,3 +1,4 @@
+import { updateBothCollections } from '../firebase/crud.js';
 
 export default () => {
   const form = document.createElement('form');
@@ -39,29 +40,7 @@ export default () => {
           user.updateProfile({
             displayName: inputUserName,
           }).then(() => {
-            db.collection('users').doc(user.uid).get().then((docId) => {
-              const postIds = docId.data().posts;
-              const ids = Object.keys(postIds);
-              ids.forEach((element) => {
-                postIds[element].userName = inputUserName;
-              });
-              db.collection('users').doc(user.uid).update({
-                posts: postIds,
-              });
-              return ids;
-            }).then((ids) => {
-              console.log('hi')
-              db.collection('posts').get().then((doc) => {
-                console.log(doc);
-                doc.docs.forEach((post) => {
-                  if (ids.some(id => id === post.id)) {
-                    db.collection('posts').doc(post.id).update({
-                      userName: inputUserName,
-                    });
-                  }
-                });
-              });
-            });
+            updateBothCollections(user.uid, 'userName', inputUserName);
           });
         }
         if (inputBio !== '') {
@@ -74,28 +53,7 @@ export default () => {
             user.updateProfile({
               photoURL: url,
             }).then(() => {
-              db.collection('users').doc(user.uid).get().then((docId) => {
-                const postIds = docId.data().posts;
-                const ids = Object.keys(postIds);
-                ids.forEach((element) => {
-                  postIds[element].userPhoto = url;
-                });
-                db.collection('users').doc(user.uid).update({
-                  posts: postIds,
-                });
-                return ids;
-              }).then((ids) => {
-                db.collection('posts').get().then((doc) => {
-                  console.log(doc);
-                  doc.docs.forEach((post) => {
-                    if (ids.some(id => id === post.id)) {
-                      db.collection('posts').doc(post.id).update({
-                        userPhoto: url,
-                      });
-                    }
-                  });
-                });
-              });
+              updateBothCollections(user.uid, 'userPhoto', url);
             });
           });
         }

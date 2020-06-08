@@ -40,6 +40,8 @@ export const changeView = (route, content, docId) => {
     }
     case '#/profile': {
       actualView.appendChild(components.home());
+      const body = document.querySelector('body');
+      body.classList.remove('hide-overflow');
       const coreRail = actualView.querySelector('.core-rail');
       const profileSection = actualView.querySelector('#profile-section');
       profileSection.classList.add('show-element-flex');
