@@ -5,17 +5,19 @@
     flex-direction: column;
     align-items: flex-start;
     background-color: #fff;
+    box-sizing: border-box;
     box-shadow: 0px 0px 25px -11px rgba(41,40,41,1);
     margin: 3vh 0;
     padding: 0;
     i{
+      margin: 0 1vh;
       @include icon-black;
           }
     .header{
         @include size(100%,30%);
         display: flex;
-        justify-content: space-around;
-        padding-top: 1vh;
+        align-items: center;
+        @include padding(1vh, 0, 0, 1vh);
         img {
             margin:2px 2px;
             @include size(36px, 36px);
@@ -26,7 +28,7 @@
         word-wrap: break-word;
         @include size(92vw, auto);
         margin: 0;
-        padding: 2vh;
+        @include padding(2vh, 2vh, 2vh, 2vh);
         @include post-text;
         @include desktop-screen() {
           @include size(38vw, auto);
@@ -38,18 +40,20 @@
         display: flex;
         justify-content: flex-start;
         i{
-            padding: 0 1vh 1vh;
+            @include padding(0vh, 1vh, 1vh, 1vh);
             @include icon-black;
         }
     }
 }
 .date{
-    @include size(50%,70%);
-    // border: solid red;
-    @include size(70%,100%);
+    @include size(78vw ,100%);
     text-align: left;
     color: $color-1;
     font-size: 12px;
+    padding-left: 1vh;
+    @include desktop-screen() {
+      width: 34vw;
+    }
 }
 .photo-post{
   @include size(100vw, auto);
@@ -60,16 +64,15 @@
  .modal-options{
    @include flexModal(column);
     @include size(0px,40px);
-    position: absolute;
-    right:3vw;
-    margin-top: 4vh;
-    padding-left: 1vw;
+    position: relative;
+    @include padding(0vh, 0vh, 0vh, 1vh);
+    margin-left: 4vw;
     font-size: 12px;
     overflow: hidden;
     transition: 0.25s;
  }
  .options-appear{
-    width: 80px;
+    width: 100px;
     box-shadow: 0px 0px 2px 0px rgba(102,99,102,1);
     background-color: #fdfdfd;
 }

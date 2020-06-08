@@ -12,7 +12,7 @@ const homeView = () => {
   body.classList.remove('hide-overflow');
   return lateralRigth.classList.add('margin-left');
 };
-const FormView = () => {
+const formView = () => {
   const appContent = actualView.querySelector('#route-change-content');
   const lateralRigth = actualView.querySelector('.lateral-rigth');
   lateralRigth.classList.add('hide-overflow');
@@ -40,6 +40,8 @@ export const changeView = (route, content, docId) => {
     }
     case '#/profile': {
       actualView.appendChild(components.home());
+      const body = document.querySelector('body');
+      body.classList.remove('hide-overflow');
       const coreRail = actualView.querySelector('.core-rail');
       const profileSection = actualView.querySelector('#profile-section');
       profileSection.classList.add('show-element-flex');
@@ -55,14 +57,14 @@ export const changeView = (route, content, docId) => {
     }
     case '#/edit-profile': {
       homeView();
-      FormView();
+      formView();
       const settingsSection = actualView.querySelector('.settings-section');
       settingsSection.innerHTML = '';
       return settingsSection.appendChild(components.editProfile());
     }
     case '#/theme-options': {
       homeView();
-      FormView();
+      formView();
       const settingsSection = actualView.querySelector('.settings-section');
       settingsSection.innerHTML = '';
       return settingsSection.appendChild(components.themes());
