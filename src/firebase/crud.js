@@ -31,10 +31,11 @@ export const editPost = (userId, postId, newContent) => {
   })
     .then(() => {
       console.log('Document successfully updated!');
-      window.location.hash = '#/profile';
+      window.history.back();
     })
     .catch((error) => {
     // The document probably doesn't exist.
       console.error('Error updating document: ', error);
+      window.history.back();
     });
 };

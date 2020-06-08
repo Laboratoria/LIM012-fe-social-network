@@ -4,8 +4,8 @@ import { changeView } from '../view-controler/router.js';
 
 export const renderPost = (docs, userId) => {
   const posts = docs.map((doc) => {
-    const post = doc.data();
-    const time = post.date;
+    const post = doc;
+    const time = doc.date;
     const getdate = time.toDate();
     const shortDate = getdate.toDateString();
     const shortTime = getdate.toLocaleTimeString();
@@ -15,7 +15,7 @@ export const renderPost = (docs, userId) => {
   <div class="header">
     <img class="profile" src="./images/profile-img-woman.png">
     <div class="date">
-      Name<br>${shortTime} ${shortDate} <i class="fas fa-globe-americas privacity"></i>
+    <b>${post.userName}</b><br>${shortTime} ${shortDate} <i class="fas fa-globe-americas privacity"></i>
     </div>
     <div class="modal-options">
       <ul>
@@ -29,12 +29,24 @@ export const renderPost = (docs, userId) => {
     <div class="main">${post.content}</div>
   </div>
   <div class="footer">
-    <i class="far fa-heart"></i>
+    <i class="far fa-heart"></i><span>${post.likes}</span>
     <i class="far fa-comments"></i>
   </div>`;
 
     const userPostContent = li.querySelector('#user-post-content');
     const options = li.querySelector('.fa-ellipsis-h');
+    db.collection('users').doc(userId).get().then((docId) => {
+      const postIds = docId.data().posts;
+      const ids = Object.keys(postIds);
+      if (!ids.some(id => id === doc.id)) {
+        options.style.display = 'none';
+      }
+    });
+
+    const profilePhoto = li.querySelector('.profile');
+    if (doc.userPhoto) {
+      profilePhoto.src = doc.userPhoto;
+    }
     const modalOptions = li.querySelector('.modal-options');
     options.addEventListener('click', () => {
       modalOptions.classList.toggle('options-appear');
@@ -54,7 +66,9 @@ export const renderPost = (docs, userId) => {
     const btnEdit = li.querySelector('.edit');
     btnEdit.addEventListener('click', () => {
       changeView('#/post-content', post.content, doc.id);
+
       console.log(`ESTE ES EL ID ${doc.id}`);
+
     });
 
     return li;

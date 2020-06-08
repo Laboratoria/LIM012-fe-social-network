@@ -69,13 +69,28 @@ export default () => {
   logoutBtn.addEventListener('click', logout);
   auth.onAuthStateChanged((user) => {
     if (user) {
+      const profileH3 = div.querySelector('.profile-information h3');
+      const profileH5 = div.querySelector('.profile-information h5');
+      profileH3.innerHTML = user.displayName;
+      db.collection('users').doc(user.uid).get().then((doc) => {
+        profileH5.innerHTML = doc.data().bio;
+      });
+      const profileImg = div.querySelectorAll('img[src="./images/profile-img-woman.png"]');
+      if (user.photoURL) {
+        profileImg.forEach((tag) => {
+          tag.src = user.photoURL;
+        });
+      }
       // FIRESTORE GET DATA TO SHOW IN HOME VIEW
       const publicPosts = div.querySelector('#public-posts');
       db.collection('posts').where('visibility', '==', 'public').orderBy('date', 'desc').onSnapshot((postsDocuments) => {
         if (publicPosts !== null) {
           publicPosts.innerHTML = '';
           // passing an array of documents
-          renderPost(postsDocuments.docs, user.uid).forEach((li) => {
+          const documents = postsDocuments.docs.map((doc) => {
+            return { id: doc.id, ...doc.data() };
+          });
+          renderPost(documents, user.uid).forEach((li) => {
             publicPosts.appendChild(li);
           });
         }
