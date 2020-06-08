@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { deletePost } from '../firebase/crud.js';
 import { changeView } from '../view-controler/router.js';
 
@@ -65,7 +66,9 @@ export const renderPost = (docs, userId) => {
     const btnEdit = li.querySelector('.edit');
     btnEdit.addEventListener('click', () => {
       changeView('#/post-content', post.content, doc.id);
-      console.log('ESTE ES EL ID ' + doc.id);
+
+      console.log(`ESTE ES EL ID ${doc.id}`);
+
     });
 
     return li;

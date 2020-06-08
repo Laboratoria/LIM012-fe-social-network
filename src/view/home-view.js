@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { logout } from '../firebase/auth.js';
 import { renderPost } from '../firebase-controller/renderpost.js';
 
