@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-cycle
 import { renderPost } from '../firebase-controller/renderpost.js';
 import { onlyMyPost } from '../firebase/database.js';
 

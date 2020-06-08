@@ -50,7 +50,6 @@ export default () => {
               });
               return ids;
             }).then((ids) => {
-              console.log('hi')
               db.collection('posts').get().then((doc) => {
                 console.log(doc);
                 doc.docs.forEach((post) => {
@@ -86,7 +85,6 @@ export default () => {
                 return ids;
               }).then((ids) => {
                 db.collection('posts').get().then((doc) => {
-                  console.log(doc);
                   doc.docs.forEach((post) => {
                     if (ids.some(id => id === post.id)) {
                       db.collection('posts').doc(post.id).update({
