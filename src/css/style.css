@@ -573,10 +573,12 @@ input[type=checkbox] {
   flex-direction: column;
   align-items: flex-start;
   background-color: #fff;
+  box-sizing: border-box;
   box-shadow: 0px 0px 25px -11px #292829;
   margin: 3vh 0;
   padding: 0; }
   .publication i {
+    margin: 0 1vh;
     color: #0F0C48;
     font-size: 17px; }
   .publication .header {
@@ -643,20 +645,16 @@ input[type=checkbox] {
   justify-content: center;
   width: 0px;
   height: 40px;
-  position: absolute;
-  right: 3vw;
+  position: relative;
   padding: 0vh 0vh 0vh 1vh;
   box-sizing: border-box;
-  margin-top: 4vh;
+  margin-left: 4vw;
   font-size: 12px;
   overflow: hidden;
   transition: 0.25s; }
-  @media (min-width: 800px) {
-    .modal-options {
-      right: 20vw; } }
 
 .options-appear {
-  width: 80px;
+  width: 100px;
   box-shadow: 0px 0px 2px 0px #666366;
   background-color: #fdfdfd; }
 

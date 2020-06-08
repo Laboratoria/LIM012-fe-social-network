@@ -58,14 +58,13 @@ export default (content, postId) => {
     postForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const contentPost = postForm['post-content'].value;
+      const visibility = postForm['visibility-select'].value;
       if (div.querySelector('.btn-submit').textContent === 'POST') {
         const likes = 0;
-        const visibility = postForm['visibility-select'].value;
         const date = firebase.firestore.FieldValue.serverTimestamp();
         const photo = postForm['upload-photo'].name;
         const userPhoto = user.photoURL;
         const userName = user.displayName;
-        console.log(userPhoto);
         formPost(contentPost, likes, visibility, date, photo, userPhoto, userName)
           .then((doc) => {
             collectionUser(user.uid, doc.id);
@@ -75,7 +74,7 @@ export default (content, postId) => {
             window.history.back();
           });
       } else if (div.querySelector('.btn-submit').textContent === 'EDIT') {
-        editPost(user.uid, postId, contentPost)
+        editPost(user.uid, postId, contentPost, visibility)
           .then(() => {
             postForm.reset();
           });
