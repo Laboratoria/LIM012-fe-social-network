@@ -211,7 +211,7 @@
 }
 .hide-overflow{
     overflow: hidden;
-    height: 84vh; 
+    height: 100vh; 
     @include desktop-screen(){
       height: 92vh;
     }

@@ -513,7 +513,7 @@ input[type=checkbox] {
 
 .hide-overflow {
   overflow: hidden;
-  height: 84vh; }
+  height: 100vh; }
   @media (min-width: 800px) {
     .hide-overflow {
       height: 92vh; } }
