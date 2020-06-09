@@ -1,11 +1,12 @@
 // POST FORM
 .post-container{
-  @include size(100vw, 84.6vh);
+  box-sizing: border-box;
+  @include size(100vw, 86vh);
   margin: 0;
+  top: 8vh;
   position: absolute;
         @include desktop-screen(){
           background-color: rgba(0, 0, 0, 0.603);
-            top: 8vh;
             @include flexModal(column);
             @include size(100vw, 92vh);
         }
