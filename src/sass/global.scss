@@ -56,7 +56,9 @@ $color-9: rgba(0, 0, 0, 0.8);
 
     } @else if $position==mix{
         border-radius: $size-border 0 $size-border 0;
-    } 
+    } @else if $position==all{
+        border-radius: $size-border $size-border $size-border $size-border;
+    }
 }
 @mixin border($size,$color){
     border: $size solid $color;
