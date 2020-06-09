@@ -6,8 +6,17 @@ const init = () => {
     changeView(window.location.hash);
   });
 };
-
-window.addEventListener('load', init);
+window.addEventListener('load', () => {
+  init();
+  setTimeout(() => {
+    const viewheight = window.visualViewport.height;
+    const viewwidth = window.visualViewport.width;
+    console.log(viewwidth);
+    console.log(viewheight);
+    const viewport = document.querySelector('meta[name=viewport]');
+    viewport.setAttribute('content', 'height=' + viewheight + 'px, width=' + viewwidth + 'px, initial-scale=1.0');
+  }, 300);
+});
 auth.onAuthStateChanged((user) => {
   if (user) {
     window.location.hash = '#/home';
