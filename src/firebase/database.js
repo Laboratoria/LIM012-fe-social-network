@@ -1,7 +1,6 @@
 export const collectionUser = (userId, docId) => {
   db.collection('users').doc(userId).get().then((docUser) => {
     const postsInformation = docUser.data().posts;
-    console.log(postsInformation);
     db.collection('posts').doc(docId).get().then((docPost) => {
       postsInformation[docId] = docPost.data();
       db.collection('users').doc(userId).update({
@@ -27,6 +26,23 @@ export const onlyMyPost = (callback) => {
     }
   });
 };
+export const getComment = (userId, callback) => {
+  db.collection('users').doc(userId).get().then((docId) => {
+    db.collection('comments').orderBy('date', 'desc').onSnapshot((comments) => {
+      db.collection('posts').get()
+        .then((posts) => {
+          let postIds = posts.docs.map(post => post.id);
+          if (window.location.hash === '#/profile') {
+            postIds = Object.keys(docId.data().posts);
+          }
+          postIds.forEach((postId) => {
+            const postComments = comments.docs.filter(comment => comment.data().postId === postId);
+            callback(postComments, postId, postComments.length);
+          });
+        });
+    });
+  });
+};
 
 export const formPost = (content, likes, visibility, date, photo, userPhoto, userName) => db.collection('posts').add({
   content,
@@ -34,6 +50,15 @@ export const formPost = (content, likes, visibility, date, photo, userPhoto, use
   visibility,
   date,
   photo,
+  userPhoto,
+  userName,
+});
+
+export const formComment = (postId, content, likes, date, userPhoto, userName) => db.collection('comments').add({
+  postId,
+  content,
+  likes,
+  date,
   userPhoto,
   userName,
 });

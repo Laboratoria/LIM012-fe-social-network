@@ -1,6 +1,7 @@
 /* eslint-disable import/no-cycle */
 import { deletePost } from '../firebase/crud.js';
 import { changeView } from '../view-controler/router.js';
+import { formComment } from '../firebase/database.js';
 
 export const renderPost = (docs, userId) => {
   const posts = docs.map((doc) => {
@@ -30,8 +31,59 @@ export const renderPost = (docs, userId) => {
   </div>
   <div class="footer">
     <i class="far fa-heart"></i><span>${post.likes}</span>
-    <i class="far fa-comments"></i>
-  </div>`;
+    <i class="far fa-comments"></i><span id= "size-${post.id}"></span>
+  </div>
+  <div class="hide new-comment">
+    <section>
+      <img src="./images/profile-img-woman.png" class= "margin user-comment">
+      <input type="text" placeholder="Agrega un comentario.." class="inputComment">
+      <i class="fab fa-telegram-plane icon-send"></i>
+    </section>
+    <div id=${post.id} class="hide container-comments"></div>
+  </div>
+  `;
+
+    const clickComments = li.querySelector('.fa-comments');
+    const inputToComment = li.querySelector('.inputComment');
+    clickComments.addEventListener('click', () => {
+      const newComments = li.querySelector('.new-comment');
+      newComments.classList.toggle('hide');
+      // ------------------------------------
+      const containerComments = li.querySelector('.container-comments');
+      containerComments.classList.remove('hide');
+    });
+    const clickLikes = li.querySelector('.fa-heart');
+    clickLikes.addEventListener('click', () => {
+      clickLikes.classList.toggle('efect-like');
+      console.log(clickLikes.classList.contains('efect-like'));
+      if (clickLikes.classList.contains('efect-like')) {
+        console.log(post.likes + 1);
+        db.collection('posts').doc(post.id).update({
+          likes: post.likes + 1,
+        });
+      } else {
+        console.log(post.likes-1);
+        db.collection('posts').doc(post.id).update({
+          likes: post.likes - 1,
+        });
+      }
+    });
+
+    const clickIconSend = li.querySelector('.icon-send');
+    clickIconSend.addEventListener('click', () => {
+      auth.onAuthStateChanged((user) => {
+        const content = inputToComment.value;
+        const likes = 0;
+        const date = firebase.firestore.FieldValue.serverTimestamp();
+        console.log(date);
+        const userPhoto = user.photoURL;
+        const userName = user.displayName;
+        formComment(post.id, content, likes, date, userPhoto, userName)
+          .then(() => {
+            inputToComment.value = '';
+          });
+      });
+    });
 
     const userPostContent = li.querySelector('#user-post-content');
     const options = li.querySelector('.fa-ellipsis-h');
@@ -66,8 +118,6 @@ export const renderPost = (docs, userId) => {
     const btnEdit = li.querySelector('.edit');
     btnEdit.addEventListener('click', () => {
       changeView('#/post-content', post.content, doc.id);
-      // eslint-disable-next-line no-console
-      console.log(`ESTE ES EL ID ${doc.id}`);
     });
     return li;
   });

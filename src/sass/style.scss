@@ -1,5 +1,8 @@
 @import "global.scss", "parts/_loginView.scss", "parts/_singupView.scss", "parts/_homeView.scss", "parts/_singupView.scss", "parts/_publication.scss", "parts/_toShare.scss", "parts/_profile.scss", "parts/_modal.scss";
 
+* {
+  outline: none;
+}
  body, #actual-view, .view  {
    margin: 0;
   //  overflow-x: hidden;

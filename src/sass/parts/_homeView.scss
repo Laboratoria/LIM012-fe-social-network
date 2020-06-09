@@ -145,7 +145,7 @@
   .share-section{
     margin-top: 2vh;
     padding: 1vh;
-    width: 83vw;
+    width: 95vw;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -156,13 +156,14 @@
       text-align: center;
       text-decoration: none;
       padding: 1.7vh 0;
-      width: 33vh;
+      width: 85vw;
       margin:  0 2vh;
       color: rgb(77, 77, 78);
       border: solid 1px rgb(107, 103, 103);
       border-radius: 3vh;
       @include desktop-screen(){
-        width: 35vh;
+        width: 45vh;
+        padding: 1vh 0;
       }
     }
   }

@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/no-cycle
 import { renderPost } from '../firebase-controller/renderpost.js';
-import { onlyMyPost } from '../firebase/database.js';
+import { onlyMyPost, getComment } from '../firebase/database.js';
+import { renderComment } from './template-comments.js';
 
 export default () => {
   const profileContainer = document.createElement('ul');
@@ -15,6 +16,7 @@ export default () => {
         });
       };
       onlyMyPost(printInProfile);
+      getComment(user.uid, renderComment);
     }
   });
   return profileContainer;

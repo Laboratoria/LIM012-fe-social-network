@@ -1,6 +1,8 @@
 /* eslint-disable import/no-cycle */
 import { logout } from '../firebase/auth.js';
 import { renderPost } from '../firebase-controller/renderpost.js';
+import { renderComment } from './template-comments.js';
+import { getComment } from '../firebase/database.js';
 
 export default () => {
   const div = document.createElement('div');
@@ -95,8 +97,10 @@ export default () => {
           });
         }
       });
+      getComment(user.uid, renderComment);
     }
   });
+
   return div;
 };
 

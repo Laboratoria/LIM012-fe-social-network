@@ -1,16 +1,17 @@
 // POST FORM
 .post-container{
-  @include size(100vw, 84.6vh);
+  box-sizing: border-box;
+  @include size(100vw, 86vh);
   margin: 0;
+  top: 8vh;
   position: absolute;
         @include desktop-screen(){
           background-color: rgba(0, 0, 0, 0.603);
-            top: 8vh;
             @include flexModal(column);
             @include size(100vw, 92vh);
         }
     label{
-        margin: 0 2vh;
+        margin: 1vh;
         i{
             color: $color-1;
         }
@@ -31,14 +32,14 @@
         }
     }
     section {
-      @include size(100vw, 78vh);
+      @include size(100vw, 77vh);
         @include desktop-screen(){
             @include size(50vw, 75vh);
         }
         form{
-          @include size(100vw, 78vh);
+          @include size(100vw, 77vh);
             @include flexModal(column);
-            justify-content: space-evenly;
+            justify-content: start;
             @include desktop-screen(){
                 background-color: #ffffff;
                 padding: 2vh;
@@ -46,7 +47,8 @@
                 @include size(50vw, 75vh);
             }
             #option-public{
-             @include size(94vw, 10vh);
+             padding-top: 1vh;
+             @include size(94vw, auto);
              display: flex;
              flex-direction: row;
              align-items: center;
@@ -68,7 +70,7 @@
                 font-size: 3vh;
                 border: none;
                 resize: none;
-                @include size(90vw, 23vh);
+                @include size(90vw, 20vh);
                 @include desktop-screen(){
                     @include size(47vw, 25vh);
                 }
@@ -80,13 +82,13 @@
 
             #preview{
                 @include flexModal(column);
-                @include size(100vw, 22vh);
+                @include size(100vw, 23vh);
                 @include desktop-screen(){
                     @include size(50vw, 25vh);
                     margin-bottom: 1vh;
                 }
                 img{
-                    @include size(auto, 25vh);
+                    @include size(auto, 23vh);
                 }
             }
             button{

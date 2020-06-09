@@ -42,17 +42,19 @@ export const updateBothCollections = (userId, property, newValue) => {
     });
 };
 
-export const editPost = (userId, postId, newContent) => {
+export const editPost = (userId, postId, newContent, newVisibility) => {
   const posts = db.collection('posts').doc(postId);
   db.collection('users').doc(userId).get().then((docUser) => {
     const objectPost = docUser.data().posts;
     objectPost[postId].content = newContent;
+    objectPost[postId].visibility = newVisibility;
     db.collection('users').doc(userId).update({
       posts: objectPost,
     });
   });
   return posts.update({
     content: newContent,
+    visibility: newVisibility,
   })
     .then(() => {
       console.log('Document successfully updated!');
