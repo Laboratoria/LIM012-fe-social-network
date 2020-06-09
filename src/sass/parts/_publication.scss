@@ -44,7 +44,96 @@
             @include icon-black;
         }
     }
+
+    .new-comment{
+      // background-color: yellow;
+      @include size(100%, auto);
+      @include padding(1vh, 2vh, 1vh, 2vh);
+      flex-direction: column;
+      
+    
+      section {
+        @include flex-space-between;
+        img {
+          @include size(30px,30px);
+          // background-color: orange;
+          margin-right: 1%;
+        }
+
+        input {
+          @include size(80%, auto);
+          @include border-radius(all,20px);
+          @include border(1px,white);
+          text-indent: 15px;
+          margin-right: 1%;
+          background: $color-5;
+        }
+
+        .icon-send {
+          margin-top: 0.5%;
+          font-size: 20px;
+          
+        }
+
+      }
+
+      .container-comments {
+        @include size(100%, auto);
+        @include margins(15px,0px,10px,0px);
+        box-shadow: 0px 0px 2px 0px rgba(102,99,102,1);
+        
+
+        .name-comments {
+          display: flex;
+          flex-direction: row;
+
+          img {
+            @include size(30px, 30px);
+            @include margins(10px, 10px, 10px, 10px);
+
+          }
+
+          .columnComment {
+            
+            .name-Date {
+              @include size(100%,30%);
+                                                     
+              i {
+                @include positions(relative, 155%, 0, 0);
+                @include desktop-screen(){
+                  @include positions(relative, 270%, 0, 0);
+              }
+              }
+
+              h2 {
+                position: relative;
+                top: -15px;
+                @include font-NahumGothic(11px);
+              } 
+          }
+
+          .text-post {
+            @include size(100%, auto);
+            position: relative;
+            top: -20px;
+            
+          }
+
+          }
+
+
+        }
+      }
+       
+    }
+
+    .hide {
+      display: none;
+    }
+    
 }
+
+
 .date{
     @include size(78vw ,100%);
     text-align: left;
