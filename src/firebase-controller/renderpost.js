@@ -1,6 +1,7 @@
 /* eslint-disable import/no-cycle */
 import { deletePost } from '../firebase/crud.js';
 import { changeView } from '../view-controler/router.js';
+import { templateComment } from '../view/template-comments.js';
 
 export const renderPost = (docs, userId) => {
   const posts = docs.map((doc) => {
@@ -30,8 +31,32 @@ export const renderPost = (docs, userId) => {
   </div>
   <div class="footer">
     <i class="far fa-heart"></i><span>${post.likes}</span>
+    <i class="hide far fa-heart"></i><span>${post.likes}</span>
     <i class="far fa-comments"></i>
-  </div>`;
+  </div>
+  <div class="hide new-comment">
+    <section>
+      <img src="./images/profile-img-woman.png" class= "margin user-comment">
+      <input type="text" placeholder="Agrega un comentario.." class="inputComment">
+      <i class="fab fa-telegram-plane icon-send"></i>
+    </section>
+    <div id="containerComment---Id" class="hide container-comments"></div>
+  </div>
+  `;
+
+    const clickComments = li.querySelector('.fa-comments');
+    clickComments.addEventListener('click', () => {
+      const newComments = li.querySelector('.new-comment');
+      newComments.classList.toggle('hide');
+    });
+
+    const clickIconSend = li.querySelector('.icon-send');
+    clickIconSend.addEventListener('click', () => {
+      const containerComments = li.querySelector('.container-comments');
+      containerComments.classList.remove('hide');
+      containerComments.appendChild(templateComment());
+      console.log('hola');
+    });
 
     const userPostContent = li.querySelector('#user-post-content');
     const options = li.querySelector('.fa-ellipsis-h');
