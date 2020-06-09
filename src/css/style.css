@@ -676,7 +676,7 @@ input[type=checkbox] {
       width: 100vw;
       height: 92vh; } }
   .post-container label {
-    margin: 0 2vh; }
+    margin: 1vh; }
     .post-container label i {
       color: #0F0C48; }
   .post-container .go-back {
@@ -695,19 +695,19 @@ input[type=checkbox] {
       color: #8080a8; }
   .post-container section {
     width: 100vw;
-    height: 78vh; }
+    height: 77vh; }
     @media (min-width: 800px) {
       .post-container section {
         width: 50vw;
         height: 75vh; } }
     .post-container section form {
       width: 100vw;
-      height: 78vh;
+      height: 77vh;
       display: flex;
       align-items: center;
       flex-direction: column;
       justify-content: center;
-      justify-content: space-evenly; }
+      justify-content: start; }
       @media (min-width: 800px) {
         .post-container section form {
           background-color: #ffffff;
@@ -716,8 +716,9 @@ input[type=checkbox] {
           width: 50vw;
           height: 75vh; } }
       .post-container section form #option-public {
+        padding-top: 1vh;
         width: 94vw;
-        height: 10vh;
+        height: auto;
         display: flex;
         flex-direction: row;
         align-items: center; }
@@ -737,7 +738,7 @@ input[type=checkbox] {
         border: none;
         resize: none;
         width: 90vw;
-        height: 23vh; }
+        height: 20vh; }
         @media (min-width: 800px) {
           .post-container section form textarea {
             width: 47vw;
@@ -750,7 +751,7 @@ input[type=checkbox] {
         flex-direction: column;
         justify-content: center;
         width: 100vw;
-        height: 22vh; }
+        height: 23vh; }
         @media (min-width: 800px) {
           .post-container section form #preview {
             width: 50vw;
@@ -758,7 +759,7 @@ input[type=checkbox] {
             margin-bottom: 1vh; } }
         .post-container section form #preview img {
           width: auto;
-          height: 25vh; }
+          height: 23vh; }
       .post-container section form button {
         padding: 2vh;
         width: 15vh;
