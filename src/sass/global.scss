@@ -15,6 +15,7 @@ $color-6: #ffff;
 $color-7: rgba(40, 40, 41, 0.8);
 $color-8: rgba(246, 229, 229, 0.19);
 $color-9: rgba(0, 0, 0, 0.8);
+$color-10: rgb(235, 229, 255);
 
 //===size===
 @mixin size($width, $height) {
@@ -283,6 +284,16 @@ $color-9: rgba(0, 0, 0, 0.8);
 		0 0 140px rgba(38,104,127,1),
 		0 0 180px rgba(38,104,127,1);  
 }
+
+@mixin cartoon($w, $h, $size, $color) {
+    position: absolute;
+    width: $w;
+    height: $h;
+    border-bottom: $size solid $color;
+    border-right: $size solid transparent;
+    border-left: $size solid transparent;
+}
+
 //===media===
 @mixin desktop-screen() {
     @media (min-width: 800px){
