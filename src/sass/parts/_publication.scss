@@ -46,18 +46,18 @@
     }
 
     .new-comment{
-      // background-color: yellow;
       @include size(100%, auto);
       @include padding(1vh, 2vh, 1vh, 2vh);
       flex-direction: column;
-      
     
       section {
         @include flex-space-between;
+        padding-bottom: 3%;
         img {
           @include size(30px,30px);
           // background-color: orange;
           margin-right: 1%;
+          border-radius: 50px;
         }
 
         input {
@@ -79,52 +79,69 @@
 
       .container-comments {
         @include size(100%, auto);
-        @include margins(15px,0px,10px,0px);
-        box-shadow: 0px 0px 2px 0px rgba(102,99,102,1);
-        
+        @include margins(15px,0px,0px,0px);
 
         .name-comments {
-          display: flex;
-          flex-direction: row;
-
-          img {
-            @include size(30px, 30px);
-            @include margins(10px, 10px, 10px, 10px);
-
-          }
-
-          .columnComment {
-            
-            .name-Date {
-              @include size(100%,30%);
-                                                     
-              i {
-                @include positions(relative, 155%, 0, 0);
-                @include desktop-screen(){
-                  @include positions(relative, 270%, 0, 0);
+          @include size (100%, auto);
+          background: $color-10;
+          border-radius: 8px;
+          margin-bottom: 5%;
+        
+            .header-comment {
+              @include size(100%, 30px);
+              @include flex-space-between;
+         
+              
+                img {
+                @include size(32px, 32px);
+                border-radius: 50px;
+                @include margins(1%,2%,1%,2%);
               }
+                h2 {
+                @include font-NahumGothic(10px);
+                margin-right: 38%;    
+                @include desktop-screen() {
+                  margin-right: 57%;
+                }        
+                
               }
+            }
 
-              h2 {
+            .main-comment {
+              @include size (90%, auto);
+              .text-post {
+                @include size(90%, auto);
                 position: relative;
-                top: -15px;
-                @include font-NahumGothic(11px);
-              } 
-          }
+                left: 15%;
 
-          .text-post {
-            @include size(100%, auto);
-            position: relative;
-            top: -20px;
-            
-          }
+                p {
+                  @include font-NahumGothic(13px);
+                  @include padding(2%, 2%, 2%, 2%);
+                  word-wrap: break-word;
+                  margin-top: 0px;
 
-          }
+                }
 
+                @include desktop-screen() {
+                  left: 12%;
+                } 
+              }
+    
+            }
 
         }
+
+        .name-comments:before {
+          content: "";
+          @include cartoon(0,0, 12px, $color-10); 
+          @include margins(-3%, 2%, 0, 2%);
+
+          @include desktop-screen() {
+              @include cartoon(0,0, 15px, $color-10); 
+              @include margins(-1%, 2%, 0, 2%);
+          }
+        }
       }
-       
     }
 
     .hide {
