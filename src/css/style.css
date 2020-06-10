@@ -668,14 +668,13 @@ input[type=checkbox] {
             height: 32px;
             border-radius: 50px;
             margin: 1% 2% 1% 2%; }
-          .publication .new-comment .container-comments .name-comments .header-comment h2 {
-            font-family: "Nanum Gothic", sans-serif;
-            font-size: 10px;
-            font-weight: lighter;
-            margin-right: 38%; }
-            @media (min-width: 800px) {
-              .publication .new-comment .container-comments .name-comments .header-comment h2 {
-                margin-right: 57%; } }
+          .publication .new-comment .container-comments .name-comments .header-comment div {
+            width: 100%;
+            height: auto; }
+            .publication .new-comment .container-comments .name-comments .header-comment div h2 {
+              font-family: "Nanum Gothic", sans-serif;
+              font-size: 10px;
+              font-weight: lighter; }
         .publication .new-comment .container-comments .name-comments .main-comment {
           width: 90%;
           height: auto; }
@@ -683,18 +682,23 @@ input[type=checkbox] {
             width: 90%;
             height: auto;
             position: relative;
-            left: 15%; }
+            left: 14%; }
             .publication .new-comment .container-comments .name-comments .main-comment .text-post p {
               font-family: "Nanum Gothic", sans-serif;
-              font-size: 13px;
+              font-size: 12px;
               font-weight: lighter;
               padding: 2% 2% 2% 2%;
               box-sizing: border-box;
               word-wrap: break-word;
               margin-top: 0px; }
+              @media (min-width: 800px) {
+                .publication .new-comment .container-comments .name-comments .main-comment .text-post p {
+                  font-family: "Nanum Gothic", sans-serif;
+                  font-size: 13px;
+                  font-weight: lighter; } }
             @media (min-width: 800px) {
               .publication .new-comment .container-comments .name-comments .main-comment .text-post {
-                left: 12%; } }
+                left: 10%; } }
       .publication .new-comment .container-comments .name-comments:before {
         content: "";
         position: absolute;
