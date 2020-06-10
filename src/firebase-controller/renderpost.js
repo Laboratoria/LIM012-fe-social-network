@@ -34,8 +34,8 @@ export const renderPost = (docs, userId) => {
     <i class="far fa-comments"></i><span id= "size-${post.id}"></span>
   </div>
   <div class="hide new-comment">
-    <section>
-      <img src="./images/profile-img-woman.png" class= "margin user-comment">
+    <section class="imgC">
+      <img src="./images/profile-img-woman.png" class="margin user-comment">
       <input type="text" placeholder="Agrega un comentario.." class="inputComment">
       <i class="fab fa-telegram-plane icon-send"></i>
     </section>
@@ -55,14 +55,14 @@ export const renderPost = (docs, userId) => {
     const clickLikes = li.querySelector('.fa-heart');
     clickLikes.addEventListener('click', () => {
       clickLikes.classList.toggle('efect-like');
-      console.log(clickLikes.classList.contains('efect-like'));
+      // console.log(clickLikes.classList.contains('efect-like'));
       if (clickLikes.classList.contains('efect-like')) {
-        console.log(post.likes + 1);
+        // console.log(post.likes + 1);
         db.collection('posts').doc(post.id).update({
           likes: post.likes + 1,
         });
       } else {
-        console.log(post.likes-1);
+        // console.log(post.likes-1);
         db.collection('posts').doc(post.id).update({
           likes: post.likes - 1,
         });
@@ -75,7 +75,7 @@ export const renderPost = (docs, userId) => {
         const content = inputToComment.value;
         const likes = 0;
         const date = firebase.firestore.FieldValue.serverTimestamp();
-        console.log(date);
+        // console.log(date);
         const userPhoto = user.photoURL;
         const userName = user.displayName;
         formComment(post.id, content, likes, date, userPhoto, userName)
@@ -89,7 +89,9 @@ export const renderPost = (docs, userId) => {
     const options = li.querySelector('.fa-ellipsis-h');
     db.collection('users').doc(userId).get().then((docId) => {
       const postIds = docId.data().posts;
+      // console.log(docId.id)//id del User
       const ids = Object.keys(postIds);
+      // console.log(ids)//idDel post
       if (!ids.some(id => id === doc.id)) {
         options.style.display = 'none';
       }
