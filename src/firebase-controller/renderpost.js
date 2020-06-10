@@ -48,25 +48,28 @@ export const renderPost = (docs, userId) => {
     clickComments.addEventListener('click', () => {
       const newComments = li.querySelector('.new-comment');
       newComments.classList.toggle('hide');
-      // ------------------------------------
       const containerComments = li.querySelector('.container-comments');
       containerComments.classList.remove('hide');
     });
     const clickLikes = li.querySelector('.fa-heart');
     clickLikes.addEventListener('click', () => {
-      clickLikes.classList.toggle('efect-like');
-      // console.log(clickLikes.classList.contains('efect-like'));
-      if (clickLikes.classList.contains('efect-like')) {
-        // console.log(post.likes + 1);
+      db.collection('users').doc(userId).get().then((userDoc) => {
+        let postLikes = post.likes;
+        const mylikes = userDoc.data().myLikes;
+        if (clickLikes.classList.contains('efect-like')) {
+          postLikes--;
+          delete mylikes[post.id];
+        } else {
+          postLikes++;
+          mylikes[post.id] = post.id;
+        }
         db.collection('posts').doc(post.id).update({
-          likes: post.likes + 1,
+          likes: postLikes,
         });
-      } else {
-        // console.log(post.likes-1);
-        db.collection('posts').doc(post.id).update({
-          likes: post.likes - 1,
+        db.collection('users').doc(userId).update({
+          myLikes: mylikes,
         });
-      }
+      });
     });
 
     const clickIconSend = li.querySelector('.icon-send');
@@ -75,7 +78,6 @@ export const renderPost = (docs, userId) => {
         const content = inputToComment.value;
         const likes = 0;
         const date = firebase.firestore.FieldValue.serverTimestamp();
-        // console.log(date);
         const userPhoto = user.photoURL;
         const userName = user.displayName;
         formComment(post.id, content, likes, date, userPhoto, userName)
@@ -88,12 +90,17 @@ export const renderPost = (docs, userId) => {
     const userPostContent = li.querySelector('#user-post-content');
     const options = li.querySelector('.fa-ellipsis-h');
     db.collection('users').doc(userId).get().then((docId) => {
+      const myLikes = docId.data().myLikes;
       const postIds = docId.data().posts;
-      // console.log(docId.id)//id del User
       const ids = Object.keys(postIds);
-      // console.log(ids)//idDel post
+      const likesIds = Object.keys(myLikes);
       if (!ids.some(id => id === doc.id)) {
         options.style.display = 'none';
+      }
+      if (likesIds.some(id => id === doc.id)) {
+        clickLikes.classList.add('efect-like');
+      } else {
+        clickLikes.classList.remove('efect-like');
       }
     });
 
