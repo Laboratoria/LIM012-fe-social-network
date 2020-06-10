@@ -88,7 +88,6 @@ export default () => {
       db.collection('posts').where('visibility', '==', 'public').orderBy('date', 'desc').onSnapshot((postsDocuments) => {
         if (publicPosts !== null) {
           publicPosts.innerHTML = '';
-          // passing an array of documents
           const documents = postsDocuments.docs.map((doc) => {
             return { id: doc.id, ...doc.data() };
           });

@@ -48,7 +48,6 @@ export const renderPost = (docs, userId) => {
     clickComments.addEventListener('click', () => {
       const newComments = li.querySelector('.new-comment');
       newComments.classList.toggle('hide');
-      // ------------------------------------
       const containerComments = li.querySelector('.container-comments');
       containerComments.classList.remove('hide');
     });
