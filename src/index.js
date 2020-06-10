@@ -29,6 +29,7 @@ auth.onAuthStateChanged((user) => {
         if (!doc.exists) {
           return db.collection('users').doc(user.uid).set({
             bio: '',
+            myLikes: {},
             posts: {},
           });
         }
