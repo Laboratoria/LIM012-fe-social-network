@@ -1,5 +1,7 @@
 export const renderComment = (postsComments, postId, sizeComments) => {
-  const postComment = postsComments.map((com) => {
+  const divComment = document.getElementById(postId);
+  divComment.innerHTML = '';
+  postsComments.forEach((com) => {
     const div = document.createElement('div');
     div.className = 'name-comments';
     const comment = com.data();
@@ -33,18 +35,9 @@ export const renderComment = (postsComments, postId, sizeComments) => {
     if (comment.userPhoto) {
       commentPhoto.src = comment.userPhoto;
     }
-
+    divComment.appendChild(div);
     return div;
   });
-
-  const divComment = document.getElementById(postId);
   const sizeComment = document.getElementById(`size-${postId}`);
   sizeComment.innerHTML = sizeComments;
-  divComment.innerHTML = '';
-  console.log(divComment);
-  postComment.forEach((comment) => {
-    console.log(comment);
-    divComment.appendChild(comment);
-  });
-  return postComment;
 };
