@@ -1,6 +1,6 @@
 import MockFirebase from 'mock-cloud-firestore';
 
-import { formPost } from '../src/firebase/database.js';
+import { formPost } from '../src/firebase/crud.js';
 
 const fixtureData = {
   __collection__: {

@@ -43,22 +43,3 @@ export const getComment = (userId, callback) => {
     });
   });
 };
-
-export const formPost = (content, likes, visibility, date, photo, userPhoto, userName) => db.collection('posts').add({
-  content,
-  likes,
-  visibility,
-  date,
-  photo,
-  userPhoto,
-  userName,
-});
-
-export const formComment = (postId, content, likes, date, userPhoto, userName) => db.collection('comments').add({
-  postId,
-  content,
-  likes,
-  date,
-  userPhoto,
-  userName,
-});

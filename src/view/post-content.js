@@ -1,5 +1,6 @@
-import { formPost, collectionUser } from '../firebase/database.js';
-import { editPost } from '../firebase/crud.js';
+import { collectionUser } from '../firebase/filterdata.js';
+import { formPost } from '../firebase/crud.js';
+import { editPost } from '../firebase-controller/crud-controller.js';
 
 export default (content, postId) => {
   const div = document.createElement('div');
