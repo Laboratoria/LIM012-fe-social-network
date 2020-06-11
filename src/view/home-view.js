@@ -2,7 +2,7 @@
 import { logout } from '../firebase/auth.js';
 import { renderPost } from '../firebase-controller/renderpost.js';
 import { renderComment } from './template-comments.js';
-import { getComment } from '../firebase/database.js';
+import { getComment } from '../firebase/filterdata.js';
 
 export default () => {
   const div = document.createElement('div');
@@ -91,8 +91,8 @@ export default () => {
           const documents = postsDocuments.docs.map((doc) => {
             return { id: doc.id, ...doc.data() };
           });
-          renderPost(documents, user.uid).forEach((li) => {
-            publicPosts.appendChild(li);
+          documents.forEach((doc) => {
+            publicPosts.appendChild(renderPost(doc, user.uid));
           });
         }
       });

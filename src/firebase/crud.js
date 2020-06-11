@@ -1,16 +1,11 @@
 /* eslint-disable no-console */
-export const deletePost = (postId, userId) => {
-  db.collection('posts').doc(postId).delete().then(() => {
-  })
-    .catch((error) => {
-      console.error('Error removing document: ', error);
-    });
+export const deletingPost = (postId) => {
+  db.collection('posts').doc(postId).delete();
+};
+export const deletingPostFromUser = (userId, postId) => {
   db.collection('users').doc(userId).get().then((docUser) => {
     const objectPost = docUser.data().posts;
-    console.log(objectPost);
     delete objectPost[postId];
-    console.log('deleting....');
-    console.log(objectPost);
     db.collection('users').doc(userId).update({
       posts: objectPost,
     });
@@ -41,9 +36,14 @@ export const updateBothCollections = (userId, property, newValue) => {
       });
     });
 };
-
-export const editPost = (userId, postId, newContent, newVisibility) => {
+export const updatePosts = (postId, newContent, newVisibility) => {
   const posts = db.collection('posts').doc(postId);
+  return posts.update({
+    content: newContent,
+    visibility: newVisibility,
+  });
+};
+export const updatePostsFromUser = (userId, postId, newContent, newVisibility) => {
   db.collection('users').doc(userId).get().then((docUser) => {
     const objectPost = docUser.data().posts;
     objectPost[postId].content = newContent;
@@ -52,17 +52,23 @@ export const editPost = (userId, postId, newContent, newVisibility) => {
       posts: objectPost,
     });
   });
-  return posts.update({
-    content: newContent,
-    visibility: newVisibility,
-  })
-    .then(() => {
-      console.log('Document successfully updated!');
-      window.history.back();
-    })
-    .catch((error) => {
-      // The document probably doesn't exist.
-      console.error('Error updating document: ', error);
-      window.history.back();
-    });
 };
+
+export const formPost = (content, likes, visibility, date, photo, userPhoto, userName) => db.collection('posts').add({
+  content,
+  likes,
+  visibility,
+  date,
+  photo,
+  userPhoto,
+  userName,
+});
+
+export const formComment = (postId, content, likes, date, userPhoto, userName) => db.collection('comments').add({
+  postId,
+  content,
+  likes,
+  date,
+  userPhoto,
+  userName,
+});
