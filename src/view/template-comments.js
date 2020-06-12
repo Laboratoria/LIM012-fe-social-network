@@ -50,13 +50,17 @@ export const renderComment = (postsComments, postId, sizeComments) => {
       });
     }
 
-    const photoBeforeComment = document.querySelectorAll('.first');
-    photoBeforeComment.forEach((ele) => {
-      if (comment.userPhoto) {
-        // eslint-disable-next-line no-param-reassign
-        ele.src = comment.userPhoto;
-      }
+    auth.onAuthStateChanged((user) => {
+      const userPhoto = user.photoURL;
+      const photoBeforeComment = document.querySelectorAll('.first');
+      photoBeforeComment.forEach((ele) => {
+        if (comment.userPhoto) {
+          // eslint-disable-next-line no-param-reassign
+          ele.src = userPhoto;
+        }
+      });
     });
+
 
     divComment.appendChild(div);
 

@@ -2,7 +2,7 @@
 import { logout } from '../firebase/auth.js';
 import { renderPost } from '../firebase-controller/renderpost.js';
 import { renderComment } from './template-comments.js';
-import { getComment } from '../firebase/filterdata.js';
+import { getComment, getHomePosts } from '../firebase/filterdata.js';
 
 export default () => {
   const div = document.createElement('div');
@@ -31,8 +31,8 @@ export default () => {
         <img class="profile" src="./images/profile-img-woman.png">
       </div>
       <div class="profile-information">
-        <h3>Usuario de BUNKER</h3>
-        <h5>Description</h5>
+        <h3></h3>
+        <h5></h5>
       </div>
     </div>
     <div class="lateral-rigth">
@@ -86,14 +86,11 @@ export default () => {
       }
       // FIRESTORE GET DATA TO SHOW IN HOME VIEW
       const publicPosts = div.querySelector('#public-posts');
-      db.collection('posts').where('visibility', '==', 'public').orderBy('date', 'desc').onSnapshot((postsDocuments) => {
-        if (publicPosts !== null) {
-          publicPosts.innerHTML = '';
-          const documents = postsDocuments.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-          documents.forEach((doc) => {
-            publicPosts.appendChild(renderPost(doc, user.uid));
-          });
-        }
+      getHomePosts((documents) => {
+        publicPosts.innerHTML = '';
+        documents.forEach((doc) => {
+          publicPosts.appendChild(renderPost(doc, user.uid));
+        });
       });
       getComment(user.uid, renderComment);
     }
