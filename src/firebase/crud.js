@@ -12,6 +12,15 @@ export const deletingPostFromUser = (userId, postId) => {
   });
 };
 
+export const getPosts = callback => db.collection('posts')
+  .onSnapshot((docs) => {
+    const data = [];
+    docs.forEach((doc) => {
+      data.push({ id: doc.id, ...doc.data() });
+    });
+    callback(data);
+  });
+
 export const updateBothCollections = (userId, property, newValue) => {
   db.collection('users').doc(userId).get().then((docId) => {
     const postIds = docId.data().posts;
