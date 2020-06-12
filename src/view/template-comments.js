@@ -11,7 +11,9 @@ export const renderComment = (postsComments, postId, sizeComments) => {
     const template = `
         <div class= "header-comment">
             <img src=${comment.userPhoto} class="user-comment">
+            <div>
             <h2><b>${comment.userName}</b><br>${shortTime} ${shortDate}</h2>
+            </div>
             <span class="comment">
                 <i id="option-id" class="fas fa-ellipsis-h"></i>
             </span>

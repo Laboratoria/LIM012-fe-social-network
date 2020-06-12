@@ -55,9 +55,11 @@ export const renderPost = (doc, userId) => {
       let postLikes = post.likes;
       const mylikes = userDoc.data().myLikes;
       if (clickLikes.classList.contains('efect-like')) {
+        // eslint-disable-next-line no-plusplus
         postLikes--;
         delete mylikes[post.id];
       } else {
+        // eslint-disable-next-line no-plusplus
         postLikes++;
         mylikes[post.id] = post.id;
       }
