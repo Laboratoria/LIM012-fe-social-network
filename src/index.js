@@ -12,7 +12,7 @@ window.addEventListener('load', () => {
     const viewheight = window.visualViewport.height;
     const viewwidth = window.visualViewport.width;
     const viewport = document.querySelector('meta[name=viewport]');
-    viewport.setAttribute('content', 'height=' + viewheight + 'px, width=' + viewwidth + 'px, initial-scale=1.0');
+    viewport.setAttribute('content', `height=${viewheight}px, width=${viewwidth}px, initial-scale=1.0`);
   }, 300);
 });
 auth.onAuthStateChanged((user) => {

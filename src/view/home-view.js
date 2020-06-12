@@ -80,6 +80,7 @@ export default () => {
       const profileImg = div.querySelectorAll('img[src="./images/profile-img-woman.png"]');
       if (user.photoURL) {
         profileImg.forEach((tag) => {
+          // eslint-disable-next-line no-param-reassign
           tag.src = user.photoURL;
         });
       }
@@ -88,9 +89,7 @@ export default () => {
       db.collection('posts').where('visibility', '==', 'public').orderBy('date', 'desc').onSnapshot((postsDocuments) => {
         if (publicPosts !== null) {
           publicPosts.innerHTML = '';
-          const documents = postsDocuments.docs.map((doc) => {
-            return { id: doc.id, ...doc.data() };
-          });
+          const documents = postsDocuments.docs.map(doc => ({ id: doc.id, ...doc.data() }));
           documents.forEach((doc) => {
             publicPosts.appendChild(renderPost(doc, user.uid));
           });

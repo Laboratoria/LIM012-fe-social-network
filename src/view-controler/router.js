@@ -1,5 +1,6 @@
 /* eslint-disable consistent-return */
 
+// eslint-disable-next-line import/no-cycle
 import { components } from '../view/index.js';
 
 const actualView = document.getElementById('actual-view');

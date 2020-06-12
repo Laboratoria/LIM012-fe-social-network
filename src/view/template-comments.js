@@ -53,6 +53,7 @@ export const renderComment = (postsComments, postId, sizeComments) => {
     const photoBeforeComment = document.querySelectorAll('.first');
     photoBeforeComment.forEach((ele) => {
       if (comment.userPhoto) {
+        // eslint-disable-next-line no-param-reassign
         ele.src = comment.userPhoto;
       }
     });
@@ -60,12 +61,10 @@ export const renderComment = (postsComments, postId, sizeComments) => {
     divComment.appendChild(div);
 
     const iconSaveCom = div.querySelectorAll('.save-comment');
-    console.log(iconSaveCom);
     if (iconSaveCom.length) {
       iconSaveCom.forEach((comments) => {
         comments.addEventListener('click', (e) => {
           e.preventDefault();
-          console.log('click Guardar')
           const idComent = comments.getAttribute('idComent');
           const newContent = document.querySelector('.p-comment');
           if (newContent.innerText.trim() !== '') {
@@ -76,10 +75,7 @@ export const renderComment = (postsComments, postId, sizeComments) => {
           }
         });
       });
-    } else {
-      console.log('no encuentro')
     }
-
     return div;
   });
   const sizeComment = document.getElementById(`size-${postId}`);

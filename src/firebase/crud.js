@@ -1,18 +1,19 @@
-/* eslint-disable no-console */
-export const deletingPost = (postId) => {
-  db.collection('posts').doc(postId).delete();
-};
-export const deletingPostFromUser = (userId, postId) => {
-  db.collection('users').doc(userId).get().then((docUser) => {
-    const objectPost = docUser.data().posts;
-    delete objectPost[postId];
-    db.collection('users').doc(userId).update({
-      posts: objectPost,
-    });
-  });
-};
+// import MockFirebase from "mock-cloud-firestore";
 
-export const getPosts = callback => db.collection('posts')
+/* eslint-disable no-console */
+export const deletingPost = postId => firebase.firestore().collection('posts').doc(postId).delete();
+
+export const deletingPostFromUser = (userId, postId) => {
+  firebase.firestore().collection('users').doc(userId).get()
+    .then((docUser) => {
+      const objectPost = docUser.data().posts;
+      delete objectPost[postId];
+      firebase.firestore().collection('users').doc(userId).update({
+        posts: objectPost,
+      });
+    });
+};
+export const getPosts = callback => firebase.firestore().collection('posts')
   .onSnapshot((docs) => {
     const data = [];
     docs.forEach((doc) => {
@@ -46,7 +47,6 @@ export const updateCommentFromUser = () => {
         e.preventDefault();
         const newContent = document.querySelector('.p-comment');
         const iconSave = document.querySelector('.save-comment');
-        console.log('hola')
         newContent.contentEditable = 'true';
         newContent.focus();
         iconSave.classList.remove('hide');
