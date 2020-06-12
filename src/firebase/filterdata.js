@@ -1,3 +1,5 @@
+import { deletingCommentFromUser, updateCommentFromUser } from './crud.js';
+
 export const collectionUser = (userId, docId) => {
   db.collection('users').doc(userId).get().then((docUser) => {
     const postsInformation = docUser.data().posts;
@@ -26,6 +28,8 @@ export const onlyMyPost = (callback) => {
     }
   });
 };
+
+// Leer comentarios
 export const getComment = (userId, callback) => {
   db.collection('users').doc(userId).get().then((docId) => {
     db.collection('comments').orderBy('date', 'desc').onSnapshot((comments) => {
@@ -38,6 +42,8 @@ export const getComment = (userId, callback) => {
           postIds.forEach((postId) => {
             const postComments = comments.docs.filter(comment => comment.data().postId === postId);
             callback(postComments, postId, postComments.length);
+            deletingCommentFromUser();
+            updateCommentFromUser();
           });
         });
     });
