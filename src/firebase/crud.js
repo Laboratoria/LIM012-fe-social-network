@@ -31,9 +31,8 @@ export const updatePosts = (postId, newContent, newVisibility) => {
   });
 };
 // comments
-const deletingComment = (commentId) => {
-  firebase.firestore().collection('comments').doc(commentId).delete();
-};
+export const deletingComment = commentId => firebase.firestore().collection('comments').doc(commentId).delete();
+
 export const updateComment = (commentId, newContent) => firebase.firestore().collection('comments').doc(commentId).update({
   content: newContent,
 });
@@ -47,11 +46,22 @@ export const formComment = (postId, content, likes, date, userPhoto, userName) =
   userName,
 });
 // from users
+// export const deletingPostFromUser = (userId, postId) => {
+//   const callback = (dataUser) => {
+//     const objectPost = dataUser.data().posts;
+//     delete objectPost[postId];
+//     firebase.firestore().collection('users').doc(userId).update({
+//       posts: objectPost,
+//     });
+//   };
+//   return getData(callback, 'users');
+// };
 export const deletingPostFromUser = (userId, postId) => {
   const callback = (dataUser) => {
-    const objectPost = dataUser.data().posts;
+    const userCollection = dataUser.find(doc => doc.id === userId);
+    const objectPost = userCollection.posts;
     delete objectPost[postId];
-    firebase.firestore().collection('users').doc(userId).update({
+    return firebase.firestore().collection('users').doc(userId).update({
       posts: objectPost,
     });
   };
@@ -111,11 +121,11 @@ export const updateBothCollections = (userId, property, newValue) => {
 };
 
 export const updatePostsFromUser = (userId, postId, newContent, newVisibility) => {
-  firebase.firestore().collection('users').doc(userId).get().then((docUser) => {
+  return firebase.firestore().collection('users').doc(userId).get().then((docUser) => {
     const objectPost = docUser.data().posts;
     objectPost[postId].content = newContent;
     objectPost[postId].visibility = newVisibility;
-    firebase.firestore().collection('users').doc(userId).update({
+    return firebase.firestore().collection('users').doc(userId).update({
       posts: objectPost,
     });
   });
