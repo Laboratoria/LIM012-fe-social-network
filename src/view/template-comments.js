@@ -26,7 +26,7 @@ export const renderComment = (postsComments, postId, sizeComments) => {
                 <div class="save-comment hide" idComent="${com.id}"><i class="far fa-save"></i></div>
             </div>
             <div class="hide tooltip-container" id="show-tootTip-${com.id}">
-                <div class="tooltip">
+                <div class="tooltipconsole.log(userId)">
                     <div idComent="${com.id}" class="opt update-comment edit-${com.id}"><i class="fas fa-edit icon-tool"></i> <span>Editar</span></div>
                     <div idComent="${com.id}" class="opt del"> <i class="fas fa-trash-alt icon-tool"></i><span>Eliminar</span></div>
                 </div>
@@ -58,20 +58,22 @@ export const renderComment = (postsComments, postId, sizeComments) => {
           ele.src = userPhoto;
         }
       });
+      const userId = user.uid;
+      if (userId !== comment.uid) {
+        optionsOfComments.style.display = 'none';
+      }
     });
 
 
     divComment.appendChild(div);
 
     const iconSaveCom = div.querySelectorAll('.save-comment');
-    console.log(iconSaveCom);
     if (iconSaveCom.length) {
       iconSaveCom.forEach((comments) => {
         comments.addEventListener('click', (e) => {
           e.preventDefault();
-          console.log('click Guardar')
           const idComent = comments.getAttribute('idComent');
-          const newContent = document.querySelector('.p-comment');
+          const newContent = document.querySelector(`#textComment-${idComent}`);
           if (newContent.innerText.trim() !== '') {
             newContent.contentEditable = 'false';
             comments.classList.add('hide');
@@ -80,10 +82,7 @@ export const renderComment = (postsComments, postId, sizeComments) => {
           }
         });
       });
-    } else {
-      console.log('no encuentro')
     }
-
     return div;
   });
   const sizeComment = document.getElementById(`size-${postId}`);
