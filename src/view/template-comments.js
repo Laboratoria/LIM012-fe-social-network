@@ -50,12 +50,16 @@ export const renderComment = (postsComments, postId, sizeComments) => {
       });
     }
 
-    const photoBeforeComment = document.querySelectorAll('.first');
-    photoBeforeComment.forEach((ele) => {
-      if (comment.userPhoto) {
-        ele.src = comment.userPhoto;
-      }
+    auth.onAuthStateChanged((user) => {
+      const userPhoto = user.photoURL;
+      const photoBeforeComment = document.querySelectorAll('.first');
+      photoBeforeComment.forEach((ele) => {
+        if (comment.userPhoto) {
+          ele.src = userPhoto;
+        }
+      });
     });
+
 
     divComment.appendChild(div);
 
