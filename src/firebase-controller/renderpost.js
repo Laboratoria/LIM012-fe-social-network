@@ -80,7 +80,8 @@ export const renderPost = (doc, userId) => {
       const date = firebase.firestore.FieldValue.serverTimestamp();
       const userPhoto = user.photoURL;
       const userName = user.displayName;
-      formComment(post.id, content, likes, date, userPhoto, userName)
+      const uid = user.uid;
+      formComment(post.id, content, likes, date, userPhoto, userName, uid)
         .then(() => {
           inputToComment.value = '';
         });
