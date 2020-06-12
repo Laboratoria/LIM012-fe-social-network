@@ -20,6 +20,40 @@ export const getPosts = callback => db.collection('posts')
     });
     callback(data);
   });
+const deletingComment = (commentId) => {
+  db.collection('comments').doc(commentId).delete();
+};
+
+export const deletingCommentFromUser = () => {
+  const iconDelete = document.querySelectorAll('.del');
+  iconDelete.forEach((objComment) => {
+    objComment.addEventListener('click', () => {
+      const idcomment = objComment.getAttribute('idComent');
+      deletingComment(idcomment);
+    });
+  });
+};
+
+export const updateComment = (commentId, newContent) => db.collection('comments').doc(commentId).update({
+  content: newContent,
+});
+
+export const updateCommentFromUser = () => {
+  const iconEdit = document.querySelectorAll('.update-comment');
+  if (iconEdit) {
+    iconEdit.forEach((comments) => {
+      comments.addEventListener('click', (e) => {
+        e.preventDefault();
+        const newContent = document.querySelector('.p-comment');
+        const iconSave = document.querySelector('.save-comment');
+        console.log('hola')
+        newContent.contentEditable = 'true';
+        newContent.focus();
+        iconSave.classList.remove('hide');
+      });
+    });
+  }
+};
 
 export const updateBothCollections = (userId, property, newValue) => {
   db.collection('users').doc(userId).get().then((docId) => {
@@ -73,6 +107,7 @@ export const formPost = (content, likes, visibility, date, photo, userPhoto, use
   userName,
 });
 
+// Creación de Comentarios
 export const formComment = (postId, content, likes, date, userPhoto, userName) => db.collection('comments').add({
   postId,
   content,

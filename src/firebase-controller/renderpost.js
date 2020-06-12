@@ -34,7 +34,7 @@ export const renderPost = (doc, userId) => {
   </div>
   <div class="hide new-comment">
     <section class="imgC">
-      <img src="./images/profile-img-woman.png" class="margin user-comment">
+      <img src="./images/profile-img-woman.png" class="margin user-comment first">
       <input type="text" placeholder="Agrega un comentario.." class="inputComment">
       <i class="fab fa-telegram-plane icon-send"></i>
     </section>
