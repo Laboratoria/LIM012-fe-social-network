@@ -19,8 +19,8 @@ export const renderPost = (doc, userId) => {
     </div>
     <div class="modal-options">
       <ul>
-        <li><a class="edit">Edit post</a></li>
-        <li><a class="delete" >Delete post</a></li>
+        <li><i class="fas fa-pen edit"></i><span>Edit</span></li>
+        <li><i class="fas fa-trash delete"></i><span>Delete</span></li>
       </ul>
     </div>
     <i class="fas fa-ellipsis-h"></i>
