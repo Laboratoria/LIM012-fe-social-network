@@ -55,7 +55,6 @@
         padding-bottom: 3%;
         img {
           @include size(30px,30px);
-          // background-color: orange;
           margin-right: 1%;
           border-radius: 50px;
         }
@@ -102,12 +101,33 @@
                   h2 {
                     @include font-NahumGothic(10px);
                   }
+    
               }
+
+                .tooltip-container {
+                   @include size(35%, auto);
+                  .tooltip {
+                    margin-top: 5px;
+                    line-height: 18px;
+                    background: white;
+                    @include size(100%, auto);
+                    @include font-NahumGothic(11px);
+             
+                    i {
+                      font-size: 11px;
+                      color: $color-7;
+                    }
+                  }
+                    @include desktop-screen() {
+                      @include size(20%, auto);
+                    }
+                }
             }
 
             .main-comment {
               @include size (90%, auto);
               .text-post {
+                // background-color: orange;
                 @include size(90%, auto);
                 position: relative;
                 left: 14%;
@@ -117,11 +137,23 @@
                   @include padding(2%, 2%, 2%, 2%);
                   word-wrap: break-word;
                   margin-top: 0px;
+                  margin-bottom: 0px;
                   @include desktop-screen() {
                     @include font-NahumGothic(13px);
 
                   }
                 }
+
+                .save-comment{
+                    text-align: center;
+                    i {
+                      @include margins(0,0,1vh,0);
+                      font-size: 12px;
+                      color: $color-7;
+
+                    }
+                  }
+              
 
                 @include desktop-screen() {
                   left: 10%;
@@ -172,11 +204,16 @@
    @include flexModal(column);
     @include size(0px,40px);
     position: relative;
-    @include padding(0vh, 0vh, 0vh, 1vh);
     margin-left: 4vw;
     font-size: 12px;
     overflow: hidden;
     transition: 0.25s;
+    line-height: 18px;
+
+    i {
+      font-size: 11px;
+      color: $color-7;
+    }
  }
  .options-appear{
     width: 100px;
