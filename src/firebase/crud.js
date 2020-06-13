@@ -44,6 +44,7 @@ export const formComment = (postId, content, likes, date, userPhoto, userName) =
   date,
   userPhoto,
   userName,
+  uid,
 });
 // from users
 export const deletingPostFromUser = (userId, postId) => {
@@ -75,8 +76,11 @@ export const updateCommentFromUser = () => {
     iconEdit.forEach((comments) => {
       comments.addEventListener('click', (e) => {
         e.preventDefault();
-        const newContent = document.querySelector('.p-comment');
-        const iconSave = document.querySelector('.save-comment');
+
+        const idComent = comments.getAttribute('idComent');
+        const newContent = document.querySelector(`#textComment-${idComent}`);
+        const iconSave = newContent.parentNode.querySelector('.save-comment');
+
         newContent.contentEditable = 'true';
         newContent.focus();
         iconSave.classList.remove('hide');
@@ -120,3 +124,4 @@ export const updatePostsFromUser = (userId, postId, newContent, newVisibility) =
     });
   });
 };
+

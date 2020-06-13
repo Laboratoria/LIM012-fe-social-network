@@ -16,9 +16,14 @@
     @include flexModal(row);
 }
  }
-i {
-   @include icon-white;
-}
+
 ul{
   list-style: none;
+}
+
+i {
+  cursor: pointer;
+}
+.fa-home, .fa-cog, .fa-bars, .fa-google, .fa-facebook-f, .fa-user {
+  @include icon-white;
 }
