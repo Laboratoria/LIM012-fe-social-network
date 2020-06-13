@@ -46,16 +46,6 @@ export const formComment = (postId, content, likes, date, userPhoto, userName) =
   userName,
 });
 // from users
-// export const deletingPostFromUser = (userId, postId) => {
-//   const callback = (dataUser) => {
-//     const objectPost = dataUser.data().posts;
-//     delete objectPost[postId];
-//     firebase.firestore().collection('users').doc(userId).update({
-//       posts: objectPost,
-//     });
-//   };
-//   return getData(callback, 'users');
-// };
 export const deletingPostFromUser = (userId, postId) => {
   const callback = (dataUser) => {
     const userCollection = dataUser.find(doc => doc.id === userId);
