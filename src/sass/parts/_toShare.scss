@@ -1,3 +1,4 @@
+@import "../global.scss";
 // POST FORM
 .post-container{
   box-sizing: border-box;
@@ -187,6 +188,9 @@
 }
 // MENU THEMES OPTIONS
 .themes-options{
+    body.dark & { 
+        background-color: #b4bae0;
+      }
     @include flexModal(column);
     @include size(100vw, 75vh);
     @include desktop-screen(){
