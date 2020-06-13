@@ -31,13 +31,13 @@ export const updatePosts = (postId, newContent, newVisibility) => {
   });
 };
 // comments
-export const deletingComment = commentId => firebase.firestore().collection('comments').doc(commentId).delete();
+const deletingComment = commentId => firebase.firestore().collection('comments').doc(commentId).delete();
 
 export const updateComment = (commentId, newContent) => firebase.firestore().collection('comments').doc(commentId).update({
   content: newContent,
 });
 
-export const formComment = (postId, content, likes, date, userPhoto, userName) => firebase.firestore().collection('comments').add({
+export const formComment = (postId, content, likes, date, userPhoto, userName, uid) => firebase.firestore().collection('comments').add({
   postId,
   content,
   likes,
@@ -90,17 +90,18 @@ export const updateCommentFromUser = () => {
 };
 
 export const updateBothCollections = (userId, property, newValue) => {
-  firebase.firestore().collection('users').doc(userId).get().then((docId) => {
-    const postIds = docId.data().posts;
-    const ids = Object.keys(postIds);
-    ids.forEach((element) => {
-      postIds[element][property] = newValue;
-    });
-    firebase.firestore().collection('users').doc(userId).update({
-      posts: postIds,
-    });
-    return ids;
-  })
+  firebase.firestore().collection('users').doc(userId).get()
+    .then((docId) => {
+      const postIds = docId.data().posts;
+      const ids = Object.keys(postIds);
+      ids.forEach((element) => {
+        postIds[element][property] = newValue;
+      });
+      firebase.firestore().collection('users').doc(userId).update({
+        posts: postIds,
+      });
+      return ids;
+    })
     .then((ids) => {
       firebase.firestore().collection('posts').get().then((doc) => {
         doc.docs.forEach((post) => {
@@ -115,13 +116,13 @@ export const updateBothCollections = (userId, property, newValue) => {
 };
 
 export const updatePostsFromUser = (userId, postId, newContent, newVisibility) => {
-  return firebase.firestore().collection('users').doc(userId).get().then((docUser) => {
-    const objectPost = docUser.data().posts;
-    objectPost[postId].content = newContent;
-    objectPost[postId].visibility = newVisibility;
-    return firebase.firestore().collection('users').doc(userId).update({
-      posts: objectPost,
+  return firebase.firestore().collection('users').doc(userId).get()
+    .then((docUser) => {
+      const objectPost = docUser.data().posts;
+      objectPost[postId].content = newContent;
+      objectPost[postId].visibility = newVisibility;
+      return firebase.firestore().collection('users').doc(userId).update({
+        posts: objectPost,
+      });
     });
-  });
 };
-
