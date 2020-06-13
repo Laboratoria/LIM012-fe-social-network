@@ -1,4 +1,6 @@
-import { deletingPost, deletingPostFromUser, updatePosts, updatePostsFromUser } from '../firebase/crud.js';
+import {
+  deletingPost, deletingPostFromUser, updatePosts, updatePostsFromUser,
+} from '../firebase/crud.js';
 
 export const deletePost = (postId, userId) => {
   deletingPost(postId);

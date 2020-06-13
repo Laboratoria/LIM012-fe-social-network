@@ -1,5 +1,12 @@
 import { deletingCommentFromUser, updateCommentFromUser } from './crud.js';
 
+export const getHomePosts = (callback) => {
+  db.collection('posts').where('visibility', '==', 'public').orderBy('date', 'desc').onSnapshot((postsDocuments) => {
+    const documents = postsDocuments.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    callback(documents);
+  });
+};
+
 export const collectionUser = (userId, docId) => {
   db.collection('users').doc(userId).get().then((docUser) => {
     const postsInformation = docUser.data().posts;
@@ -18,10 +25,9 @@ export const onlyMyPost = (callback) => {
       db.collection('users').doc(user.uid).onSnapshot((doc) => {
         const myPostsIds = Object.keys(doc.data().posts);
         db.collection('posts').orderBy('date', 'desc').onSnapshot((post) => {
+          // eslint-disable-next-line max-len
           const docMyPosts = post.docs.filter(allPost => myPostsIds.some(myPost => allPost.id === myPost));
-          const docMyPost = docMyPosts.map((doc2) => {
-            return { id: doc2.id, ...doc2.data() };
-          });
+          const docMyPost = docMyPosts.map(doc2 => ({ id: doc2.id, ...doc2.data() }));
           callback(docMyPost, user.uid);
         });
       });

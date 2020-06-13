@@ -1,19 +1,62 @@
+// import MockFirebase from "mock-cloud-firestore";
+
 /* eslint-disable no-console */
-export const deletingPost = (postId) => {
-  db.collection('posts').doc(postId).delete();
-};
-export const deletingPostFromUser = (userId, postId) => {
-  db.collection('users').doc(userId).get().then((docUser) => {
-    const objectPost = docUser.data().posts;
-    delete objectPost[postId];
-    db.collection('users').doc(userId).update({
-      posts: objectPost,
+// posts
+export const deletingPost = postId => firebase.firestore().collection('posts').doc(postId).delete();
+
+export const getData = (callback, collectionName) => firebase.firestore().collection(collectionName)
+  .onSnapshot((docs) => {
+    const data = [];
+    docs.forEach((doc) => {
+      data.push({ id: doc.id, ...doc.data() });
     });
+    callback(data);
+  });
+
+export const formPost = (content, likes, visibility, date, photo, userPhoto, userName) => firebase.firestore().collection('posts').add({
+  content,
+  likes,
+  visibility,
+  date,
+  photo,
+  userPhoto,
+  userName,
+});
+
+export const updatePosts = (postId, newContent, newVisibility) => {
+  const posts = firebase.firestore().collection('posts').doc(postId);
+  return posts.update({
+    content: newContent,
+    visibility: newVisibility,
   });
 };
+// comments
+export const deletingComment = commentId => firebase.firestore().collection('comments').doc(commentId).delete();
 
-const deletingComment = (commentId) => {
-  db.collection('comments').doc(commentId).delete();
+export const updateComment = (commentId, newContent) => firebase.firestore().collection('comments').doc(commentId).update({
+  content: newContent,
+});
+
+export const formComment = (postId, content, likes, date, userPhoto, userName) => firebase.firestore().collection('comments').add({
+  postId,
+  content,
+  likes,
+  date,
+  userPhoto,
+  userName,
+  uid,
+});
+// from users
+export const deletingPostFromUser = (userId, postId) => {
+  const callback = (dataUser) => {
+    const userCollection = dataUser.find(doc => doc.id === userId);
+    const objectPost = userCollection.posts;
+    delete objectPost[postId];
+    return firebase.firestore().collection('users').doc(userId).update({
+      posts: objectPost,
+    });
+  };
+  return getData(callback, 'users');
 };
 
 export const deletingCommentFromUser = () => {
@@ -26,9 +69,6 @@ export const deletingCommentFromUser = () => {
   });
 };
 
-export const updateComment = (commentId, newContent) => db.collection('comments').doc(commentId).update({
-  content: newContent,
-});
 
 export const updateCommentFromUser = () => {
   const iconEdit = document.querySelectorAll('.update-comment');
@@ -36,9 +76,11 @@ export const updateCommentFromUser = () => {
     iconEdit.forEach((comments) => {
       comments.addEventListener('click', (e) => {
         e.preventDefault();
+
         const idComent = comments.getAttribute('idComent');
         const newContent = document.querySelector(`#textComment-${idComent}`);
         const iconSave = newContent.parentNode.querySelector('.save-comment');
+
         newContent.contentEditable = 'true';
         newContent.focus();
         iconSave.classList.remove('hide');
@@ -48,22 +90,22 @@ export const updateCommentFromUser = () => {
 };
 
 export const updateBothCollections = (userId, property, newValue) => {
-  db.collection('users').doc(userId).get().then((docId) => {
+  firebase.firestore().collection('users').doc(userId).get().then((docId) => {
     const postIds = docId.data().posts;
     const ids = Object.keys(postIds);
     ids.forEach((element) => {
       postIds[element][property] = newValue;
     });
-    db.collection('users').doc(userId).update({
+    firebase.firestore().collection('users').doc(userId).update({
       posts: postIds,
     });
     return ids;
   })
     .then((ids) => {
-      db.collection('posts').get().then((doc) => {
+      firebase.firestore().collection('posts').get().then((doc) => {
         doc.docs.forEach((post) => {
           if (ids.some(id => id === post.id)) {
-            db.collection('posts').doc(post.id).update({
+            firebase.firestore().collection('posts').doc(post.id).update({
               [property]: newValue,
             });
           }
@@ -71,41 +113,15 @@ export const updateBothCollections = (userId, property, newValue) => {
       });
     });
 };
-export const updatePosts = (postId, newContent, newVisibility) => {
-  const posts = db.collection('posts').doc(postId);
-  return posts.update({
-    content: newContent,
-    visibility: newVisibility,
-  });
-};
+
 export const updatePostsFromUser = (userId, postId, newContent, newVisibility) => {
-  db.collection('users').doc(userId).get().then((docUser) => {
+  return firebase.firestore().collection('users').doc(userId).get().then((docUser) => {
     const objectPost = docUser.data().posts;
     objectPost[postId].content = newContent;
     objectPost[postId].visibility = newVisibility;
-    db.collection('users').doc(userId).update({
+    return firebase.firestore().collection('users').doc(userId).update({
       posts: objectPost,
     });
   });
 };
 
-export const formPost = (content, likes, visibility, date, photo, userPhoto, userName) => db.collection('posts').add({
-  content,
-  likes,
-  visibility,
-  date,
-  photo,
-  userPhoto,
-  userName,
-});
-
-// Creación de Comentarios
-export const formComment = (postId, content, likes, date, userPhoto, userName, uid) => db.collection('comments').add({
-  postId,
-  content,
-  likes,
-  date,
-  userPhoto,
-  userName,
-  uid,
-});
