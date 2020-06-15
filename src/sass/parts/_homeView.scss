@@ -120,6 +120,18 @@
             @include size(36vw, 33vh);
         }
       }
+      .fa-camera{
+        @include icon-black;
+        position: relative;
+        left: 15px;
+        bottom: 70px;
+          @include desktop-screen{
+            bottom: 90px;
+          }
+      }
+      .camera-icon{
+        width: 0;
+      }
       .profile{
         position: absolute;
         align-self: flex-end;

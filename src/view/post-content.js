@@ -49,7 +49,7 @@ export default (content, postId) => {
   auth.onAuthStateChanged((user) => {
     uploadPhoto.addEventListener('change', (e) => {
       const file = e.target.files[0];
-      const refPath = `${user.uid}/${file.name}`;
+      const refPath = `User:${user.uid}/${file.name}`;
       uploadPhoto.name = refPath;
       storage.ref(refPath).put(file);
       preview.innerHTML = `<img src=${URL.createObjectURL(file)} id="preview-img" alt="preview">`;

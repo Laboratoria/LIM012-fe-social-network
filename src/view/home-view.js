@@ -3,6 +3,7 @@ import { logout } from '../firebase/auth.js';
 import { renderPost } from '../firebase-controller/renderpost.js';
 import { renderComment } from './template-comments.js';
 import { getComment, getHomePosts } from '../firebase/filterdata.js';
+import { getData } from '../firebase/crud.js';
 
 export default () => {
   const div = document.createElement('div');
@@ -27,6 +28,8 @@ export default () => {
   <div id="route-change-content">
     <div id="profile-section" class="lateral-left">
       <div>
+      <input id="upload-cover" type="file">
+      <label class="camera-icon" for="upload-cover"><i class="fas fa-camera"></i></label>
         <img class="cover-profile">
         <img class="profile" src="./images/profile-img-woman.png">
       </div>
@@ -66,11 +69,30 @@ export default () => {
   menuBtn.addEventListener('click', () => {
     menu.classList.toggle('appear');
   });
+  const uploadCover = div.querySelector('#upload-cover');
+  const coverProfile = div.querySelector('.cover-profile');
   // LOG OUT
   const logoutBtn = div.querySelector('.logout');
   logoutBtn.addEventListener('click', logout);
   auth.onAuthStateChanged((user) => {
     if (user) {
+      // --------------------
+      // eslint-disable-next-line no-return-assign
+      firebase.firestore().collection('users').doc(user.uid).get()
+        // eslint-disable-next-line no-return-assign
+        .then(userData => coverProfile.src = userData.data().cover);
+      uploadCover.addEventListener('change', (e) => {
+        e.preventDefault();
+        const file = e.target.files[0];
+        const refPath = `User:${user.uid}/${file.name}`;
+        uploadCover.name = refPath;
+        storage.ref(refPath).put(file);
+        coverProfile.src = URL.createObjectURL(file);
+        db.collection('users').doc(user.uid).update({
+          cover: coverProfile.src,
+        });
+      });
+      // --------------------
       const profileH3 = div.querySelector('.profile-information h3');
       const profileH5 = div.querySelector('.profile-information h5');
       profileH3.innerHTML = user.displayName;
@@ -95,7 +117,6 @@ export default () => {
       getComment(user.uid, renderComment);
     }
   });
-
   return div;
 };
 
