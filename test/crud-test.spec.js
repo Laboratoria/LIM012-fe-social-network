@@ -2,7 +2,7 @@ import MockFirebase from 'mock-cloud-firestore';
 
 import {
   // eslint-disable-next-line import/named
-  formPost, getData, deletingPost, updatePosts, formComment, updateComment, deletingComment, updatePostsFromUser, deletingPostFromUser,
+  formPost, getData, deletingDocument, updatePosts, formComment, updateComment, updatePostsFromUser, deletingPostFromUser,
 } from '../src/firebase/crud.js';
 
 const fixtureData = {
@@ -105,24 +105,14 @@ describe('lista de comentarios', () => {
       }, 'comments',
     )));
 });
-describe('deletingPost', () => {
-  it('Debería poder eliminar el post con id post002  de la colección post', done => deletingPost('post002')
+describe('deletingDocument', () => {
+  it('Debería poder eliminar el post con id post002  de la colección post', done => deletingDocument('posts', 'post002')
     .then(() => getData(
       (data) => {
         const postDeleted = data.find(post => post.id === 'post002');
         expect(postDeleted).toBeUndefined();
         done();
       }, 'posts',
-    )));
-});
-describe('deletingComment', () => {
-  it('Debería poder eliminar el comentario', done => deletingComment('comment002')
-    .then(() => getData(
-      (data) => {
-        const commentDeleted = data.find(comment => comment.id === 'comment002');
-        expect(commentDeleted).toBeUndefined();
-        done();
-      }, 'comments',
     )));
 });
 
@@ -162,7 +152,7 @@ describe('deletingPostFromUser', () => {
   it('Debería poder actualizar el post del usuario', done => deletingPostFromUser('user001', 'post001')
     .then(() => {
       getData((data) => {
-        const userCollection = data.find(post => post.id === 'user001');
+        const userCollection = data.find(doc => doc.id === 'user001');
         const postfield = userCollection.posts.post001;
         expect(postfield).toBeUndefined();
         console.log(data);

@@ -1,6 +1,4 @@
-import { collectionUser } from '../firebase/filterdata.js';
-import { formPost } from '../firebase/crud.js';
-import { editPost } from '../firebase-controller/crud-controller.js';
+import { addPostIdToCollectionUser, formPost, updatePosts } from '../firebase/crud.js';
 
 export default (content, postId) => {
   const div = document.createElement('div');
@@ -68,16 +66,17 @@ export default (content, postId) => {
         const userName = user.displayName;
         formPost(contentPost, likes, visibility, date, photo, userPhoto, userName)
           .then((doc) => {
-            collectionUser(user.uid, doc.id);
+            addPostIdToCollectionUser(user.uid, doc.id);
           })
           .then(() => {
             postForm.reset();
             window.history.back();
           });
       } else if (div.querySelector('.btn-submit').textContent === 'EDIT') {
-        editPost(user.uid, postId, contentPost, visibility)
+        updatePosts(postId, contentPost, visibility)
           .then(() => {
             postForm.reset();
+            window.history.back();
           });
       }
     });

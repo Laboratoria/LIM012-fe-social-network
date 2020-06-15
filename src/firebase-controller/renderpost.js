@@ -51,24 +51,22 @@ export const renderPost = (doc, userId) => {
   });
   const clickLikes = li.querySelector('.fa-heart');
   clickLikes.addEventListener('click', () => {
-    db.collection('users').doc(userId).get().then((userDoc) => {
-      let postLikes = post.likes;
-      const mylikes = userDoc.data().myLikes;
-      if (clickLikes.classList.contains('efect-like')) {
-        // eslint-disable-next-line no-plusplus
-        postLikes--;
-        delete mylikes[post.id];
-      } else {
-        // eslint-disable-next-line no-plusplus
-        postLikes++;
-        mylikes[post.id] = post.id;
-      }
-      db.collection('posts').doc(post.id).update({
-        likes: postLikes,
-      });
+    let postLikes = post.likes;
+    if (clickLikes.classList.contains('efect-like')) {
+      // eslint-disable-next-line no-plusplus
+      postLikes--;
       db.collection('users').doc(userId).update({
-        myLikes: mylikes,
+        myLikes: firebase.firestore.FieldValue.arrayRemove(post.id),
       });
+    } else {
+      // eslint-disable-next-line no-plusplus
+      postLikes++;
+      db.collection('users').doc(userId).update({
+        myLikes: firebase.firestore.FieldValue.arrayUnion(post.id),
+      });
+    }
+    db.collection('posts').doc(post.id).update({
+      likes: postLikes,
     });
   });
 
@@ -91,11 +89,9 @@ export const renderPost = (doc, userId) => {
   const userPostContent = li.querySelector('#user-post-content');
   const options = li.querySelector('.fa-ellipsis-h');
   db.collection('users').doc(userId).get().then((docId) => {
-    const myLikes = docId.data().myLikes;
+    const likesIds = docId.data().myLikes;
     const postIds = docId.data().posts;
-    const ids = Object.keys(postIds);
-    const likesIds = Object.keys(myLikes);
-    if (!ids.some(id => id === doc.id)) {
+    if (!postIds.some(id => id === doc.id)) {
       options.style.display = 'none';
     }
     if (likesIds.some(id => id === doc.id)) {
