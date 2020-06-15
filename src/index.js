@@ -31,6 +31,7 @@ auth.onAuthStateChanged((user) => {
             bio: '',
             myLikes: {},
             posts: {},
+            cover: '',
           });
         }
       });

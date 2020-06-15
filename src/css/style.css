@@ -420,6 +420,17 @@ input[type=checkbox] {
         .lateral-left div:first-child .cover-profile {
           width: 36vw;
           height: 33vh; } }
+    .lateral-left div:first-child .fa-camera {
+      color: #0F0C48;
+      font-size: 17px;
+      position: relative;
+      left: 15px;
+      bottom: 70px; }
+      @media (min-width: 800px) {
+        .lateral-left div:first-child .fa-camera {
+          bottom: 90px; } }
+    .lateral-left div:first-child .camera-icon {
+      width: 0; }
     .lateral-left div:first-child .profile {
       position: absolute;
       align-self: flex-end;
@@ -921,7 +932,7 @@ input[type=checkbox] {
         color: cornsilk;
         background-color: #0f0c48; }
 
-#upload-photo, #change-photo, #change-cover {
+#upload-photo, #change-photo, #change-cover, #upload-cover {
   display: none; }
 
 .menu-container {
