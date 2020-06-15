@@ -1,10 +1,9 @@
 import MockFirebase from 'mock-cloud-firestore';
 
 import {
-  // eslint-disable-next-line import/named
   formPost, getData, deletingDocument, updatePosts,
-  formComment, updateComment, deletingPostFromUser,
-  addPostIdToCollectionUser, updateUserPhotoOnPosts
+  formComment, updateComment, deletingDocumentFromUser,
+  addDocumentIdToUserCollection, updateUserDataOnPosts,
 } from '../src/firebase/crud.js';
 
 const fixtureData = {
@@ -25,6 +24,14 @@ const fixtureData = {
           userName: 'User Bunker Dos',
           visibility: 'private',
         },
+        post003: {
+          content: 'tercer post',
+          likes: 0,
+          photo: '',
+          userName: 'User Bunker Tres',
+          userPhoto: 'user003/actualPhoto',
+          visibility: 'private',
+        },
       },
     },
     users: {
@@ -38,6 +45,11 @@ const fixtureData = {
           bio: 'Soy segundo usuario de Bunker',
           myLikes: ['post001'],
           posts: ['post002'],
+        },
+        user003: {
+          bio: 'Soy tercer usuario de Bunker',
+          myLikes: ['post001'],
+          posts: ['post003'],
         },
       },
     },
@@ -76,7 +88,18 @@ describe('lista de posts', () => {
       }, 'posts',
     )));
 });
-
+describe('addDocumentIdToUserCollection', () => {
+  it('Debería añadir el id del post a la coleccion users', done => addDocumentIdToUserCollection('user001', 'post006', 'posts')
+    .then(() => {
+      getData((data) => {
+        const userCollection = data.find(doc => doc.id === 'user001');
+        const postfield = userCollection.posts;
+        const postId = postfield.some(elements => elements === 'post006');
+        expect(postId).toBeTruthy();
+        done();
+      }, 'users');
+    }));
+});
 describe('lista de comentarios', () => {
   it('Debería porder agregar un comentario', done => formComment('post002', 'que bien', 0, '06/06/2020', 'id/file.jpg', 'fulana', 'user001')
     .then(() => getData(
@@ -97,6 +120,18 @@ describe('deletingDocument', () => {
       }, 'posts',
     )));
 });
+describe('deletingDocumentFromUser', () => {
+  it('Debería eliminar el id del post de la coleccion users', done => deletingDocumentFromUser('user002', 'post002', 'posts')
+    .then(() => {
+      getData((data) => {
+        const userCollection = data.find(doc => doc.id === 'user002');
+        const postfield = userCollection.posts;
+        const postId = postfield.find(elements => elements === 'post002');
+        expect(postId).toBeUndefined();
+        done();
+      }, 'users');
+    }));
+});
 
 describe('updatePosts', () => {
   it('Debería editar el post con id post001  de la colección post', done => updatePosts('post001', 'nuevo contenido', 'public')
@@ -109,7 +144,7 @@ describe('updatePosts', () => {
     )));
 });
 describe('updateComment', () => {
-  it('Debería editar el post con id post001  de la colección post', done => updateComment('comment001', 'comentario editado')
+  it('Debería editar el comentario con id comment001  de la colección post', done => updateComment('comment001', 'comentario editado')
     .then(() => getData(
       (data) => {
         const commentEdited = data.find(comment => comment.id === 'comment001');
@@ -118,28 +153,13 @@ describe('updateComment', () => {
       }, 'comments',
     )));
 });
-describe('deletingPostFromUser', () => {
-  it('Debería poder actualizar el post del usuario', done => deletingPostFromUser('user001', 'post001', 'posts')
+describe('updateUserDataOnPosts', () => {
+  it('Debería actualizar ', done => updateUserDataOnPosts('posts', 'user003', 'userPhoto', 'user003/newPhoto')
     .then(() => {
       getData((data) => {
-        const userCollection = data.find(doc => doc.id === 'user001');
-        const postfield = userCollection.posts;
-        const postId = postfield.find(elements => elements === 'post001');
-        expect(postId).toBeUndefined();
+        const actualPost = data.find(doc => doc.id === 'post003');
+        expect(actualPost.userPhoto).toBe('user003/newPhoto');
         done();
-      }, 'users');
+      }, 'posts');
     }));
 });
-describe('addPostIdToCollectionUser', () => {
-  it('Debería poder actualizar el post del usuario', done => addPostIdToCollectionUser('user001', 'post001', 'posts')
-    .then(() => {
-      getData((data) => {
-        const userCollection = data.find(doc => doc.id === 'user001');
-        const postfield = userCollection.posts;
-        const postId = postfield.find(elements => elements === 'post001');
-        expect(postId).toBeUndefined();
-        done();
-      }, 'users');
-    }));
-});
-

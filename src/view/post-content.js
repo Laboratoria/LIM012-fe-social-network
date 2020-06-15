@@ -1,4 +1,4 @@
-import { addPostIdToCollectionUser, formPost, updatePosts } from '../firebase/crud.js';
+import { addDocumentIdToUserCollection, formPost, updatePosts } from '../firebase/crud.js';
 
 export default (content, postId) => {
   const div = document.createElement('div');
@@ -66,7 +66,7 @@ export default (content, postId) => {
         const userName = user.displayName;
         formPost(contentPost, likes, visibility, date, photo, userPhoto, userName)
           .then((doc) => {
-            addPostIdToCollectionUser(user.uid, doc.id, 'posts');
+            addDocumentIdToUserCollection(user.uid, doc.id, 'posts');
           })
           .then(() => {
             postForm.reset();

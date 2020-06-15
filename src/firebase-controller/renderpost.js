@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import { formComment, addPostIdToCollectionUser } from '../firebase/crud.js';
+import { formComment, addDocumentIdToUserCollection } from '../firebase/crud.js';
 import { deletePost } from './crud-controller.js';
 import { changeView } from '../view-controler/router.js';
 
@@ -82,7 +82,7 @@ export const renderPost = (doc, userId) => {
       formComment(post.id, content, likes, date, userPhoto, userName, uid)
         .then((docPost) => {
           inputToComment.value = '';
-          addPostIdToCollectionUser(user.uid, docPost.id, 'comments');
+          addDocumentIdToUserCollection(user.uid, docPost.id, 'comments');
         });
     });
   });

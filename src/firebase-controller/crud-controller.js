@@ -1,24 +1,21 @@
 import {
-  deletingDocument, deletingPostFromUser,
+  deletingDocument, deletingDocumentFromUser,
 } from '../firebase/crud.js';
 
 export const deletePost = (postId, userId) => {
   deletingDocument('posts', postId);
-  deletingPostFromUser(userId, postId, 'posts');
+  deletingDocumentFromUser(userId, postId, 'posts');
 };
-
-export const deletingCommentFromUser = (userId, postId) => {
+export const deletingCommentFromUser = (userId) => {
   const iconDelete = document.querySelectorAll('.del');
   iconDelete.forEach((objComment) => {
     objComment.addEventListener('click', () => {
       const idcomment = objComment.getAttribute('idComent');
       deletingDocument('comments', idcomment);
-      deletingPostFromUser(userId, postId, 'comments');
+      deletingDocumentFromUser(userId, idcomment, 'comments');
     });
   });
 };
-
-
 export const updateCommentFromUser = () => {
   const iconEdit = document.querySelectorAll('.update-comment');
   if (iconEdit) {
