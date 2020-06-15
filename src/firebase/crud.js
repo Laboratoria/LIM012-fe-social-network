@@ -2,7 +2,6 @@
 
 /* eslint-disable no-console */
 // posts
-export const deletingPost = postId => firebase.firestore().collection('posts').doc(postId).delete();
 
 export const getData = (callback, collectionName) => firebase.firestore().collection(collectionName)
   .onSnapshot((docs) => {
@@ -23,6 +22,11 @@ export const formPost = (content, likes, visibility, date, photo, userPhoto, use
   userName,
 });
 
+export const addPostIdToCollectionUser = (userId, docId, field) => {
+  db.collection('users').doc(userId).update({
+    [field]: firebase.firestore.FieldValue.arrayUnion(docId),
+  });
+};
 export const updatePosts = (postId, newContent, newVisibility) => {
   const posts = firebase.firestore().collection('posts').doc(postId);
   return posts.update({
@@ -31,8 +35,7 @@ export const updatePosts = (postId, newContent, newVisibility) => {
   });
 };
 // comments
-const deletingComment = commentId => firebase.firestore().collection('comments').doc(commentId).delete();
-
+export const deletingDocument = (collection, docId) => firebase.firestore().collection(collection).doc(docId).delete();
 export const updateComment = (commentId, newContent) => firebase.firestore().collection('comments').doc(commentId).update({
   content: newContent,
 });
@@ -47,62 +50,16 @@ export const formComment = (postId, content, likes, date, userPhoto, userName, u
   uid,
 });
 // from users
-export const deletingPostFromUser = (userId, postId) => {
-  const callback = (dataUser) => {
-    const userCollection = dataUser.find(doc => doc.id === userId);
-    const objectPost = userCollection.posts;
-    delete objectPost[postId];
-    return firebase.firestore().collection('users').doc(userId).update({
-      posts: objectPost,
-    });
-  };
-  return getData(callback, 'users');
-};
-
-export const deletingCommentFromUser = () => {
-  const iconDelete = document.querySelectorAll('.del');
-  iconDelete.forEach((objComment) => {
-    objComment.addEventListener('click', () => {
-      const idcomment = objComment.getAttribute('idComent');
-      deletingComment(idcomment);
-    });
+export const deletingPostFromUser = (userId, postId, field) => {
+  return firebase.firestore().collection('users').doc(userId).update({
+    [field]: firebase.firestore.FieldValue.arrayRemove(postId),
   });
 };
 
-
-export const updateCommentFromUser = () => {
-  const iconEdit = document.querySelectorAll('.update-comment');
-  if (iconEdit) {
-    iconEdit.forEach((comments) => {
-      comments.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        const idComent = comments.getAttribute('idComent');
-        const newContent = document.querySelector(`#textComment-${idComent}`);
-        const iconSave = newContent.parentNode.querySelector('.save-comment');
-
-        newContent.contentEditable = 'true';
-        newContent.focus();
-        iconSave.classList.remove('hide');
-      });
-    });
-  }
-};
-
-export const updateBothCollections = (userId, property, newValue) => {
-  firebase.firestore().collection('users').doc(userId).get()
+export const updateUserPhotoOnPosts = (userId, property, newValue) => {
+  return firebase.firestore().collection('users').doc(userId).get()
     .then((docId) => {
-      const postIds = docId.data().posts;
-      const ids = Object.keys(postIds);
-      ids.forEach((element) => {
-        postIds[element][property] = newValue;
-      });
-      firebase.firestore().collection('users').doc(userId).update({
-        posts: postIds,
-      });
-      return ids;
-    })
-    .then((ids) => {
+      const ids = docId.data().posts;
       firebase.firestore().collection('posts').get().then((doc) => {
         doc.docs.forEach((post) => {
           if (ids.some(id => id === post.id)) {
@@ -111,18 +68,6 @@ export const updateBothCollections = (userId, property, newValue) => {
             });
           }
         });
-      });
-    });
-};
-
-export const updatePostsFromUser = (userId, postId, newContent, newVisibility) => {
-  return firebase.firestore().collection('users').doc(userId).get()
-    .then((docUser) => {
-      const objectPost = docUser.data().posts;
-      objectPost[postId].content = newContent;
-      objectPost[postId].visibility = newVisibility;
-      return firebase.firestore().collection('users').doc(userId).update({
-        posts: objectPost,
       });
     });
 };

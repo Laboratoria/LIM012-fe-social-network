@@ -3,7 +3,6 @@ import { logout } from '../firebase/auth.js';
 import { renderPost } from '../firebase-controller/renderpost.js';
 import { renderComment } from './template-comments.js';
 import { getComment, getHomePosts } from '../firebase/filterdata.js';
-import { getData } from '../firebase/crud.js';
 
 export default () => {
   const div = document.createElement('div');
