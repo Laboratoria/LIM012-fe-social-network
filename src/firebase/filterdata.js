@@ -36,7 +36,7 @@ export const getComment = (userId, callback) => {
           postIds.forEach((postId) => {
             const postComments = comments.docs.filter(comment => comment.data().postId === postId);
             callback(postComments, postId, postComments.length);
-            deletingCommentFromUser(userId, postId);
+            deletingCommentFromUser(userId);
             updateCommentFromUser();
           });
         });
