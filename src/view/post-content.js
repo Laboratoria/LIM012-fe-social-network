@@ -66,7 +66,7 @@ export default (content, postId) => {
         const userName = user.displayName;
         formPost(contentPost, likes, visibility, date, photo, userPhoto, userName)
           .then((doc) => {
-            addPostIdToCollectionUser(user.uid, doc.id);
+            addPostIdToCollectionUser(user.uid, doc.id, 'posts');
           })
           .then(() => {
             postForm.reset();

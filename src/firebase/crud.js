@@ -22,9 +22,9 @@ export const formPost = (content, likes, visibility, date, photo, userPhoto, use
   userName,
 });
 
-export const addPostIdToCollectionUser = (userId, docId) => {
+export const addPostIdToCollectionUser = (userId, docId, field) => {
   db.collection('users').doc(userId).update({
-    posts: firebase.firestore.FieldValue.arrayUnion(docId),
+    [field]: firebase.firestore.FieldValue.arrayUnion(docId),
   });
 };
 export const updatePosts = (postId, newContent, newVisibility) => {
@@ -50,9 +50,9 @@ export const formComment = (postId, content, likes, date, userPhoto, userName, u
   uid,
 });
 // from users
-export const deletingPostFromUser = (userId, postId) => {
+export const deletingPostFromUser = (userId, postId, field) => {
   return firebase.firestore().collection('users').doc(userId).update({
-    posts: firebase.firestore.FieldValue.arrayRemove(postId),
+    [field]: firebase.firestore.FieldValue.arrayRemove(postId),
   });
 };
 

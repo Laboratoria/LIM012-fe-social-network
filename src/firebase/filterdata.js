@@ -31,12 +31,12 @@ export const getComment = (userId, callback) => {
         .then((posts) => {
           let postIds = posts.docs.map(post => post.id);
           if (window.location.hash === '#/profile') {
-            postIds = Object.keys(docId.data().posts);
+            postIds = docId.data().posts;
           }
           postIds.forEach((postId) => {
             const postComments = comments.docs.filter(comment => comment.data().postId === postId);
             callback(postComments, postId, postComments.length);
-            deletingCommentFromUser();
+            deletingCommentFromUser(userId, postId);
             updateCommentFromUser();
           });
         });

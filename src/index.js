@@ -25,6 +25,7 @@ auth.onAuthStateChanged((user) => {
             bio: '',
             myLikes: [],
             posts: [],
+            comments: [],
             cover: '',
           });
         }

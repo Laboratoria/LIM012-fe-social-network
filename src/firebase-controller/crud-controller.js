@@ -4,15 +4,16 @@ import {
 
 export const deletePost = (postId, userId) => {
   deletingDocument('posts', postId);
-  deletingPostFromUser(userId, postId);
+  deletingPostFromUser(userId, postId, 'posts');
 };
 
-export const deletingCommentFromUser = () => {
+export const deletingCommentFromUser = (userId, postId) => {
   const iconDelete = document.querySelectorAll('.del');
   iconDelete.forEach((objComment) => {
     objComment.addEventListener('click', () => {
       const idcomment = objComment.getAttribute('idComent');
       deletingDocument('comments', idcomment);
+      deletingPostFromUser(userId, postId, 'comments');
     });
   });
 };
