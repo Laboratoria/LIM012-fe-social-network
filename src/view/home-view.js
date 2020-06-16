@@ -1,8 +1,10 @@
 /* eslint-disable import/no-cycle */
 import { logout } from '../firebase/auth.js';
+import { updateDocument } from '../firebase/crud.js';
 import { renderPost } from '../firebase-controller/renderpost.js';
 import { renderComment } from './template-comments.js';
 import { getComment, getHomePosts } from '../firebase/filterdata.js';
+import { addFileToStorage, getFileFromStorage } from '../firebase/storage.js';
 
 export default () => {
   const div = document.createElement('div');
@@ -73,30 +75,35 @@ export default () => {
   // LOG OUT
   const logoutBtn = div.querySelector('.logout');
   logoutBtn.addEventListener('click', logout);
+  // COVER PHOTO
   auth.onAuthStateChanged((user) => {
     if (user) {
-      // --------------------
       // eslint-disable-next-line no-return-assign
-      firebase.firestore().collection('users').doc(user.uid).get()
-        // eslint-disable-next-line no-return-assign
-        .then(userData => coverProfile.src = userData.data().cover);
       uploadCover.addEventListener('change', (e) => {
         e.preventDefault();
         const file = e.target.files[0];
         const refPath = `User:${user.uid}/${file.name}`;
         uploadCover.name = refPath;
-        storage.ref(refPath).put(file);
-        coverProfile.src = URL.createObjectURL(file);
-        db.collection('users').doc(user.uid).update({
-          cover: coverProfile.src,
+        addFileToStorage(refPath, file).then((response) => {
+          getFileFromStorage(response.metadata.fullPath).then((url) => {
+            coverProfile.src = url;
+            updateDocument('users', user.uid, ['cover'], [url]);
+          });
         });
       });
-      // --------------------
+      // PERSONALIZE VIEW
       const profileH3 = div.querySelector('.profile-information h3');
       const profileH5 = div.querySelector('.profile-information h5');
       profileH3.innerHTML = user.displayName;
-      db.collection('users').doc(user.uid).get().then((doc) => {
-        profileH5.innerHTML = doc.data().bio;
+      db.collection('users').doc(user.uid).onSnapshot((doc) => {
+        if (doc.data().bio !== undefined) {
+          profileH5.innerHTML = doc.data().bio;
+        } else {
+          profileH5.innerHTML = 'Usuario de BUNKER';
+        }
+        if (doc.data().cover !== undefined) {
+          coverProfile.src = doc.data().cover;
+        }
       });
       const profileImg = div.querySelectorAll('img[src="./images/profile-img-woman.png"]');
       if (user.photoURL) {

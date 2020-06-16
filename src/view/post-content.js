@@ -1,4 +1,4 @@
-import { addDocumentIdToUserCollection, formPost, updatePosts } from '../firebase/crud.js';
+import { addDocumentIdToUserCollection, formPost, updateDocument } from '../firebase/crud.js';
 
 export default (content, postId) => {
   const div = document.createElement('div');
@@ -56,7 +56,7 @@ export default (content, postId) => {
     // FORM POST FUNCTION
     postForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const contentPost = postForm['post-content'].value;
+      const newContent = postForm['post-content'].value;
       const visibility = postForm['visibility-select'].value;
       if (div.querySelector('.btn-submit').textContent === 'POST') {
         const likes = 0;
@@ -64,7 +64,7 @@ export default (content, postId) => {
         const photo = postForm['upload-photo'].name;
         const userPhoto = user.photoURL;
         const userName = user.displayName;
-        formPost(contentPost, likes, visibility, date, photo, userPhoto, userName)
+        formPost(newContent, likes, visibility, date, photo, userPhoto, userName)
           .then((doc) => {
             addDocumentIdToUserCollection(user.uid, doc.id, 'posts');
           })
@@ -73,7 +73,7 @@ export default (content, postId) => {
             window.history.back();
           });
       } else if (div.querySelector('.btn-submit').textContent === 'EDIT') {
-        updatePosts(postId, contentPost, visibility)
+        updateDocument('posts', postId, ['content', 'visibility'], [newContent, visibility])
           .then(() => {
             postForm.reset();
             window.history.back();
