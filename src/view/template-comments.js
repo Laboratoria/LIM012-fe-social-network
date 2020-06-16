@@ -34,7 +34,6 @@ export const renderComment = (postsComments, postId, sizeComments) => {
         </div>
       `;
     div.innerHTML = template;
-
     const optionsOfComments = div.querySelector(`#option-${com.id}`);
     if (optionsOfComments) {
       optionsOfComments.addEventListener('click', () => {
@@ -64,10 +63,6 @@ export const renderComment = (postsComments, postId, sizeComments) => {
         optionsOfComments.style.display = 'none';
       }
     });
-
-
-    divComment.appendChild(div);
-
     const iconSaveCom = div.querySelectorAll('.save-comment');
     if (iconSaveCom.length) {
       iconSaveCom.forEach((comments) => {
@@ -84,6 +79,7 @@ export const renderComment = (postsComments, postId, sizeComments) => {
         });
       });
     }
+    divComment.appendChild(div);
     return div;
   });
   const sizeComment = document.getElementById(`size-${postId}`);

@@ -6,7 +6,6 @@ export const getHomePosts = (callback) => {
     callback(documents);
   });
 };
-
 export const onlyMyPost = (callback) => {
   auth.onAuthStateChanged((user) => {
     if (user) {
@@ -22,11 +21,9 @@ export const onlyMyPost = (callback) => {
     }
   });
 };
-
-// Leer comentarios
 export const getComment = (userId, callback) => {
-  db.collection('users').doc(userId).get().then((docId) => {
-    db.collection('comments').orderBy('date', 'desc').onSnapshot((comments) => {
+  db.collection('users').doc(userId).onSnapshot((docId) => {
+    db.collection('comments').orderBy('date', 'desc').get().then((comments) => {
       db.collection('posts').get()
         .then((posts) => {
           let postIds = posts.docs.map(post => post.id);

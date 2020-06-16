@@ -1,4 +1,4 @@
-import { updateUserPhotoOnPosts } from '../firebase/crud.js';
+import { updateUserDataOnPosts } from '../firebase/crud.js';
 
 export default () => {
   const form = document.createElement('form');
@@ -40,7 +40,8 @@ export default () => {
           user.updateProfile({
             displayName: inputUserName,
           }).then(() => {
-            updateUserPhotoOnPosts(user.uid, 'userName', inputUserName);
+            updateUserDataOnPosts('posts', user.uid, 'userName', inputUserName);
+            updateUserDataOnPosts('comments', user.uid, 'userName', inputUserName);
           });
         }
         if (inputBio !== '') {
@@ -53,7 +54,8 @@ export default () => {
             user.updateProfile({
               photoURL: url,
             }).then(() => {
-              updateUserPhotoOnPosts(user.uid, 'userPhoto', url);
+              updateUserDataOnPosts('posts', user.uid, 'userPhoto', url);
+              updateUserDataOnPosts('comments', user.uid, 'userPhoto', url);
             });
           });
         }

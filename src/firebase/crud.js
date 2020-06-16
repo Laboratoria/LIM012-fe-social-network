@@ -1,9 +1,6 @@
+/* eslint-disable max-len */
 // import MockFirebase from "mock-cloud-firestore";
-
-/* eslint-disable no-console */
-// posts
-
-export const getData = (callback, collectionName) => firebase.firestore().collection(collectionName)
+const getData = (callback, collectionName) => firebase.firestore().collection(collectionName)
   .onSnapshot((docs) => {
     const data = [];
     docs.forEach((doc) => {
@@ -11,8 +8,7 @@ export const getData = (callback, collectionName) => firebase.firestore().collec
     });
     callback(data);
   });
-
-export const formPost = (content, likes, visibility, date, photo, userPhoto, userName) => firebase.firestore().collection('posts').add({
+const formPost = (content, likes, visibility, date, photo, userPhoto, userName) => firebase.firestore().collection('posts').add({
   content,
   likes,
   visibility,
@@ -21,26 +17,7 @@ export const formPost = (content, likes, visibility, date, photo, userPhoto, use
   userPhoto,
   userName,
 });
-
-export const addPostIdToCollectionUser = (userId, docId, field) => {
-  db.collection('users').doc(userId).update({
-    [field]: firebase.firestore.FieldValue.arrayUnion(docId),
-  });
-};
-export const updatePosts = (postId, newContent, newVisibility) => {
-  const posts = firebase.firestore().collection('posts').doc(postId);
-  return posts.update({
-    content: newContent,
-    visibility: newVisibility,
-  });
-};
-// comments
-export const deletingDocument = (collection, docId) => firebase.firestore().collection(collection).doc(docId).delete();
-export const updateComment = (commentId, newContent) => firebase.firestore().collection('comments').doc(commentId).update({
-  content: newContent,
-});
-
-export const formComment = (postId, content, likes, date, userPhoto, userName, uid) => firebase.firestore().collection('comments').add({
+const formComment = (postId, content, likes, date, userPhoto, userName, uid) => firebase.firestore().collection('comments').add({
   postId,
   content,
   likes,
@@ -49,25 +26,44 @@ export const formComment = (postId, content, likes, date, userPhoto, userName, u
   userName,
   uid,
 });
-// from users
-export const deletingPostFromUser = (userId, postId, field) => {
+const addDocumentIdToUserCollection = (userId, docId, field) => {
+  return firebase.firestore().collection('users').doc(userId).update({
+    [field]: firebase.firestore.FieldValue.arrayUnion(docId),
+  });
+};
+const updatePosts = (postId, newContent, newVisibility) => {
+  const posts = firebase.firestore().collection('posts').doc(postId);
+  return posts.update({
+    content: newContent,
+    visibility: newVisibility,
+  });
+};
+const updateComment = (commentId, newContent) => firebase.firestore().collection('comments').doc(commentId).update({
+  content: newContent,
+});
+const deletingDocument = (collection, docId) => firebase.firestore().collection(collection).doc(docId).delete();
+const deletingDocumentFromUser = (userId, postId, field) => {
   return firebase.firestore().collection('users').doc(userId).update({
     [field]: firebase.firestore.FieldValue.arrayRemove(postId),
   });
 };
-
-export const updateUserPhotoOnPosts = (userId, property, newValue) => {
+const updateUserDataOnPosts = (collection, userId, property, newValue) => {
   return firebase.firestore().collection('users').doc(userId).get()
     .then((docId) => {
-      const ids = docId.data().posts;
-      firebase.firestore().collection('posts').get().then((doc) => {
-        doc.docs.forEach((post) => {
-          if (ids.some(id => id === post.id)) {
-            firebase.firestore().collection('posts').doc(post.id).update({
+      const ids = docId.data()[collection];
+      return firebase.firestore().collection(collection).get().then((documents) => {
+        documents.docs.forEach((doc) => {
+          if (ids.some(id => id === doc.id)) {
+            firebase.firestore().collection(collection).doc(doc.id).update({
               [property]: newValue,
             });
           }
         });
       });
     });
+};
+export {
+  getData, formPost, formComment, addDocumentIdToUserCollection,
+  updatePosts, updateComment, deletingDocument, deletingDocumentFromUser,
+  updateUserDataOnPosts,
 };
