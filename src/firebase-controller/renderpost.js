@@ -66,10 +66,13 @@ export const renderPost = (doc, userId) => {
     });
   });
   // COMMENTS
+
+ 
   const clickIconSend = li.querySelector('.icon-send');
   clickIconSend.addEventListener('click', () => {
+
     auth.onAuthStateChanged((user) => {
-      if (inputToComment.length) {
+      if (inputToComment.value) {
         const content = inputToComment.value;
         const likes = 0;
         const date = firebase.firestore.FieldValue.serverTimestamp();
@@ -83,7 +86,9 @@ export const renderPost = (doc, userId) => {
           });
       }
     });
+
   });
+
   // PERSONALIZE POSTS
   const userPostContent = li.querySelector('#user-post-content');
   const dateTag = li.querySelector('.date');
