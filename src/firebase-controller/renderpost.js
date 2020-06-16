@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable import/no-cycle */
 import { formComment, addDocumentIdToUserCollection } from '../firebase/crud.js';
 import { deletePost } from './crud-controller.js';
@@ -15,7 +16,7 @@ export const renderPost = (doc, userId) => {
   <div class="header">
     <img class="profile" src="./images/profile-img-woman.png">
     <div class="date">
-    <b>${post.userName}</b><br>${shortTime} ${shortDate} <i class="fas fa-globe-americas privacity"></i>
+    <b>${post.userName}</b><br>${shortTime} ${shortDate}
     </div>
     <div class="modal-options">
       <ul>
@@ -23,7 +24,6 @@ export const renderPost = (doc, userId) => {
         <li><i class="fas fa-trash delete"></i><span>Delete</span></li>
       </ul>
     </div>
-    <i class="fas fa-ellipsis-h"></i>
   </div>
   <div id="user-post-content">
     <div class="main">${post.content}</div>
@@ -39,8 +39,7 @@ export const renderPost = (doc, userId) => {
       <i class="fab fa-telegram-plane icon-send"></i>
     </section>
     <div id=${post.id} class="container-comments"></div>
-  </div>
-  `;
+  </div>`;
   const clickComments = li.querySelector('.fa-comments');
   const inputToComment = li.querySelector('.inputComment');
   const newComments = li.querySelector('.new-comment');
@@ -52,13 +51,11 @@ export const renderPost = (doc, userId) => {
   clickLikes.addEventListener('click', () => {
     let postLikes = post.likes;
     if (clickLikes.classList.contains('efect-like')) {
-      // eslint-disable-next-line no-plusplus
       postLikes--;
       db.collection('users').doc(userId).update({
         myLikes: firebase.firestore.FieldValue.arrayRemove(post.id),
       });
     } else {
-      // eslint-disable-next-line no-plusplus
       postLikes++;
       db.collection('users').doc(userId).update({
         myLikes: firebase.firestore.FieldValue.arrayUnion(post.id),
@@ -87,12 +84,16 @@ export const renderPost = (doc, userId) => {
   });
   // PERSONALIZE POSTS
   const userPostContent = li.querySelector('#user-post-content');
-  const options = li.querySelector('.fa-ellipsis-h');
+  const dateTag = li.querySelector('.date');
+  const header = li.querySelector('.header');
+  const visibilityIcon = document.createElement('i');
+  const menuIcon = document.createElement('i');
+  menuIcon.className = 'fas fa-ellipsis-h';
   db.collection('users').doc(userId).get().then((docId) => {
     const likesIds = docId.data().myLikes;
     const postIds = docId.data().posts;
-    if (!postIds.some(id => id === doc.id)) {
-      options.style.display = 'none';
+    if (postIds.some(id => id === doc.id)) {
+      header.appendChild(menuIcon);
     }
     if (likesIds.some(id => id === doc.id)) {
       clickLikes.classList.add('efect-like');
@@ -100,12 +101,18 @@ export const renderPost = (doc, userId) => {
       clickLikes.classList.remove('efect-like');
     }
   });
+  if (post.visibility === 'public') {
+    visibilityIcon.className = 'fas fa-globe-americas privacity';
+  } else {
+    visibilityIcon.className = 'fas fa-lock';
+  }
+  dateTag.appendChild(visibilityIcon);
   const profilePhoto = li.querySelector('.profile');
   if (doc.userPhoto) {
     profilePhoto.src = doc.userPhoto;
   }
   const modalOptions = li.querySelector('.modal-options');
-  options.addEventListener('click', () => {
+  menuIcon.addEventListener('click', () => {
     modalOptions.classList.toggle('options-appear');
   });
   if (post.photo !== '') {

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 // import MockFirebase from "mock-cloud-firestore";
 const getData = (callback, collectionName) => firebase.firestore().collection(collectionName)
   .onSnapshot((docs) => {
