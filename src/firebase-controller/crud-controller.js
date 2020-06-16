@@ -6,6 +6,7 @@ export const deletePost = (postId, userId) => {
   deletingDocument('posts', postId);
   deletingDocumentFromUser(userId, postId, 'posts');
 };
+
 export const deletingCommentFromUser = (userId) => {
   const iconDelete = document.querySelectorAll('.del');
   iconDelete.forEach((objComment) => {
@@ -13,6 +14,7 @@ export const deletingCommentFromUser = (userId) => {
       const idcomment = objComment.getAttribute('idComent');
       deletingDocument('comments', idcomment);
       deletingDocumentFromUser(userId, idcomment, 'comments');
+
     });
   });
 };
