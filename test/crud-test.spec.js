@@ -1,8 +1,8 @@
 import MockFirebase from 'mock-cloud-firestore';
 
 import {
-  formPost, getData, deletingDocument, updatePosts,
-  formComment, updateComment, deletingDocumentFromUser,
+  formPost, getData, deletingDocument, updateDocument,
+  formComment, deletingDocumentFromUser,
   addDocumentIdToUserCollection, updateUserDataOnPosts,
 } from '../src/firebase/crud.js';
 
@@ -134,23 +134,13 @@ describe('deletingDocumentFromUser', () => {
 });
 
 describe('updatePosts', () => {
-  it('Debería editar el post con id post001  de la colección post', done => updatePosts('post001', 'nuevo contenido', 'public')
+  it('Debería editar el post con id post001  de la colección post', done => updateDocument('posts', 'post001', ['content', 'visibility'], ['nuevo contenido', 'public'])
     .then(() => getData(
       (data) => {
         const postEdited = data.find(post => post.id === 'post001');
         expect(postEdited.content).toBe('nuevo contenido');
         done();
       }, 'posts',
-    )));
-});
-describe('updateComment', () => {
-  it('Debería editar el comentario con id comment001  de la colección post', done => updateComment('comment001', 'comentario editado')
-    .then(() => getData(
-      (data) => {
-        const commentEdited = data.find(comment => comment.id === 'comment001');
-        expect(commentEdited.content).toBe('comentario editado');
-        done();
-      }, 'comments',
     )));
 });
 describe('updateUserDataOnPosts', () => {

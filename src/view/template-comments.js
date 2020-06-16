@@ -1,4 +1,4 @@
-import { updateComment } from '../firebase/crud.js';
+import { updateDocument } from '../firebase/crud.js';
 
 export const renderComment = (postsComments, postId, sizeComments) => {
   const divComment = document.getElementById(postId);
@@ -50,12 +50,11 @@ export const renderComment = (postsComments, postId, sizeComments) => {
     }
 
     auth.onAuthStateChanged((user) => {
-      const userPhoto = user.photoURL;
       const photoBeforeComment = document.querySelectorAll('.first');
       photoBeforeComment.forEach((ele) => {
         if (comment.userPhoto) {
           // eslint-disable-next-line no-param-reassign
-          ele.src = userPhoto;
+          ele.src = user.photoURL;
         }
       });
       const userId = user.uid;
@@ -74,7 +73,7 @@ export const renderComment = (postsComments, postId, sizeComments) => {
             newContent.contentEditable = 'false';
             comments.classList.add('hide');
             const text = newContent.innerText.trim();
-            updateComment(idComent, text);
+            updateDocument('comments', idComent, ['content'], [text]);
           }
         });
       });

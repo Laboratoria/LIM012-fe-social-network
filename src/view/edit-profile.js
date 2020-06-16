@@ -1,4 +1,5 @@
 import { updateUserDataOnPosts } from '../firebase/crud.js';
+import { addFileToStorage, getFileFromStorage } from '../firebase/storage.js';
 
 export default () => {
   const form = document.createElement('form');
@@ -29,8 +30,12 @@ export default () => {
         const file = event.target.files[0];
         const refPath = `${user.uid}/${file.name}`;
         changePhoto.name = refPath;
-        storage.ref(refPath).put(file);
-        photoCircle.src = URL.createObjectURL(file);
+        addFileToStorage(refPath, file).then((response) => {
+          getFileFromStorage(response.metadata.fullPath).then((url) => {
+            photoCircle.src = url;
+          });
+        });
+        // photoCircle.src = URL.createObjectURL(file);
       });
       form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -50,7 +55,7 @@ export default () => {
           });
         }
         if (changePhoto.value !== '') {
-          storage.ref().child(changePhoto.name).getDownloadURL().then((url) => {
+          getFileFromStorage(changePhoto.name).then((url) => {
             user.updateProfile({
               photoURL: url,
             }).then(() => {

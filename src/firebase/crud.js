@@ -31,16 +31,13 @@ const addDocumentIdToUserCollection = (userId, docId, field) => {
     [field]: firebase.firestore.FieldValue.arrayUnion(docId),
   });
 };
-const updatePosts = (postId, newContent, newVisibility) => {
-  const posts = firebase.firestore().collection('posts').doc(postId);
-  return posts.update({
-    content: newContent,
-    visibility: newVisibility,
+const updateDocument = (collection, docId, arrFields, arrNewValues) => {
+  const obj = {};
+  arrFields.forEach((field, index) => {
+    obj[field] = arrNewValues[index];
   });
+  return firebase.firestore().collection(collection).doc(docId).update(obj);
 };
-const updateComment = (commentId, newContent) => firebase.firestore().collection('comments').doc(commentId).update({
-  content: newContent,
-});
 const deletingDocument = (collection, docId) => firebase.firestore().collection(collection).doc(docId).delete();
 const deletingDocumentFromUser = (userId, postId, field) => {
   return firebase.firestore().collection('users').doc(userId).update({
@@ -64,6 +61,6 @@ const updateUserDataOnPosts = (collection, userId, property, newValue) => {
 };
 export {
   getData, formPost, formComment, addDocumentIdToUserCollection,
-  updatePosts, updateComment, deletingDocument, deletingDocumentFromUser,
-  updateUserDataOnPosts,
+  deletingDocument, deletingDocumentFromUser,
+  updateUserDataOnPosts, updateDocument,
 };
