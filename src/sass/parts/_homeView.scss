@@ -124,7 +124,7 @@
         @include icon-black;
         position: relative;
         left: 15px;
-        bottom: 70px;
+        bottom: 60px;
           @include desktop-screen{
             bottom: 90px;
           }
@@ -165,7 +165,6 @@
   @include size(100vw, auto);
   .share-section{
     margin-top: 2vh;
-    padding: 1vh;
     width: 95vw;
     display: flex;
     justify-content: space-evenly;
@@ -200,10 +199,10 @@
   .fixed{
     position: fixed;
     top: 8vh;
-    left: 0;
+    left: 10%;
   }
   .margin-left{
-    margin-left: 18vw;
+    margin-left: 38%;
   }
 }
 #route-change-content{

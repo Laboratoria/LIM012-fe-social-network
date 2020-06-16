@@ -66,22 +66,29 @@ export const renderPost = (doc, userId) => {
     });
   });
   // COMMENTS
+
+ 
   const clickIconSend = li.querySelector('.icon-send');
   clickIconSend.addEventListener('click', () => {
+
     auth.onAuthStateChanged((user) => {
-      const content = inputToComment.value;
-      const likes = 0;
-      const date = firebase.firestore.FieldValue.serverTimestamp();
-      const userPhoto = user.photoURL;
-      const userName = user.displayName;
-      const uid = user.uid;
-      formComment(post.id, content, likes, date, userPhoto, userName, uid)
-        .then((docPost) => {
-          inputToComment.value = '';
-          addDocumentIdToUserCollection(user.uid, docPost.id, 'comments');
-        });
+      if (inputToComment.value) {
+        const content = inputToComment.value;
+        const likes = 0;
+        const date = firebase.firestore.FieldValue.serverTimestamp();
+        const userPhoto = user.photoURL;
+        const userName = user.displayName;
+        const uid = user.uid;
+        formComment(post.id, content, likes, date, userPhoto, userName, uid)
+          .then((docPost) => {
+            inputToComment.value = '';
+            addDocumentIdToUserCollection(user.uid, docPost.id, 'comments');
+          });
+      }
     });
+
   });
+
   // PERSONALIZE POSTS
   const userPostContent = li.querySelector('#user-post-content');
   const dateTag = li.querySelector('.date');

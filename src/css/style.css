@@ -425,7 +425,7 @@ input[type=checkbox] {
       font-size: 17px;
       position: relative;
       left: 15px;
-      bottom: 70px; }
+      bottom: 60px; }
       @media (min-width: 800px) {
         .lateral-left div:first-child .fa-camera {
           bottom: 90px; } }
@@ -463,7 +463,6 @@ input[type=checkbox] {
   height: auto; }
   .lateral-rigth .share-section {
     margin-top: 2vh;
-    padding: 1vh;
     width: 95vw;
     display: flex;
     justify-content: space-evenly;
@@ -495,9 +494,9 @@ input[type=checkbox] {
   .fixed {
     position: fixed;
     top: 8vh;
-    left: 0; }
+    left: 10%; }
   .margin-left {
-    margin-left: 18vw; } }
+    margin-left: 38%; } }
 
 #route-change-content {
   width: 100vw;
