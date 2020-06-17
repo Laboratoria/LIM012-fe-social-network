@@ -111,6 +111,7 @@
                   @include size(100%, auto);
             
                   h2 {
+                    margin-top: 8px;
                     @include font-NahumGothic(10px);
                   }
     

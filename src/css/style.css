@@ -759,6 +759,7 @@ input[type=checkbox] {
             width: 100%;
             height: auto; }
             .publication .new-comment .container-comments .name-comments .header-comment div h2 {
+              margin-top: 8px;
               font-family: "Nanum Gothic", sans-serif;
               font-size: 10px;
               font-weight: lighter; }
