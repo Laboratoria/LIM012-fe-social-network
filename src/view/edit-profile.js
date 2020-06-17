@@ -13,9 +13,9 @@ export default () => {
       </div> 
       <label class="photo-label" for="change-photo">Change profile picture</label>
       <input id="change-photo" type="file">
-      <label for="new-username">User name</label>
+      <label for="new-username">USER NAME</label>
       <input id="new-username" type="text" placeholder="User name">
-      <label for="bio">Bio</label>
+      <label for="bio">BIO</label>
       <input id="bio" type="text" placeholder="Tell me something about you">
       <button class="btn-submit">SAVE</button>`;
       form.innerHTML = divcontent;

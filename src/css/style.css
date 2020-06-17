@@ -139,7 +139,7 @@
       margin-top: 15px; }
       .modals main form input {
         width: 75%;
-        height: 10%;
+        height: 25%;
         font-family: "Nanum Gothic", sans-serif;
         font-size: 12px;
         font-weight: lighter;
@@ -209,7 +209,7 @@
 
 .button-access {
   width: 65%;
-  height: 40px;
+  height: 50px;
   font-family: "Sifonn", sans-serif;
   font-size: 16px;
   font-weight: lighter;
@@ -219,7 +219,7 @@
   border: none;
   cursor: pointer;
   outline-style: none;
-  margin-top: 2%; }
+  margin-top: 8%; }
   .button-access:hover {
     box-shadow: 0px 0px 3px 3px #0ff; }
 
@@ -249,24 +249,30 @@
   display: grid;
   grid-template-columns: 10% 90%;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   text-align: left;
   color: #ffff; }
   .terms p {
-    width: 95%;
+    width: 100%;
     height: auto;
     font-family: "Nanum Gothic", sans-serif;
     font-size: 12px;
     font-weight: lighter;
     margin-left: 3%; }
+    @media (min-width: 800px) {
+      .terms p {
+        margin-left: 0%; } }
 
 input[type=checkbox] {
-  -webkit-transform: scale(3); }
+  -webkit-transform: scale(2); }
+  @media (min-width: 800px) {
+    input[type=checkbox] {
+      -webkit-transform: scale(3); } }
 
 .question-containerSingUp {
   width: 90%;
   position: relative;
-  top: 20px;
+  top: 10px;
   align-items: center;
   display: grid;
   grid-template-columns: 61% 39%;
@@ -284,6 +290,22 @@ input[type=checkbox] {
       display: grid;
       grid-template-columns: 60% 40%;
       text-align: center; } }
+
+#btn-signUp {
+  width: 65%;
+  height: 70px;
+  font-family: "Sifonn", sans-serif;
+  font-size: 16px;
+  font-weight: lighter;
+  border-radius: 10px;
+  background: rgba(246, 229, 229, 0.19);
+  color: #F1F1F1;
+  border: none;
+  cursor: pointer;
+  outline-style: none;
+  margin-top: 8%; }
+  #btn-signUp:hover {
+    box-shadow: 0px 0px 3px 3px #0ff; }
 
 @font-face {
   font-family: 'Sifonn';
@@ -443,15 +465,25 @@ input[type=checkbox] {
   @media (min-width: 800px) {
     .lateral-left div:last-child {
       width: 38vw; } }
-  .lateral-left div:last-child h3, .lateral-left div:last-child h5 {
+  .lateral-left div:last-child h3 {
     text-align: center;
     margin: 1.5vh 0;
-    font-size: 3vh;
+    font-size: 22px;
     color: #1a1919; }
-    body.dark .lateral-left div:last-child h3, body.dark .lateral-left div:last-child h5 {
+    body.dark .lateral-left div:last-child h3 {
       color: white; }
     @media (min-width: 800px) {
-      .lateral-left div:last-child h3, .lateral-left div:last-child h5 {
+      .lateral-left div:last-child h3 {
+        margin: 1vh 0; } }
+  .lateral-left div:last-child h5 {
+    text-align: center;
+    margin: 1.5vh 0;
+    font-size: 16px;
+    color: #1a1919; }
+    body.dark .lateral-left div:last-child h5 {
+      color: white; }
+    @media (min-width: 800px) {
+      .lateral-left div:last-child h5 {
         margin: 1vh 0; } }
 
 .lateral-rigth {
@@ -555,24 +587,30 @@ body.dark #post-form #post-content {
   display: grid;
   grid-template-columns: 10% 90%;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   text-align: left;
   color: #ffff; }
   .terms p {
-    width: 95%;
+    width: 100%;
     height: auto;
     font-family: "Nanum Gothic", sans-serif;
     font-size: 12px;
     font-weight: lighter;
     margin-left: 3%; }
+    @media (min-width: 800px) {
+      .terms p {
+        margin-left: 0%; } }
 
 input[type=checkbox] {
-  -webkit-transform: scale(3); }
+  -webkit-transform: scale(2); }
+  @media (min-width: 800px) {
+    input[type=checkbox] {
+      -webkit-transform: scale(3); } }
 
 .question-containerSingUp {
   width: 90%;
   position: relative;
-  top: 20px;
+  top: 10px;
   align-items: center;
   display: grid;
   grid-template-columns: 61% 39%;
@@ -590,6 +628,22 @@ input[type=checkbox] {
       display: grid;
       grid-template-columns: 60% 40%;
       text-align: center; } }
+
+#btn-signUp {
+  width: 65%;
+  height: 70px;
+  font-family: "Sifonn", sans-serif;
+  font-size: 16px;
+  font-weight: lighter;
+  border-radius: 10px;
+  background: rgba(246, 229, 229, 0.19);
+  color: #F1F1F1;
+  border: none;
+  cursor: pointer;
+  outline-style: none;
+  margin-top: 8%; }
+  #btn-signUp:hover {
+    box-shadow: 0px 0px 3px 3px #0ff; }
 
 .publication {
   width: 100%;
@@ -642,11 +696,16 @@ input[type=checkbox] {
     padding-left: 1vh;
     display: flex;
     justify-content: flex-start; }
-    .publication .footer i {
+    .publication .footer .fa-comment {
       padding: 0vh 1vh 1vh 1vh;
       box-sizing: border-box;
       color: #0F0C48;
       font-size: 17px; }
+    .publication .footer .fa-heart {
+      color: #0F0C48;
+      font-size: 17px; }
+    .publication .footer .efect-like {
+      color: #fd5751 !important; }
   .publication .new-comment {
     width: 100%;
     height: auto;
@@ -684,7 +743,7 @@ input[type=checkbox] {
         height: auto;
         background: #ebe5ff;
         border-radius: 8px;
-        margin-bottom: 5%; }
+        margin-bottom: 8%; }
         .publication .new-comment .container-comments .name-comments .header-comment {
           width: 100%;
           height: 30px;
@@ -700,6 +759,7 @@ input[type=checkbox] {
             width: 100%;
             height: auto; }
             .publication .new-comment .container-comments .name-comments .header-comment div h2 {
+              margin-top: 8px;
               font-family: "Nanum Gothic", sans-serif;
               font-size: 10px;
               font-weight: lighter; }
@@ -814,9 +874,6 @@ input[type=checkbox] {
   width: 100px;
   box-shadow: 0px 0px 2px 0px #666366;
   background-color: #fdfdfd; }
-
-.efect-like {
-  color: red !important; }
 
 @font-face {
   font-family: 'Sifonn';
@@ -982,12 +1039,27 @@ input[type=checkbox] {
       justify-content: center; } }
   #profile-form label {
     margin: 2vh 0;
-    font-size: 3vh; }
+    font-size: 3vh;
+    font-family: "Sifonn", sans-serif;
+    font-size: 16px;
+    font-weight: lighter; }
   #profile-form .photo-label {
-    color: #138ef3; }
+    color: #138ef3;
+    font-family: "Sifonn", sans-serif;
+    font-size: 18px;
+    font-weight: lighter; }
   #profile-form input {
+    border-radius: 10px;
+    background-color: #aed9fd;
     padding: 1vh;
-    font-size: 3vh; }
+    font-size: 3vh;
+    outline: none;
+    border-style: none;
+    width: 60%;
+    height: auto;
+    font-family: "Nanum Gothic", sans-serif;
+    font-size: 14px;
+    font-weight: lighter; }
   #profile-form button {
     margin: 5vh 0; }
   #profile-form div {
@@ -1001,8 +1073,12 @@ input[type=checkbox] {
         height: 12vh;
         justify-content: center; } }
     #profile-form div img {
-      margin: 2vh 3vh; }
+      margin: 10% 5% 10% 20%; }
+      @media (min-width: 800px) {
+        #profile-form div img {
+          margin: 10% 2% 10% 0%; } }
     #profile-form div p {
+      margin: 10% 0% 10% 0%;
       font-size: 3vh; }
 
 .themes-options {

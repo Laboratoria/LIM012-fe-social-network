@@ -36,3 +36,8 @@ auth.onAuthStateChanged((user) => {
     changeView(window.location.hash);
   }
 });
+
+window.addEventListener('load', () => {
+  document.getElementById('loader').classList.add('loader2');
+  init();
+});
