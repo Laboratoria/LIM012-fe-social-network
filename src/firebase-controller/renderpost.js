@@ -29,7 +29,7 @@ export const renderPost = (doc, userId) => {
     <div class="main">${post.content}</div>
   </div>
   <div class="footer">
-    <i class="far fa-heart"></i><span>${post.likes}</span>
+    <i class="fas fa-heart "></i><span>${post.likes}</span>
     <i class="far fa-comments"></i><span id= "size-${post.id}"></span>
   </div>
   <div class="hide new-comment">
@@ -67,7 +67,6 @@ export const renderPost = (doc, userId) => {
   });
   // COMMENTS
 
- 
   const clickIconSend = li.querySelector('.icon-send');
   clickIconSend.addEventListener('click', () => {
 
