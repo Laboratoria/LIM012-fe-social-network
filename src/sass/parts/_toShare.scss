@@ -158,13 +158,22 @@
     label{
         margin: 2vh 0;
         font-size: 3vh;
+        @include font-siffon(16px);
     }
     .photo-label{
         color: rgb(19, 142, 243);
+        @include font-siffon(18px);
     }
     input{
+        border-radius: 10px;
+        background-color: rgb(174, 217, 253);
         padding: 1vh;
         font-size: 3vh;
+        outline: none;
+        border-style: none;
+        @include size(60%, auto);
+        @include font-NahumGothic(14px);
+
     }
     button{
         margin: 5vh 0;
@@ -179,9 +188,14 @@
             justify-content: center;
         }
         img{
-            margin: 2vh 3vh;
+            @include margins(10%,5%,10%,20%);
+            @include desktop-screen(){
+                @include margins(10%,2%,10%,0%);
+            }
+      
         }
         p{
+            @include margins(10%,0%,10%,0%)
             font-size: 3vh;
         }
     }

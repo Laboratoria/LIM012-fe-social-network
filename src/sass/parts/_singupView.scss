@@ -2,24 +2,33 @@
 .terms {
     @include size(80%,auto);
     @include grid-2x1(10%,90%);
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     text-align: left;
     color: $color-6;
     p{
-        @include size(95%,auto);
+        @include size(100%,auto);
         @include font-NahumGothic(12px);
         margin-left: 3%;
+        @include desktop-screen() {
+            margin-left: 0%;
+        }
+
     }
+        
 }
 
  input[type=checkbox] {
-   @include scale(3); 
+   @include scale(2); 
+   @include desktop-screen() {
+    @include scale(3); 
+ }
+ 
 }
 
 .question-containerSingUp {
     width: 90%;
     position: relative;
-    top: 20px;
+    top: 10px;
     @include grid-2x1(61%,39%);
     @include font-NahumGothic(12px);
     color: $color-6;
@@ -31,6 +40,13 @@
     }
 }
 
+#btn-signUp {
+    @include button(65% ,70px , 10px, 16px);
+    margin-top: 8%;
+    &:hover{
+        @include box-animation;
+    }
+}
 // .errors {
 //     position: relative;
 //     top: 10px;

@@ -145,10 +145,22 @@
       @include desktop-screen{
         width: 38vw;
       }
-            h3, h5{
+            h3{
               text-align: center;
               margin: 1.5vh 0;
-              font-size: 3vh;
+              font-size: 22px;
+                color: rgb(26, 25, 25);
+                body.dark & { 
+                  color: white;
+                }
+                @include desktop-screen{
+                   margin: 1vh 0;
+                }
+            }
+            h5{
+              text-align: center;
+              margin: 1.5vh 0;
+              font-size: 16px;
                 color: rgb(26, 25, 25);
                 body.dark & { 
                   color: white;;

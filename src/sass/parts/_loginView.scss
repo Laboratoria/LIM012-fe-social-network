@@ -61,7 +61,11 @@
             @include size(100%, auto);
             margin-top: 15px;
             input{
-                @include input;
+                @include size(75%, 25%);
+                @include font-NahumGothic(12px);
+                background-color: $color-5;
+                padding: 3%;
+                border: 0;
                 &:hover{
                     @include blue-animation;
                 }
@@ -126,8 +130,8 @@
 }
 
 .button-access{
-    @include button(65% ,40px , 10px, 16px);
-    margin-top: 2%;
+    @include button(65% ,50px , 10px, 16px);
+    margin-top: 8%;
     &:hover{
         @include box-animation;
     }
