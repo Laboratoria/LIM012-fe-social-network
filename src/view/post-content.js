@@ -37,7 +37,7 @@ export default (content, postId) => {
   postForm['post-content'].value = (typeof content === 'undefined') ? '' : content;
 
   if (postForm['post-content'].value.length > 0) {
-    div.querySelector('.btn-submit').textContent = 'EDIT';
+    div.querySelector('.btn-submit').textContent = 'SAVE';
   }
   // SHOW PREVIEW OF SELECTED IMG
   const preview = postForm.querySelector('#preview');
@@ -74,7 +74,7 @@ export default (content, postId) => {
             postForm.reset();
             window.history.back();
           });
-      } else if (div.querySelector('.btn-submit').textContent === 'EDIT') {
+      } else if (div.querySelector('.btn-submit').textContent === 'SAVE') {
         updateDocument('posts', postId, ['content', 'visibility'], [newContent, visibility])
           .then(() => {
             postForm.reset();
