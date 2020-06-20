@@ -4,39 +4,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-storage.js"></script>
+  <script src="https://kit.fontawesome.com/e43bba631d.js"></script>
   <title>BUNKER</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/loader.css">
   <link rel="icon" type="image/png" href="images/icono.png" />
-  
+  <link rel="stylesheet" href="css/global.css">
 </head>
 
 <body>
   <section id="actual-view"></section>
-  <section id="pantallaModal"></section>
-  
+  <div class="home-view">
+    <header>
+      <h1 class="h1-style"><img src="images/logo.png" alt="app logo"> BUNKER</h1>
+      <i class="fas fa-cog"></i>
+      <nav class="menu-nav">
+        <div><a href="#/profile-form">Edit profile</a></div>
+        <div id='log-out'>Log Out</div>
+      </nav>
+    </header>
+    <main id="main-container"></main>
+    <footer>
+      <a href="#/home"><i class="fas fa-home"></i></a>
+      <a href="#/profile"> <i class="fas fa-user"></i></a>
+    </footer>
+  </div>
   <script>
     const firebaseConfig = {
-      apiKey: "AIzaSyDeygw3xwQJVQiMVnznSDqq9nnn5EDW8_w",
-      authDomain: "bunker-e836e.firebaseapp.com",
-      databaseURL: "https://bunker-e836e.firebaseio.com",
-      projectId: "bunker-e836e",
-      storageBucket: "bunker-e836e.appspot.com",
-      messagingSenderId: "910029505675",
-      appId: "1:910029505675:web:429344be4dd11f0d69408e"
+      apiKey: 'AIzaSyB3ai9vZ3ufFEfKMlmiV8ji7h0bHQwbaX4',
+      authDomain: 'code-flex-2d963.firebaseapp.com',
+      databaseURL: 'https://code-flex-2d963.firebaseio.com',
+      projectId: 'code-flex-2d963',
+      storageBucket: 'code-flex-2d963.appspot.com',
+      messagingSenderId: '971485385914',
+      appId: '1:971485385914:web:fbf36803ea73423d9e5e83',
     };
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-    const db = firebase.firestore();
-    const storage = firebase.storage();
   </script>
+  <script>firebase.initializeApp(firebaseConfig);</script>
   <script type="module" src="index.js"></script>
-  <script src="https://kit.fontawesome.com/e43bba631d.js"></script>
-  <div class="lds-ring loader" id="loader"><div></div><div></div><div></div><div></div></div>
 </body>
 
 </html>

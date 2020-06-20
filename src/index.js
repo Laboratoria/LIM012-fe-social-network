@@ -1,4 +1,5 @@
-import { changeView } from './view-controler/router.js';
+import { logout } from './firebase/auth.js';
+import { changeView } from './router.js';
 
 const init = () => {
   changeView(window.location.hash);
@@ -6,38 +7,18 @@ const init = () => {
     changeView(window.location.hash);
   });
 };
-window.addEventListener('load', () => {
-  init();
-});
-auth.onAuthStateChanged((user) => {
-  if (user) {
-    window.location.hash = '#/home';
-    // if (user.emailVerified) {
-    //   window.location.hash = '#/home';
-    // } else {
-    //   window.location.hash = '#/login';
-    // }
-    if (user.metadata.creationTime === user.metadata.lastSignInTime) {
-      // eslint-disable-next-line consistent-return
-      db.collection('users').doc(user.uid).get().then((doc) => {
-        if (!doc.exists) {
-          return db.collection('users').doc(user.uid).set({
-            bio: '',
-            myLikes: [],
-            posts: [],
-            comments: [],
-            cover: '',
-          });
-        }
-      });
-    }
-  } else {
-    window.location.hash = '#/';
-    changeView(window.location.hash);
-  }
-});
 
-window.addEventListener('load', () => {
-  document.getElementById('loader').classList.add('loader2');
-  init();
+window.addEventListener('load', init);
+
+// DISPLAY MENU
+const settingsButton = document.querySelector('.fa-cog');
+const menu = document.querySelector('.menu-nav');
+settingsButton.addEventListener('click', () => {
+  menu.classList.toggle('display-flex');
+});
+// LOG OUT
+const logOutButton = document.querySelector('#log-out');
+logOutButton.addEventListener('click', () => {
+  logout();
+  window.location.hash = '#/log-in';
 });

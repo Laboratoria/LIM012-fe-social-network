@@ -1,31 +1,11 @@
-@import "global.scss", "parts/_loginView.scss", "parts/_singupView.scss", "parts/_homeView.scss", "parts/_singupView.scss", "parts/_publication.scss", "parts/_toShare.scss", "parts/_modal.scss";
 
-* {
-  outline: none;
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
 }
- body, #actual-view, .view  {
-   margin: 0;
-   padding: 0;
-    @include view;
-    @include box-without-border;
-    font-family: 'Nanum Gothic', sans-serif;
-    &.dark {
-      background: #3c3744;
-    }
- }
- .view{
-  @include desktop-screen(){
-    @include flexModal(row);
-}
- }
-
-ul{
-  list-style: none;
-}
-
-i {
-  cursor: pointer;
-}
-.fa-home, .fa-cog, .fa-bars, .fa-google, .fa-facebook-f, .fa-user {
-  @include icon-white;
+@mixin flexModal($direction) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: $direction;
 }

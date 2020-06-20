@@ -1,25 +1,27 @@
-export const registerUserEmail = (email, password) => (
-  firebase.auth().createUserWithEmailAndPassword(email, password));
-
-export const verificationEmail = () => (auth.currentUser.sendEmailVerification());
-
-export const signInUserEmail = (email, password) => (
-  firebase.auth().signInWithEmailAndPassword(email, password));
-
-export const forgotPassword = email => auth.sendPasswordResetEmail(email);
-
-export const loginFacebook = () => {
-  const provider = new firebase.auth.FacebookAuthProvider();
-  return auth.signInWithPopup(provider);
-};
-
-export const loginGoogle = () => {
-  const provider = new firebase.auth.GoogleAuthProvider();
-  return auth.signInWithPopup(provider);
-};
-
-export const logout = () => {
-  auth.signOut().then();
-};
+//const providerGoogle = new firebase.auth.GoogleAuthProvider();
+//const providerFacebook = new firebase.auth.FacebookAuthProvider();
 
 export const currentUser = () => firebase.auth().currentUser;
+
+export const registerUserEmail = (email, password) => {
+  return firebase.auth().createUserWithEmailAndPassword(email, password)};
+
+export const verificationEmail = () => firebase.auth().currentUser.sendEmailVerification();
+
+export const logIn = (email, password) => { 
+  return firebase.auth().signInWithEmailAndPassword(email, password)
+};
+
+export const recoverPassword = (email) => firebase.auth().sendPasswordResetEmail(email);
+
+export const logInFacebook = () => firebase.auth().signInWithPopup(new firebase.auth.FacebookAuthProvider());
+
+export const logInGoogle = () => firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
+
+export const logout = () => firebase.auth().signOut();
+
+export const updateUserProfile = (userName) => {
+  return firebase.auth().currentUser.updateProfile({
+    displayName: userName,
+  });
+};
