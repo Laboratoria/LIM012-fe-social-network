@@ -1,0 +1,50 @@
+@mixin size($width, $height) {
+    width: $width;
+    height: $height;
+  }
+  
+  @mixin flexModal($direction) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: $direction;
+  }
+  
+  @mixin positions($type, $a, $b, $c) {
+    position: $type;
+    left: $a;
+    top: $b;
+    right: $c;
+  }
+  
+  @mixin flex-column-space-between {
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  @mixin desktop-screen() {
+    @media (min-width: 800px){
+       @content;
+    }
+  }
+  
+  @mixin margins($a, $b, $c, $d) {
+    margin: $a $b $c $d;
+  }
+  
+  @mixin font($family, $style, $size, $weigth) {
+    font-family: $family, $style;
+    font-size: $size;
+    font-weight :$weigth
+  }
+    
+  @mixin font-siffon($size) {
+    @include font('Sifonn', sans-serif , $size, lighter);  
+  }
+  
+  @mixin font-NahumGothic($size) {
+    @include font('Nanum Gothic', sans-serif , $size, lighter);
+  }

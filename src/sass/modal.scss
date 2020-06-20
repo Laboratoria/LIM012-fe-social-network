@@ -1,0 +1,41 @@
+.contenidoModal{
+    @include size(100%, 100vh);
+    @include flexModal(column);
+    @include positions(fixed, 0, 0, 0);
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.fondo {
+    background: #ffff;
+    @include size(75%, auto);
+    @include flex-column-space-between;
+    transition: transform 1s;
+    transform: translateY(0%);
+    box-shadow: 5px 5px 5px #030303; 
+    @include desktop-screen(){
+        @include size(40%, auto);
+    }
+}
+
+.imageModal {
+    margin-top: 10px;
+    width: 15vw;
+}
+
+.franja {
+    background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+    @include size(100%, 32px);
+}
+
+.fa-times {
+    @include positions(absolute, 0, 5px, 0px);
+    cursor: pointer;
+    color: #ffff;
+    font-size: 20px;
+}
+
+.descripcion {
+    @include margins(0px, 30px, 10px, 30px);
+    @include font-NahumGothic(12px);
+    color: black;
+}
