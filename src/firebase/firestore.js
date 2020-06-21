@@ -29,11 +29,14 @@ const firstTimeUser = (userId, displayName, profilePhoto) => {
   });
 };
 const getPosts = (userId, element, query, value) => {
-  return db.collection('posts').where(query, '==', value).orderBy('timestamp', 'desc').onSnapshot((postsDocuments) => {
+  return db.collection('posts').where(query, '==', value).orderBy('timestamp', 'asc').onSnapshot((postsDocuments) => {
     const changes = postsDocuments.docChanges();
     changes.forEach((change) => {
       if (change.type === 'added') {
         renderPost(userId, change.doc, element);
+      } else if (change.type === 'removed') {
+        const li = element.querySelector(`[data-id=${change.doc.id}]`);
+        element.removeChild(li);
       }
     });
   });

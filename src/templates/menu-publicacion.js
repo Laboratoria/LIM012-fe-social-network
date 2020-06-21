@@ -32,7 +32,9 @@ export const renderMenu = (collection, userField, userId, doc, actualElement, co
     }
     deleteDocument(collection, doc.id);
     deleteDocumentIdFromUserCollection(userId, doc.id, userField);
-    actualElement.parentNode.removeChild(actualElement);
+    if (collection === 'comments') {
+      actualElement.parentNode.removeChild(actualElement);
+    }
   });
   // EDIT POST
   const checkIcon = document.createElement('i');

@@ -8,12 +8,14 @@ export const renderPost = (userId, doc, element) => {
   const div = document.createElement('div');
   div.setAttribute('data-id', doc.id);
   div.className = 'actual-home-post';
+  const getDate = date => `${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} ${date.toLocaleDateString()} `;
+  const date = post.timestamp !== null ? getDate(post.timestamp.toDate()) : getDate(new Date());
   const template = `
 <div class="header-post">
   <img src="images/profile-cube.png" alt="profile photo" class="user-photo-post pic-style right-size">
   <div class="date-username">
     <p class="post-userName"></p>
-    <p class="text">${post.timestamp.toDate().toLocaleDateString()}<i></i></p>
+    <p class="text">${date} <i></i></p>
   </div>
 </div>
 <div class="main-post">
@@ -34,8 +36,6 @@ export const renderPost = (userId, doc, element) => {
   const visibilityIcon = div.querySelector('.text i');
   if (post.visibility === 'public') {
     visibilityIcon.className = 'fas fa-globe-americas';
-  } else {
-    visibilityIcon.className = 'fas fa-lock';
   }
   const postUserName = div.querySelector('.post-userName');
   const headerPost = div.querySelector('.header-post');
@@ -92,7 +92,7 @@ export const renderPost = (userId, doc, element) => {
       actualUserPhoto.src = currentUserDoc.data().userPhoto;
     }
     // PAINT USER LIKES
-    if (currentUserDoc.data().myLikes.some((likedPostId) => likedPostId === doc.id)) {
+    if (currentUserDoc.data().myLikes.some(likedPostId => likedPostId === doc.id)) {
       likeIcon.classList.add('red');
     }
   });
@@ -143,6 +143,7 @@ export const renderPost = (userId, doc, element) => {
         commentsCounterSpan.textContent = counter;
       });
     });
-  element.appendChild(div);
+  // element.appendChild(div);
+  element.insertBefore(div, element.firstChild);
   return div;
 };
