@@ -1,115 +1,174 @@
+*, body {
+  margin: 0;
+  padding: 0;
+}
 .cover-desktop-photo{
+  width: 100%;
   display: none;
 }
+
 #login-signup-view{
       width: 100%;
+      height: 100%;
       @include flexModal(column);
       // border: solid rgb(0, 0, 0);
-      width: 100%;
       .cover-app-photo{
         width: 100%;
-        height: 15%;
-        min-width: 300px;
+        height: 20%;
       }
-    }
-#switch-modal{
-  // border: solid red;
-  @include flexModal(column);
-  width: 100%;
-  margin: 2vh 0;
-}
-#login-modal, #signup-modal{
-  @include flexModal(column);
-  width: 95%;
-  padding: 20px 10px 0 10px;
-  max-width: 410px;
-  min-width: 300px;
-  border-radius: 22px;
-  background-color: rgba(3, 3, 150, 0.863);
-  header{
-    width: 100%;
-    margin: 0;
-    height: auto;
-    @include flexModal(column);
-    color: #ffffff;
-    // border: solid red;
-    h1{
-      font-size: 28px;
-      img{
-        margin-right: 2px;
-        width: 38px;
-        height: 38px;
+      #switch-modal{
+        // border: solid red;
+        @include flexModal(column);
+        width: 100%;
+        height: 490px;
+        #login-modal, #signup-modal{
+
+          @include flexModal(column);
+          width: 300px;
+          height: 440px;
+          border-radius: 25px;
+          background-image: linear-gradient(180deg, #040240 0%, #2D2981 100%);
+          margin-top: 20px;
+
+          header{
+            width: 100%;
+            height: auto;
+            @include flexModal(column);
+            // margin-top: -50px;
+            color: #ffffff;
+            h1{
+              font-size: 28px;
+              img{
+                width: 38px;
+                height: 38px;
+                -webkit-transition: all 0.5s ease-out;
+                -moz-transition: all 0.5s ease;
+                -ms-transition: all 0.5s ease;
+                &:hover {
+                  -webkit-transform: rotate(-90deg);
+                  -moz-transform: rotate(-90deg);
+                  -ms-transform: rotate(-90deg);
+                  transform: rotate(-90deg);
+                }
+              }
+            }
+            h2{
+              font-weight: normal;
+              font-family: 'NanumGothic';
+              color: #ffffff;
+              font-size: 13px;
+              margin: 0;
+            }
+            h3{
+              font-weight: normal;
+              font-family: 'Sifonn';
+              font-size: 20px;
+              color: #B3C0E0;
+              margin-top: 14px;
+              margin-bottom: 14px;
+            }
+          }
+          main{
+            // border: solid red;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: column;
+            form{
+              width: 100%;
+              height: auto;
+              @include flexModal(column);
+              input{
+                background-color: rgb(232, 240, 254);
+                border: none;
+                font-size: 14px;
+                padding: 1em;
+                width: 78%;
+                height: 40px;
+              }
+              input:first-child{
+                margin-top: 10px;
+                border-radius: 10px 10px 0 0;
+              }
+              input[type=password]{
+                border-radius: 0 0 10px 10px;
+              }
+              #signup-password, #login-password {
+                border-radius: 0 0 10px 10px;
+                
+              }
+              .fa-eye {
+                position: relative;
+                top: -25px;
+                left: 100px;
+              }
+              #error-message {
+                text-align: center;
+                font-family: 'NanumGothic';
+                font-size: 12px;
+                color: #ff5959;
+     
+                
+              }
+              .p-form {
+                margin: 5px 0 10px 0;
+                font-size: 13px;
+                font-family: 'NanumGothic';
+              }
+              button{
+                border: none;
+                background-color: rgba(246, 229, 229, 0.19);
+                width: 60%;
+                height: 40px;
+                border-radius: 10px;
+                @include font-siffon(16px);
+                color: #B3C0E0;
+                cursor: pointer;
+                outline-style: none;
+                &:hover{
+                  box-shadow: 0px 0px 3px 3px #0ff;  
+                }
+              }
+            }
+            p {
+              margin: 15px 0 10px 0;
+              font-size: 13px;
+              font-family: 'NanumGothic';
+              color: white;
+            }
+
+            .googleAndFacebookicons{
+              width: 18%;
+              max-width: 56px;
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+              i{
+                font-size: 22px;
+                color: #ffffff;
+                &:hover {
+                  @include shadow-animation;
+                }
+              }
+            }
+            .p-for {
+              a {
+                font: outline;
+                font-style: none;
+                color: #B3C0E0;
+
+              }
+            }
+            
+          }
+        }
       }
+      
     }
-    h2{
-      font-weight: normal;
-      font-family: 'NanumGothic';
-      font-size: 19px;
-      color: #ffffff;
-      font-size: 13px;
-      margin: 0;
-    }
-    h3{
-      font-weight: normal;
-      font-family: 'Sifonn';
-      font-size: 20px;
-      color: #B3C0E0;
-    }
-  }
-  main{
-    // border: solid red;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
-    form{
-      // border: solid rgb(0, 0, 0);
-      width: 100%;
-      @include flexModal(column);
-      input{
-        background-color: rgb(232, 240, 254);
-        border: none;
-        font-size: 14px;
-        padding: 1em;
-        width: 78%;
-        height: 3em;
-      }
-      input:first-child{
-        border-radius: 10px 10px 0 0;
-      }
-      input[type=password]{
-        border-radius: 0 0 10px 10px;
-      }
-      button{
-        border: none;
-        background-color: rgba(246, 229, 229, 0.19);
-        width: 53%;
-        height: 3.6em;
-        border-radius: 8px;
-        font-size: 14px;
-        color: #ffffff;
-        border-radius: 8px;
-      }
-    }
-    .p-form{
-      color: #ffffff;
-      font-size: 15px;
-      font-family: 'NanumGothic';
-    }
-    p > a{
-      color: #B3C0E0;
-    }
-  }
-}
-#error-message{
-  text-align: center;
-  margin: 0 0 10px 0;
-  font-family: 'NanumGothic';
-  font-weight: bold;
-  font-size: 13px;
-  color: #ff5959;
-}
+
+
+
 .h1-style{
   color: #ffffff;
   padding: 3px;
@@ -120,65 +179,141 @@
   justify-content: baseline;
   flex-direction: row;
 }
-#login-modal{
-  height: 31em;
-  #error-message{
-    margin: 10px 0 0 0;
+
+#signup-modal{
+  .headerSig {
+    margin-bottom: 25px;
   }
-    .googleAndFacebookicons{
-      width: 18%;
-      max-width: 56px;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      i{
-        font-size: 22px;
-        color: #ffffff;
+  main {
+    form {
+      width: auto;
+      height: auto;
+      .terms {
+        margin: 10px 0;
+        width: 70%;
+        height: 30px;
+        display: flex;
+        flex-direction: row;
+        input[type=checkbox]{
+          -webkit-transform: scale(1);
+        }
+        label{
+          width: 400%;
+          font-family: 'NanumGothic';
+          font-size: 12px;
+          color: #ffffff;
+        }
       }
     }
-}
-#signup-modal{
-  height: 29em;
-  #error-message{
-    margin: 0 0 10px 0;
-  }
-  div{
-    margin: 10px 0;
-    width: 70%;
-    display: flex;
-    flex-direction: row;
-    input[type=checkbox]{
-      width: 16px;
-      height: 16px;
+    .space {
+      padding-top: 20px;
     }
-    label{
-      font-family: 'NanumGothic';
-      font-size: 12px;
-      color: #ffffff;
-    }
+   
   }
+
 }
+
 
 @media  (min-width: 1024px) and (max-width: 4000px){
   .cover-desktop-photo{
     display: flex;
     width: 50%;
+    height: 100vh;
   }
   .cover-app-photo{
     display: none;
   }
-  #login-modal, #signup-modal{
-    padding: 20px 15px 0 15px;
-  }
-  #signup-modal{
-    height: 31em;
-    padding: 20px 15px 0 15px;
-  }
-  #login-modal {
-    height: 32em;
-  }
+
   #login-signup-view{
     // border: solid red;
     flex-direction: row;
+    width: 100%;
+    height: 100%;
+    // border: solid rgb(0, 0, 0);
+
+    #switch-modal{
+      // border: solid red;
+      @include flexModal(column);
+      width: 100%;
+      height: 650px;
+      #login-modal, #signup-modal{
+
+        @include flexModal(column);
+        width: 350px;
+        height: 500px;
+        border-radius: 25px;
+        background-image: linear-gradient(180deg, #040240 0%, #2D2981 100%);
+        margin-top: 20px;
+
+        header{
+
+          h3{
+            font-weight: normal;
+            font-family: 'Sifonn';
+            font-size: 20px;
+            color: #B3C0E0;
+            margin-top: 30px;
+            margin-bottom: 30px;
+          }
+        }
+        main{
+
+          form{
+
+            .fa-eye {
+              position: relative;
+              top: -25px;
+              left: 120px;
+            }
+            #error-message {
+              text-align: center;
+              font-family: 'NanumGothic';
+              font-size: 12px;
+              color: #ff5959;
+              
+            }
+            .p-form {
+              margin: 5px 0 20px 0;
+              font-size: 13px;
+              font-family: 'NanumGothic';
+            }
+
+          }
+          p {
+            margin: 20px 0 10px 0;
+            font-size: 13px;
+            font-family: 'NanumGothic';
+            color: white;
+          }
+        }
+      }
+    }
   }
+}
+
+#signup-modal{
+  .headerSig {
+    margin-bottom: 50px;
+  }
+  main {
+    form {
+      width: auto;
+      height: auto;
+      .terms {
+   
+        width: 70%;
+        height: 30px;
+        display: flex;
+        flex-direction: row;
+        input[type=checkbox]{
+          -webkit-transform: scale(1);
+        }
+      }
+    }
+    .space {
+      padding-top: 40px;
+    }
+   
+  }
+
 }

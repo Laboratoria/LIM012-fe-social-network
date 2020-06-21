@@ -1,110 +1,146 @@
+*, body {
+  margin: 0;
+  padding: 0; }
+
 .cover-desktop-photo {
+  width: 100%;
   display: none; }
 
 #login-signup-view {
   width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  width: 100%; }
+  flex-direction: column; }
   #login-signup-view .cover-app-photo {
     width: 100%;
-    height: 15%;
-    min-width: 300px; }
-
-#switch-modal {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 100%;
-  margin: 2vh 0; }
-
-#login-modal, #signup-modal {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 95%;
-  padding: 20px 10px 0 10px;
-  max-width: 410px;
-  min-width: 300px;
-  border-radius: 22px;
-  background-color: rgba(3, 3, 150, 0.863); }
-  #login-modal header, #signup-modal header {
-    width: 100%;
-    margin: 0;
-    height: auto;
+    height: 20%; }
+  #login-signup-view #switch-modal {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    color: #ffffff; }
-    #login-modal header h1, #signup-modal header h1 {
-      font-size: 28px; }
-      #login-modal header h1 img, #signup-modal header h1 img {
-        margin-right: 2px;
-        width: 38px;
-        height: 38px; }
-    #login-modal header h2, #signup-modal header h2 {
-      font-weight: normal;
-      font-family: 'NanumGothic';
-      font-size: 19px;
-      color: #ffffff;
-      font-size: 13px;
-      margin: 0; }
-    #login-modal header h3, #signup-modal header h3 {
-      font-weight: normal;
-      font-family: 'Sifonn';
-      font-size: 20px;
-      color: #B3C0E0; }
-  #login-modal main, #signup-modal main {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column; }
-    #login-modal main form, #signup-modal main form {
-      width: 100%;
+    height: 490px; }
+    #login-signup-view #switch-modal #login-modal, #login-signup-view #switch-modal #signup-modal {
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-direction: column; }
-      #login-modal main form input, #signup-modal main form input {
-        background-color: #e8f0fe;
-        border: none;
-        font-size: 14px;
-        padding: 1em;
-        width: 78%;
-        height: 3em; }
-      #login-modal main form input:first-child, #signup-modal main form input:first-child {
-        border-radius: 10px 10px 0 0; }
-      #login-modal main form input[type=password], #signup-modal main form input[type=password] {
-        border-radius: 0 0 10px 10px; }
-      #login-modal main form button, #signup-modal main form button {
-        border: none;
-        background-color: rgba(246, 229, 229, 0.19);
-        width: 53%;
-        height: 3.6em;
-        border-radius: 8px;
-        font-size: 14px;
-        color: #ffffff;
-        border-radius: 8px; }
-    #login-modal main .p-form, #signup-modal main .p-form {
-      color: #ffffff;
-      font-size: 15px;
-      font-family: 'NanumGothic'; }
-    #login-modal main p > a, #signup-modal main p > a {
-      color: #B3C0E0; }
-
-#error-message {
-  text-align: center;
-  margin: 0 0 10px 0;
-  font-family: 'NanumGothic';
-  font-weight: bold;
-  font-size: 13px;
-  color: #ff5959; }
+      flex-direction: column;
+      width: 300px;
+      height: 440px;
+      border-radius: 25px;
+      background-image: linear-gradient(180deg, #040240 0%, #2D2981 100%);
+      margin-top: 20px; }
+      #login-signup-view #switch-modal #login-modal header, #login-signup-view #switch-modal #signup-modal header {
+        width: 100%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        color: #ffffff; }
+        #login-signup-view #switch-modal #login-modal header h1, #login-signup-view #switch-modal #signup-modal header h1 {
+          font-size: 28px; }
+          #login-signup-view #switch-modal #login-modal header h1 img, #login-signup-view #switch-modal #signup-modal header h1 img {
+            width: 38px;
+            height: 38px;
+            -webkit-transition: all 0.5s ease-out;
+            -moz-transition: all 0.5s ease;
+            -ms-transition: all 0.5s ease; }
+            #login-signup-view #switch-modal #login-modal header h1 img:hover, #login-signup-view #switch-modal #signup-modal header h1 img:hover {
+              -webkit-transform: rotate(-90deg);
+              -moz-transform: rotate(-90deg);
+              -ms-transform: rotate(-90deg);
+              transform: rotate(-90deg); }
+        #login-signup-view #switch-modal #login-modal header h2, #login-signup-view #switch-modal #signup-modal header h2 {
+          font-weight: normal;
+          font-family: 'NanumGothic';
+          color: #ffffff;
+          font-size: 13px;
+          margin: 0; }
+        #login-signup-view #switch-modal #login-modal header h3, #login-signup-view #switch-modal #signup-modal header h3 {
+          font-weight: normal;
+          font-family: 'Sifonn';
+          font-size: 20px;
+          color: #B3C0E0;
+          margin-top: 14px;
+          margin-bottom: 14px; }
+      #login-signup-view #switch-modal #login-modal main, #login-signup-view #switch-modal #signup-modal main {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column; }
+        #login-signup-view #switch-modal #login-modal main form, #login-signup-view #switch-modal #signup-modal main form {
+          width: 100%;
+          height: auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column; }
+          #login-signup-view #switch-modal #login-modal main form input, #login-signup-view #switch-modal #signup-modal main form input {
+            background-color: #e8f0fe;
+            border: none;
+            font-size: 14px;
+            padding: 1em;
+            width: 78%;
+            height: 40px; }
+          #login-signup-view #switch-modal #login-modal main form input:first-child, #login-signup-view #switch-modal #signup-modal main form input:first-child {
+            margin-top: 10px;
+            border-radius: 10px 10px 0 0; }
+          #login-signup-view #switch-modal #login-modal main form input[type=password], #login-signup-view #switch-modal #signup-modal main form input[type=password] {
+            border-radius: 0 0 10px 10px; }
+          #login-signup-view #switch-modal #login-modal main form #signup-password, #login-signup-view #switch-modal #login-modal main form #login-password, #login-signup-view #switch-modal #signup-modal main form #signup-password, #login-signup-view #switch-modal #signup-modal main form #login-password {
+            border-radius: 0 0 10px 10px; }
+          #login-signup-view #switch-modal #login-modal main form .fa-eye, #login-signup-view #switch-modal #signup-modal main form .fa-eye {
+            position: relative;
+            top: -25px;
+            left: 100px; }
+          #login-signup-view #switch-modal #login-modal main form #error-message, #login-signup-view #switch-modal #signup-modal main form #error-message {
+            text-align: center;
+            font-family: 'NanumGothic';
+            font-size: 12px;
+            color: #ff5959; }
+          #login-signup-view #switch-modal #login-modal main form .p-form, #login-signup-view #switch-modal #signup-modal main form .p-form {
+            margin: 5px 0 10px 0;
+            font-size: 13px;
+            font-family: 'NanumGothic'; }
+          #login-signup-view #switch-modal #login-modal main form button, #login-signup-view #switch-modal #signup-modal main form button {
+            border: none;
+            background-color: rgba(246, 229, 229, 0.19);
+            width: 60%;
+            height: 40px;
+            border-radius: 10px;
+            font-family: "Sifonn", sans-serif;
+            font-size: 16px;
+            font-weight: lighter;
+            color: #B3C0E0;
+            cursor: pointer;
+            outline-style: none; }
+            #login-signup-view #switch-modal #login-modal main form button:hover, #login-signup-view #switch-modal #signup-modal main form button:hover {
+              box-shadow: 0px 0px 3px 3px #0ff; }
+        #login-signup-view #switch-modal #login-modal main p, #login-signup-view #switch-modal #signup-modal main p {
+          margin: 15px 0 10px 0;
+          font-size: 13px;
+          font-family: 'NanumGothic';
+          color: white; }
+        #login-signup-view #switch-modal #login-modal main .googleAndFacebookicons, #login-signup-view #switch-modal #signup-modal main .googleAndFacebookicons {
+          width: 18%;
+          max-width: 56px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between; }
+          #login-signup-view #switch-modal #login-modal main .googleAndFacebookicons i, #login-signup-view #switch-modal #signup-modal main .googleAndFacebookicons i {
+            font-size: 22px;
+            color: #ffffff; }
+            #login-signup-view #switch-modal #login-modal main .googleAndFacebookicons i:hover, #login-signup-view #switch-modal #signup-modal main .googleAndFacebookicons i:hover {
+              text-shadow: 0 0 5px #00b2ff, 0 0 10px #00b2ff, 0 0 20px #00b2ff, 0 0 40px #26687f, 0 0 80px #26687f, 0 0 90px #26687f, 0 0 100px #26687f, 0 0 140px #26687f, 0 0 180px #26687f; }
+        #login-signup-view #switch-modal #login-modal main .p-for a, #login-signup-view #switch-modal #signup-modal main .p-for a {
+          font: outline;
+          font-style: none;
+          color: #B3C0E0; }
 
 .h1-style {
   color: #ffffff;
@@ -116,52 +152,99 @@
   justify-content: baseline;
   flex-direction: row; }
 
-#login-modal {
-  height: 31em; }
-  #login-modal #error-message {
-    margin: 10px 0 0 0; }
-  #login-modal .googleAndFacebookicons {
-    width: 18%;
-    max-width: 56px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between; }
-    #login-modal .googleAndFacebookicons i {
-      font-size: 22px;
-      color: #ffffff; }
+#signup-modal .headerSig {
+  margin-bottom: 25px; }
 
-#signup-modal {
-  height: 29em; }
-  #signup-modal #error-message {
-    margin: 0 0 10px 0; }
-  #signup-modal div {
+#signup-modal main form {
+  width: auto;
+  height: auto; }
+  #signup-modal main form .terms {
     margin: 10px 0;
     width: 70%;
+    height: 30px;
     display: flex;
     flex-direction: row; }
-    #signup-modal div input[type=checkbox] {
-      width: 16px;
-      height: 16px; }
-    #signup-modal div label {
+    #signup-modal main form .terms input[type=checkbox] {
+      -webkit-transform: scale(1); }
+    #signup-modal main form .terms label {
+      width: 400%;
       font-family: 'NanumGothic';
       font-size: 12px;
       color: #ffffff; }
 
+#signup-modal main .space {
+  padding-top: 20px; }
+
 @media (min-width: 1024px) and (max-width: 4000px) {
   .cover-desktop-photo {
     display: flex;
-    width: 50%; }
+    width: 50%;
+    height: 100vh; }
   .cover-app-photo {
     display: none; }
-  #login-modal, #signup-modal {
-    padding: 20px 15px 0 15px; }
-  #signup-modal {
-    height: 31em;
-    padding: 20px 15px 0 15px; }
-  #login-modal {
-    height: 32em; }
   #login-signup-view {
-    flex-direction: row; } }
+    flex-direction: row;
+    width: 100%;
+    height: 100%; }
+    #login-signup-view #switch-modal {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+      height: 650px; }
+      #login-signup-view #switch-modal #login-modal, #login-signup-view #switch-modal #signup-modal {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 350px;
+        height: 500px;
+        border-radius: 25px;
+        background-image: linear-gradient(180deg, #040240 0%, #2D2981 100%);
+        margin-top: 20px; }
+        #login-signup-view #switch-modal #login-modal header h3, #login-signup-view #switch-modal #signup-modal header h3 {
+          font-weight: normal;
+          font-family: 'Sifonn';
+          font-size: 20px;
+          color: #B3C0E0;
+          margin-top: 30px;
+          margin-bottom: 30px; }
+        #login-signup-view #switch-modal #login-modal main form .fa-eye, #login-signup-view #switch-modal #signup-modal main form .fa-eye {
+          position: relative;
+          top: -25px;
+          left: 120px; }
+        #login-signup-view #switch-modal #login-modal main form #error-message, #login-signup-view #switch-modal #signup-modal main form #error-message {
+          text-align: center;
+          font-family: 'NanumGothic';
+          font-size: 12px;
+          color: #ff5959; }
+        #login-signup-view #switch-modal #login-modal main form .p-form, #login-signup-view #switch-modal #signup-modal main form .p-form {
+          margin: 5px 0 20px 0;
+          font-size: 13px;
+          font-family: 'NanumGothic'; }
+        #login-signup-view #switch-modal #login-modal main p, #login-signup-view #switch-modal #signup-modal main p {
+          margin: 20px 0 10px 0;
+          font-size: 13px;
+          font-family: 'NanumGothic';
+          color: white; } }
+
+#signup-modal .headerSig {
+  margin-bottom: 50px; }
+
+#signup-modal main form {
+  width: auto;
+  height: auto; }
+  #signup-modal main form .terms {
+    width: 70%;
+    height: 30px;
+    display: flex;
+    flex-direction: row; }
+    #signup-modal main form .terms input[type=checkbox] {
+      -webkit-transform: scale(1); }
+
+#signup-modal main .space {
+  padding-top: 40px; }
 
 .home-view {
   display: none;
@@ -716,6 +799,59 @@ input[type=file] {
           font-family: "Sifonn", sans-serif;
           font-size: 40px;
           font-weight: lighter; } }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px; }
+
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent; }
+
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s; }
+
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s; }
+
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s; }
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+.loader {
+  background-image: linear-gradient(-225deg, #3D4E81 0%, #5753C9 48%, #6E7FF3 100%);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  clip-path: circle(150% at 100% 0%);
+  transition: clip-path 2s ease-in-out; }
+
+.loader2 {
+  clip-path: circle(0% at 100% 0%); }
 
 @font-face {
   font-family: 'Sifonn';
