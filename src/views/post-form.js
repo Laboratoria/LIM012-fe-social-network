@@ -12,7 +12,7 @@ export const postForm = () => {
   </div>
   <section id="switch-content">
   <div>
-    <img src="images/profile-cube.png" alt="profile photo" class="right-size pic-style">
+    <img id="photo-edited"src=${user.photoURL} alt="profile photo" class="right-size pic-style">
     <h3>${user.displayName}</h3>
   </div>
   <div id="switch-form">
@@ -66,5 +66,6 @@ export const postForm = () => {
     });
     window.history.back();
   });
+
   return div;
 };

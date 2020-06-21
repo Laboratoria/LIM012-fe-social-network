@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-cycle
 import { renderPost } from '../templates/post.js';
 
 // const db = firebase.firestore();
@@ -11,8 +12,10 @@ export const getData = (callback, collectionName) => firebase.firestore().collec
     callback(data);
   });
 
+// eslint-disable-next-line max-len
 export const getDocument = (collectionName, docId, callback) => firebase.firestore().collection(collectionName).doc(docId)
-  .get().then((doc) => {
+  .get()
+  .then((doc) => {
     callback(doc);
   });
 
@@ -72,6 +75,7 @@ export const updateDocument = (collection, docId, field, value) => {
     [field]: value,
   });
 };
+// eslint-disable-next-line max-len
 export const deleteDocument = (collection, docId) => firebase.firestore().collection(collection).doc(docId).delete();
 
 export const deleteDocumentIdFromUserCollection = (userId, docId, field) => {
@@ -79,4 +83,3 @@ export const deleteDocumentIdFromUserCollection = (userId, docId, field) => {
     [field]: firebase.firestore.FieldValue.arrayRemove(docId),
   });
 };
-
