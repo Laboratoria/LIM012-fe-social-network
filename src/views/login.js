@@ -40,7 +40,6 @@ export const login = () => {
 
   const showContraseña = div.querySelector('#showContraseña');
   showContraseña.addEventListener('click', passwordShow);
-
   // LOG IN USER
   const errorMessage = div.querySelector('#error-message');
   const loginForm = div.querySelector('#login-form');

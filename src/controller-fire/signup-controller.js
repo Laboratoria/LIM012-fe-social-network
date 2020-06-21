@@ -18,7 +18,6 @@ export const modalSendMessage = () => {
     return mensaje;
   };
 
-  console.log('mi modal')
   const pantallaModal = document.getElementById('pantallaModal');
   pantallaModal.appendChild(pantalla());
   pantallaModal.querySelector('#exit').addEventListener('click', () => {
@@ -26,3 +25,12 @@ export const modalSendMessage = () => {
     pantallaModal.innerHTML = '';
   });
 };
+
+// export const passwordShow = () => {
+//   const tipo = document.querySelector('#signup-password');
+//   if (tipo.type === 'password') {
+//     tipo.type = 'text';
+//   } else {
+//     tipo.type = 'password';
+//   }
+// };

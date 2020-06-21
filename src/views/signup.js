@@ -16,7 +16,7 @@ export const signup = () => {
     <form id="signup-form">
       <input type="text" id="signup-username" placeholder="username" required>
       <input type="email" id="signup-email" placeholder="email" required>
-      <input type="password" id="signup-password" placeholder="password" required>
+      <input type="password" id="signup-password" autocomplete="on" placeholder="password" required>
       <i class="fas fa-eye" id='showContraseña'></i>
       <div>
         <input type="checkbox" id="agreement" required>
@@ -28,6 +28,10 @@ export const signup = () => {
     <p class="p-form">Already have an account? <a href="#/log-in">LOG IN HERE</a></p>
   </main>`;
   div.innerHTML = signupView;
+
+  // const showContraseña = div.querySelector('#showContraseña');
+  // showContraseña.addEventListener('click', passwordShow());
+
   // USER SIGN UP
   const signupForm = div.querySelector('#signup-form');
   const errorMessage = div.querySelector('#error-message');
@@ -38,7 +42,6 @@ export const signup = () => {
     e.preventDefault();
     registerUserEmail(userEmail, userPassword)
       .then((result) => {
-        console.log(result.user);
         result.user.sendEmailVerification()
           .then(() => {
             updateUserProfile(userName).then(() => {
