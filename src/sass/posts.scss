@@ -2,33 +2,50 @@
 .actual-home-post{
   @include size(100%, auto);
   margin: 10px 0;
-  border-radius: 15px;
-  box-shadow: 0px 0px 6px -2px rgba(0,0,0,0.75);
+  border-radius: 10px 0 10px 0;
+  box-shadow: 0px 0px 25px -11px rgba(41,40,41,1);
   .header-post{
     display: flex;
     flex-direction: row;
     align-items: center;
     @include size(100%, 3.5em);
   img{
-    margin: 0 5px;
+    margin: 0 8px;
+    width: 40px;
+    height: 40px;
   }
   .date-username{
     display: flex;
     flex-direction: column;
     justify-content: center;
     @include size(52%, 3em);
+
+    select{
+
+        @include size(60px, 20px);
+        font-size: 12px;
+        border-radius: 5px;
+        margin-left: 60px;
+        background-color: #cfdbfa;
+        color: rgb(94, 93, 93);
+        option {
+          border: none;
+          outline: none;
+          border-style: none;
+          font-size: 14px;
+          background-color: white;
+    }
+  }
     p:first-child{
       font-weight: bold;
-      font-size: 16px;
+      font-size: 14px;
     }
     p{
       font-family: 'NanumGothic';
       font-size: 13px;
       margin: 0;
     }
-    select{
-      @include size(70px, 30px)
-    }
+
   }
   .menu-container{
     @include size(30%, 3.5em);
@@ -184,4 +201,5 @@
         width: 90%;
       }
     }
+
 }

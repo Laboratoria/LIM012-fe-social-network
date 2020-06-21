@@ -7,6 +7,7 @@ export const postForm = () => {
   const div = document.createElement('div');
   div.id = 'form-template-container';
   const template = `
+  <section class="general">
   <div>
     <i class="fas fa-arrow-left"></i>
   </div>
@@ -18,17 +19,17 @@ export const postForm = () => {
   <div id="switch-form">
     <form id="post-form">
     <select name="visibility" id="visibility">
-      <option value="public">public</option>
-      <option value="private">private</option>
+      <option value="public"></i>Public</option>
+      <option value="private">Private</option>
     </select>
-      <textarea id="post-content" autofocus>
-      </textarea>
+      <textarea id="post-content" placeholder="What's on your mind?" required></textarea>
         <div id="preview"></div>
         <input id="upload-photo" type="file" accept="image/png, image/jpeg">
         <label class="photo-icon" for="upload-photo"><i class="fas fa-photo-video"></i></label>
       <button id="post-button" class="submit-button-style">POST</button>
     </form>
   </div>
+  </section>
   </section>
   `;
   div.innerHTML = template;

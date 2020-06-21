@@ -2,18 +2,17 @@
 .home-view{
   display: none;
   width: 100%;
-  min-width: 300px;
 header{
   padding: 0 10px 0 3px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   @include size(100%, 50px);
-  background-color: rgba(3, 3, 150, 0.863);
+  background-image: linear-gradient(180deg, #040240 0%, #2D2981 100%);
   position: fixed;
   top: 0;
   h1{
-    font-size: 20px;
+    font-size: 24px;
     img{
       margin-right: 2px;
        @include size(30px, 30px);
@@ -40,7 +39,7 @@ main{
       @include flexModal(row);
       @include size(70%, 44px);
       color: rgb(73, 73, 73);
-      border-radius: 10px;
+      border-radius: 20px;
       font-family: 'NanumGothic';
       // border: solid 2px black;
       box-shadow: 0px 0px 6px -2px rgba(0,0,0,0.75);
@@ -54,7 +53,7 @@ footer{
   align-items: center;
   justify-content: space-around;
   @include size(100%, 50px);
-  background-color: rgba(3, 3, 150, 0.863);
+  background-image: linear-gradient(180deg, #040240 0%, #2D2981 100%);;
   i{
     color: #ffffff;
     font-size: 25px;
@@ -119,26 +118,37 @@ footer{
 // HOME MENU
 .menu-nav{
   display: none;
-  flex-direction: column;
-  @include size(180px, 86px);
-  background-color: #ffffff;
-  box-shadow: -1px 0px 5px 0px rgba(0,0,0,0.75);
-  top: 50px;
-  right: 5px;
+  transition: 0.8s;
+  overflow: hidden;
   position: fixed;
-  border-radius: 4px;
+  flex-direction: column;
+  @include size(180px, 100vh);
+  background-color: rgba(5, 32, 56, 0.9);
+  top: 50px;
+  right: 0px;
   div{
     font-family: 'NanumGothic';
+    color: white;
     @include size(100%, 43px);
     @include flexModal(column);
+    &:hover{
+      background-color: rgba(253, 255, 255, 0.212);
+  }
   }
   div:first-child{
     a{
       @include flexModal(column);
-      color: black;
+      color: white;
       @include size(100%, 43px);
     }
-    border-bottom: solid 1px rgb(219, 219, 219);
+    
+    border-bottom: 1px solid rgb(219, 219, 219);
+  }
+
+  #log-out {
+    &:hover{
+      background-color: rgba(253, 255, 255, 0.212);
+  }
   }
 }
 // POSTS AND OPTION TO POST CONATINER
@@ -177,6 +187,12 @@ background-color: rgba(6, 135, 255, 0.719);
     height: 24em;
     display: flex;
   .user-cover-photo-container{
+    label {
+      i{
+      position: absolute;
+      right: 100px;
+      }
+    }
     height: 18em;
     .user-cover-photo{
       height: 15em;
@@ -186,4 +202,8 @@ background-color: rgba(6, 135, 255, 0.719);
     }
   }
 }
+}
+
+footer {
+  display: none;
 }

@@ -1,78 +1,101 @@
 #form-template-container{
   @include flexModal(column);
+  transition: 1s;
+  overflow: hidden;
   // border: solid red;
   width: 100%;
-  max-width: 600px;
-  > div{
-    @include size(100%, 40px);
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    border-bottom: solid 1px rgb(184, 179, 179);
-    i{
-      margin-left: 5px;
-      font-size: 20px;
-    }
-  }
-  #switch-content{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    // border: solid red;
-    div:first-child{
+
+  .general {
+    @include size(100%, auto);
+    > div{
+      @include size(100%, 40px);
       display: flex;
-      flex-direction: row;
+      justify-content: flex-start;
       align-items: center;
-      @include size(100%, 68px);
-      img{
-        margin-left: 5px;
-      }
-      h3{
-        margin: 10px;
-        font-weight: normal;
-        font-size: 19px;
-        font-family: 'NanumGothic';
+      border-bottom: solid 1px rgb(184, 179, 179);
+      i{
+        margin-left: 10px;
+        font-size: 20px;
       }
     }
-    form{
-      font-family: 'NanumGothic';
-      // border: solid red;
+    #switch-content{
+      width: 100%;
+      height: auto;
       display: flex;
       flex-direction: column;
-      width: 100%;
-      padding: 0 15px;
-      select{
-        border-color: rgb(104, 103, 103);
-        align-self: flex-end;
-        @include size(90px, 38px);
-        font-size: 20px;
-        border-radius: 5px;
-        color: rgb(94, 93, 93);
+      // border: solid red;
+      div:first-child{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        @include size(100%, 68px);
+        img{
+          margin-left: 5px;
+        }
+        h3{
+          margin: 10px;
+          font-weight: normal;
+          font-size: 15px;
+          font-family: 'NanumGothic';
+          color: rgb(43, 48, 73);
+          font-weight: bold;
+        }
       }
-      textarea{
-        font-size: 18px;
-        border: none;
-        margin: 8px 0;
-        @include size(100%, 120px);
-        resize: none;
+      form{
+        font-family: 'NanumGothic';
         // border: solid red;
-      }
-      button{
-        justify-self: flex-end;
-        align-self: center;
-        background-color: #ffffff;
-        font-size: 16px;
-        border-radius: 10px;
-        border: solid 1px rgb(104, 103, 103);
-        @include size(95px, 45px);
-      }
-      #preview{
-        @include flexModal(column);
-        @include size(100%, 120px);
-        // border: solid red;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 0 10px;
+        select{
+          border-color: rgb(104, 103, 103);
+          @include size(80px, 25px);
+          font-size: 14px;
+          border-radius: 5px;
+          background-color: #cfdbfa;
+          color: rgb(94, 93, 93);
+          option {
+            border: none;
+            outline: none;
+            border-style: none;
+            font-size: 14px;
+            background-color: white;
+          }
+      
+        }
+        textarea{
+          font-family: 'NanumGothic';
+          height: auto;
+          font-size: 16px;
+          border: none;
+          margin: 10px 0px;
+          color: blac;
+          @include size(100%, 150px);
+          resize: none;
+          // border: solid red;
+        }
+        button{
+          justify-self: flex-end;
+          align-self: center;
+          font-size: 16px;
+          border-radius: 1vh;
+          border: none;
+          color: cornsilk;
+          background-color: #0f0c48;
+          @include size(95px, 45px);
+        }
+        #preview{
+          @include flexModal(column);
+          @include size(100%, 120px);
+          // border: solid red;
+        }
       }
     }
+
+
   }
+
 }
 .preview-img{
   max-width: 100%;
@@ -116,11 +139,109 @@ input[type=file]{
   display: none;
 }
 @media  (min-width: 1024px) and (max-width: 4000px){
+
   #form-template-container{
-    margin-top: 20px;
-    justify-content: unset;
-    border: solid  2px rgb(104, 102, 102);
-    border-radius: 10px;
-    height: 500px;
+    background-color: rgba($color: #000000, $alpha: 0.8);
+    .general {
+      @include size(%, auto);
+    background-color: white;
+    @include flexModal(column);
+    border-radius: 20px;
+    transition: 1s;
+    overflow: hidden;
+    // border: solid red;
+    margin-top: 30px;
+    margin-bottom: 32px;
+    width: 50%;
+    > div{
+      @include size(100%, 40px);
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      border-bottom: solid 1px rgb(184, 179, 179);
+      i{
+        margin-left: 10px;
+        font-size: 20px;
+      }
+    }
+    #switch-content{
+      width: 90%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      // border: solid red;
+      div:first-child{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        @include size(100%, 68px);
+        img{
+          margin-left: 5px;
+        }
+        h3{
+          margin: 10px;
+          font-weight: normal;
+          font-size: 18px;
+          font-family: 'NanumGothic';
+          color: rgb(43, 48, 73);
+          font-weight: bold;
+        }
+      }
+      form{
+        font-family: 'NanumGothic';
+        // border: solid red;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 0 10px;
+        select{
+          position: relative;
+          align-self: flex-end;
+          top: -50px;
+          border-color: rgb(104, 103, 103);
+          @include size(80px, 25px);
+          font-size: 14px;
+          border-radius: 5px;
+          background-color: #cfdbfa;
+          color: rgb(94, 93, 93);
+          option {
+            border: none;
+            outline: none;
+            border-style: none;
+            font-size: 14px;
+            background-color: white;
+          }
+      
+        }
+        textarea{
+          font-family: 'NanumGothic';
+          height: auto;
+          font-size: 16px;
+          border: none;
+          margin: 10px 0px;
+          color: blac;
+          @include size(100%, 150px);
+          resize: none;
+          // border: solid red;
+        }
+        button{
+          justify-self: flex-end;
+          align-self: center;
+          font-size: 16px;
+          border-radius: 1vh;
+          border: none;
+          color: cornsilk;
+          background-color: #0f0c48;
+          @include size(95px, 45px);
+          margin-bottom: 20px;
+        }
+        #preview{
+          @include flexModal(column);
+          @include size(100%, 120px);
+          // border: solid red;
+        }
+      }
+    }
   }
-}
+  }
+  }

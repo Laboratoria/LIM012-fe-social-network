@@ -15,7 +15,7 @@ window.addEventListener('load', () => {
 
 
 // DISPLAY MENU
-const settingsButton = document.querySelector('.fa-cog');
+const settingsButton = document.querySelector('.fa-bars');
 const menu = document.querySelector('.menu-nav');
 settingsButton.addEventListener('click', () => {
   menu.classList.toggle('display-flex');

@@ -82,6 +82,7 @@ export const renderPost = (userId, doc, element) => {
         div.parentNode.removeChild(div);
       }
     });
+
     // DISPLAY MENU
     const postText = div.querySelector('.main-post p');
     headerPost.appendChild(renderMenu('posts', 'myPosts', userId, doc, div, postText));
