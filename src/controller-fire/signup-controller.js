@@ -25,12 +25,3 @@ export const modalSendMessage = () => {
     pantallaModal.innerHTML = '';
   });
 };
-
-// export const passwordShow = () => {
-//   const tipo = document.querySelector('#signup-password');
-//   if (tipo.type === 'password') {
-//     tipo.type = 'text';
-//   } else {
-//     tipo.type = 'password';
-//   }
-// };
