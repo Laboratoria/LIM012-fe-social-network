@@ -1,4 +1,5 @@
 import { renderPost } from '../templates/post.js';
+import { renderComment } from '../templates/comment.js';
 
 const db = firebase.firestore();
 const getData = (callback, collectionName) => db.collection(collectionName)
@@ -35,12 +36,40 @@ const getPosts = (userId, element, query, value) => {
       if (change.type === 'added') {
         renderPost(userId, change.doc, element);
       } else if (change.type === 'removed') {
-        const li = element.querySelector(`[data-id=${change.doc.id}]`);
-        element.removeChild(li);
-      }
+        const li = document.querySelector(`[data-id=${change.doc.id}]`);
+        li.parentNode.removeChild(li);
+      } 
+      // else if (change.type === 'modified') {
+      //   const li = document.querySelector(`[data-id=${change.doc.id}]`);
+      //   const contentTag = li.querySelector('.main-post p');
+      //   contentTag.innerHTML = change.doc.data().content;
+      //   const likeCounter = li.querySelector('.like-counter');
+      //   likeCounter.innerHTML = change.doc.data().likes;
+      //   // if (change.doc.data().visibility === 'private' || window.location.hash === '#/home') {
+      //   //   element.removeChild(li);
+      //   // }
+      // }
     });
   });
 };
+// const getComments = (userId) => {
+//   return db.collection('comments').orderBy('timestamp', 'asc').onSnapshot((postsDocuments) => {
+//     const changes = postsDocuments.docChanges();
+//     changes.forEach((change) => {
+//       const commentContainer = document.getElementById(change.doc.data().postId);
+//       if (change.type === 'added') {
+//         renderComment(userId, change.doc, commentContainer);
+//       } else if (change.type === 'removed') {
+//         const li = commentContainer.querySelector(`[data-id=${change.doc.id}]`);
+//         commentContainer.removeChild(li);
+//       } else if (change.type === 'modified') {
+//         const li = commentContainer.querySelector(`[data-id=${change.doc.id}]`);
+//         const contentTag = li.querySelector('.comment-p');
+//         contentTag.innerHTML = change.doc.data().content;
+//       }
+//     });
+//   });
+// };
 const addDocumentIdToUserCollection = (userId, docId, field) => {
   return db.collection('users').doc(userId).update({
     [field]: firebase.firestore.FieldValue.arrayUnion(docId),
@@ -78,5 +107,6 @@ const deleteDocumentIdFromUserCollection = (userId, docId, field) => {
 export {
   firstTimeUser, addPost, getPosts, addDocumentIdToUserCollection,
   deleteDocument, deleteDocumentIdFromUserCollection, updateDocument,
-  addComment, getData, getDocument,
+  addComment, getData, getDocument, 
+  // getComments,
 };

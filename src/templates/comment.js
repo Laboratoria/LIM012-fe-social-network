@@ -13,7 +13,7 @@ export const renderComment = (userId, doc, element) => {
       <img src="images/profile-cube.png" alt="profile photo" class="user-photo-comment pic-style comment-size">
       <div class="date-username">
         <p class="comment-userName"></p>
-        <p>${date}}</p>
+        <p>${date}</p>
       </div>
     </div>
     <p class="comment-p">${comment.content}</p>`;
@@ -33,6 +33,8 @@ export const renderComment = (userId, doc, element) => {
     const postComment = div.querySelector('.comment-p');
     headerComment.appendChild(renderMenu('comments', 'myComments', userId, doc, div, postComment));
   }
-  element.appendChild(div);
+  if (element) {
+    element.appendChild(div);
+  }
   return div;
 };

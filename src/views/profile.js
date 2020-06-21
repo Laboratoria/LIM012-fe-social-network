@@ -1,4 +1,4 @@
-import { getPosts } from '../firebase/firestore.js';
+import { getPosts, } from '../firebase/firestore.js';
 import { currentUser } from '../firebase/auth.js';
 
 export const profile = () => {
@@ -7,5 +7,6 @@ export const profile = () => {
   // Personalize profile
   const user = currentUser();
   getPosts(user.uid, div, 'userId', user.uid);
+  // getComments(user.uid);
   return div;
 };

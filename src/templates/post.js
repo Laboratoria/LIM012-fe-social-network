@@ -1,13 +1,12 @@
 import { deleteDocumentIdFromUserCollection, updateDocument, addDocumentIdToUserCollection, addComment, getDocument } from '../firebase/firestore.js';
 import { getFileFromStorage } from '../firebase/storage.js';
-import { renderComment } from './comment.js';
 import { renderMenu } from './menu-publicacion.js';
 
 export const renderPost = (userId, doc, element) => {
-  const post = doc.data();
   const div = document.createElement('div');
   div.setAttribute('data-id', doc.id);
   div.className = 'actual-home-post';
+  const post = doc.data();
   const getDate = date => `${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} ${date.toLocaleDateString()} `;
   const date = post.timestamp !== null ? getDate(post.timestamp.toDate()) : getDate(new Date());
   const template = `
@@ -29,7 +28,7 @@ export const renderPost = (userId, doc, element) => {
       <input class="comment-text" type="text" required>
       <button><i class="fa fa-paper-plane"></i></button>
   </form>
-  <div class="comment-container"></div>
+  <div class="comment-container" id=${doc.id}></div>
 </div>`;
   div.innerHTML = template;
   // VISIBILITY ICON
@@ -77,9 +76,6 @@ export const renderPost = (userId, doc, element) => {
     dateContainer.replaceChild(visibilitySelect, visibilityIcon);
     visibilitySelect.addEventListener('change', (event) => {
       updateDocument('posts', doc.id, 'visibility', event.target.value);
-      if (window.location.hash === '#/home' && event.target.value === 'private') {
-        div.parentNode.removeChild(div);
-      }
     });
     // DISPLAY MENU
     const postText = div.querySelector('.main-post p');
@@ -97,7 +93,6 @@ export const renderPost = (userId, doc, element) => {
     }
   });
   // likes
-  const likeCounterSpan = div.querySelector('.like-counter');
   let likeCounter = post.likes;
   likeIcon.addEventListener('click', () => {
     likeIcon.classList.toggle('red');
@@ -108,7 +103,6 @@ export const renderPost = (userId, doc, element) => {
       likeCounter -= 1;
       deleteDocumentIdFromUserCollection(userId, doc.id, 'myLikes');
     }
-    likeCounterSpan.innerHTML = likeCounter;
     updateDocument('posts', doc.id, 'likes', likeCounter);
   });
   // SHOW COMMENT FORM
@@ -125,25 +119,18 @@ export const renderPost = (userId, doc, element) => {
     .get()
     .then((comments) => {
       commentsCounterSpan.textContent = comments.docs.length;
-      comments.docs.forEach((comment) => {
-        renderComment(userId, comment, commentContainer);
-      });
       // SEND COMMENT
       commentForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const commentText = commentForm.querySelector('.comment-text');
         addComment(userId, doc.id, commentText.value).then((comment) => {
           addDocumentIdToUserCollection(userId, comment.id, 'myComments');
-          getDocument('comments', comment.id, (commentDoc) => {
-            renderComment(userId, commentDoc, commentContainer);
-          });
           commentForm.reset();
         });
         const counter = commentContainer.childElementCount + 1;
         commentsCounterSpan.textContent = counter;
       });
     });
-  // element.appendChild(div);
   element.insertBefore(div, element.firstChild);
   return div;
 };
