@@ -44,13 +44,13 @@ export const home = () => {
       profileName.innerHTML = user.displayName;
       firstTimeUser(user.uid, user.displayName, user.photoURL);
       getPosts(user.uid, homePosts, 'visibility', 'public');
+      getComments(user.uid);
       if (user.photoURL) {
         const photoPost = div.querySelectorAll('.pic-style');
         photoPost.forEach((imgTag) => {
           imgTag.src = user.photoURL;
         });
       }
-      getComments(user.uid);
     }
   });
   return div;

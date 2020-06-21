@@ -113,22 +113,15 @@ export const renderPost = (userId, doc, element) => {
     commentForm.classList.toggle('display-flex');
     commentContainer.classList.toggle('display-flex');
   });
-  // SHOW POST COMMENTS
-  const commentsCounterSpan = div.querySelector('.comments-counter');
-  firebase.firestore().collection('comments').where('postId', '==', doc.id).orderBy('timestamp', 'asc')
-    .get()
-    .then((comments) => {
-      commentsCounterSpan.textContent = comments.docs.length;
-      // SEND COMMENT
-      commentForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const commentText = commentForm.querySelector('.comment-text');
-        addComment(userId, doc.id, commentText.value).then((comment) => {
-          addDocumentIdToUserCollection(userId, comment.id, 'myComments');
-          commentForm.reset();
-        });
-      });
+  // SEND COMMENT
+  commentForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const commentText = commentForm.querySelector('.comment-text');
+    addComment(userId, doc.id, commentText.value).then((comment) => {
+      addDocumentIdToUserCollection(userId, comment.id, 'myComments');
+      commentForm.reset();
     });
+  });
   element.insertBefore(div, element.firstChild);
   return div;
 };
