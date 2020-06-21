@@ -1,8 +1,10 @@
+// eslint-disable-next-line import/no-cycle
 import { renderPost } from '../templates/post.js';
 import { renderComment } from '../templates/comment.js';
 
-const db = firebase.firestore();
-const getData = (callback, collectionName) => db.collection(collectionName)
+// const db = firebase.firestore();
+
+export const getData = (callback, collectionName) => firebase.firestore().collection(collectionName)
   .onSnapshot((docs) => {
     const data = [];
     docs.forEach((doc) => {
@@ -10,14 +12,18 @@ const getData = (callback, collectionName) => db.collection(collectionName)
     });
     callback(data);
   });
-const getDocument = (collectionName, docId, callback) => db.collection(collectionName).doc(docId)
-  .get().then((doc) => {
+
+// eslint-disable-next-line max-len
+export const getDocument = (collectionName, docId, callback) => firebase.firestore().collection(collectionName).doc(docId)
+  .get()
+  .then((doc) => {
     callback(doc);
   });
-const firstTimeUser = (userId, displayName, profilePhoto) => {
-  db.collection('users').doc(userId).get().then((doc) => {
+
+export const firstTimeUser = (userId, displayName, profilePhoto) => {
+  return firebase.firestore().collection('users').doc(userId).get().then((doc) => {
     if (!doc.exists) {
-      db.collection('users').doc(userId).set({
+      firebase.firestore().collection('users').doc(userId).set({
         userName: displayName,
         userPhoto: profilePhoto,
         coverPhoto: '',
@@ -29,8 +35,8 @@ const firstTimeUser = (userId, displayName, profilePhoto) => {
     }
   });
 };
-const getPosts = (userId, element, query, value) => {
-  return db.collection('posts').where(query, '==', value).orderBy('timestamp', 'asc').onSnapshot((postsDocuments) => {
+export const getPosts = (userId, element, query, value) => {
+  return firebase.firestore().collection('posts').where(query, '==', value).orderBy('timestamp', 'asc').onSnapshot((postsDocuments) => {
     const changes = postsDocuments.docChanges();
     changes.forEach((change) => {
       if (change.type === 'added') {
@@ -51,8 +57,8 @@ const getPosts = (userId, element, query, value) => {
     });
   });
 };
-const getComments = (userId) => {
-  return db.collection('comments').orderBy('timestamp', 'asc').onSnapshot((commentDocuments) => {
+export const getComments = (userId) => {
+  return firebase.firestore().collection('comments').orderBy('timestamp', 'asc').onSnapshot((commentDocuments) => {
     const changes = commentDocuments.docChanges();
     changes.forEach((change) => {
       const commentContainer = document.getElementById(`comment-container-${change.doc.data().postId}`);
@@ -75,13 +81,15 @@ const getComments = (userId) => {
     });
   });
 };
-const addDocumentIdToUserCollection = (userId, docId, field) => {
-  return db.collection('users').doc(userId).update({
+
+export const addDocumentIdToUserCollection = (userId, docId, field) => {
+  return firebase.firestore().collection('users').doc(userId).update({
     [field]: firebase.firestore.FieldValue.arrayUnion(docId),
   });
 };
-const addPost = (userId, content, photo, visibility) => {
-  return db.collection('posts').add({
+
+export const addPost = (userId, content, photo, visibility) => {
+  return firebase.firestore().collection('posts').add({
     userId,
     content,
     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
@@ -90,27 +98,24 @@ const addPost = (userId, content, photo, visibility) => {
     likes: 0,
   });
 };
-const addComment = (userId, postId, content) => {
-  return db.collection('comments').add({
+export const addComment = (userId, postId, content) => {
+  return firebase.firestore().collection('comments').add({
     userId,
     postId,
     content,
     timestamp: firebase.firestore.FieldValue.serverTimestamp(),
   });
 };
-const updateDocument = (collection, docId, field, value) => {
-  return db.collection(collection).doc(docId).update({
+export const updateDocument = (collection, docId, field, value) => {
+  return firebase.firestore().collection(collection).doc(docId).update({
     [field]: value,
   });
 };
-const deleteDocument = (collection, docId) => db.collection(collection).doc(docId).delete();
-const deleteDocumentIdFromUserCollection = (userId, docId, field) => {
-  return db.collection('users').doc(userId).update({
+// eslint-disable-next-line max-len
+export const deleteDocument = (collection, docId) => firebase.firestore().collection(collection).doc(docId).delete();
+
+export const deleteDocumentIdFromUserCollection = (userId, docId, field) => {
+  return firebase.firestore().collection('users').doc(userId).update({
     [field]: firebase.firestore.FieldValue.arrayRemove(docId),
   });
-};
-export {
-  firstTimeUser, addPost, getPosts, addDocumentIdToUserCollection,
-  deleteDocument, deleteDocumentIdFromUserCollection, updateDocument,
-  addComment, getData, getDocument, getComments,
 };

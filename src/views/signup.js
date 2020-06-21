@@ -7,27 +7,38 @@ export const signup = () => {
   const div = document.createElement('div');
   div.id = 'signup-modal';
   const signupView = `
-  <header>
+  <header class="headerSig">
     <h1 class="h1-style"><img src="images/logo.png" alt="app logo"> BUNKER</h1>
     <h2>Share your knowledgement!</h2>
-    <h3>WELCOME!</h3>
+
   </header>
   <main>
     <form id="signup-form">
-      <input type="text" id="signup-username" placeholder="username" required>
-      <input type="email" id="signup-email" placeholder="email" required>
-      <input type="password" id="signup-password" placeholder="password" required>
+      <input type="text" id="signup-username" placeholder="Username" required>
+      <input type="email" id="signup-email" placeholder="Email" required>
+      <input type="password" id="signup-password" autocomplete="on" placeholder="Password" required>
       <i class="fas fa-eye" id='showContraseña'></i>
-      <div>
+      <div class="terms">
         <input type="checkbox" id="agreement" required>
         <label for="agreement">I agree to the Terms of Service and Privacy Statement</label>
       </div>
       <p id="error-message"></p>
       <button>SIGN UP</button>
     </form>
-    <p class="p-form">Already have an account? <a href="#/log-in">LOG IN HERE</a></p>
+    <p class="p-for space">Already have an account? <a href="#/log-in">LOG IN HERE</a></p>
   </main>`;
   div.innerHTML = signupView;
+
+  const showContraseña = div.querySelector('#showContraseña');
+  showContraseña.addEventListener('click', () => {
+    const tipo = document.querySelector('#signup-password');
+    if (tipo.type === 'password') {
+      tipo.type = 'text';
+    } else {
+      tipo.type = 'password';
+    }
+  });
+
   // USER SIGN UP
   const signupForm = div.querySelector('#signup-form');
   const errorMessage = div.querySelector('#error-message');
@@ -38,7 +49,6 @@ export const signup = () => {
     e.preventDefault();
     registerUserEmail(userEmail, userPassword)
       .then((result) => {
-        console.log(result.user);
         result.user.sendEmailVerification()
           .then(() => {
             updateUserProfile(userName).then(() => {

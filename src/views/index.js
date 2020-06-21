@@ -4,6 +4,7 @@ import { home } from './home.js';
 import { profile } from './profile.js';
 import { postForm } from './post-form.js';
 import { profileForm } from './profile-form.js';
+import notFound from './404.js';
 
 export const components = {
   signup,
@@ -12,4 +13,5 @@ export const components = {
   profile,
   postForm,
   profileForm,
+  notFound,
 };

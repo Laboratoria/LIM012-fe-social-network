@@ -8,10 +8,14 @@ const init = () => {
   });
 };
 
-window.addEventListener('load', init);
+window.addEventListener('load', () => {
+  document.getElementById('loader').classList.add('loader2');
+  init();
+});
+
 
 // DISPLAY MENU
-const settingsButton = document.querySelector('.fa-cog');
+const settingsButton = document.querySelector('.fa-bars');
 const menu = document.querySelector('.menu-nav');
 settingsButton.addEventListener('click', () => {
   menu.classList.toggle('display-flex');

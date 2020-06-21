@@ -20,8 +20,8 @@ export const login = () => {
       </header>
       <main>
         <form id="login-form">
-          <input type="email" id="login-email" placeholder="email" required>
-          <input type="password" id="login-password" autocomplete="on" placeholder="password" required>
+          <input type="email" id="login-email" placeholder="Email" required>
+          <input type="password" id="login-password" autocomplete="on" placeholder="Password" required>
           <i class="fas fa-eye" id='showContraseña'></i>
           <p id="error-message"></p>
           <p class="p-form" id="forgot-password-button">forgot password?</p>
@@ -32,7 +32,7 @@ export const login = () => {
           <i class="fab fa-google"></i>
           <i class="fab fa-facebook-f"></i>
         </div>
-        <p class="p-form">Don't have an account? <a href="#/sign-up">SIGN UP HERE</a> </p>
+        <p class="p-for">Don't have an account? <a href="#/sign-up">SIGN UP HERE</a> </p>
       </main>
     </div>
   </div>`;
@@ -40,7 +40,6 @@ export const login = () => {
 
   const showContraseña = div.querySelector('#showContraseña');
   showContraseña.addEventListener('click', passwordShow);
-
   // LOG IN USER
   const errorMessage = div.querySelector('#error-message');
   const loginForm = div.querySelector('#login-form');

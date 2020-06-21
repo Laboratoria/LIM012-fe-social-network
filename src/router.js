@@ -43,6 +43,8 @@ export const changeView = (route) => {
     }
     case '#/post-section': {
       mainContainer.innerHTML = '';
+      const body = document.querySelector('body');
+      body.classList.add('hide-overflow');
       return mainContainer.appendChild(components.postForm());
     }
     case '#/profile-form': {
@@ -53,6 +55,7 @@ export const changeView = (route) => {
       return switchForm.appendChild(components.profileForm());
     }
     default:
-      return actualView.innerHTML = '';
+      actualView.innerHTML = '';
+      return actualView.appendChild(components.notFound());
   }
 };

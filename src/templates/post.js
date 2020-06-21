@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { deleteDocumentIdFromUserCollection, updateDocument, addDocumentIdToUserCollection, addComment, getDocument } from '../firebase/firestore.js';
 import { getFileFromStorage } from '../firebase/storage.js';
 import { renderMenu } from './menu-publicacion.js';
@@ -77,6 +78,7 @@ export const renderPost = (userId, doc, element) => {
     visibilitySelect.addEventListener('change', (event) => {
       updateDocument('posts', doc.id, 'visibility', event.target.value);
     });
+
     // DISPLAY MENU
     const postText = div.querySelector('.main-post p');
     headerPost.appendChild(renderMenu('posts', 'myPosts', userId, doc, postText));

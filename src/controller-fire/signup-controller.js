@@ -18,7 +18,6 @@ export const modalSendMessage = () => {
     return mensaje;
   };
 
-  console.log('mi modal')
   const pantallaModal = document.getElementById('pantallaModal');
   pantallaModal.appendChild(pantalla());
   pantallaModal.querySelector('#exit').addEventListener('click', () => {
