@@ -4,7 +4,7 @@ import { renderMenu } from './menu-publicacion.js';
 export const renderComment = (userId, doc, element) => {
   const comment = doc.data();
   const div = document.createElement('div');
-  div.setAttribute('data-id', doc.id);
+  div.id = doc.id;
   div.className = 'actual-home-comment';
   const getDate = date => `${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} ${date.toLocaleDateString()} `;
   const date = comment.timestamp !== null ? getDate(comment.timestamp.toDate()) : getDate(new Date());
@@ -31,7 +31,7 @@ export const renderComment = (userId, doc, element) => {
   if (userId === comment.userId) {
     const headerComment = div.querySelector('.header-comment');
     const postComment = div.querySelector('.comment-p');
-    headerComment.appendChild(renderMenu('comments', 'myComments', userId, doc, div, postComment));
+    headerComment.appendChild(renderMenu('comments', 'myComments', userId, doc, postComment));
   }
   if (element) {
     element.appendChild(div);

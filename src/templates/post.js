@@ -4,7 +4,7 @@ import { renderMenu } from './menu-publicacion.js';
 
 export const renderPost = (userId, doc, element) => {
   const div = document.createElement('div');
-  div.setAttribute('data-id', doc.id);
+  div.id = doc.id;
   div.className = 'actual-home-post';
   const post = doc.data();
   const getDate = date => `${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} ${date.toLocaleDateString()} `;
@@ -28,7 +28,7 @@ export const renderPost = (userId, doc, element) => {
       <input class="comment-text" type="text" required>
       <button><i class="fa fa-paper-plane"></i></button>
   </form>
-  <div class="comment-container" id=${doc.id}></div>
+  <div class="comment-container" id="comment-container-${doc.id}"></div>
 </div>`;
   div.innerHTML = template;
   // VISIBILITY ICON
@@ -79,7 +79,7 @@ export const renderPost = (userId, doc, element) => {
     });
     // DISPLAY MENU
     const postText = div.querySelector('.main-post p');
-    headerPost.appendChild(renderMenu('posts', 'myPosts', userId, doc, div, postText));
+    headerPost.appendChild(renderMenu('posts', 'myPosts', userId, doc, postText));
   }
   // COMMENT FORM PHOTO
   const actualUserPhoto = div.querySelector('.actual-user-photo');
@@ -127,8 +127,6 @@ export const renderPost = (userId, doc, element) => {
           addDocumentIdToUserCollection(userId, comment.id, 'myComments');
           commentForm.reset();
         });
-        const counter = commentContainer.childElementCount + 1;
-        commentsCounterSpan.textContent = counter;
       });
     });
   element.insertBefore(div, element.firstChild);

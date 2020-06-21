@@ -36,40 +36,45 @@ const getPosts = (userId, element, query, value) => {
       if (change.type === 'added') {
         renderPost(userId, change.doc, element);
       } else if (change.type === 'removed') {
-        const li = document.querySelector(`[data-id=${change.doc.id}]`);
-        li.parentNode.removeChild(li);
-      } 
-      // else if (change.type === 'modified') {
-      //   const li = document.querySelector(`[data-id=${change.doc.id}]`);
-      //   const contentTag = li.querySelector('.main-post p');
-      //   contentTag.innerHTML = change.doc.data().content;
-      //   const likeCounter = li.querySelector('.like-counter');
-      //   likeCounter.innerHTML = change.doc.data().likes;
-      //   // if (change.doc.data().visibility === 'private' || window.location.hash === '#/home') {
-      //   //   element.removeChild(li);
-      //   // }
-      // }
+        const div = document.getElementById(change.doc.id);
+        element.removeChild(div);
+      } else if (change.type === 'modified') {
+        const div = document.getElementById(change.doc.id);
+        const contentTag = div.querySelector('.main-post p');
+        contentTag.innerHTML = change.doc.data().content;
+        const likeCounter = div.querySelector('.like-counter');
+        likeCounter.innerHTML = change.doc.data().likes;
+        if (window.location.hash === '#/home' && change.doc.data().visibility === 'private') {
+          element.removeChild(div);
+        }
+      }
     });
   });
 };
-// const getComments = (userId) => {
-//   return db.collection('comments').orderBy('timestamp', 'asc').onSnapshot((postsDocuments) => {
-//     const changes = postsDocuments.docChanges();
-//     changes.forEach((change) => {
-//       const commentContainer = document.getElementById(change.doc.data().postId);
-//       if (change.type === 'added') {
-//         renderComment(userId, change.doc, commentContainer);
-//       } else if (change.type === 'removed') {
-//         const li = commentContainer.querySelector(`[data-id=${change.doc.id}]`);
-//         commentContainer.removeChild(li);
-//       } else if (change.type === 'modified') {
-//         const li = commentContainer.querySelector(`[data-id=${change.doc.id}]`);
-//         const contentTag = li.querySelector('.comment-p');
-//         contentTag.innerHTML = change.doc.data().content;
-//       }
-//     });
-//   });
-// };
+const getComments = (userId) => {
+  return db.collection('comments').orderBy('timestamp', 'asc').onSnapshot((commentDocuments) => {
+    const changes = commentDocuments.docChanges();
+    changes.forEach((change) => {
+      const commentContainer = document.getElementById(`comment-container-${change.doc.data().postId}`);
+      if (commentContainer) {
+        const postContainer = document.getElementById(change.doc.data().postId);
+        const commentCounter = postContainer.querySelector('.comments-counter');
+        if (change.type === 'added') {
+          renderComment(userId, change.doc, commentContainer);
+          commentCounter.innerHTML = commentContainer.childElementCount;
+        } else if (change.type === 'removed') {
+          const div = document.getElementById(change.doc.id);
+          commentContainer.removeChild(div);
+          commentCounter.innerHTML = commentContainer.childElementCount;
+        } else if (change.type === 'modified') {
+          const div = document.getElementById(change.doc.id);
+          const contentTag = div.querySelector('.comment-p');
+          contentTag.innerHTML = change.doc.data().content;
+        }
+      }
+    });
+  });
+};
 const addDocumentIdToUserCollection = (userId, docId, field) => {
   return db.collection('users').doc(userId).update({
     [field]: firebase.firestore.FieldValue.arrayUnion(docId),
@@ -107,6 +112,5 @@ const deleteDocumentIdFromUserCollection = (userId, docId, field) => {
 export {
   firstTimeUser, addPost, getPosts, addDocumentIdToUserCollection,
   deleteDocument, deleteDocumentIdFromUserCollection, updateDocument,
-  addComment, getData, getDocument, 
-  // getComments,
+  addComment, getData, getDocument, getComments,
 };

@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { deleteDocument, deleteDocumentIdFromUserCollection, updateDocument } from '../firebase/firestore.js';
 
-export const renderMenu = (collection, userField, userId, doc, actualElement, contentToEdit) => {
+export const renderMenu = (collection, userField, userId, doc, contentToEdit) => {
   const post = doc.data();
   // MENU OPTIONS
   const menuContainer = document.createElement('div');
@@ -24,12 +24,6 @@ export const renderMenu = (collection, userField, userId, doc, actualElement, co
   });
   // DELETE POST
   deleteButton.addEventListener('click', () => {
-    // if (collection === 'comments') {
-    //   const commentContainer = actualElement.parentNode;
-    //   const commentsCounterSpan = commentContainer.parentNode.querySelector('.comments-counter');
-    //   const num = parseInt(commentsCounterSpan.innerText);
-    //   commentsCounterSpan.innerHTML = num - 1;
-    // }
     deleteDocument(collection, doc.id);
     deleteDocumentIdFromUserCollection(userId, doc.id, userField);
   });

@@ -1,4 +1,4 @@
-import { firstTimeUser, getPosts, } from '../firebase/firestore.js';
+import { firstTimeUser, getPosts, getComments } from '../firebase/firestore.js';
 
 export const home = () => {
   const div = document.createElement('div');
@@ -50,7 +50,7 @@ export const home = () => {
           imgTag.src = user.photoURL;
         });
       }
-      // getComments(user.uid);
+      getComments(user.uid);
     }
   });
   return div;
