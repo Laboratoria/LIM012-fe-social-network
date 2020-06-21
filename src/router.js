@@ -53,6 +53,7 @@ export const changeView = (route) => {
       return switchForm.appendChild(components.profileForm());
     }
     default:
-      return actualView.innerHTML = '';
+      actualView.innerHTML = '';
+      return actualView.appendChild(components.notFound());
   }
 };

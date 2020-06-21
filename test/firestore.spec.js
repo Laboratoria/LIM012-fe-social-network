@@ -1,8 +1,8 @@
 import MockFirebase from 'mock-cloud-firestore';
 
 import {
-  getData, getDocument, firstTimeUser, addDocumentIdToUserCollection, 
-  getPosts, addPost, addComment, updateDocument, deleteDocument , deleteDocumentIdFromUserCollection ,
+  getData, firstTimeUser, addDocumentIdToUserCollection,
+  addPost, addComment, updateDocument, deleteDocument, deleteDocumentIdFromUserCollection,
 } from '../src/firebase/firestore.js';
 
 const fixtureData = {
@@ -86,7 +86,7 @@ global.firebase = new MockFirebase(fixtureData);
 
 describe('firstTimeUser', () => {
   it('Debería porder crear un nuevo usuario', done => firstTimeUser('user004', 'Yudith Cumba', '')
-    .then( getData((data) => {
+    .then(getData((data) => {
       const result = data.find(user => user.id === 'user004');
       expect(result.userName).toBe('Yudith Cumba');
       done();
@@ -137,8 +137,8 @@ describe('updatDocument', () => {
         expect(result.userName).toBe('Nuevo fulano');
         done();
       }, 'users'));
-  })
-})
+  });
+});
 
 describe('deleteDocument', () => {
   it('Debería poder eliminar el post con id post002  de la colección post', done => deleteDocument('posts', 'post002')

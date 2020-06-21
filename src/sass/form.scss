@@ -8,7 +8,6 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    // border: solid red;
     border-bottom: solid 1px rgb(184, 179, 179);
     i{
       margin-left: 5px;
@@ -24,7 +23,6 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      // border: solid red;
       @include size(100%, 68px);
       img{
         margin-left: 5px;
