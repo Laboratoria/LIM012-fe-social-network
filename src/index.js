@@ -8,7 +8,11 @@ const init = () => {
   });
 };
 
-window.addEventListener('load', init);
+window.addEventListener('load', () => {
+  document.getElementById('loader').classList.add('loader2');
+  init();
+});
+
 
 // DISPLAY MENU
 const settingsButton = document.querySelector('.fa-cog');
