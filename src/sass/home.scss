@@ -68,12 +68,32 @@ footer{
   max-width: 600px;
   // border: solid rgb(123, 255, 0);
   .user-cover-photo-container{
+
     margin-top: 8px;
     height: 12.5em;
     // border: solid red;
     display: flex;
     justify-content: center;
     padding: 0;
+
+    label {
+      background-color: rgba(255, 255, 255, 0.75);
+      width: 30px;
+      height: 30px;
+      border-radius: 50px;
+      position: relative;
+      left: 50px;
+      align-self: flex-end;
+      bottom: 60px;
+      
+      i{
+      position: relative;
+      left: 6px;
+      top: 5px;
+      }
+    }
+
+    
     .user-cover-photo{
       margin: 0;
     border-radius: 15px 15px 0 0;
@@ -99,8 +119,9 @@ footer{
       margin: 0;
       font-size: 19px;
       font-family: 'NanumGothic';
+      text-align: center;
     }
-    h4{
+    h5{
       margin: 0;
       color: rgb(48, 47, 47);
       font-size: 17px;
@@ -188,9 +209,19 @@ background-color: rgba(6, 135, 255, 0.719);
     display: flex;
   .user-cover-photo-container{
     label {
+      background-color: rgba(255, 255, 255, 0.75);
+      width: 30px;
+      height: 30px;
+      border-radius: 50px;
+      position: relative;
+      left: 50px;
+      align-self: flex-end;
+      bottom: 60px;
+      
       i{
-      position: absolute;
-      right: 100px;
+      position: relative;
+      left: 6px;
+      top: 5px;
       }
     }
     height: 18em;
@@ -202,8 +233,4 @@ background-color: rgba(6, 135, 255, 0.719);
     }
   }
 }
-}
-
-footer {
-  display: none;
 }

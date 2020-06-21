@@ -246,8 +246,7 @@
 
 .home-view {
   display: none;
-  width: 100%;
-  min-width: 300px; }
+  width: 100%; }
   .home-view header {
     padding: 0 10px 0 3px;
     display: flex;
@@ -317,6 +316,19 @@
     display: flex;
     justify-content: center;
     padding: 0; }
+    .user-info .user-cover-photo-container label {
+      background-color: rgba(255, 255, 255, 0.75);
+      width: 30px;
+      height: 30px;
+      border-radius: 50px;
+      position: relative;
+      left: 50px;
+      align-self: flex-end;
+      bottom: 60px; }
+      .user-info .user-cover-photo-container label i {
+        position: relative;
+        left: 6px;
+        top: 5px; }
     .user-info .user-cover-photo-container .user-cover-photo {
       margin: 0;
       border-radius: 15px 15px 0 0;
@@ -339,8 +351,9 @@
     .user-info .username-bio h3 {
       margin: 0;
       font-size: 19px;
-      font-family: 'NanumGothic'; }
-    .user-info .username-bio h4 {
+      font-family: 'NanumGothic';
+      text-align: center; }
+    .user-info .username-bio h5 {
       margin: 0;
       color: #302f2f;
       font-size: 17px;
@@ -375,7 +388,7 @@
     .menu-nav div:hover {
       background-color: rgba(253, 255, 255, 0.212); }
   .menu-nav div:first-child {
-    border-bottom: solid 1px #dbdbdb; }
+    border-bottom: 1px solid #dbdbdb; }
     .menu-nav div:first-child a {
       display: flex;
       align-items: center;
@@ -419,6 +432,19 @@
     display: flex; }
     .user-info .user-cover-photo-container {
       height: 18em; }
+      .user-info .user-cover-photo-container label {
+        background-color: rgba(255, 255, 255, 0.75);
+        width: 30px;
+        height: 30px;
+        border-radius: 50px;
+        position: relative;
+        left: 50px;
+        align-self: flex-end;
+        bottom: 60px; }
+        .user-info .user-cover-photo-container label i {
+          position: relative;
+          left: 6px;
+          top: 5px; }
       .user-info .user-cover-photo-container .user-cover-photo {
         height: 15em; }
       .user-info .user-cover-photo-container .user-profile-photo {
@@ -465,7 +491,8 @@
           font-size: 15px;
           font-family: 'NanumGothic';
           color: #2b3049;
-          font-weight: bold; }
+          font-weight: bold;
+          text-align: center; }
       #form-template-container .general #switch-content form {
         font-family: 'NanumGothic';
         display: flex;
@@ -563,7 +590,7 @@ input[type=file] {
   #form-template-container {
     background-color: rgba(0, 0, 0, 0.8); }
     #form-template-container .general {
-      width: 80%;
+      width: 100%;
       height: auto;
       background-color: white;
       display: flex;

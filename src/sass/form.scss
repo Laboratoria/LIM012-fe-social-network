@@ -39,6 +39,7 @@
           font-family: 'NanumGothic';
           color: rgb(43, 48, 73);
           font-weight: bold;
+          text-align: center;
         }
       }
       form{
@@ -139,11 +140,10 @@ input[type=file]{
   display: none;
 }
 @media  (min-width: 1024px) and (max-width: 4000px){
-
   #form-template-container{
     background-color: rgba($color: #000000, $alpha: 0.8);
     .general {
-      @include size(%, auto);
+      @include size(100%, auto);
     background-color: white;
     @include flexModal(column);
     border-radius: 20px;
