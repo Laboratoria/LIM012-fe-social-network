@@ -1,4 +1,5 @@
 /* eslint-disable no-param-reassign */
+// eslint-disable-next-line import/no-cycle
 import { deleteDocument, deleteDocumentIdFromUserCollection, updateDocument } from '../firebase/firestore.js';
 
 export const renderMenu = (collection, userField, userId, doc, actualElement, contentToEdit) => {
@@ -27,6 +28,7 @@ export const renderMenu = (collection, userField, userId, doc, actualElement, co
     if (collection === 'comments') {
       const commentContainer = actualElement.parentNode;
       const commentsCounterSpan = commentContainer.parentNode.querySelector('.comments-counter');
+      // eslint-disable-next-line radix
       const num = parseInt(commentsCounterSpan.innerText);
       commentsCounterSpan.innerHTML = num - 1;
     }
