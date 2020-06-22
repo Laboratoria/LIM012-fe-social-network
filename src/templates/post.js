@@ -26,7 +26,7 @@ export const renderPost = (userId, doc, element) => {
   <i class="far fa-comments"></i><span class="comments-counter"></span>
   <form class="comment-form">
       <img src="images/profile-cube.png" alt="profile photo" class="actual-user-photo pic-style comment-size">
-      <input class="comment-text" type="text" required>
+      <input class="comment-text" type="text" placeholder="Add a comment..." required>
       <button><i class="fa fa-paper-plane"></i></button>
   </form>
   <div class="comment-container" id="comment-container-${doc.id}"></div>
@@ -65,9 +65,9 @@ export const renderPost = (userId, doc, element) => {
     const visibilitySelect = document.createElement('select');
     const publicOption = document.createElement('option');
     const privateOption = document.createElement('option');
-    publicOption.innerHTML = 'public';
-    privateOption.innerHTML = 'private';
-    if (post.visibility === 'private') {
+    publicOption.innerHTML = 'Public';
+    privateOption.innerHTML = 'Private';
+    if (post.visibility === 'Private') {
       visibilitySelect.appendChild(privateOption);
       visibilitySelect.appendChild(publicOption);
     } else {

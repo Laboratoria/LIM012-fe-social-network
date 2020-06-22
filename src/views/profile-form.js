@@ -9,10 +9,10 @@ export const profileForm = () => {
       <label for="profile-img-selected">Change profile picture</label>
       <input type="file" id="profile-img-selected" name="profile-picture" accept="image/png, image/jpeg">
       <label for="new-username">USER NAME</label>
-      <input type="text" id="new-username">
+      <input type="text" id="new-username" placeholder="Username">
       <label for="bio">BIO</label>
-      <input type="text" id="bio">
-      <button id="edit-button" class="submit-button-style">POST</button>`;
+      <input type="text" id="bio" placeholder="Tell me something about you">
+      <button id="edit-button" class="submit-button-style">SAVE</button>`;
   form.innerHTML = template;
 
   form.addEventListener('submit', (e) => {

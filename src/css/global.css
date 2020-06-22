@@ -312,15 +312,14 @@
   max-width: 600px; }
   .user-info .user-cover-photo-container {
     margin-top: 8px;
+    margin-left: 0;
     height: 12.5em;
     display: flex;
     justify-content: center;
     padding: 0; }
     .user-info .user-cover-photo-container label {
-      background-color: rgba(255, 255, 255, 0.75);
       width: 30px;
       height: 30px;
-      border-radius: 50px;
       position: relative;
       left: 50px;
       align-self: flex-end;
@@ -431,9 +430,9 @@
     height: 24em;
     display: flex; }
     .user-info .user-cover-photo-container {
+      margin-left: 0;
       height: 18em; }
       .user-info .user-cover-photo-container label {
-        background-color: rgba(255, 255, 255, 0.75);
         width: 30px;
         height: 30px;
         border-radius: 50px;
@@ -446,7 +445,9 @@
           left: 6px;
           top: 5px; }
       .user-info .user-cover-photo-container .user-cover-photo {
-        height: 15em; }
+        height: 15em;
+        margin-left: 0;
+        padding: 0; }
       .user-info .user-cover-photo-container .user-profile-photo {
         width: 98px;
         height: 98px; } }
@@ -569,16 +570,29 @@
   flex-direction: column;
   width: 100%; }
   #profile-form label[for=profile-img-selected] {
-    color: #0b72f8;
+    color: #138ef3;
+    font-family: "Sifonn", sans-serif;
+    font-size: 20px;
+    font-weight: lighter;
+    margin-top: 30px;
     margin-bottom: 20px; }
   #profile-form label {
-    font-size: 20px; }
-  #profile-form input {
     font-size: 20px;
+    font-family: "Sifonn", sans-serif;
+    font-size: 16px;
+    font-weight: lighter; }
+  #profile-form input {
+    font-size: 14px;
+    border-radius: 10px;
     width: 250px;
-    height: 40px;
-    border: solid 1px #727070;
-    margin: 8px 0 18px 0; }
+    height: 30px;
+    background-color: #aed9fd;
+    margin: 8px 0 18px 0;
+    outline: none;
+    border-style: none;
+    text-indent: 15px; }
+  #profile-form button {
+    margin-top: 30px; }
 
 #switch-form {
   width: 100%; }
@@ -712,8 +726,7 @@ input[type=file] {
         height: 20px;
         font-size: 12px;
         border-radius: 5px;
-        margin-left: 60px;
-        background-color: #cfdbfa;
+        background-color: #dfecff;
         color: #5e5d5d; }
         .actual-home-post .header-post .date-username select option {
           border: none;
@@ -723,10 +736,10 @@ input[type=file] {
           background-color: white; }
       .actual-home-post .header-post .date-username p:first-child {
         font-weight: bold;
-        font-size: 14px; }
+        font-size: 13px; }
       .actual-home-post .header-post .date-username p {
         font-family: 'NanumGothic';
-        font-size: 13px;
+        font-size: 12px;
         margin: 0; }
     .actual-home-post .header-post .menu-container {
       width: 30%;
@@ -741,12 +754,14 @@ input[type=file] {
     .actual-home-post .header-post .fa-globe-americas {
       margin: 0 6px; }
   .actual-home-post .main-post {
-    width: 100%; }
+    width: 100%;
+    height: auto;
+    font-size: 14px; }
     .actual-home-post .main-post p {
       font-family: 'NanumGothic';
-      margin: 0;
-      padding: 10px;
-      width: 100%; }
+      padding: 5px 15px 0px 15px;
+      width: 100%;
+      word-wrap: break-word; }
     .actual-home-post .main-post div {
       width: 100%;
       height: auto; }
@@ -787,12 +802,21 @@ input[type=file] {
   align-items: center;
   justify-content: center;
   width: 100%; }
+  .comment-form img {
+    width: 35px;
+    height: 35px;
+    margin-left: 1%; }
   .comment-form input {
+    border: none;
     width: 80%;
-    height: 36px;
-    margin: 0 8px;
-    border-radius: 8px;
-    border: solid 1px #6d6a6a; }
+    height: 30px;
+    text-indent: 15px;
+    margin-right: 1%;
+    margin-left: 3%;
+    border-radius: 50px;
+    background: #F1F1F1;
+    font-size: 13px;
+    font-family: 'NanumGothic'; }
   .comment-form button {
     background: none;
     border: none; }
@@ -806,29 +830,45 @@ input[type=file] {
   align-items: center; }
   .comment-container .actual-home-comment {
     border-radius: 5px;
-    background-color: #eff3f8;
-    margin: 5px 0;
+    background-color: #dfecff;
+    margin: 5px 0 15px 0;
     padding: 3px;
     width: 100%;
     height: auto; }
+    .comment-container .actual-home-comment img {
+      width: 35px;
+      height: 35px;
+      margin-left: 1%;
+      margin-bottom: 15px; }
     .comment-container .actual-home-comment p {
+      width: 100%;
       font-family: 'NanumGothic';
-      margin: 0; }
+      font-size: 12px; }
     .comment-container .actual-home-comment > p {
-      font-size: 15px;
-      margin: 7px 5px; }
+      word-wrap: break-word;
+      font-size: 14px;
+      padding: 0 10px 10px 10px; }
+  .comment-container .actual-home-comment:before {
+    content: "";
+    position: absolute;
+    margin: -12px 8px 0 5px;
+    width: 0;
+    height: 0;
+    border-bottom: 12px solid #dfecff;
+    border-right: 12px solid transparent;
+    border-left: 12px solid transparent; }
 
 .header-comment {
   display: flex;
   flex-direction: row;
   align-items: center; }
   .header-comment .date-username {
-    width: 60%;
+    width: 100%;
     height: 2.8em;
-    margin: 0 8px; }
+    margin: 0 8px 0 8px; }
     .header-comment .date-username .comment-userName {
       font-weight: bold;
-      font-size: 14px; }
+      font-size: 12px; }
   .header-comment .menu-container {
     width: 30%;
     height: 3em;
@@ -837,7 +877,9 @@ input[type=file] {
     flex-direction: row; }
     .header-comment .menu-container i {
       font-size: 18px;
-      color: #575455; }
+      color: #575455;
+      position: relative;
+      top: -7px; }
 
 .comment-size {
   width: 40px;

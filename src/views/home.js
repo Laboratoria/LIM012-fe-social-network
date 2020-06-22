@@ -38,9 +38,9 @@ export const home = () => {
 
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      profileName.innerHTML = user.displayName;
       const coverPhoto = div.querySelector('.user-cover-photo');
       getDocument('users', user.uid, (doc) => {
+        profileName.innerHTML = user.displayName;
         coverPhoto.src = doc.data().coverPhoto;
         if (doc.data().bio !== '') {
           profileBio.innerHTML = doc.data().bio;
@@ -53,6 +53,7 @@ export const home = () => {
       getComments(user.uid);
       if (user.photoURL) {
         const photoPost = div.querySelectorAll('.pic-style');
+        console.log(photoPost)
         photoPost.forEach((imgTag) => {
           // eslint-disable-next-line no-param-reassign
           imgTag.src = user.photoURL;
