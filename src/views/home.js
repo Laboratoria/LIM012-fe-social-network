@@ -1,5 +1,5 @@
 import {
-  firstTimeUser, updateDocument, getDocument,
+  firstTimeUser, updateDocument, getRealTimeDocument,
 } from '../firebase/firestore.js';
 import { getPosts, getComments } from '../controller-fire/filter-data.js';
 import { addFileToStorage, getFileFromStorage } from '../firebase/storage.js';
@@ -40,8 +40,8 @@ export const home = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       const coverPhoto = div.querySelector('.user-cover-photo');
-      getDocument('users', user.uid, (doc) => {
-        profileName.innerHTML = user.displayName;
+      getRealTimeDocument('users', user.uid, (doc) => {
+        profileName.innerHTML = doc.data().userName;
         coverPhoto.src = doc.data().coverPhoto;
         if (doc.data().bio !== '') {
           profileBio.innerHTML = doc.data().bio;

@@ -58,7 +58,7 @@ const fixtureData = {
           content: 'tercer post',
           likes: 4,
           photo: '',
-          userId : 'user002',
+          userId: 'user002',
           visibility: 'private',
         },
       },
@@ -66,13 +66,13 @@ const fixtureData = {
     comments: {
       __doc__: {
         comment001: {
-          userId : 'user001',
+          userId: 'user001',
           postId: 'post001',
           content: 'hola',
           timestap: '20/05/20',
         },
         comment002: {
-          userId : 'user002',
+          userId: 'user002',
           postId: 'post002',
           content: 'hola de nuevo',
           timestap: '15/05/20',
@@ -90,13 +90,12 @@ describe('firstTimeUser', () => {
       const result = data.find(user => user.id === 'user004');
       expect(result.userName).toBe('Yudith Cumba');
       done();
-    }, 'users',
-    )));
+    }, 'users')));
 });
 
 
 describe('addPost', () => {
-  it('Debería porder agregar un post', done => addPost( 'user001', 'Nuevo post', '', 'public')
+  it('Debería porder agregar un post', done => addPost('user001', 'Nuevo post', '', 'public')
     .then(() => getData(
       (data) => {
         const result = data.find(post => post.content === 'Nuevo post');
@@ -130,14 +129,12 @@ describe('addComment', () => {
     )));
 });
 describe('updatDocument', () => {
-  it('Debería actualizar la colección user con id user001 con valor ', (done) => {
-    return updateDocument('users', 'user001', 'userName', 'Nuevo fulano')
-      .then(getData((data) => {
-        const result = data.find(user => user.id === 'user001');
-        expect(result.userName).toBe('Nuevo fulano');
-        done();
-      }, 'users'));
-  });
+  it('Debería actualizar la colección user con id user001 con valor ', done => updateDocument('users', 'user001', 'userName', 'Nuevo fulano')
+    .then(getData((data) => {
+      const result = data.find(user => user.id === 'user001');
+      expect(result.userName).toBe('Nuevo fulano');
+      done();
+    }, 'users')));
 });
 
 describe('deleteDocument', () => {
@@ -155,7 +152,6 @@ describe('deleteDocumentIdFromUserCollection', () => {
   it('Debería eliminar el id del post de la coleccion users', done => deleteDocumentIdFromUserCollection('user002', 'post002', 'myPosts')
     .then(() => {
       getData((data) => {
-        // console.log(data);
         const userCollection = data.find(doc => doc.id === 'user002');
         const postfield = userCollection.myPosts;
         const postId = postfield.find(elements => elements === 'post002');
