@@ -1,6 +1,7 @@
 import {
-  firstTimeUser, getPosts, getComments, updateDocument, getDocument,
+  firstTimeUser, updateDocument, getDocument,
 } from '../firebase/firestore.js';
+import { getPosts, getComments } from '../controller-fire/filter-data.js';
 import { addFileToStorage, getFileFromStorage } from '../firebase/storage.js';
 
 export const home = () => {
@@ -53,7 +54,6 @@ export const home = () => {
       getComments(user.uid);
       if (user.photoURL) {
         const photoPost = div.querySelectorAll('.pic-style');
-        console.log(photoPost)
         photoPost.forEach((imgTag) => {
           // eslint-disable-next-line no-param-reassign
           imgTag.src = user.photoURL;

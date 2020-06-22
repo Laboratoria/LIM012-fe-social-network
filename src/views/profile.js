@@ -1,4 +1,4 @@
-import { getPosts, getComments } from '../firebase/firestore.js';
+import { getPosts, getComments } from '../controller-fire/filter-data.js';
 import { currentUser } from '../firebase/auth.js';
 
 export const profile = () => {
