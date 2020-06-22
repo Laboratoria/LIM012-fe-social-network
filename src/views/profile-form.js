@@ -41,6 +41,7 @@ export const profileForm = () => {
     }
     if (changePhoto !== '') {
       getFileFromStorage(changePhoto.name).then((url) => {
+        console.log(user);
         user.updateProfile({
           photoURL: url,
         });
