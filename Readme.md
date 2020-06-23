@@ -5,8 +5,8 @@ Bienvenid@ a nuestra plataforma BUNKER, una red social enfocada en el sector de 
 En ésta Red Social estarás más conectad@ que nunca! Publica, edita y comenta!
 **!BUNKER, tu espacio personalizado!**
 
-{:.center}
-![bunker](https://user-images.githubusercontent.com/60928490/85425840-53b29100-b53f-11ea-9ae9-894351f00587.JPG)
+
+->![bunker](https://user-images.githubusercontent.com/60928490/85425840-53b29100-b53f-11ea-9ae9-894351f00587.JPG)<-
 
 
 ## :mag: INVESTIGACIÓN UX
