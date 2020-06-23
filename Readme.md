@@ -1,18 +1,12 @@
 
-yud
-# Creando una Red Social
+# BUNKER Red Social
 
-Bienvenida a tu primer proyecto del track de Frontend en Laboratoria.
+Bienvenid@ a nuestra plataforma BUNKER, una red social enfocada en el sector de Educación.
+En ésta Red Social estarás más conectad@ que nunca! Publica, edita y comenta!
+!BUNKER, tu espacio personalizado!
 
-En este proyecto construirás una red social, cuya temáticas dejaremos a tu elección.
+![bunker](https://user-images.githubusercontent.com/60928490/85425840-53b29100-b53f-11ea-9ae9-894351f00587.JPG)
 
-Aquí algunas ideas para inspirarte:
-
-- Alimentación
-- Feminismo
-- Educación
-- Salud
-- Energías Renovables
 
 Las **caraterísticas técnicas** de tu aplicación serán las siguientes:
 - Debe ser una Single-Page Application [SPA](https://dzone.com/articles/how-single-page-web-applications-actually-work) ([versión traducida](https://dzone.com/articles/how-single-page-web-applications-actually-work))
