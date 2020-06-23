@@ -5,24 +5,29 @@ Bienvenid@ a nuestra plataforma BUNKER, una red social enfocada en el sector de 
 En ésta Red Social estarás más conectad@ que nunca! Publica, edita y comenta!
 **!BUNKER, tu espacio personalizado!**
 
+<center>
 
-->![bunker](https://user-images.githubusercontent.com/60928490/85425840-53b29100-b53f-11ea-9ae9-894351f00587.JPG)<-
+![bunker](https://user-images.githubusercontent.com/60928490/85425840-53b29100-b53f-11ea-9ae9-894351f00587.JPG)
 
+</center>
 
 ## :mag: INVESTIGACIÓN UX
 
 ### Prototipo Alta Fidelidad - Mobile :iphone:
 
-{:.center}
+<center>
+
 ![MobileAltaFidelidad](https://user-images.githubusercontent.com/60928490/85427034-d9830c00-b540-11ea-8b28-494dcd132a78.JPG)
 
+</center>
 
 ### Prototipo Alta Fidelidad - Desktop :computer:
 
-{:.center}
+<center>
+
 ![desktopAltaFidelidad](https://user-images.githubusercontent.com/60928490/85427189-09caaa80-b541-11ea-83be-f6b65d16513c.JPG)
 
-
+</center>
 
 
 Las **caraterísticas técnicas** de tu aplicación serán las siguientes:
