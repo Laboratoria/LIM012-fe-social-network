@@ -247,6 +247,8 @@
 .home-view {
   display: none;
   width: 100%; }
+  body.dark .home-view {
+    background-color: #2c2a4a; }
   .home-view header {
     padding: 0 10px 0 3px;
     display: flex;
@@ -298,6 +300,8 @@
       justify-content: center;
       flex-direction: row;
       width: 100%; }
+      body.dark .home-view main .post-section {
+        color: white; }
       .home-view main .post-section a {
         margin: 0 15px;
         display: flex;
@@ -310,6 +314,9 @@
         border-radius: 20px;
         font-family: 'NanumGothic';
         box-shadow: 0px 0px 6px -2px rgba(0, 0, 0, 0.75); }
+        body.dark .home-view main .post-section a {
+          color: white;
+          border: solid 1px white; }
   .home-view footer {
     position: fixed;
     bottom: 0;
@@ -357,6 +364,8 @@
       background-color: #464444;
       width: 100%;
       height: 10em; }
+      body.dark .user-info .user-cover-photo-container .user-cover-photo {
+        background-color: #6b6c6d; }
     .user-info .user-cover-photo-container .user-profile-photo {
       margin: 0;
       position: absolute;
@@ -375,11 +384,15 @@
       font-size: 19px;
       font-family: 'NanumGothic';
       text-align: center; }
+      body.dark .user-info .username-bio h3 {
+        color: white; }
     .user-info .username-bio h5 {
       margin: 0;
       color: #302f2f;
       font-size: 17px;
       font-family: 'NanumGothic'; }
+      body.dark .user-info .username-bio h5 {
+        color: white; }
 
 .main-section-style {
   display: flex;
@@ -409,6 +422,12 @@
     flex-direction: column; }
     .menu-nav div:hover {
       background-color: rgba(253, 255, 255, 0.212); }
+  .menu-nav .theme-options {
+    border-bottom: 1px solid #dbdbdb; }
+    .menu-nav .theme-options a {
+      color: white; }
+      .menu-nav .theme-options a:hover {
+        background-color: rgba(253, 255, 255, 0.212); }
   .menu-nav div:first-child {
     border-bottom: 1px solid #dbdbdb; }
     .menu-nav div:first-child a {
@@ -453,6 +472,7 @@
     height: 24em;
     display: flex; }
     .user-info .user-cover-photo-container {
+      z-index: -1;
       margin-left: 0;
       height: 18em; }
       .user-info .user-cover-photo-container label {
@@ -592,6 +612,8 @@
   justify-content: center;
   flex-direction: column;
   width: 100%; }
+  body.dark #profile-form {
+    background-color: #B9BEDF; }
   #profile-form label[for=profile-img-selected] {
     color: #138ef3;
     font-family: "Sifonn", sans-serif;
@@ -728,6 +750,9 @@ input[type=file] {
   margin: 10px 0;
   border-radius: 10px 0 10px 0;
   box-shadow: 0px 0px 25px -11px #292829; }
+  body.dark .actual-home-post {
+    background-color: #c4c5fa;
+    box-shadow: 0px 0px 25px -11px #c4c5fa; }
   .actual-home-post .header-post {
     display: flex;
     flex-direction: row;
@@ -1069,6 +1094,49 @@ input[type=file] {
 .loader2 {
   clip-path: circle(0% at 100% 0%); }
 
+.themes-options2 {
+  background-color: rgba(0, 0, 0, 0.603);
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  transition: 1s;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  top: 8vh;
+  position: absolute; }
+  .themes-options2 .cont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 75vh; }
+    body.dark .themes-options2 .cont {
+      background-color: #b4bae0; }
+    @media (min-width: 800px) {
+      .themes-options2 .cont {
+        border-radius: 3vh;
+        background-color: #ffffff;
+        width: 50vw;
+        height: 75vh; } }
+    .themes-options2 .cont button {
+      font-size: 3vh;
+      padding: 3vh;
+      border: none;
+      border-radius: 2vh;
+      text-align: center;
+      margin: 2vh; }
+    .themes-options2 .cont .light-mode {
+      background-color: #fff56b; }
+    .themes-options2 .cont .dark-mode {
+      background-color: #6babff; }
+    .themes-options2 .cont i {
+      margin: 0 1vh;
+      color: #0F0C48; }
+
 @font-face {
   font-family: 'Sifonn';
   src: url("../font/SIFONN_PRO.otf"); }
@@ -1084,6 +1152,8 @@ body {
   margin: 0;
   padding: 0;
   width: 100%; }
+  body.dark {
+    background: #3c3744; }
 
 #actual-view {
   margin: auto;
@@ -1092,6 +1162,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center; }
+  #actual-view.dark {
+    background: #3c3744; }
 
 input:focus, textarea:focus {
   outline: none; }
@@ -1103,4 +1175,11 @@ a {
   display: flex; }
 
 .red {
-  color: #e40d0d; }
+  color: #ec0c0c; }
+
+.hide-overflow {
+  overflow: hidden;
+  height: 100vh; }
+  @media (min-width: 800px) {
+    .hide-overflow {
+      height: 92vh; } }

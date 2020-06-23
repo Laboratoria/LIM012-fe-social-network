@@ -1,4 +1,4 @@
-@import 'style.scss', 'login-signup.scss', 'home.scss', 'form.scss', 'posts.scss', 'modal.scss', '404.scss', 'loader.scss';
+@import 'style.scss', 'login-signup.scss', 'home.scss', 'form.scss', 'posts.scss', 'modal.scss', '404.scss', 'loader.scss', 'themes.scss';
 
 @font-face {
 font-family: 'Sifonn';
@@ -15,6 +15,9 @@ body{
   margin: 0;
   padding: 0;
   width: 100%;
+  &.dark {
+    background: #3c3744;
+  }
   }
 #actual-view{
   margin: auto;
@@ -23,6 +26,9 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
+  &.dark {
+    background: #3c3744;
+  }
 }
 input:focus, textarea:focus{
   outline: none;
@@ -34,5 +40,13 @@ a{
   display: flex;
 }
 .red {
-  color: rgb(228, 13, 13);
+  color: rgb(236, 12, 12);
+}
+
+.hide-overflow{
+  overflow: hidden;
+  height: 100vh; 
+  @include desktop-screen(){
+    height: 92vh;
+  }
 }

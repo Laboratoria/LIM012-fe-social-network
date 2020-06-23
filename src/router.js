@@ -57,6 +57,10 @@ export const changeView = (route) => {
       switchForm.innerHTML = '';
       return switchForm.appendChild(components.profileForm());
     }
+    case '#/theme-options': {
+      actualView.innerHTML = '';
+      return actualView.appendChild(components.themes());
+    }
     default:
       actualView.innerHTML = '';
       return actualView.appendChild(components.notFound());
