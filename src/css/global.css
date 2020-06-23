@@ -1160,3 +1160,6 @@ a {
   @media (min-width: 800px) {
     .hide-overflow {
       height: 92vh; } }
+
+.center {
+  text-align: center; }
