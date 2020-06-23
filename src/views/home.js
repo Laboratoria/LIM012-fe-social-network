@@ -13,8 +13,8 @@ export const home = () => {
       <div class="user-cover-photo-container">
         <label for="cover-img-selected"><i class="fas fa-camera"></i></label>
         <input type="file" id="cover-img-selected" name="cover-picture" accept="image/png, image/jpeg">
-        <img class="user-cover-photo" alt="cover photo">
-        <img src="images/profile-cube.png" alt="profile photo" class="user-profile-photo pic-style">
+        <img class="user-cover-photo">
+        <img src="images/profile-cube.png" class="user-profile-photo pic-style">
       </div>
       <div class="username-bio">
         <h3></h3>
@@ -23,7 +23,7 @@ export const home = () => {
     </div>
     <section id="lateral-right">
       <div class="post-section">
-        <img src="images/profile-cube.png" alt="profile photo" class="pic-style right-size">
+        <img src="images/profile-cube.png" class="pic-style right-size">
         <a href="#/post-section">What's on your mind?</a>
       </div>
       <div id="core-rail">

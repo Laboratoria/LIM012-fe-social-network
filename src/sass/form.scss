@@ -117,6 +117,7 @@
 }
 #profile-form{
   @include flexModal(column);
+  
   body.dark & { 
     background-color: #B9BEDF;
   }

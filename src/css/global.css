@@ -258,6 +258,7 @@
     height: 50px;
     background-image: linear-gradient(180deg, #040240 0%, #2D2981 100%);
     position: fixed;
+    z-index: 2;
     top: 0; }
     .home-view header h1 {
       font-size: 24px; }
@@ -331,8 +332,11 @@
       font-size: 25px; }
     @media (min-width: 740px) and (max-width: 4000px) {
       .home-view footer {
-        width: 0%;
-        height: 0; } }
+        width: 0;
+        height: 0;
+        font-size: 0;
+        padding: 0;
+        margin: 0; } }
 
 .user-info {
   display: none;
@@ -472,7 +476,7 @@
     height: 24em;
     display: flex; }
     .user-info .user-cover-photo-container {
-      z-index: -1;
+      z-index: 0;
       margin-left: 0;
       height: 18em; }
       .user-info .user-cover-photo-container label {
@@ -1109,6 +1113,8 @@ input[type=file] {
   top: 8vh;
   position: absolute; }
   .themes-options2 .cont {
+    position: absolute;
+    z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1177,10 +1183,3 @@ a {
 
 .red {
   color: #ec0c0c; }
-
-.hide-overflow {
-  overflow: hidden;
-  height: 100vh; }
-  @media (min-width: 800px) {
-    .hide-overflow {
-      height: 92vh; } }
