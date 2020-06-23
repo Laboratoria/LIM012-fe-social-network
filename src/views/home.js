@@ -53,7 +53,7 @@ export const home = () => {
       getPosts(user.uid, homePosts, 'visibility', 'public');
       getComments(user.uid);
       if (user.photoURL) {
-        const photoPost = div.querySelectorAll('.pic-style');
+        const photoPost = document.querySelectorAll('.pic-style');
         photoPost.forEach((imgTag) => {
           // eslint-disable-next-line no-param-reassign
           imgTag.src = user.photoURL;

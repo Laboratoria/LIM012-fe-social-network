@@ -266,6 +266,25 @@
     .home-view header i {
       color: #ffffff;
       font-size: 25px; }
+  .home-view .container-of-icons {
+    display: flex;
+    align-items: center; }
+    .home-view .container-of-icons .options {
+      display: flex;
+      align-items: center;
+      background: none;
+      border: none; }
+    @media (min-width: 740px) and (max-width: 4000px) {
+      .home-view .container-of-icons .fa-bars {
+        font-size: 0; } }
+    .home-view .container-of-icons .fa-cog, .home-view .container-of-icons .actual-user-photo {
+      margin-right: 20px;
+      font-size: 0;
+      display: none; }
+      @media (min-width: 740px) and (max-width: 4000px) {
+        .home-view .container-of-icons .fa-cog, .home-view .container-of-icons .actual-user-photo {
+          font-size: 25px;
+          display: block; } }
   .home-view main {
     margin: 50px 0;
     display: flex;
@@ -303,6 +322,10 @@
     .home-view footer i {
       color: #ffffff;
       font-size: 25px; }
+    @media (min-width: 740px) and (max-width: 4000px) {
+      .home-view footer {
+        width: 0%;
+        height: 0; } }
 
 .user-info {
   display: none;
