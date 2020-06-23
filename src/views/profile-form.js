@@ -24,7 +24,6 @@ export const profileForm = () => {
     document.querySelector('#photo-edited').src = URL.createObjectURL(file);
     addFileToStorage(refPath, file);
   });
- 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const inputUserName = form['new-username'].value;
