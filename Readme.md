@@ -41,8 +41,6 @@ En ésta Red Social estarás más conectad@ que nunca! Publica, edita y comenta!
 </p>
 
 
-***
-
 ### :raising_hand: Test de Usabilidad :raising_hand:
 
 Resultados de los tests de usabilidad:
@@ -90,16 +88,6 @@ Para implementar la aplicación usarmos *HTML5*, *CCS3* o *SASS*, *Vanilla JavaS
 * Implementar selectores de clase evitando la redundancia de estilos en CCS3.
 * Utilizar `flexbox` para lograr un diseño `mobile first`, implementando un layout que te permita crear un diseño adaptativo para **mobile y desktop**
 
-A continuación te proporcionamos el layout (diseño) de la vista mobile y desktop que deberás replicar visualmente y cuyo contenido, colores y fuentes de texto, dejaremos a tu elección.
-
-* Vista mobile
-
-    ![mobile](https://user-images.githubusercontent.com/32286663/56174616-ec9f6100-5fb8-11e9-9edb-d5ef7c251d9c.png)
-
-* Vista Desktop
-
-    ![desktop](https://user-images.githubusercontent.com/32286663/56174626-fcb74080-5fb8-11e9-8854-26e8d9c4e25f.png)
-
 #### JavaScript (ES6+)
 
 * Utilizar modulos de ES6 para poder modularizar tu código JavaScript.
@@ -119,9 +107,9 @@ En este proyecto diseñarás la estructura de esos datos, la forma de consultarl
 El objetivo de usar Firestore en este proyecto, es que aprendes a manejar y persistir datos a traves de una base de datos no relacional, en tiempo real y puedas implementar operaciones CRUD (Creación, Lectura, Actualización y eliminación) de datos.
 
 
+***
 
 ### Objetivos de aprendizajes pendientes
-
 
 ### HTML y CSS
 
