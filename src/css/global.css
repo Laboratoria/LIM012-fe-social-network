@@ -330,6 +330,9 @@
     .home-view footer i {
       color: #ffffff;
       font-size: 25px; }
+      @media (min-width: 740px) and (max-width: 4000px) {
+        .home-view footer i {
+          font-size: 0; } }
     @media (min-width: 740px) and (max-width: 4000px) {
       .home-view footer {
         width: 0;
@@ -363,7 +366,7 @@
         left: 6px;
         top: 5px; }
     .user-info .user-cover-photo-container .user-cover-photo {
-      margin: 0;
+      margin-right: 15px;
       border-radius: 15px 15px 0 0;
       background-color: #464444;
       width: 100%;
