@@ -16,7 +16,7 @@
     "pretest": "npm run htmlhint && npm run eslint && npm run stylelint",
     "test": "jest --coverage",
     "start": "serve src/",
-    "scss": "node-sass --watch src/sass -o src/css"
+    "scss": "node-sass --watch src/sass/ -o src/css"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",

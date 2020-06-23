@@ -67,9 +67,9 @@ export const renderPost = (userId, doc, element) => {
     const visibilitySelect = document.createElement('select');
     const publicOption = document.createElement('option');
     const privateOption = document.createElement('option');
-    publicOption.innerHTML = 'Public';
-    privateOption.innerHTML = 'Private';
-    if (post.visibility === 'Private') {
+    publicOption.innerHTML = 'public';
+    privateOption.innerHTML = 'private';
+    if (post.visibility === 'private') {
       visibilitySelect.appendChild(privateOption);
       visibilitySelect.appendChild(publicOption);
     } else {
