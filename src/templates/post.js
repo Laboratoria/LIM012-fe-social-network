@@ -1,5 +1,7 @@
-/* eslint-disable import/no-cycle */
-import { deleteDocumentIdFromUserCollection, updateDocument, addDocumentIdToUserCollection, addComment, getDocument } from '../firebase/firestore.js';
+import {
+  deleteDocumentIdFromUserCollection, updateDocument, addDocumentIdToUserCollection,
+  addComment, getDocument,
+} from '../firebase/firestore.js';
 import { getFileFromStorage } from '../firebase/storage.js';
 import { renderMenu } from './menu-publicacion.js';
 

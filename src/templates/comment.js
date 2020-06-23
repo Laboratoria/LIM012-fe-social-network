@@ -7,7 +7,8 @@ export const renderComment = (userId, doc, element) => {
   div.id = doc.id;
   div.className = 'actual-home-comment';
   const getDate = date => `${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} ${date.toLocaleDateString()} `;
-  const date = comment.timestamp !== null ? getDate(comment.timestamp.toDate()) : getDate(new Date());
+  const date = comment.timestamp !== null
+    ? getDate(comment.timestamp.toDate()) : getDate(new Date());
   const template = `
     <div class="header-comment">
       <img src="images/profile-cube.png" alt="profile photo" class="user-photo-comment pic-style comment-size">

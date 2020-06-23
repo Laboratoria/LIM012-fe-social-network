@@ -31,6 +31,7 @@ export const changeView = (route) => {
       return userInfo.classList.remove('display-flex');
     }
     case '#/profile': {
+      homeView.classList.add('display-flex');
       mainContainer.innerHTML = '';
       mainContainer.appendChild(components.home());
       const mainSection = mainContainer.querySelector('#main-section');
@@ -42,12 +43,14 @@ export const changeView = (route) => {
       return coreRail.appendChild(components.profile());
     }
     case '#/post-section': {
+      homeView.classList.add('display-flex');
       mainContainer.innerHTML = '';
       const body = document.querySelector('body');
       body.classList.add('hide-overflow');
       return mainContainer.appendChild(components.postForm());
     }
     case '#/profile-form': {
+      homeView.classList.add('display-flex');
       mainContainer.innerHTML = '';
       mainContainer.appendChild(components.postForm());
       const switchForm = document.querySelector('#switch-form');
