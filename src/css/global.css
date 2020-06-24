@@ -22,19 +22,20 @@
     justify-content: center;
     flex-direction: column;
     width: 100%;
-    height: 490px; }
+    height: auto; }
     #login-signup-view #switch-modal #login-modal, #login-signup-view #switch-modal #signup-modal {
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      width: 300px;
-      height: 440px;
+      width: 98%;
+      height: auto;
       border-radius: 25px;
       background-image: linear-gradient(180deg, #040240 0%, #2D2981 100%);
-      margin-top: 20px; }
+      margin-top: 20px;
+      padding: 20px 0; }
       #login-signup-view #switch-modal #login-modal .headerSig, #login-signup-view #switch-modal #signup-modal .headerSig {
-        margin-bottom: 10px; }
+        margin-bottom: 20px; }
       #login-signup-view #switch-modal #login-modal header, #login-signup-view #switch-modal #signup-modal header {
         width: 100%;
         height: auto;
@@ -82,13 +83,13 @@
           align-items: center;
           justify-content: center;
           flex-direction: column; }
-          #login-signup-view #switch-modal #login-modal main form input, #login-signup-view #switch-modal #signup-modal main form input {
+          #login-signup-view #switch-modal #login-modal main form input[type=password], #login-signup-view #switch-modal #login-modal main form input[type=text], #login-signup-view #switch-modal #login-modal main form input[type=email], #login-signup-view #switch-modal #signup-modal main form input[type=password], #login-signup-view #switch-modal #signup-modal main form input[type=text], #login-signup-view #switch-modal #signup-modal main form input[type=email] {
             background-color: #e8f0fe;
             border: none;
             font-size: 14px;
             padding: 1em;
-            width: 78%;
-            height: 40px; }
+            width: 80%;
+            height: 42px; }
           #login-signup-view #switch-modal #login-modal main form input:first-child, #login-signup-view #switch-modal #signup-modal main form input:first-child {
             margin-top: 10px;
             border-radius: 10px 10px 0 0; }
@@ -99,21 +100,23 @@
           #login-signup-view #switch-modal #login-modal main form .fa-eye, #login-signup-view #switch-modal #signup-modal main form .fa-eye {
             position: relative;
             top: -25px;
-            left: 100px; }
+            left: 110px; }
           #login-signup-view #switch-modal #login-modal main form #error-message, #login-signup-view #switch-modal #signup-modal main form #error-message {
             text-align: center;
+            font-weight: bold;
             font-family: 'NanumGothic';
             font-size: 12px;
-            color: #ff5959; }
+            color: #ff5959;
+            margin: 5px 20px; }
           #login-signup-view #switch-modal #login-modal main form .p-form, #login-signup-view #switch-modal #signup-modal main form .p-form {
-            margin: 5px 0 10px 0;
+            margin: 10px 0 20px 0;
             font-size: 13px;
             font-family: 'NanumGothic'; }
           #login-signup-view #switch-modal #login-modal main form button, #login-signup-view #switch-modal #signup-modal main form button {
             border: none;
             background-color: rgba(246, 229, 229, 0.19);
             width: 60%;
-            height: 40px;
+            height: 50px;
             border-radius: 10px;
             font-family: "Sifonn", sans-serif;
             font-size: 16px;
@@ -129,13 +132,13 @@
           font-family: 'NanumGothic';
           color: white; }
         #login-signup-view #switch-modal #login-modal main .googleAndFacebookicons, #login-signup-view #switch-modal #signup-modal main .googleAndFacebookicons {
-          width: 18%;
-          max-width: 56px;
+          margin: 4px 0;
+          width: 70px;
           display: flex;
           flex-direction: row;
           justify-content: space-between; }
           #login-signup-view #switch-modal #login-modal main .googleAndFacebookicons i, #login-signup-view #switch-modal #signup-modal main .googleAndFacebookicons i {
-            font-size: 22px;
+            font-size: 25px;
             color: #ffffff; }
             #login-signup-view #switch-modal #login-modal main .googleAndFacebookicons i:hover, #login-signup-view #switch-modal #signup-modal main .googleAndFacebookicons i:hover {
               text-shadow: 0 0 5px #00b2ff, 0 0 10px #00b2ff, 0 0 20px #00b2ff, 0 0 40px #26687f, 0 0 80px #26687f, 0 0 90px #26687f, 0 0 100px #26687f, 0 0 140px #26687f, 0 0 180px #26687f; }
@@ -159,20 +162,25 @@
   height: auto; }
   #signup-modal main form .terms {
     margin: 10px 0;
-    width: 70%;
+    width: 80%;
     height: 30px;
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: row; }
     #signup-modal main form .terms input[type=checkbox] {
+      margin-bottom: 10px;
+      width: 14px;
+      height: 14px;
       -webkit-transform: scale(1); }
     #signup-modal main form .terms label {
-      width: 400%;
+      width: 220px;
+      margin: 0 12px;
       font-family: 'NanumGothic';
       font-size: 12px;
       color: #ffffff; }
-
-#signup-modal main .space {
-  padding-top: 20px; }
+  #signup-modal main form button {
+    margin: 10px 0; }
 
 @media (min-width: 1024px) and (max-width: 4000px) {
   .cover-desktop-photo {
@@ -190,15 +198,14 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      width: 100%;
-      height: 650px; }
+      width: 100%; }
       #login-signup-view #switch-modal #login-modal, #login-signup-view #switch-modal #signup-modal {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        width: 350px;
-        height: 500px;
+        width: 400px;
+        height: auto;
         border-radius: 25px;
         background-image: linear-gradient(180deg, #040240 0%, #2D2981 100%);
         margin-top: 20px; }
@@ -1186,3 +1193,13 @@ a {
 
 .red {
   color: #ec0c0c; }
+
+.hide-overflow {
+  overflow: hidden;
+  height: 100vh; }
+  @media (min-width: 800px) {
+    .hide-overflow {
+      height: 92vh; } }
+
+.center {
+  text-align: center; }
