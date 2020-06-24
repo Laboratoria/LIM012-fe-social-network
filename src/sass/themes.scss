@@ -11,6 +11,8 @@
     position: absolute;
 
     .cont {
+        position: absolute;
+        z-index: 2;
         body.dark & { 
             background-color: #b4bae0;
           }

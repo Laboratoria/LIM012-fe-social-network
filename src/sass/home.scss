@@ -13,6 +13,7 @@ header{
   @include size(100%, 50px);
   background-image: linear-gradient(180deg, #040240 0%, #2D2981 100%);
   position: fixed;
+  z-index: 2;
   top: 0;
   h1{
     font-size: 24px;
@@ -92,9 +93,15 @@ footer{
   i{
     color: #ffffff;
     font-size: 25px;
+    @media  (min-width: 740px) and (max-width: 4000px){
+      font-size: 0;
+    }
   }
   @media  (min-width: 740px) and (max-width: 4000px){
-    @include size(0%, 0);
+    @include size(0, 0);
+    font-size: 0;
+    padding: 0;
+    margin: 0;
   }
 }
 }
@@ -131,7 +138,7 @@ footer{
 
     
     .user-cover-photo{
-      margin: 0;
+    margin-right: 15px;
     border-radius: 15px 15px 0 0;
     background-color: rgb(70, 68, 68);
     body.dark & { 
@@ -267,7 +274,7 @@ background-color: rgba(6, 135, 255, 0.719);
     height: 24em;
     display: flex;
   .user-cover-photo-container{
-    z-index: -1;
+    z-index: 0;
     label {
       width: 30px;
       height: 30px;
