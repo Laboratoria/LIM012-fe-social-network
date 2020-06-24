@@ -2,9 +2,7 @@
   @include flexModal(column);
   transition: 1s;
   overflow: hidden;
-  // border: solid red;
   width: 100%;
-
   .general {
     @include size(100%, auto);
     > div{
@@ -93,10 +91,7 @@
         }
       }
     }
-
-
   }
-
 }
 .preview-img{
   max-width: 100%;
@@ -119,7 +114,7 @@
   @include flexModal(column);
   
   body.dark & { 
-    background-color: #B9BEDF;
+    background-color: #232849;
   }
   width: 100%;
   // border: solid red;
@@ -155,15 +150,14 @@ input[type=file]{
 }
 @media  (min-width: 1024px) and (max-width: 4000px){
   #form-template-container{
-    background-color: rgba($color: #000000, $alpha: 0.8);
     .general {
-      @include size(100%, auto);
+    border: solid rgb(153, 152, 152);
+    @include size(100%, auto);
     background-color: white;
     @include flexModal(column);
     border-radius: 20px;
     transition: 1s;
     overflow: hidden;
-    // border: solid red;
     margin-top: 30px;
     margin-bottom: 32px;
     width: 50%;
@@ -183,7 +177,6 @@ input[type=file]{
       height: auto;
       display: flex;
       flex-direction: column;
-      // border: solid red;
       div:first-child{
         display: flex;
         flex-direction: row;
@@ -203,7 +196,6 @@ input[type=file]{
       }
       form{
         font-family: 'NanumGothic';
-        // border: solid red;
         display: flex;
         flex-direction: column;
         width: 100%;

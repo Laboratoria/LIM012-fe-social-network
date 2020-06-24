@@ -11,6 +11,9 @@ src: url('../font/NanumGothic-Regular.ttf');
 *{
 box-sizing: border-box;
 }
+body, html {
+  min-height: 100%;
+}
 body{
   margin: 0;
   padding: 0;
