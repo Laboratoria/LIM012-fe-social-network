@@ -2,6 +2,7 @@
 .home-view{
   display: none;
   width: 100%;
+  min-width: 340px;
   body.dark & {
     background-color: #2c2a4a;
   }
@@ -38,17 +39,19 @@ header{
   }
   .fa-bars{
     @media  (min-width: 740px) and (max-width: 4000px){
-      font-size: 0;
+      display: none;
     }
   }
   #home-btn, .fa-cog, .actual-user-photo{
-    margin-right: 20px;
-    font-size: 0;
     display: none;
     @media  (min-width: 740px) and (max-width: 4000px){
       font-size: 25px;
-      display: block;
+      display: flex;
     }
+  }
+  .actual-user-photo{
+    margin: 0 20px;
+    @include size(30px, 30px)
   }
 }
 main{
@@ -75,7 +78,6 @@ main{
         color: rgb(255, 255, 255);        
         border: solid 1px rgb(255, 255, 255);
       }
-      // border: solid 2px black;
       box-shadow: 0px 0px 6px -2px rgba(0,0,0,0.75);
     }
   }
@@ -110,6 +112,7 @@ footer{
   @include size(92%, auto);
   max-width: 800px;
   .user-cover-photo-container{
+    @include size(100%, auto);
     margin-top: 8px;
     height: 250px;
     display: flex;
@@ -122,7 +125,6 @@ footer{
       width: 35px;
       height: 35px;
       position: absolute;
-      margin-right: 278px;
       i{
         color: cornsilk;
       }
@@ -130,7 +132,10 @@ footer{
     .user-cover-photo{
     border-radius: 15px 15px 0 0;
     background-color: rgb(70, 68, 68);
-    @include size(328px, 184px);
+    // @include size(328px, 184px);
+    @include size(100%, 184px);
+    max-width: 550px;
+    min-width: 339px;
     body.dark & { 
       background-color: #6b6c6d;
     }
@@ -183,7 +188,8 @@ footer{
   overflow: hidden;
   position: fixed;
   flex-direction: column;
-  @include size(180px, 100vh);
+  width: 180px;
+  height: calc(100vh - 100px);
   background-color: rgba(5, 32, 56, 0.9);
   top: 50px;
   right: 0px;
@@ -197,7 +203,6 @@ footer{
   }
   }
   .theme-options{
-    border-bottom: 1px solid rgb(219, 219, 219);
     a {
       color: white;
       &:hover{
@@ -211,8 +216,6 @@ footer{
       color: white;
       @include size(100%, 43px);
     }
-    
-    border-bottom: 1px solid rgb(219, 219, 219);
   }
   #log-out {
     &:hover{
@@ -245,6 +248,9 @@ border-radius: 50%;
 background-color: rgba(6, 135, 255, 0.719);
 }
 @media  (min-width: 1024px) and (max-width: 4000px){
+  .menu-nav{
+    height: calc(100vh - 50px);
+  }
   .right-size{
     @include size(50px, 50px);
   }
@@ -262,6 +268,7 @@ background-color: rgba(6, 135, 255, 0.719);
     z-index: 0;
     .user-cover-photo{
       @include size(628px, 310px);
+      max-width: 650px;
       margin-left: 0;
       padding: 0;
     }

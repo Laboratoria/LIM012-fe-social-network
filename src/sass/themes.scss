@@ -1,5 +1,6 @@
 // MENU THEMES OPTIONS
 .themes-options2{
+    z-index: 2;
     background-color: rgba(0, 0, 0, 0.74);
     box-sizing: border-box;
     width: 100%;
@@ -10,16 +11,14 @@
     top: 50px;
     position: absolute;
     .cont{
+        border: solid 1px rgb(253, 251, 247);
+        border-radius: 20px;
         position: absolute;
-        z-index: 2;
-        body.dark & { 
-            background-color: #3f456b;
-          }
         @include flexModal(column);
-        @include size(100%, 100%);
+        @include size(300px, 300px);
         button{
             margin: 10px 0;
-            font-size: 3vh;
+            font-size: 15px;
             padding: 20px;
             border: none;
             border-radius: 10px;

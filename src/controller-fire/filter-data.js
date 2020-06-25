@@ -39,6 +39,9 @@ export const getComments = (userId) => {
         const commentCounter = postContainer.querySelector('.comments-counter');
         // eslint-disable-next-line max-len
         const postComments = commentDocuments.docs.filter(change => change.data().postId === post.id);
+        if (postComments.length === 0) {
+          commentCounter.innerHTML = 0;
+        }
         postComments.forEach((comment) => {
           renderComment(userId, comment, commentContainer);
           commentCounter.innerHTML = commentContainer.childElementCount;

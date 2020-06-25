@@ -50,12 +50,10 @@ export const changeView = (route) => {
     case '#/post-section': {
       homeView.classList.add('display-flex');
       mainContainer.innerHTML = '';
-      body.classList.add('hide-overflow');
       return mainContainer.appendChild(components.postForm());
     }
     case '#/profile-form': {
       homeView.classList.add('display-flex');
-      body.classList.add('hide-overflow');
       mainContainer.innerHTML = '';
       mainContainer.appendChild(components.postForm());
       const switchForm = document.querySelector('#switch-form');
@@ -64,7 +62,6 @@ export const changeView = (route) => {
     }
     case '#/theme-options': {
       actualView.innerHTML = '';
-      body.classList.add('hide-overflow');
       return actualView.appendChild(components.themes());
     }
     default:
