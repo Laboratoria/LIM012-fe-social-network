@@ -9,7 +9,7 @@
     overflow: hidden;
     @include flexModal(column);
     top: 50px;
-    position: absolute;
+    position: fixed;
     .cont{
         border: solid 1px rgb(253, 251, 247);
         border-radius: 20px;
@@ -34,8 +34,7 @@
             margin:  0 1vh;
             color:#0F0C48;
         }
-    }
-    
+    } 
 }
 @media  (min-width: 1024px) and (max-width: 4000px){
   .themes-options2{

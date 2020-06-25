@@ -36,29 +36,31 @@ export const home = () => {
   const homePosts = div.querySelector('#home-posts');
   const profileName = div.querySelector('.username-bio h3');
   const profileBio = div.querySelector('.username-bio h5');
+  const coverPhoto = div.querySelector('.user-cover-photo');
 
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      const coverPhoto = div.querySelector('.user-cover-photo');
       getRealTimeDocument('users', user.uid, (doc) => {
         profileName.innerHTML = doc.data().userName;
-        coverPhoto.src = doc.data().coverPhoto;
         if (doc.data().bio !== '') {
           profileBio.innerHTML = doc.data().bio;
         } else {
           profileBio.innerHTML = 'Usuario de BUNKER';
         }
+        if (doc.data().userPhoto !== '' || doc.data().userPhoto !== null || doc.data().userPhoto !== undefined) {
+          const photoPost = document.querySelectorAll('.pic-style');
+          photoPost.forEach((imgTag) => {
+            // eslint-disable-next-line no-param-reassign
+            imgTag.src = doc.data().userPhoto;
+          });
+        }
+        if (doc.data().coverPhoto) {
+          coverPhoto.src = doc.data().coverPhoto;
+        }
       });
       firstTimeUser(user.uid, user.displayName, user.photoURL);
       getPosts(user.uid, homePosts, 'visibility', 'public');
       getComments(user.uid);
-      if (user.photoURL) {
-        const photoPost = document.querySelectorAll('.pic-style');
-        photoPost.forEach((imgTag) => {
-          // eslint-disable-next-line no-param-reassign
-          imgTag.src = user.photoURL;
-        });
-      }
       const changeCover = div.querySelector('#cover-img-selected');
       changeCover.addEventListener('change', (event) => {
         const file = event.target.files[0];

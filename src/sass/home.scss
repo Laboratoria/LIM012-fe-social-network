@@ -194,23 +194,20 @@ footer{
   font-size: 14px;
     div{
       font-family: 'NanumGothic';
-      color: rgb(51, 50, 50);
       @include size(100%, 40px);
       @include flexModal(column);
       &:hover{
         background-color: rgb(229, 229, 240);
     }
-  }
-  div{
     a{
       @include flexModal(column);
+      @include size(100%, 40px);
       color: rgb(51, 50, 50);
-      border-bottom: solid 1px rgb(231, 226, 226);
-      @include size(100%, 43px);
     }
   }
-  #log-out {
-    border-top: solid 1px rgb(231, 226, 226);
+  div:nth-last-child(2){
+    border-top: solid 1px rgb(221, 217, 217);
+    border-bottom: solid 1px rgb(221, 217, 217);
   }
 }
 // POSTS AND OPTION TO POST CONATINER

@@ -437,7 +437,6 @@
   font-size: 14px; }
   .menu-nav div {
     font-family: 'NanumGothic';
-    color: #333232;
     width: 100%;
     height: 40px;
     display: flex;
@@ -446,17 +445,17 @@
     flex-direction: column; }
     .menu-nav div:hover {
       background-color: #e5e5f0; }
-  .menu-nav div a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    color: #333232;
-    border-bottom: solid 1px #e7e2e2;
-    width: 100%;
-    height: 43px; }
-  .menu-nav #log-out {
-    border-top: solid 1px #e7e2e2; }
+    .menu-nav div a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+      height: 40px;
+      color: #333232; }
+  .menu-nav div:nth-last-child(2) {
+    border-top: solid 1px #ddd9d9;
+    border-bottom: solid 1px #ddd9d9; }
 
 #lateral-right {
   width: 100%;
@@ -845,16 +844,19 @@ input[type=file] {
   .actual-home-post .main-post {
     width: 100%;
     height: auto;
-    font-size: 14px; }
+    font-size: 14px;
+    display: flex;
+    flex-direction: column; }
     .actual-home-post .main-post p {
       font-family: 'NanumGothic';
-      padding: 15px 5px;
+      padding: 10px;
+      margin: 0;
       box-sizing: border-box;
       width: 100%;
       word-wrap: break-word; }
-    .actual-home-post .main-post div {
+    .actual-home-post .main-post img {
       width: 100%;
-      height: auto; }
+      align-self: center; }
   .actual-home-post .footer-post {
     padding: 8px;
     width: 100%; }
@@ -980,8 +982,6 @@ input[type=file] {
       height: 3.5em; }
     .actual-home-post .header-post .menu-container i {
       margin: 7px 8px; }
-  .actual-home-post .main-post p {
-    padding: 15px 15px; }
   .header-comment .date-username {
     width: 90%; }
   .comment-form {
@@ -1139,7 +1139,7 @@ input[type=file] {
   justify-content: center;
   flex-direction: column;
   top: 50px;
-  position: absolute; }
+  position: fixed; }
   .themes-options2 .cont {
     border: solid 1px #fdfbf7;
     border-radius: 20px;

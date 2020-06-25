@@ -66,15 +66,19 @@
     width: 100%;
     height: auto;
     font-size: 14px;
+    display: flex;
+    flex-direction: column;
     p{
       font-family: 'NanumGothic';
-      padding: 15px 5px;
+      padding: 10px;
+      margin: 0;
       box-sizing: border-box;
       width: 100%;
       word-wrap: break-word;
     }
-    div{
-      @include size(100%, auto);
+    img{
+      width: 100%;
+      align-self: center;
     }
   }
   .footer-post{
@@ -222,11 +226,6 @@
       margin: 7px 8px;
     }
   }
-  }
-  .main-post{
-    p{
-      padding: 15px 15px;
-    }
   }
 }
 .header-comment{
