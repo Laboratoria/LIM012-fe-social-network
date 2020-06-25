@@ -90,12 +90,16 @@
         button{
           justify-self: flex-end;
           align-self: center;
-          font-size: 16px;
+          font-size: 14px;
           border-radius: 1vh;
           border: none;
           color: cornsilk;
           background-color: #0f0c48;
           @include size(95px, 45px);
+          body.dark & { 
+            background-color: #0c3372;
+            color: rgb(230, 226, 213);
+          }
         }
         #preview{
           @include flexModal(column);
@@ -137,10 +141,15 @@
     @include font-siffon(20px);
     margin-top: 30px;
     margin-bottom: 20px;
+    body.dark & { 
+      color: rgb(19, 142, 243);
+    }
   }
   label{
-    font-size: 20px;
-    @include font-siffon(16px);
+    @include font-siffon(14px);
+    body.dark & { 
+      color: rgb(223, 215, 215);
+    }
   }
   input{
     font-size: 14px;
@@ -284,4 +293,12 @@ input[type=file]{
     }
   }
   }
+#profile-form{
+ @include flexModal(column);
+      label{
+        body.dark & { 
+          color: rgb(51, 50, 50);
+        }
+      }
+    }
   }

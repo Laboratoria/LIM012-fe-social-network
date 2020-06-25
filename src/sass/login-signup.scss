@@ -27,14 +27,14 @@
             margin-bottom: 20px;
           }
           @include flexModal(column);
-          width: 98%;
+          width: 95%;
           max-width: 400px;
           height: auto;
           border-radius: 25px;
           background-image: linear-gradient(180deg, #040240 0%, #2D2981 100%);
           margin-top: 20px;
           padding: 20px 0;
-
+          margin: 15px 0;
           header{
             width: 100%;
             height: auto;
