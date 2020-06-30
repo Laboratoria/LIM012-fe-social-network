@@ -7,6 +7,8 @@ En ésta Red Social estarás más conectad@ que nunca! Publica, edita y comenta!
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/60928490/85425840-53b29100-b53f-11ea-9ae9-894351f00587.JPG">
+
+  <img src="https://user-images.githubusercontent.com/60928490/86087392-b6d58380-ba69-11ea-9d0a-f18a7e2b61dc.png">
 </p>
 
 
