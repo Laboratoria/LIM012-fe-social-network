@@ -59,10 +59,11 @@ Home y perfil
 
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/60928490/86087703-67dc1e00-ba6a-11ea-914e-0e8f0893515d.png" width="700" height="350"></br>
-  <img src="https://user-images.githubusercontent.com/60928490/86087707-6ad70e80-ba6a-11ea-9c9a-7d66983ae204.png" width="700" height="350"></br>
-  <img src="https://user-images.githubusercontent.com/60928490/86087717-71fe1c80-ba6a-11ea-9b51-dcd242943167.png" width="700" height="350"></br>
-   <img src="https://user-images.githubusercontent.com/60928490/86087726-775b6700-ba6a-11ea-9e4f-7cefd8ff7e96.png" width="700" height="350"></br>
+  <img src="https://user-images.githubusercontent.com/60928490/86087703-67dc1e00-ba6a-11ea-914e-0e8f0893515d.png" width="700" height="350"><br>
+  <img src="https://user-images.githubusercontent.com/60928490/86087707-6ad70e80-ba6a-11ea-9c9a-7d66983ae204.png" width="700" height="350"><br>
+  <img src="https://user-images.githubusercontent.com/60928490/86087717-71fe1c80-ba6a-11ea-9b51-dcd242943167.png" width="700" height="350"><br>
+  <h3>LIGHT MODE & DARK MODE</h3><br>
+   <img src="https://user-images.githubusercontent.com/60928490/86087726-775b6700-ba6a-11ea-9e4f-7cefd8ff7e96.png" width="700" height="350"><br>
 </p>
 
 ***
