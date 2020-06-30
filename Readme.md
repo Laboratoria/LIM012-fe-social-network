@@ -66,8 +66,10 @@ Home y perfil
 
 ### :radio_button: LIGHT MODE & DARK MODE :black_circle:
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/60928490/86087726-775b6700-ba6a-11ea-9e4f-7cefd8ff7e96.png">
+  <img src="https://user-images.githubusercontent.com/60928490/86087726-775b6700-ba6a-11ea-9e4f-7cefd8ff7e96.png" width="700" height="350">
 </p>
+
+
 ***
 
 ## :loop: DISEÑO DE LA INTERFAZ DE USUARIO
@@ -79,6 +81,10 @@ Las **caraterísticas técnicas** de nuestra aplicación son las siguientes:
 - Red Social responsiva en la que podemos escribir, leer, actualizar y eliminar datos.
   
 Para implementar la aplicación usarmos *HTML5*, *CCS3* o *SASS*, *Vanilla JavaScript(ES6+)*, *Firebase* 
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/60928490/86089320-a9ba9380-ba6d-11ea-8a4b-3897517c5d2f.png" width="700" height="400">
+</p>
 
 
 ***
