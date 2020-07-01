@@ -6,7 +6,7 @@ En ésta Red Social estarás más conectad@ que nunca! Publica, edita y comenta!
 **!BUNKER, tu espacio personalizado!**
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/60928490/85425840-53b29100-b53f-11ea-9ae9-894351f00587.JPG">
+  <img src="https://user-images.githubusercontent.com/60928490/86087392-b6d58380-ba69-11ea-9d0a-f18a7e2b61dc.png" width="700" height="350">
 </p>
 
 
@@ -58,6 +58,18 @@ Home y perfil
 - Para usuarios sensibles a la luz, creamos el modo nocturno.
 
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/60928490/86087703-67dc1e00-ba6a-11ea-914e-0e8f0893515d.png" width="700" height="350">
+  <img src="https://user-images.githubusercontent.com/60928490/86087707-6ad70e80-ba6a-11ea-9c9a-7d66983ae204.png" width="700" height="350">
+  <img src="https://user-images.githubusercontent.com/60928490/86087717-71fe1c80-ba6a-11ea-9b51-dcd242943167.png" width="700" height="350">
+</p>
+
+### :radio_button: LIGHT MODE & DARK MODE :black_circle:
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/60928490/86087726-775b6700-ba6a-11ea-9e4f-7cefd8ff7e96.png" width="700" height="350">
+</p>
+
+
 ***
 
 ## :loop: DISEÑO DE LA INTERFAZ DE USUARIO
@@ -69,6 +81,10 @@ Las **caraterísticas técnicas** de nuestra aplicación son las siguientes:
 - Red Social responsiva en la que podemos escribir, leer, actualizar y eliminar datos.
   
 Para implementar la aplicación usarmos *HTML5*, *CCS3* o *SASS*, *Vanilla JavaScript(ES6+)*, *Firebase* 
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/60928490/86089320-a9ba9380-ba6d-11ea-8a4b-3897517c5d2f.png" width="700" height="400">
+</p>
 
 
 ***
