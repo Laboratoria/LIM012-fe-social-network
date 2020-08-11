@@ -1,0 +1,304 @@
+#form-template-container{
+  @include flexModal(column);
+  transition: 1s;
+  width: 100%;
+  margin-bottom: 30px;
+  .general {
+    @include size(100%, auto);
+    > div{
+      @include size(100%, 40px);
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      border-bottom: solid 1px rgb(184, 179, 179);
+      i{
+        margin-left: 10px;
+        font-size: 20px;
+        body.dark & { 
+          color: rgb(245, 240, 240);
+        }
+      }
+    }
+    #switch-content{
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      // border: solid red;
+      div:first-child{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        @include size(100%, 68px);
+        img{
+          margin-left: 5px;
+        }
+        h3{
+          margin: 10px;
+          font-weight: normal;
+          font-size: 15px;
+          font-family: 'NanumGothic';
+          color: rgb(43, 48, 73);
+          font-weight: bold;
+          text-align: center;
+          body.dark & { 
+            color: rgb(245, 241, 241);
+          }
+        }
+      }
+      form{
+        font-family: 'NanumGothic';
+        // border: solid red;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 0 10px;
+        select{
+          border-color: rgb(104, 103, 103);
+          @include size(80px, 25px);
+          font-size: 14px;
+          border-radius: 5px;
+          background-color: #f2f4f8;
+          color: rgb(94, 93, 93);
+          option {
+            border: none;
+            outline: none;
+            border-style: none;
+            font-size: 14px;
+            background-color: white;
+          }
+      
+        }
+        textarea{
+          font-family: 'NanumGothic';
+          height: auto;
+          font-size: 16px;
+          border: none;
+          margin: 10px 0px;
+          @include size(100%, 150px);
+          resize: none;
+          background: none;
+          body.dark & { 
+            background-color: #232849;
+          }
+        }
+        textarea::placeholder{
+          body.dark & { 
+            color: rgb(245, 241, 241);
+          }
+        }
+        button{
+          justify-self: flex-end;
+          align-self: center;
+          font-size: 14px;
+          border-radius: 1vh;
+          border: none;
+          color: cornsilk;
+          background-color: #0f0c48;
+          @include size(95px, 45px);
+          body.dark & { 
+            background-color: #0c3372;
+            color: rgb(230, 226, 213);
+          }
+        }
+        #preview{
+          @include flexModal(column);
+          @include size(100%, 120px);
+        }
+      }
+    }
+  }
+}
+.preview-img{
+  max-width: 100%;
+  max-height: 100%
+}
+.photo-post{
+  max-width: 100%;
+  height: auto;
+}
+.photo-icon{
+  align-self: center;
+  font-size:20px;
+  @include flexModal(column);
+  @include size(40px, 40px);
+  body.dark & { 
+    color: rgb(240, 239, 239);
+  }
+}
+#profile-img-selected{
+  display: none;
+}
+#profile-form{
+  @include flexModal(column);
+  
+  body.dark & { 
+    background-color: #232849;
+  }
+  width: 100%;
+  label[for=profile-img-selected]{
+    color: rgb(19, 142, 243);
+    @include font-siffon(20px);
+    margin-top: 30px;
+    margin-bottom: 20px;
+    body.dark & { 
+      color: rgb(19, 142, 243);
+    }
+  }
+  label{
+    @include font-siffon(14px);
+    body.dark & { 
+      color: rgb(223, 215, 215);
+    }
+  }
+  input{
+    font-size: 14px;
+    border-radius: 10px;
+    @include size(250px, 40px);
+    background-color: rgb(206, 220, 231);
+    margin: 8px 0 18px 0;
+    outline: none;
+    border-style: none;
+    text-indent: 15px;
+  }
+  button {
+    margin-top: 30px;
+  }
+}
+#switch-form{
+  width: 100%;
+}
+input[type=file]{
+  display: none;
+}
+@media  (min-width: 1024px) and (max-width: 4000px){
+  #form-template-container{
+    .general {
+    border: solid rgb(153, 152, 152);
+    @include size(100%, auto);
+    background-color: white;
+    @include flexModal(column);
+    border-radius: 20px;
+    transition: 1s;
+    overflow: hidden;
+    margin-top: 30px;
+    margin-bottom: 32px;
+    width: 50%;
+    > div{
+      @include size(100%, 40px);
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      border-bottom: solid 1px rgb(184, 179, 179);
+      i{
+        margin-left: 10px;
+        font-size: 20px;
+        body.dark & { 
+          color: rgb(78, 76, 76);
+        }
+      }
+    }
+    #switch-content{
+      width: 90%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      div:first-child{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        @include size(100%, 68px);
+        img{
+          margin-left: 5px;
+        }
+        h3{
+          margin: 10px;
+          font-weight: normal;
+          font-size: 18px;
+          font-family: 'NanumGothic';
+          color: rgb(43, 48, 73);
+          font-weight: bold;
+          body.dark & { 
+            color: rgb(78, 76, 76);
+          }
+        }
+      }
+      form{
+        font-family: 'NanumGothic';
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 0 10px;
+        body.dark & { 
+          background: white;
+        }
+        i {
+          body.dark & { 
+            color: rgb(90, 89, 89);
+          }
+        }
+        select{
+          position: relative;
+          align-self: flex-end;
+          top: -50px;
+          border-color: rgb(104, 103, 103);
+          @include size(80px, 25px);
+          font-size: 14px;
+          border-radius: 5px;
+          background-color: #cfdbfa;
+          color: rgb(94, 93, 93);
+          option {
+            border: none;
+            outline: none;
+            border-style: none;
+            font-size: 14px;
+            background-color: white;
+          }
+      
+        }
+        textarea{
+          font-family: 'NanumGothic';
+          height: auto;
+          font-size: 16px;
+          border: none;
+          margin: 10px 0px;
+          @include size(100%, 150px);
+          resize: none;
+          body.dark & { 
+            background: white;
+          }
+        }
+        textarea::placeholder{
+          body.dark & { 
+            color: rgb(71, 70, 70);
+          }
+        }
+        button{
+          justify-self: flex-end;
+          align-self: center;
+          font-size: 16px;
+          border-radius: 1vh;
+          border: none;
+          color: cornsilk;
+          background-color: #0f0c48;
+          @include size(95px, 45px);
+          margin-bottom: 20px;
+        }
+        #preview{
+          @include flexModal(column);
+          @include size(100%, 120px);
+          // border: solid red;
+        }
+      }
+    }
+  }
+  }
+#profile-form{
+ @include flexModal(column);
+      label{
+        body.dark & { 
+          color: rgb(51, 50, 50);
+        }
+      }
+    }
+  }

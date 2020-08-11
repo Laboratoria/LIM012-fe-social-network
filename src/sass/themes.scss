@@ -1,0 +1,43 @@
+// MENU THEMES OPTIONS
+.themes-options2{
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.74);
+    box-sizing: border-box;
+    width: 100%;
+    height: calc(100vh - 100px);
+    transition: 1s;
+    overflow: hidden;
+    @include flexModal(column);
+    top: 50px;
+    position: fixed;
+    .cont{
+        border: solid 1px rgb(253, 251, 247);
+        border-radius: 20px;
+        position: absolute;
+        @include flexModal(column);
+        @include size(300px, 300px);
+        button{
+            margin: 10px 0;
+            font-size: 15px;
+            padding: 20px;
+            border: none;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .light-mode{
+            background-color: rgb(255, 245, 107);
+        }
+        .dark-mode{
+            background-color: rgb(107, 171, 255);
+        }
+        i{
+            margin:  0 1vh;
+            color:#0F0C48;
+        }
+    } 
+}
+@media  (min-width: 1024px) and (max-width: 4000px){
+  .themes-options2{
+    height: calc(100vh - 50px);
+  }
+}
