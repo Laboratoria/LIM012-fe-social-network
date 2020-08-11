@@ -192,7 +192,8 @@ footer{
   right: 0;
   box-shadow: 0px 0px 33px -14px rgba(0,0,0,0.75);
   font-size: 14px;
-    div{
+    div{ 
+      color: #333232;
       font-family: 'NanumGothic';
       @include size(100%, 40px);
       @include flexModal(column);

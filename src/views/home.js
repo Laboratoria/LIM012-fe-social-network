@@ -14,7 +14,7 @@ export const home = () => {
         <label for="cover-img-selected"><i class="fas fa-camera"></i></label>
         <input type="file" id="cover-img-selected" name="cover-picture" accept="image/png, image/jpeg">
         <img class="user-cover-photo">
-        <img src="images/profile-cube.png" class="user-profile-photo pic-style">
+        <img src="images/profile-cube.png" class="user-profile-photo home-pic pic-style">
       </div>
       <div class="username-bio">
         <h3></h3>
@@ -23,7 +23,7 @@ export const home = () => {
     </div>
     <section id="lateral-right">
       <div class="post-section">
-        <img src="images/profile-cube.png" class="pic-style right-size">
+        <img src="images/profile-cube.png" class="pic-style home-pic right-size">
         <a href="#/post-section">What's on your mind?</a>
       </div>
       <div id="core-rail">
@@ -40,15 +40,12 @@ export const home = () => {
 
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
+      // Photo - Username - Cover Photo
       getRealTimeDocument('users', user.uid, (doc) => {
-        profileName.innerHTML = doc.data().userName;
-        if (doc.data().bio !== '') {
-          profileBio.innerHTML = doc.data().bio;
-        } else {
-          profileBio.innerHTML = 'Usuario de BUNKER';
-        }
-        if (doc.data().userPhoto !== '' || doc.data().userPhoto !== null || doc.data().userPhoto !== undefined) {
-          const photoPost = document.querySelectorAll('.pic-style');
+        profileName.textContent = doc.data().userName;
+        profileBio.textContent = doc.data().bio;
+        if (doc.data().userPhoto) {
+          const photoPost = document.querySelectorAll('.home-pic');
           photoPost.forEach((imgTag) => {
             // eslint-disable-next-line no-param-reassign
             imgTag.src = doc.data().userPhoto;
@@ -59,6 +56,7 @@ export const home = () => {
         }
       });
       firstTimeUser(user.uid, user.displayName, user.photoURL);
+      // Show all posts and their comments
       getPosts(user.uid, homePosts, 'visibility', 'public');
       getComments(user.uid);
       const changeCover = div.querySelector('#cover-img-selected');

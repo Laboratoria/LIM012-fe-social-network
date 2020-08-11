@@ -24,21 +24,22 @@ export const profileForm = () => {
     document.querySelector('#photo-edited').src = URL.createObjectURL(file);
     addFileToStorage(refPath, file);
   });
+  // Submit form
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const inputUserName = form['new-username'].value;
     const inputBio = form.bio.value;
 
-    if (inputUserName !== '') {
+    if (inputUserName) {
       user.updateProfile({
         displayName: inputUserName,
       });
       updateDocument('users', user.uid, 'userName', inputUserName);
     }
-    if (inputBio !== '') {
+    if (inputBio) {
       updateDocument('users', user.uid, 'bio', inputBio);
     }
-    if (changePhoto !== '') {
+    if (changePhoto) {
       getFileFromStorage(changePhoto.name).then((url) => {
         user.updateProfile({
           photoURL: url,
