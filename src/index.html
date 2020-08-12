@@ -1,12 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-storage.js"></script>
+  <script src="https://kit.fontawesome.com/e43bba631d.js"></script>
+  <title>BUNKER</title>
+  <link rel="icon" type="image/png" href="images/icono.png" />
+  <link rel="stylesheet" href="css/global.css">
 </head>
+
 <body>
+  <section id="actual-view"></section>
+  <section id="pantallaModal"></section>
+  <div class="home-view">
+    <header>
+      <h1 class="h1-style"><img src="images/logo.png" alt="app logo"> BUNKER</h1>
+      <div class="container-of-icons">
+        <a href="#/home" id="home-btn"><i class="fas fa-home"></i></a>
+        <a href="#/profile">
+          <img alt="profile photo" src="images/profile-cube.png"
+            class="actual-user-photo home-pic pic-style comment-size">
+        </a>
+        <button class="options">
+          <i class="fas fa-cog "></i>
+          <i class="fas fa-bars "></i>
+        </button>
+      </div>
+      <nav class="menu-nav">
+        <div><a href="#/profile-form">Edit profile</a></div>
+        <div class="theme-options"><a href="#/theme-options">Themes</a></div>
+        <div id="log-out">Log Out</div>
+      </nav>
+    </header>
+    <main id="main-container"></main>
+    <footer>
+      <a href="#/home"><i class="fas fa-home"></i></a>
+      <a href="#/profile"> <i class="fas fa-user"></i></a>
+    </footer>
+  </div>
   <script type="module" src="index.js"></script>
+  <div class="lds-ring loader" id="loader">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 </body>
+
 </html>
